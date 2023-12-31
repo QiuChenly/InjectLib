@@ -1,0 +1,6 @@
+.DS_Store
+*.iml
+.idea
+.vscode
+.ruby-lsp
+IACPLHttpTransferClient
