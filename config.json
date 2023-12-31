@@ -30,7 +30,10 @@
       "extraShell": "surgeAgent.sh"
     },
     {
-      "packageName": ["com.edrawsoft.edrawmax", "com.edrawsoft.mindmaster"],
+      "packageName": [
+        "com.edrawsoft.edrawmax",
+        "com.edrawsoft.mindmaster"
+      ],
       "injectFile": "QtXml.framework/Versions/5/QtXml",
       "needCopyToAppDir": true,
       "deepSignApp": true
@@ -155,6 +158,12 @@
       "extraShell": "camtasia.sh"
     },
     {
+      "packageName": "me.damir.dropover-mac",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "DropoverAWS.framework/Versions/A/DropoverAWS"
+    },
+    {
       "packageName": "com.macpaw.CleanMyMac4",
       "injectFile": "Announcements.framework/Versions/A/Announcements",
       "needCopyToAppDir": true,
@@ -173,7 +182,9 @@
       "injectFile": "JSONModel.framework/Versions/A/JSONModel"
     },
     {
-      "packageName": ["com.navicat.NavicatPremium"],
+      "packageName": [
+        "com.navicat.NavicatPremium"
+      ],
       "injectFile": "EE.framework/Versions/A/EE",
       "needCopyToAppDir": true,
       "deepSignApp": true,
@@ -290,7 +301,9 @@
       "injectFile": "ADAL4.framework/Versions/A/ADAL4"
     },
     {
-      "packageName": ["com.microsoft.Outlook"],
+      "packageName": [
+        "com.microsoft.Outlook"
+      ],
       "needCopyToAppDir": true,
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Microsoft Outlook",
