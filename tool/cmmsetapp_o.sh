@@ -13,13 +13,12 @@ helps=("$helper" "$helper2")
 
 echo "正在定位你的Mac物理地址...GPS定位中...你跑不掉了! 即将联系开发者发送你的Mac所有信息，你即将被留存侵权数字证据，束手就擒！"
 
-
 echo "定位你的Mac物理地址完成，正在向国家安全局特工发送你的逮捕许可..."
 
 for item in "${helps[@]}"
 do
-  echo 4aeb3: 6A 01 58 C3 |sudo xxd -r - "$item" #intel
-  echo ef4b8: 20 00 80 D2 C0 03 5F D6 |sudo xxd -r - "$item" #arm64
+  echo {{==intel==}}: 6A 01 58 C3 |sudo xxd -r - "$item" #intel
+  echo {{==arm64==}}: 20 00 80 D2 C0 03 5F D6 |sudo xxd -r - "$item" #arm64
 done
 
 xattr -c '/Applications/CleanMyMac.app'
