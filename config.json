@@ -425,10 +425,21 @@
       "injectFile": "Paddle.framework/Versions/A/Paddle"
     },
     {
-      "packageName": "tonyapp.devutils",
+      "packageName": [
+        "tonyapp.devutils",
+        "me.tdinh.devutils-setapp"
+      ],
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "DiffMatchPatch.framework/Versions/A/DiffMatchPatch"
+    },
+    {
+      "packageName": [
+        "com.ideasoncanvas.mindnode.macos-setapp"
+      ],
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "CanvasLayout_19E0F1ED461C44E6_PackageProduct.framework/Versions/A/CanvasLayout_19E0F1ED461C44E6_PackageProduct"
     },
     {
       "packageName": "app.mp3tag.Mp3tag",

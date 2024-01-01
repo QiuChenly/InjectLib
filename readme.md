@@ -170,6 +170,10 @@ https://twitter.com/QiuChenly
 
 | SetApp CleanMyMac X | [4.14.6](https://store.setapp.com/app/78/9500/app-1702644792-657c4c38c0387.zip) |   ✅   |   ✅   | ✅   | SetApp版本, 通杀。 |
 
+| SetApp MindNode | [2023.3.1](https://store.setapp.com/app/320/9336/app-1700582238-655cd35ef1fff.zip) |   ✅   |   ✅   | ✅   | SetApp版本, 通杀。 |
+
+| SetApp DevUtils | [1.17.0](https://store.setapp.com/app/445/7963/app-1682658507-644b54cbceb37.zip) |   ✅   |   ✅   | ✅   | SetApp版本, 通杀。 |
+
 | Stash                                           | [2.5.4](https://mac-release-static.stash.ws/Stash-latest.zip)                                                                                                           |   ✅   |   ✅   | ✅   | 完美破解但是总体体验较差 不如surge https://mac-release.stash.ws/appcast.xml                                                                                                                                                                                                  |
 | Paste                                           | 4.1.2                                                                                                                                                                   |   ✅   |   ✅   | ✅   | 全新算法，杀！                                                                                                                                                                                                                                                        | 
 | App Cleaner & Uninstaller                       | 8.2.2                                                                                                                                                                   |   ✅   |   ✅   | ✅   | 因为签名会导致提示盗版，有空在再弄。                                                                                                                                                                                                                                             | 

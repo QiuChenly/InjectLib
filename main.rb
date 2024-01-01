@@ -194,6 +194,8 @@ def main
       system "#{signPrefix} #{Shellwords.escape(appBaseLocate)}"
     end
 
+    system "sudo xattr -cr #{dest}"
+
     puts 'App处理完成。'
   }
 end
