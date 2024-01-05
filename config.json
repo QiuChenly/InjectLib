@@ -205,12 +205,12 @@
     },
     {
       "packageName": [
-        "com.navicat.NavicatPremium"
+        "com.navicat.NavicatPremium",
+        "com.navicat.NavicatForOracle",
+        "com.navicat.NavicatForMySQL"
       ],
       "injectFile": "EE.framework/Versions/A/EE",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "noDeep": true
+      "needCopyToAppDir": true
     },
     {
       "packageName": "com.adobe.Photoshop",
