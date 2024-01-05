@@ -448,6 +448,13 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle"
     },
     {
+      "packageName": "tech.baye.servercat",
+      "needCopyToAppDir": true,
+      "bridgeFile": "/Contents/MacOS/",
+      "deepSignApp": true,
+      "injectFile": "ServerCat"
+    },
+    {
       "packageName": "com.villow.wgt",
       "needCopyToAppDir": true,
       "deepSignApp": true,
