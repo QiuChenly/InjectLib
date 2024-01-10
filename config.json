@@ -455,6 +455,26 @@
       "injectFile": "ServerCat"
     },
     {
+      "packageName": "com.ningle.shellbean",
+      "needCopyToAppDir": true,
+      "bridgeFile": "/Contents/MacOS/",
+      "deepSignApp": true,
+      "injectFile": "ShellBean"
+    },
+    {
+      "packageName": "com.krill.CodeRunner",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "Sparkle.framework/Versions/A/Sparkle"
+    },
+    {
+      "packageName": "com.poke.SwiftUI-For-Designers",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "做个应用"
+    },
+    {
       "packageName": "com.villow.wgt",
       "needCopyToAppDir": true,
       "deepSignApp": true,

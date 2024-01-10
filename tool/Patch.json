@@ -39,6 +39,7 @@
     "x86": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 81 EC D8 00 00 00 48 89 CB 49 89 FF 48 8B 05 ?? 53 00 00 48 8B 00 48 89 45 D0 4C 8B 2D ?? 54 00 00 48 89 D7 41 FF D5 49 89 C6 48 89 DF 41 FF D5 48 89 85 40 FF FF FF 0F 57 C0 4C 8D A5 00 FF FF FF 41 0F 29 04 24 41 0F 29 44 24 10 41 0F 29 44 24 20 41 0F 29 44 24 30 4C 89 F7 41 FF D5 48 8B 35 ?? A0 00 00 48 8D 8D 50 FF FF FF 41 B8 10 00 00 00 48 89 85 48 FF FF FF 48 89 C7 4C 89 E2 FF 15 ?? 53 00 00 48 85 C0 0F 84 8C 00 00 00",
     "out": "proxyman.sh",
     "replaceIntel": "{{==intel==}}",
-    "replaceARM": "{{==arm64==}}"
+    "replaceARM": "{{==arm64==}}",
+    "fixPlist": true
   }
 }
