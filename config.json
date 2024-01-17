@@ -425,6 +425,13 @@
       "injectFile": "Paddle.framework/Versions/A/Paddle"
     },
     {
+      "packageName": "com.charliemonroe.Downie-4",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "noDeep": true,
+      "injectFile": "Paddle.framework/Versions/A/Paddle"
+    },
+    {
       "packageName": [
         "tonyapp.devutils",
         "me.tdinh.devutils-setapp"
