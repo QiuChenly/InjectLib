@@ -432,6 +432,13 @@
       "injectFile": "Paddle.framework/Versions/A/Paddle"
     },
     {
+      "packageName": "com.incrediblebee.Archiver4",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "noDeep": true,
+      "injectFile": "BERegistration.framework/Versions/A/BERegistration"
+    },
+    {
       "packageName": [
         "tonyapp.devutils",
         "me.tdinh.devutils-setapp"
