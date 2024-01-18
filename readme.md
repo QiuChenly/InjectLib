@@ -1,39 +1,39 @@
-<p align="center" style="font-size: 31px">macOS 代码注入</p>
-<p align="center">秋城落叶<br/>Creative & Design</p>
-<p align="center">For My Mac</p>
+<p style="font-size: 31px;text-align: center;">InjectLib</p>
+<p style="font-size: 28px;text-align: center;">macOS集成注入框架</p>
+<p style="text-align: center;">秋城落叶<br/>Creative & Design</p>
+<p style="text-align: center;">for<br>My MacBook Pro 16 in-ch i9-9980HK@Turbo 5.0Ghz</p>
+
 
 <!-- TOC -->
+* [加入小团体](#加入小团体)
+      * [這就是原神的力量!點擊圖片進入新世界](#這就是原神的力量點擊圖片進入新世界)
+* [警告](#警告)
+* [使用](#使用)
+* [【用前必读】重要提示](#用前必读重要提示)
+* [【用前必读】可能会遇到的问题](#用前必读可能会遇到的问题)
+* [操作系统要求 & 代码编译环境要求](#操作系统要求--代码编译环境要求)
+* [App支持一览表](#app支持一览表)
+* [特别说明](#特别说明)
+  * [Surge 激活必读](#surge-激活必读)
+    * [Surge Mac 助手程序（Helper）异常处理方式](#surge-mac-助手程序helper异常处理方式)
+  * [Adobe 全家桶激活必读](#adobe-全家桶激活必读)
+  * [~~MacUpdater 激活必读~~ 会有屏蔽设备的风险，不建议使用](#macupdater-激活必读-会有屏蔽设备的风险不建议使用)
+  * [Emby Server 激活必读](#emby-server-激活必读)
+  * [Sublime 激活必读](#sublime-激活必读)
+  * [PD 19 激活必读](#pd-19-激活必读)
+  * [Typora 激活必读](#typora-激活必读)
+* [利用 Surge 的 MitM 拦截功能支持激活的 macOS App](#利用-surge-的-mitm-拦截功能支持激活的-macos-app)
+* [目的](#目的)
+* [骂人小作文](#骂人小作文)
+* [~~免责声明~~wo ze ni ma de b](#免责声明wo-ze-ni-ma-de-b)
+* [~~停更~~](#停更)
+<!-- TOC -->
 
-- [聯絡](#聯絡)
-    - [這就是原神的力量!點擊圖片進入新世界](#這就是原神的力量點擊圖片進入新世界)
-- [警告](#警告)
-- [使用](#使用)
-- [【用前必读】重要提示](#用前必读重要提示)
-- [【用前必读】可能会遇到的问题](#用前必读可能会遇到的问题)
-- [操作系统要求 \& 代码编译环境要求](#操作系统要求--代码编译环境要求)
-- [支持的 macOS App](#支持的-macos-app)
-- [支持的 iOS App](#支持的-ios-app)
-- [不再支持的 App](#不再支持的-app)
-- [特别说明](#特别说明)
-    - [Surge 激活必读](#surge-激活必读)
-        - [Surge Mac 助手程序（Helper）异常处理方式](#surge-mac-助手程序helper异常处理方式)
-    - [Adobe 全家桶激活必读](#adobe-全家桶激活必读)
-    - [~~MacUpdater 激活必读~~ 会有屏蔽设备的风险，不建议使用](#macupdater-激活必读-会有屏蔽设备的风险不建议使用)
-    - [Emby Server 激活必读](#emby-server-激活必读)
-    - [Sublime 激活必读](#sublime-激活必读)
-    - [PD 19 激活必读](#pd-19-激活必读)
-    - [Typora 激活必读](#typora-激活必读)
-- [利用 Surge 的 MitM 拦截功能支持激活的 macOS App](#利用-surge-的-mitm-拦截功能支持激活的-macos-app)
-- [目的](#目的)
-- [骂人小作文](#骂人小作文)
-- [~~免责声明~~wo ze ni ma de b](#免责声明wo-ze-ni-ma-de-b)
-- [~~停更~~](#停更)
+# 加入小团体
 
-# 聯絡
+关注我的频道，进群获取最新的推送资讯。
 
-关注我的频道，进群获取最新的注入库文件。
-
-学习班小团体不收人了。目前有一两个同学在学习就够了，想付费学习的另寻他处。简而言之：滚。
+学习班小团体不收人了。目前有一两个同学在学习就够了, 主要是很多朋友觉得收钱这种行为不好,让有些朋友产生了有钱就能为所欲为的错觉 在进行了深度的自我批判后我决定停止这种败坏风气的行为。所以想付费学习的另寻他处,简而言之:滚。
 
 老有人问我什么时候开源，你猜我为什么不愿意发出来而是团队内部开源？有没有可能是确实开源，但仅限对部分人开？就看我其他几个opensource项目就知道了，0
 pr，全都是download&git pull. 没有人愿意提PR，一个都没有。声称有愿意提的70%是骗子，就想要代码就直说。拿了代码人就消失了，你们觉得谁是Joker？
@@ -50,7 +50,7 @@ pr，全都是download&git pull. 没有人愿意提PR，一个都没有。声称
 6. 禁止牟利：包括但不仅限于索要打赏与捐赠。说实话就你那点b水平有你吗脸要捐赠啊？
 7. 不准骂人(除非有人确实傻逼 那我就不得不开口了)。
 8. 如果你只想自己学习而不想与大家分享学习心得，请你趁早滚。别等事发后受到我的精神洗礼。
-9. 我回答问题也是分人的，你要是志同道合我自然言无不尽，但你若是自私小人那你就别指望我能好好回答。傻逼玩意，我愿意解答是情分，不愿意解答是本分，你什么身份一定要让我回答？
+9. 我回答问题也是分人的，你要是志同道合我自然言无不尽，但你若是自私小人那你就别指望我能好好回答。
 10. 贡献代码者均会在InjectLib项目主页增加Credit。
 ```
 
@@ -171,151 +171,99 @@ https://twitter.com/QiuChenly
 
 ***
 
-# 支持的 macOS App
+# App支持一览表
 
 <details>
-<summary>点击展开</summary>
+<summary style="font-size: 40px;font-weight: bolder">支持的 macOS App</summary>
 
 - ARM64 & Intel: ✅ 表示可用, ❌ 表示不可用<br>
 - SIP: ✅ 表示可以在打开SIP的机器上使用, ❌ 表示只能在关闭SIP使用<br>
+- 维护状态解析:
+    - ⚠️暂未维护 此App我不定期保持更新 不会停更 可以提Issues
+    - ❌停止维护 此App确定已停止更新 Issues可以提但是基本不会理你
+    - ✅正常维护 此App有Bug/新版本你可以Issues随时提
 
-| App                                                            | 版本                                                                     | ARM64 |        Intel         | SIP | 特殊要求                                                           | 维护者                                       | 维护状态   |
-|:---------------------------------------------------------------|:-----------------------------------------------------------------------|:-----:|:--------------------:|-----|:---------------------------------------------------------------|-------------------------------------------|--------|
-| MWEB Pro                                                       | 通杀                                                                     |   ✅   |          ✅           | ✅   |                                                                | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
-| Navicat Premium                                                | 通杀                                                                     |   ✅   |          ✅           | ✅   | 需要从Mac AppStore 下载                                             |
-| Navicat 16 ForOracle                                           | 通杀                                                                     |   ❌   |          ✅           | ✅   | 需要从Mac AppStore 下载 我下不到ARM64的版本                                |
-| Sublime                                                        
- Text                                                           | [通杀](https://download.sublimetext.com/sublime_text_build_4154_mac.zip) |
- ✅                                                              | ✅                                                                      |   ✅   |       授权信息下面找。       |
-|
- Elpass                                                         | [通杀](https://elpass.app/macos/Elpass-1.5.6-490.zip)                    |
- ✅                                                              | ✅                                                                      |   ✅   | 无法使用云同步 签名后的app通病 无解 
- 搭配Surge脚本可以做到5138年授权 https://elpass.app/macos/appcast-beta.xml |
-| CleanMyMac X                                                   | 通杀                                                                     |   ✅   |          ✅           | ✅   | com.macpaw.CleanMyMac4.Menu 单独也要注入 Helper每个版本不一样还是需要单独处理 暂时不弄了 
+| App                                             | 版本                                                                                                                                                                      | ARM64 | Intel | SIP | 特殊要求                                                                                                                                                                            | 维护者                                       | 维护状态   |
+|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----:|:-----:|-----|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|--------|
+| MWEB Pro                                        | 通杀                                                                                                                                                                      |   ✅   |   ✅   | ✅   |                                                                                                                                                                                 | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
+| Navicat Premium                                 | 通杀                                                                                                                                                                      |   ✅   |   ✅   | ✅   | 需要从Mac AppStore 下载                                                                                                                                                              |                                           |        |
+| Navicat 16 ForOracle                            | 通杀                                                                                                                                                                      |   ❌   |   ✅   | ✅   | 需要从Mac AppStore 下载 我下不到ARM64的版本                                                                                                                                                 |                                           |        |
+| Sublime Text                                    | [通杀](https://download.sublimetext.com/sublime_text_build_4154_mac.zip)                                                                                                  |   ✅   |   ✅   | ✅   | 授权信息下面找。                                                                                                                                                                        |                                           |        |
+| Elpass                                          | [通杀](https://elpass.app/macos/Elpass-1.5.6-490.zip)                                                                                                                     |   ✅   |   ✅   | ✅   | 无法使用云同步 签名后的app通病 无解 搭配Surge脚本可以做到5138年授权 https://elpass.app/macos/appcast-beta.xml                                                                                             |
+| CleanMyMac X                                    | 通杀                                                                                                                                                                      |   ✅   |   ✅   | ✅   | com.macpaw.CleanMyMac4.Menu 单独也要注入 Helper每个版本不一样还是需要单独处理 暂时不弄了 不要下大陆特供版 更新地址: https://s3-us-west-2.amazonaws.com/updateinfo.devmate.com/com.macpaw.CleanMyMac4/beta/updates.xml |
+| Stash                                           | [2.5.4](https://mac-release-static.stash.ws/Stash-latest.zip)                                                                                                           |   ✅   |   ✅   | ✅   | 完美破解但是总体体验较差 不如surge https://mac-release.stash.ws/appcast.xml                                                                                                                   |                                           |        |                                                                                                                                              |                                                     |                                 |                                           |                                                                |
+| Paste                                           | 4.1.2                                                                                                                                                                   |   ✅   |   ✅   | ✅   | 全新算法，杀！                                                                                                                                                                         |                                           |        |
+| App Cleaner & Uninstaller                       | 8.2.2                                                                                                                                                                   |   ✅   |   ✅   | ✅   | 因为签名会导致提示盗版，有空在再弄。                                                                                                                                                              |                                           |        |
+| ProxyMan                                        | [通杀](https://download.proxyman.io/49100/Proxyman_4.10.0.dmg)                                                                                                            |   ✅   |   ✅   | ✅   | 更新地址: https://proxyman.io/osx/version.xml                                                                                                                                       |                                           |        |                                                                                                                                              |                                                     |                                                                                                                                                                                 |                                           |        |
+| BuhoCleaner                                     | [通杀](https://www.drbuho.com/buho-public-files/buhocleaner/buhocleaner197150.dmg)                                                                                        |   ✅   |   ✅   | ✅   | 更新地址:https://www.drbuho.com/buho-public-files/buhocleaner/appcast.xml                                                                                                           |                                           |        |                                                                                                                                              |                                                     |                                                                                                                                                                                 |                                           |        |
+| Macs Fan Control                                | [通杀](https://crystalidea.com/downloads/macsfancontrol.zip)                                                                                                              |   ✅   |   ✅   | ✅   |                                                                                                                                                                                 |                                           |        |                                           |        |
+| TablePlus                                       | [通杀](https://tableplus.com/release/osx/tableplus_latest)                                                                                                                |   ✅   |   ✅   | ✅   | 老子第一次喷App: 傻逼App 做的跟shit一样 我伪造的授权信息在内存数据结构被篡改成不知道哪来的ObjectC对象引起崩溃 浪费老子时间 真的垃圾App 作者能不能几把优化一下？？ 就这破App 老子弄到凌晨三点 真的狗都不用 而且连个汉化都没有 格局Down Down了                                    |                                           |        |                                           |        |
+| Transmit 5                                      | 5.9.2                                                                                                                                                                   |   ✅   |   ✅   | ✅   | 需要从App Store下载                                                                                                                                                                  |                                           |        |
+| DevUtils                                        | [1.17.0](https://devutils.com/archives/DevUtils-1.17.0.dmg)                                                                                                             |   ✅   |   ✅   | ✅   | 功能可用 但是激活状态我懒得改了 作者写的这个App代码质量之烂令人无语 不想多说什么了                                                                                                                                    |                                           |        |                                           |        |
+| MP3Tag                                          | [1.8.6 (86)](https://updates.mp3tag.app/Mp3tag-1.8.6.zip)                                                                                                               |   ❌   |   ✅   | ✅   | 序列号随便输入 全部激活                                                                                                                                                                    |                                           |        |                                           |        |
+| Widgetter                                       | [通杀](https://apps.apple.com/cn/app/widgetter-%E5%B0%8F%E5%B7%A5%E5%85%B7-%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8-%E4%B8%BB%E9%A2%98-%E5%B1%8F%E4%BF%9D/id1553223588?mt=12) |   ✅   |   ✅   | ✅   | MAS下载 激活全部功能                                                                                                                                                                    |                                           |        |                                           |        |
+| Bartender 5                                     | [5.0.36-通杀](https://macbartender.com/B2/updates/5-0-31/Bartender%205.zip)                                                                                               |   ✅   |   ✅   | ✅   | 更新地址 https://www.macbartender.com/B2/updates/AppcastB5.xml                                                                                                                      |                                           |        |                                                                                                                                              |                                                     |                                                                                                                                                                                 |                                           |        |
+| QCAD-Intel                                      | [3.28.2](https://www.qcad.org/archives/qcad/qcad-3.28.2-trial-macos-10.14-13.dmg)                                                                                       |   ❌   |   ✅   | ✅   | ARM懒得弄                                                                                                                                                                          |                                           |        |                                           |        |
+| Bandizip 365                                    | 通杀                                                                                                                                                                      |   ✅   |   ✅   | ✅   | 订阅版                                                                                                                                                                             |                                           |        |
+| Bandizip                                        | 7.28                                                                                                                                                                    |   ✅   |   ✅   | ✅   | 买断版                                                                                                                                                                             |                                           |        |
+| 花见壁纸                                            | [通杀](https://apps.apple.com/cn/app/%E8%8A%B1%E8%A6%8B-4k%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E5%BC%95%E6%93%8E/id1456235760?mt=12)                                      |   ✅   |   ✅   | ✅   | 注入时App名称选择Live Wallpaper                                                                                                                                                        |                                           |        |                                           |                                                                |
+| Typora                                          | [通杀](https://download.typora.io/mac/Typora.dmg)                                                                                                                         |   ✅   |   ✅   | ✅   | 目前激活后第二次打开会崩溃 等修复                                                                                                                                                               |                                           |        |                                           |                                                                |
+| Medis                                           | [3100](https://api.getmedis.com/medis-latest.zip)                                                                                                                       |   ✅   |   ✅   | ✅   | 仅支持3100                                                                                                                                                                         |                                           |        |                                           |                                                                |
+| Xnip                                            | [通殺](https://apps.apple.com/cn/app/xnip-%E6%88%AA%E5%9B%BE-%E6%A0%87%E6%B3%A8/id1221250572?mt=12)                                                                       |   ✅   |   ✅   | ✅   | 通殺不要問為什麼                                                                                                                                                                        |                                           |        |                                           |                                                                |
+| Camtasia 2023                                   | [2023.3.4(124306)通杀](https://www.techsmith.com/camtasia.html)                                                                                                           |   ✅   |   ✅   | ✅   | 通殺不要問為什麼                                                                                                                                                                        |                                           |        |                                           |                                                                |
+| Final Cut Pro Trial                             | [(10.6.10)通杀](https://secure-appldnld.apple.com/Final_Cut_Pro_X/042-60959-20231004-B5BFDED9-9530-49C9-97EB-B7B617BC5026/FinalCutProTrial.dmg)                           |   ✅   |   ✅   | ✅   | 通殺不要問為什麼                                                                                                                                                                        |                                           |        |                                           |                                                                |
+| MacUpdater                                      | [激活码通杀](https://www.corecode.io/downloads/macupdater_latest.dmg)                                                                                                        |   ✅   |   ✅   | ✅   | 通殺序列号下面找                                                                                                                                                                        |                                           |        |                                           |                                                                |
+| Surge 5                                         | [5.4.4-2548](https://dl.nssurge.com/mac/v5/Surge-5.4.4-2548-d7d99d568f03d3a87a049d3b6148bee6.zip)                                                                       |   ✅   |   ✅   | ✅   | 老有聪明人自己没搞好出问题来问我该怎么办 不是我的问题我怎么知道怎么办？你不问开发者你问我？傻逼吧你？                                                                                                                             |                                           |        |        |                                                                |
+| CleanShot                                       | [4.6.2](https://updates.getcleanshot.com/v3/CleanShot-X-4.6.2.dmg)                                                                                                      |   ✅   |   ✅   | ✅   | 不通杀                                                                                                                                                                             |                                           |        |
+| com.edrawsoft.edrawmax/com.edrawsoft.mindmaster | 自己去官网下                                                                                                                                                                  |   ✅   |   ✅   | ✅   | 不通杀                                                                                                                                                                             |                                           |        |
+| UlyssesMac                                      | [MAS版本](https://apps.apple.com/us/app/ulysses-%E5%86%99%E4%BD%9C-%E7%AC%94%E8%AE%B0-%E6%97%A5%E8%AE%B0-%E5%8D%9A%E5%AE%A2/id1225570693?l=zh-Hans-CN)                    |   ✅   |   ✅   | ✅   | 苹果应用商店版本,后续版本通杀                                                                                                                                                                 |                                           |        |                                           |                                                                |
+| MindMac                                         | [官网版本](https://github.com/MindMacApp/MindMac/releases/download/1.8.7/MindMac_1.8.7.dmg)                                                                                 |   ✅   |   ✅   | ✅   | 官网版本,后续版本通杀                                                                                                                                                                     |                                           |        |                                                                                                                                              |     |                                 |                                           |                                                                |
 
-不要下大陆特供版
-更新地址: https://s3-us-west-2.amazonaws.com/updateinfo.devmate.com/com.macpaw.CleanMyMac4/beta/updates.xml |
-| SetApp CleanMyMac X | [4.14.6](https://store.setapp.com/app/78/9500/app-1702644792-657c4c38c0387.zip) | ✅ | ✅ | ✅ |
-SetApp版本, 通杀。 |
-| SetApp MindNode | [2023.3.1](https://store.setapp.com/app/320/9336/app-1700582238-655cd35ef1fff.zip) | ✅ | ✅ | ✅ |
-SetApp版本, 通杀。 |
-| SetApp DevUtils | [1.17.0](https://store.setapp.com/app/445/7963/app-1682658507-644b54cbceb37.zip) | ✅ | ✅ | ✅ |
-SetApp版本, 通杀。 |
-|Stash | [2.5.4](https://mac-release-static.stash.ws/Stash-latest.zip)                                                                                                           |
-✅ | ✅ | ✅ | 完美破解但是总体体验较差
-不如surge https://mac-release.stash.ws/appcast.xml                                                                                                                                                                                                  |
-| Paste | 4.1.2 | ✅ | ✅ | ✅ | 全新算法，杀！ |
-| App Cleaner & Uninstaller | 8.2.2 | ✅ | ✅ | ✅ | 因为签名会导致提示盗版，有空在再弄。 |
-|
-ProxyMan | [通杀](https://download.proxyman.io/49100/Proxyman_4.10.0.dmg)                                                                                                            |
-✅ | ✅ | ✅ |
-更新地址: https://proxyman.io/osx/version.xml                                                                                                                                                                                                                      |
-|
-BuhoCleaner | [通杀](https://www.drbuho.com/buho-public-files/buhocleaner/buhocleaner197150.dmg)                                                                                        |
-✅ | ✅ | ✅ |
-更新地址:https://www.drbuho.com/buho-public-files/buhocleaner/appcast.xml                                                                                                                                                                                          |
-| Macs Fan
-Control | [通杀](https://crystalidea.com/downloads/macsfancontrol.zip)                                                                                                              |
-✅ | ✅ | ✅ | |
-|
-TablePlus | [通杀](https://tableplus.com/release/osx/tableplus_latest)                                                                                                                |
-✅ | ✅ | ✅ | 老子第一次喷App: 傻逼App 做的跟shit一样 我伪造的授权信息在内存数据结构被篡改成不知道哪来的ObjectC对象引起崩溃
-浪费老子时间 真的垃圾App 作者能不能几把优化一下？？ 就这破App 老子弄到凌晨三点 真的狗都不用 而且连个汉化都没有 格局Down
-Down了 |
-| Transmit 5 | 5.9.2 | ✅ | ✅ | ✅ | 需要从App Store下载 |
-|
-DevUtils | [1.17.0](https://devutils.com/archives/DevUtils-1.17.0.dmg)                                                                                                             |
-✅ | ✅ | ✅ | 功能可用 但是激活状态我懒得改了 作者写的这个App代码质量之烂令人无语 不想多说什么了 |
-|
-MP3Tag | [1.8.6 (86)](https://updates.mp3tag.app/Mp3tag-1.8.6.zip)                                                                                                               |
-❌ | ✅ | ✅ | 序列号随便输入 全部激活 |
-|
-Widgetter | [通杀](https://apps.apple.com/cn/app/widgetter-%E5%B0%8F%E5%B7%A5%E5%85%B7-%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8-%E4%B8%BB%E9%A2%98-%E5%B1%8F%E4%BF%9D/id1553223588?mt=12) |
-✅ | ✅ | ✅ | MAS下载 激活全部功能 |
-| Bartender
-5 | [5.0.36-通杀](https://macbartender.com/B2/updates/5-0-31/Bartender%205.zip)                                                                                               |
-✅ | ✅ | ✅ |
-更新地址 https://www.macbartender.com/B2/updates/AppcastB5.xml                                                                                                                                                                                                     |
-|
-QCAD-Intel | [3.28.2](https://www.qcad.org/archives/qcad/qcad-3.28.2-trial-macos-10.14-13.dmg)                                                                                       |
-❌ | ✅ | ✅ | ARM懒得弄 |
-| Bandizip 365 | 通杀 | ✅ | ✅ | ✅ | 订阅版 |
-| Bandizip | 7.28 | ✅ | ✅ | ✅ | 买断版 |
-|
-花见壁纸 | [通杀](https://apps.apple.com/cn/app/%E8%8A%B1%E8%A6%8B-4k%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E5%BC%95%E6%93%8E/id1456235760?mt=12)                                      |
-✅ | ✅ | ✅ | 注入时App名称选择Live Wallpaper |
-|
-Typora | [通杀](https://download.typora.io/mac/Typora.dmg)                                                                                                                         |
-✅ | ✅ | ✅ | 目前激活后第二次打开会崩溃 等修复 |
-|
-Medis | [3100](https://api.getmedis.com/medis-latest.zip)                                                                                                                       |
-✅ | ✅ | ✅ | 仅支持3100 |
-|
-Xnip | [通殺](https://apps.apple.com/cn/app/xnip-%E6%88%AA%E5%9B%BE-%E6%A0%87%E6%B3%A8/id1221250572?mt=12)                                                                       |
-✅ | ✅ | ✅ | 通殺不要問為什麼 |
-| Camtasia
-2023 | [2023.3.4(124306)通杀](https://www.techsmith.com/camtasia.html)                                                                                                           |
-✅ | ✅ | ✅ | 通殺不要問為什麼 |
-| Final Cut Pro
-Trial | [(10.6.10)通杀](https://secure-appldnld.apple.com/Final_Cut_Pro_X/042-60959-20231004-B5BFDED9-9530-49C9-97EB-B7B617BC5026/FinalCutProTrial.dmg)                           |
-✅ | ✅ | ✅ | 通殺不要問為什麼 |
-|
-MacUpdater | [激活码通杀](https://www.corecode.io/downloads/macupdater_latest.dmg)                                                                                                        |
-✅ | ✅ | ✅ | 通殺序列号下面找 |
-| Surge
-5 | [5.4.4-2548](https://dl.nssurge.com/mac/v5/Surge-5.4.4-2548-d7d99d568f03d3a87a049d3b6148bee6.zip)                                                                       |
-✅ | ✅ | ✅ | 老有聪明人自己没搞好出问题来问我该怎么办 不是我的问题我怎么知道怎么办？你不问开发者你问我？傻逼吧你？|
-| CleanShot | [4.6.2](https://updates.getcleanshot.com/v3/CleanShot-X-4.6.2.dmg) | ✅ | ✅ | ✅ | 不通杀 |
-| com.edrawsoft.edrawmax/com.edrawsoft.mindmaster | 自己去官网下 | ✅ | ✅ | ✅ | 不通杀 |
-|
-UlyssesMac | [MAS版本](https://apps.apple.com/us/app/ulysses-%E5%86%99%E4%BD%9C-%E7%AC%94%E8%AE%B0-%E6%97%A5%E8%AE%B0-%E5%8D%9A%E5%AE%A2/id1225570693?l=zh-Hans-CN) |
-✅ | ✅ | ✅ | 苹果应用商店版本,后续版本通杀 |
-| MindMac | [官网版本](https://github.com/MindMacApp/MindMac/releases/download/1.8.7/MindMac_1.8.7.dmg)| ✅ | ✅ | ✅ |
-官网版本,后续版本通杀 |
+| SetApp版本            | 版本                                                                                 | ARM64 | Intel | SIP | 特殊要求          | 维护者                                       | 维护状态   |
+|:--------------------|:-----------------------------------------------------------------------------------|:-----:|:-----:|-----|:--------------|-------------------------------------------|--------|
+| SetApp CleanMyMac X | [4.14.6](https://store.setapp.com/app/78/9500/app-1702644792-657c4c38c0387.zip)    |   ✅   |   ✅   | ✅   | SetApp版本, 通杀。 | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |                                                                                                                                              |     |                                 |                                           |                                                                |
+| SetApp MindNode     | [2023.3.1](https://store.setapp.com/app/320/9336/app-1700582238-655cd35ef1fff.zip) |   ✅   |   ✅   | ✅   | SetApp版本, 通杀。 | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |                                                                                                                                              |     |                                 |                                           |                                                                |
+| SetApp DevUtils     | [1.17.0](https://store.setapp.com/app/445/7963/app-1682658507-644b54cbceb37.zip)   |   ✅   |   ✅   | ✅   | SetApp版本, 通杀。 | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |                                                                                                                                              |     |                                 |                                           |                                                                |
 
-| Adobe 全家桶                | 版本           | ARM64 | Intel | 特殊说明 全家桶全部支持打开SIP下使用          |
-|:-------------------------|:-------------|:-----:|:-----:|:------------------------------|
-| Adobe PhotoShop          | 通杀           |   ✅   |   ✅   | PS:Intel上的神经滤镜已经完美可用 ARM的暂时不行 |
-| Adobe Acrobat Pro        | 23.006.20360 |   ✅   |   ✅   |                               |
-| Adobe Illustrator        | 28.1.0       |   ✅   |   ❌   | ARM64没有测试过 X86测试过             |
-| Adobe Lightroom          | 7.0          |   ✅   |   ✅   | 注入后先点试用 然后过期后可以正常使用           |
-| Adobe Lightroom Classic  | 13.0.1       |   ✅   |   ✅   | 注入后先点试用 然后过期后可以正常使用           |
-| Adobe InCopy 2024        | 19.0.0.151   |   ✅   |   ❌   | 在M1 Mac Mini 中测试通过            |
-| Adobe InDesign 2024      | 19.0.0.151   |   ✅   |   ❌   | 在M1 Mac Mini 中测试通过            |
-| Adobe Premiere Pro 2024  | 24.0.0       |   ✅   |   ✅   | 在M1 Mac Mini 中测试通过            |
-| Adobe After Effects 2024 | 24.0.0       |   ✅   |   ✅   | 在M1 Mac Mini 中测试通过            |
-| Adobe Animate 2024       | 24.0         |   ✅   |   ✅   | 在M1 Mac Mini 中测试通过            |
-| Adobe Audition 2024      | 24.0.0.46    |   ✅   |   ✅   | 在M1 Mac Mini 中测试通过            |
-| Adobe Media Encoder 2024 | 24.0         |   ✅   |   ✅   | 在M1 Mac Mini 中测试通过            |
+| Adobe 全家桶                | 版本           | ARM64 | Intel | 特殊说明 全家桶全部支持打开SIP下使用          | 维护者                                       | 维护状态   |
+|:-------------------------|:-------------|:-----:|:-----:|:------------------------------|:------------------------------------------|:-------|
+| Adobe PhotoShop          | 通杀           |   ✅   |   ✅   | PS:Intel上的神经滤镜已经完美可用 ARM的暂时不行 | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 | 
+| Adobe Lightroom          | 7.0          |   ✅   |   ✅   | 注入后先点试用 然后过期后可以正常使用           | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 | 
+| Adobe Lightroom Classic  | 13.0.1       |   ✅   |   ✅   | 注入后先点试用 然后过期后可以正常使用           | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 | 
+| Adobe Acrobat Pro        | 23.006.20360 |   ✅   |   ✅   |                               | [QiuChenly](https://github.com/QiuChenly) | ⚠️暂未维护 | 
+| Adobe Illustrator        | 28.1.0       |   ✅   |   ❌   | ARM64没有测试过 X86测试过             | [QiuChenly](https://github.com/QiuChenly) | ⚠️暂未维护 | 
+| Adobe InCopy 2024        | 19.0.0.151   |   ✅   |   ❌   | 在M1 Mac Mini 中测试通过            | [QiuChenly](https://github.com/QiuChenly) | ⚠️暂未维护 | 
+| Adobe InDesign 2024      | 19.0.0.151   |   ✅   |   ❌   | 在M1 Mac Mini 中测试通过            | [QiuChenly](https://github.com/QiuChenly) | ⚠️暂未维护 | 
+| Adobe Premiere Pro 2024  | 24.0.0       |   ✅   |   ✅   | 在M1 Mac Mini 中测试通过            | [QiuChenly](https://github.com/QiuChenly) | ⚠️暂未维护 | 
+| Adobe After Effects 2024 | 24.0.0       |   ✅   |   ✅   | 在M1 Mac Mini 中测试通过            | [QiuChenly](https://github.com/QiuChenly) | ⚠️暂未维护 | 
+| Adobe Animate 2024       | 24.0         |   ✅   |   ✅   | 在M1 Mac Mini 中测试通过            | [QiuChenly](https://github.com/QiuChenly) | ⚠️暂未维护 | 
+| Adobe Audition 2024      | 24.0.0.46    |   ✅   |   ✅   | 在M1 Mac Mini 中测试通过            | [QiuChenly](https://github.com/QiuChenly) | ⚠️暂未维护 | 
+| Adobe Media Encoder 2024 | 24.0         |   ✅   |   ✅   | 在M1 Mac Mini 中测试通过            | [QiuChenly](https://github.com/QiuChenly) | ⚠️暂未维护 | 
 
 </details>
 
-# 支持的 iOS App
+<details>
+<summary style="font-size: 40px;font-weight: bolder">停止支持的 macOS App</summary>
+
+| App                                            | 最后支持                                                                                                | ARM64 | Intel | SIP | 停更说明                                       |
+|------------------------------------------------|-----------------------------------------------------------------------------------------------------|:-----:|:-----:|:---:|--------------------------------------------|                                  
+| Microsoft Office Word/PowerPoint/Excel/Outlook | 需要从Mac AppStore下载 16.80                                                                             |   ✅   |   ✅   |  ✅  | 懒。                                         |                                                                                                     |       |                                            |     |                                                    |
+| Parallels  Desktop                             | [19.1.0](https://download.parallels.com/desktop/v19/19.1.0-54729/ParallelsDesktop-19.1.0-54729.dmg) |   ✅   |   ✅   |  ✅  | 谁会想到会有人以全家除他以外(含亲妈)全部暴毙的代价冒名顶替别人给我发恐吓律师函呢？ |    
+| Affinity Photo 2/Designer 2/Publisher 2 全家桶    | MAS  2.1.1                                                                                          |   ✅   |   ✅   |  ✅  | 懒。                                         |
+| iShot                                          | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 懒。                                         | 
+| Infuse Pro                                     | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 懒。                                         | 
+| 解优2                                            | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 懒。                                         | 
+| Omi录屏专家                                        | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 懒。                                         | 
+| OmniPlayer                                     | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 懒。                                         |
+
+</details>
 
 <details>
-<summary>点击展开</summary>
+<summary style="font-size: 40px;font-weight: bolder">计划支持的 iOS App</summary>
 
 | App   | 版本     | 特殊说明                                                  |
 |-------|--------|-------------------------------------------------------|
 | Surge | v5.8.0 | 还没破解,战损iPhone 7坏了去修了，修好之后学习怎么破解iOS 学iOS破解第一天 -200 RMB |
-
-</details>
-
-# 不再支持的 App
-
-<details>
-<summary>点击展开</summary>
-
-| App                                            | 最后支持                                                                                                | ARM64 | Intel | SIP | 停更说明                                       |
-|------------------------------------------------|-----------------------------------------------------------------------------------------------------|:-----:|:-----:|:---:|--------------------------------------------|                                  
-| Microsoft Office Word/PowerPoint/Excel/Outlook | 需要从Mac AppStore下载 16.80                                                                             |   ✅   |   ✅   |  ✅  | 365订阅版 我为大家贡献的太多,我有点累了。                    |                                                                                                     |       |                                            |     |                                                    |
-| Parallels  Desktop                             | [19.1.0](https://download.parallels.com/desktop/v19/19.1.0-54729/ParallelsDesktop-19.1.0-54729.dmg) |   ✅   |   ✅   |  ✅  | 谁会想到会有人以全家除他以外(含亲妈)全部暴毙的代价冒名顶替别人给我发恐吓律师函呢？ |    
-| Affinity Photo 2/Designer 2/Publisher 2 全家桶    | MAS  2.1.1                                                                                          |   ✅   |   ✅   |  ✅  | 我有点累了。                                     |
-| iShot                                          | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 我有点累了。                                     | 
-| Infuse Pro                                     | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 我有点累了。                                     | 
-| 解优2                                            | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 我有点累了。                                     | 
-| Omi录屏专家                                        | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 我有点累了。                                     | 
-| OmniPlayer                                     | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 我有点累了。                                     |
 
 </details>
 
