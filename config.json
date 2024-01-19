@@ -538,6 +538,13 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
       "deepSignApp": true
+    },
+    {
+      "packageName": "com.veertu.anka",
+      "injectFile": "Anka",
+      "bridgeFile": "/Contents/MacOS/",
+      "needCopyToAppDir": true,
+      "deepSignApp": true
     }
   ]
 }
