@@ -83,6 +83,12 @@
       "extraShell": "bartender.sh"
     },
     {
+      "packageName": "com.pixelmatorteam.pixelmator.touch.x.photo",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "PXMPhotoKitUI.framework/Versions/A/PXMPhotoKitUI"
+    },
+    {
       "packageName": "com.crystalidea.macsfancontrol",
       "injectFile": "QtMacExtras.framework/Versions/5/QtMacExtras",
       "needCopyToAppDir": true,
