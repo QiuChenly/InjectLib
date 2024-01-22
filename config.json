@@ -89,6 +89,12 @@
       "injectFile": "PXMPhotoKitUI.framework/Versions/A/PXMPhotoKitUI"
     },
     {
+      "packageName": "com.filmage.pro-lite.mac",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "KMDrawViewSDK_Mac.framework/Versions/A/KMDrawViewSDK_Mac"
+    },
+    {
       "packageName": "com.crystalidea.macsfancontrol",
       "injectFile": "QtMacExtras.framework/Versions/5/QtMacExtras",
       "needCopyToAppDir": true,
