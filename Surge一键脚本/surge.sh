@@ -1,27 +1,35 @@
 #!/bin/bash
 
 # 错误处理函数
+# shellcheck disable=SC2317  # Don't warn about unreachable commands in this function
 handle_error() {
-  echo ""
-  echo "⚠️ 脚本发生错误!,请检查错误,正在后退出..."
+    echo "脚本发生错误，正在退出..."
   exit 1
 }
 
 # 定义信号处理函数，用于响应 Ctrl+C
 function handle_ctrl_c {
   echo ""
-    echo "接收到 Ctrl+C，正在退出..."
-    exit 0
+  echo "接收到 Ctrl+C，正在退出..."
+  exit 0
+}
+
+function exit_execute {
+  echo "进程被杀死"
+  exit 0
 }
 
 # 设置信号处理程序，捕捉 SIGINT 信号（Ctrl+C）
 trap handle_ctrl_c SIGINT
 
+# 设置trap命令，捕捉SIGTERM信号，并调用exit_execute函数
+trap exit_execute SIGTERM
+
 # 设置错误处理函数
 trap handle_error ERR
 
 function Wipes_Data {
-  user=$(whoami)
+  user=$SUDO_USER
 
   sudo rm -rf "/Applications/Surge.app" || true
   sudo rm -rf "/tmp/Surge-*.zip" || true
@@ -52,7 +60,9 @@ cd "${SCRIPT_DIR}" || exit 1
 
 echo "⚙️ 是否需要清除Surge相关内容?"
 echo "⚙️ 若需要全新安装Surge,请输入y并回车,只进行破解,直接回车即可."
-read -r flag
+sudo killall Surge || true
+read -r flag || true
+
 if [[ $flag == y ]]; then
   echo "⚙️ 若你安装过Surge,请确保Surge卸载干净,建议用App Cleaner & Uninstaller工具"
   echo '⚙️ 若你有配置文件等信息,请备份到其他目录,都确认无误后输入y,开始纯净安装!'
