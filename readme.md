@@ -220,6 +220,7 @@ https://twitter.com/QiuChenly
 | MindMac                                         | [官网版本](https://github.com/MindMacApp/MindMac/releases/download/1.8.7/MindMac_1.8.7.dmg)                                                                                 |   ✅   |   ✅   | ✅   | 官网版本,后续版本通杀                                                                                                                                                                     | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
 | Archiver | [4.0.0](https://storage.googleapis.com/incrediblebee/apps/Archiver-4/Archiver.zip) | ✅ | ✅ | ✅ | 通杀 | [oilrich25](https://github.com/oilrich25) | ✅正常维护中 |
 | Downie 4 | [4.7.2](https://software.charliemonroe.net/trial/downie/v4/Downie_4_4663.dmg) | ✅ | ✅ | ✅ | 通杀 | [oilrich25](https://github.com/oilrich25) | ✅正常维护中 |
+| VOX | [latest](https://vox.rocks/app-download?app=vox) | ✅ | ✅ | ✅ | 通杀 | [Antibiotics](https://github.com/Antibioticss) | ✅正常维护中 |
 
 | SetApp版本            | 版本                                                                                 | ARM64 | Intel | SIP | 特殊要求          | 维护者                                       | 维护状态   |
 |:--------------------|:-----------------------------------------------------------------------------------|:-----:|:-----:|-----|:--------------|-------------------------------------------|--------|
