@@ -557,6 +557,12 @@
       "bridgeFile": "/Contents/MacOS/",
       "needCopyToAppDir": true,
       "deepSignApp": true
+    },
+    {
+       "packageName": "com.coppertino.Vox",
+       "needCopyToAppDir": true,
+       "deepSignApp": true,
+       "injectFile": "DevMateKit.framework/Versions/A/DevMateKit"
     }
   ]
 }
