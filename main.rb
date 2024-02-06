@@ -164,7 +164,8 @@ def main
     # puts sh
     system sh
 
-    signPrefix = 'codesign -f -s - --timestamp=none --all-architectures'
+    # 没搞懂为什么有的人codesign都能冲突
+    signPrefix = '/usr/bin/codesign -f -s - --timestamp=none --all-architectures'
 
     if noDeep.nil?
       puts 'Need Deep Sign.'
