@@ -3,7 +3,7 @@
 # 错误处理函数
 # shellcheck disable=SC2317  # Don't warn about unreachable commands in this function
 handle_error() {
-    echo "脚本发生错误，正在退出..."
+  echo "脚本发生错误，正在退出..."
   exit 1
 }
 
@@ -28,8 +28,8 @@ trap exit_execute SIGTERM
 # 设置错误处理函数
 trap handle_error ERR
 
-function Wipes_Data {
-  user=$SUDO_USER
+Wipes_Data() {
+  user="${SUDO_USER}"
 
   sudo rm -rf "/Applications/Surge.app" || true
   sudo rm -rf "/tmp/Surge-*.zip" || true
@@ -45,6 +45,16 @@ function Wipes_Data {
   sudo rm -rf "/Users/${user}/Library/Preferences/com.nssurge.surge-mac.plist" || true
   sudo rm -rf "/Users/${user}/Library/Application\ Support/com.nssurge.surge-mac" || true
 }
+
+Rerun() {
+  # 获取脚本文件的绝对路径
+  SCRIPT_PATH=$(readlink -f "$0")
+  exec sudo "${SCRIPT_PATH}"
+}
+
+if [[ ! "${SUDO_USER}" ]]; then
+  Rerun
+fi
 
 # 检查是否为root用户，非root用户可能无法访问某些文件
 if [[ $EUID -ne 0 ]]; then
