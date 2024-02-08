@@ -8,7 +8,7 @@
 若你未拉取仓库.复制下面👇命令并粘贴到终端中,回车,输入密码,回车.
 
 ```bash
-git clone https://github.com/QiuChenlyOpenSource/InjectLib.git && cd ./InjectLib/Surge一键脚本 && chmod +x surge.sh && sudo bash surge.sh
+git clone https://github.com/QiuChenlyOpenSource/91QiuChen.git && cd ./91QiuChen/Surge一键脚本 && chmod +x surge.sh && sudo bash surge.sh
 ```
 
 若你已拉取仓库.只需要在`Surge一键脚本`目录下执行下面👇命令
