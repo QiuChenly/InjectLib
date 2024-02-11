@@ -27,7 +27,7 @@
   * [Sublime 激活必读](#sublime-激活必读)
   * [PD 19 激活必读](#pd-19-激活必读)
   * [Typora 激活必读](#typora-激活必读)
-* [利用 Surge 的 MitM 拦截功能支持激活的 macOS App](#利用-surge-的-mitm-拦截功能支持激活的-macos-app)
+* [Surge-crack-模块支持激活的-macOS-App](#Surge-crack-模块支持激活的-macOS-App)
 * [目的](#目的)
 * [骂人小作文](#骂人小作文)
 * [~~免责声明~~wo ze ni ma de b](#免责声明wo-ze-ni-ma-de-b)
