@@ -225,6 +225,8 @@ https://twitter.com/QiuChenly
 | Archiver | [4.0.0](https://storage.googleapis.com/incrediblebee/apps/Archiver-4/Archiver.zip) | ✅ | ✅ | ✅ | 通杀 | [oilrich25](https://github.com/oilrich25) | ✅正常维护中 |
 | Downie 4 | [4.7.2](https://software.charliemonroe.net/trial/downie/v4/Downie_4_4663.dmg) | ✅ | ✅ | ✅ | 通杀 | [oilrich25](https://github.com/oilrich25) | ✅正常维护中 |
 | VOX | [latest](https://vox.rocks/app-download?app=vox) | ✅ | ✅ | ✅ | 通杀 | [Antibiotics](https://github.com/Antibioticss) | ✅正常维护中 |
+| MediaMate | [通杀](https://wouter01.github.io/MediaMate/) | ✅ | ✅ | ✅ | 使用序列号MNBVCXZLK-QWERTYUIO-ASDFHJKLZ-XCVBN配合Surge脚本破解 | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
+
 
 | SetApp版本            | 版本                                                                                 | ARM64 | Intel | SIP | 特殊要求          | 维护者                                       | 维护状态   |
 |:--------------------|:-----------------------------------------------------------------------------------|:-----:|:-----:|-----|:--------------|-------------------------------------------|--------|
@@ -257,7 +259,7 @@ https://twitter.com/QiuChenly
 | Microsoft Office Word/PowerPoint/Excel/Outlook | 需要从Mac AppStore下载 16.80                                                                             |   ✅   |   ✅   |  ✅  | 懒。                                         |                                                                                                     |       |                                            |     |                                                    |
 | Parallels  Desktop                             | [19.1.0](https://download.parallels.com/desktop/v19/19.1.0-54729/ParallelsDesktop-19.1.0-54729.dmg) |   ✅   |   ✅   |  ✅  | 谁会想到会有人以全家除他以外(含亲妈)全部暴毙的代价冒名顶替别人给我发恐吓律师函呢？ |    
 | Affinity Photo 2/Designer 2/Publisher 2 全家桶    | MAS  2.3.1                                                                                          |   ✅   |   ✅   |  ✅  | 懒。                                         |
-| iShot                                          | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 懒。                                         | 
+| iShot                                          | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 自动计算激活序列号，不存在hook失效的问题了。                                         | 
 | Infuse Pro                                     | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 懒。                                         | 
 | 解优2                                            | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 懒。                                         | 
 | Omi录屏专家                                        | MAS 通杀                                                                                              |   ✅   |   ✅   |  ✅  | 懒。                                         | 

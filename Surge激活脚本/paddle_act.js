@@ -98,25 +98,44 @@ elpassManagement();
 elpassInit();
 elpassActiveWithKey();
 
-let MacUpdater = () => {
-  if (
-    url.indexOf(
-      "execute-api.eu-central-1.amazonaws.com/default/meddle-activate"
-    ) === -1 &&
-    url.indexOf(
-      "execute-api.eu-central-1.amazonaws.com/default/meddle-deactivate"
-    ) === -1 &&
-    url.indexOf(
-      "execute-api.eu-central-1.amazonaws.com/default/meddle-authenticate"
-    ) === -1
-  )
-    return;
-  let body = "success";
+let MediaMate = () => {
+  if (url.indexOf("https://api.gumroad.com/v2/licenses/verify") === -1) return;
+  let body = JSON.stringify({
+    success: true,
+    uses: -999,
+    purchase: {
+      sellerId: "123",
+      productId: "",
+      productName: "",
+      permalink: "https://www.baidu.com",
+      productPermalink: "https://www.baidu.com",
+      email: "qiuchenly@outlook.com",
+      price: 100,
+      gumroadFee: 0,
+      currency: "usd",
+      quantity: 1,
+      discoverFeeCharged: false,
+      canContact: false,
+      referrer: "nmsl",
+      orderNumber: 1234,
+      saleId: "1",
+      saleTimestamp: "2099-07-16T19:00:00Z",
+      licenseKey: "我测你吗",
+      refunded: false,
+      disputed: false,
+      disputeWon: false,
+      id: "1234",
+      createdAt: "2023-07-16T19:00:00Z",
+    },
+  });
   $done({
     response: {
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
       body,
     },
   });
 };
 
-MacUpdater();
+MediaMate();
