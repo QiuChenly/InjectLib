@@ -52,6 +52,12 @@
       "noDeep": true
     },
     {
+      "packageName": "com.tweety.MediaMate",
+      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+      "needCopyToAppDir": true,
+      "deepSignApp": true
+    },
+    {
       "packageName": "com.moneywiz.personalfinance",
       "injectFile": "Charts.framework/Versions/A/Charts",
       "needCopyToAppDir": true,
@@ -559,10 +565,10 @@
       "deepSignApp": true
     },
     {
-       "packageName": "com.coppertino.Vox",
-       "needCopyToAppDir": true,
-       "deepSignApp": true,
-       "injectFile": "DevMateKit.framework/Versions/A/DevMateKit"
+      "packageName": "com.coppertino.Vox",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "DevMateKit.framework/Versions/A/DevMateKit"
     }
   ]
 }
