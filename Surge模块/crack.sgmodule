@@ -1,0 +1,14 @@
+#!name=91QiuChen crack
+#!desc=https://github.com/QiuChenlyOpenSource/91QiuChen
+
+[Script]
+Paddle = type=http-request,pattern=^https:\/\/v3\.paddleapi\.com\/3.2\/license\/.*, script-path=https://raw.githubusercontent.com/QiuChenlyOpenSource/91QiuChen/main/Surge模块/crack.js, requires-body=true, timeout=10, script-update-interval=604800
+
+elpass = type=http-request,pattern=^https:\/\/api.elpass.app\/device\/.*, script-path=https://raw.githubusercontent.com/QiuChenlyOpenSource/91QiuChen/main/Surge模块/crack.js, requires-body=true, timeout=10, script-update-interval=604800
+
+MediaMate = type=http-request,pattern=^https:\/\/api\.gumroad\.com\/v2\/licenses\/verify.*, script-path=https://raw.githubusercontent.com/QiuChenlyOpenSource/91QiuChen/main/Surge模块/crack.js, requires-body=true, timeout=10, script-update-interval=604800
+
+MacUpdater = type=http-request,pattern=^https:\/\/.*?\.execute-api.*\.amazonaws\.com\/default\/.*, script-path=https://raw.githubusercontent.com/QiuChenlyOpenSource/91QiuChen/main/Surge模块/crack.js, requires-body=true, timeout=10, script-update-interval=604800
+
+[MITM]
+hostname = %APPEND% v3.paddleapi.com, api.elpass.app, api.gumroad.com, .*?.execute-api.*.amazonaws.com

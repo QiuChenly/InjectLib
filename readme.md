@@ -27,7 +27,7 @@
   * [Sublime 激活必读](#sublime-激活必读)
   * [PD 19 激活必读](#pd-19-激活必读)
   * [Typora 激活必读](#typora-激活必读)
-* [利用 Surge 的 MitM 拦截功能支持激活的 macOS App](#利用-surge-的-mitm-拦截功能支持激活的-macos-app)
+* [Surge-crack-模块支持激活的-macOS-App](#Surge-crack-模块支持激活的-macOS-App)
 * [目的](#目的)
 * [骂人小作文](#骂人小作文)
 * [~~免责声明~~wo ze ni ma de b](#免责声明wo-ze-ni-ma-de-b)
@@ -441,11 +441,10 @@ PD 19 说明与注意事项:<br>
 
 ***
 
-# 利用 Surge 的 MitM 拦截功能支持激活的 macOS App
+# Surge crack 模块支持激活的 macOS App
 
 <details>
 <summary>点击展开</summary>
-
 
 已测试支持以下App:
 
@@ -462,23 +461,25 @@ PD 19 说明与注意事项:<br>
 | Multitouch    | 1.27.23 |                                                |
 |MediaMate|[通杀](https://wouter01.github.io/MediaMate/)|使用序列号MNBVCXZLK-QWERTYUIO-ASDFHJKLZ-XCVBN配合Surge脚本破解,Mitm域名为api.gumroad.com:443 |
 
-Surge可以利用拦截修改http返回值的方式破解下面的app而无需修改原始App。下面是脚本破解步骤，如果你不需要用下面的App，看到这里就可以关闭网页了。
+Surge可以利用拦截修改http返回值的方式破解上面的app而无需修改原始App.
 
-Surge开启MitM和脚本功能，然后: <br>
+步骤:
 
-1. 在你的配置文件中加入例子中提供文件中的Script字段信息:
-   [Surge脚本配置例子.conf](Surge%E6%BF%80%E6%B4%BB%E8%84%9A%E6%9C%AC%2FSurge%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE%E4%BE%8B%E5%AD%90.conf)
-   ![img.png](imgs/img.png)
-   ![img_1.png](imgs/img_1.png)
-   ![img_1.png](imgs/img_2.png)
+1️⃣.Surge开启MitM和脚本功能,打开HTTPS解密
 
-2. [paddle_act.js](Surge%E6%BF%80%E6%B4%BB%E8%84%9A%E6%9C%AC%2Fpaddle_act.js)这个文件一定要复制到conf文件所在目录中。
+![Surge.png](imgs/Surge.png)
 
-3. 记得Https解密打开，并且信任证书，MitM域名加入*.paddleapi.com保存即可。<br>
-   如果要实现五千年授权需要打开增强模式并加入新的域名: api.elpass.app<br>
-   ![img.png](imgs/img3.png)
+![Surge_1.png](imgs/Surge_1.png)
 
-4. 在App中随意输入序列号和邮箱，点击激活后秒激活。
+2️⃣.添加模块([Surge模块](https://raw.githubusercontent.com/QiuChenlyOpenSource/91QiuChen/main/Surge模块/crack.sgmodule))
+
+![Surge_2.png](imgs/Surge_2.png)
+
+3️⃣.更新外部资源
+
+![Surge_3.png](imgs/Surge_3.png)
+
+4️⃣.在App中随意输入序列号和邮箱,点击激活后秒激活
 
 </details>
 
