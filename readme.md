@@ -225,7 +225,7 @@ https://twitter.com/QiuChenly
 | Archiver | [4.0.0](https://storage.googleapis.com/incrediblebee/apps/Archiver-4/Archiver.zip) | ✅ | ✅ | ✅ | 通杀 | [oilrich25](https://github.com/oilrich25) | ✅正常维护中 |
 | Downie 4 | [4.7.2](https://software.charliemonroe.net/trial/downie/v4/Downie_4_4663.dmg) | ✅ | ✅ | ✅ | 通杀 | [oilrich25](https://github.com/oilrich25) | ✅正常维护中 |
 | VOX | [latest](https://vox.rocks/app-download?app=vox) | ✅ | ✅ | ✅ | 通杀 | [Antibiotics](https://github.com/Antibioticss) | ✅正常维护中 |
-|MediaMate|[通杀](https://wouter01.github.io/MediaMate/)|✅ | ✅ | ✅|注入后使用序列号MNBVCXZLK-QWERTYUIO-ASDFHJKLZ-XCVBN直接激活！ |[QiuChenly](https://github.com/QiuChenly) | ✅正常维护中|
+|MediaMate|[通杀](https://wouter01.github.io/MediaMate/)|✅ | ✅ | ✅|注入后使用生成的序列号直接激活 |[QiuChenly](https://github.com/QiuChenly) | ✅正常维护中|
 
 
 | SetApp版本            | 版本                                                                                 | ARM64 | Intel | SIP | 特殊要求          | 维护者                                       | 维护状态   |
@@ -426,6 +426,17 @@ PD 19 说明与注意事项:<br>
 非常感谢@trueToastedCode，PD 19.1 的破解正是由@trueToastedCode的努力研究成果！
 
 </details>
+
+## MediaMate生成自己的激活码
+
+```bash
+echo $(echo $(ioreg -rd1 -c IOPlatformExpertDevice | awk '/IOPlatformUUID/ { print $3; }' | tr -d '"') | tr -d '-' | tr '0123456789' 'ABCDEFGHIJ' | sed 's/.\{9\}/&-/g')
+```
+
+1. 注入补丁后在终端中执行获取自己的激活码。
+2. 打开App输入激活码激活。
+3. 激活码是假的，不要当成真的去用。
+4. 以上代码工具人写的，工具人说自己写这种代码嫌丢人不让我说ID，大家缅怀xiaohe吧。
 
 ## Typora 激活必读
 
