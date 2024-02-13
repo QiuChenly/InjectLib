@@ -225,6 +225,7 @@ https://twitter.com/QiuChenly
 | Archiver | [4.0.0](https://storage.googleapis.com/incrediblebee/apps/Archiver-4/Archiver.zip) | ✅ | ✅ | ✅ | 通杀 | [oilrich25](https://github.com/oilrich25) | ✅正常维护中 |
 | Downie 4 | [4.7.2](https://software.charliemonroe.net/trial/downie/v4/Downie_4_4663.dmg) | ✅ | ✅ | ✅ | 通杀 | [oilrich25](https://github.com/oilrich25) | ✅正常维护中 |
 | VOX | [latest](https://vox.rocks/app-download?app=vox) | ✅ | ✅ | ✅ | 通杀 | [Antibiotics](https://github.com/Antibioticss) | ✅正常维护中 |
+|MediaMate|[通杀](https://wouter01.github.io/MediaMate/)|✅ | ✅ | ✅|注入后使用序列号MNBVCXZLK-QWERTYUIO-ASDFHJKLZ-XCVBN直接激活！ |[QiuChenly](https://github.com/QiuChenly) | ✅正常维护中|
 
 
 | SetApp版本            | 版本                                                                                 | ARM64 | Intel | SIP | 特殊要求          | 维护者                                       | 维护状态   |
@@ -459,7 +460,7 @@ PD 19 说明与注意事项:<br>
 | TG Pro        | 2.8.2   |                                                |
 | Timemator     | 3.0.3   |                                                |
 | Multitouch    | 1.27.23 |                                                |
-|MediaMate|[通杀](https://wouter01.github.io/MediaMate/)|使用序列号MNBVCXZLK-QWERTYUIO-ASDFHJKLZ-XCVBN配合Surge脚本破解,Mitm域名为api.gumroad.com:443 |
+
 
 Surge可以利用拦截修改http返回值的方式破解上面的app而无需修改原始App.
 
