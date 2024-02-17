@@ -195,7 +195,7 @@ def main
       system "#{signPrefix} #{Shellwords.escape(appBaseLocate)}"
     end
 
-    system "sudo xattr -cr #{dest}"
+    system "sudo xattr -cr #{dest.match(/(.+\.app)/)}"
 
     puts 'App处理完成。'
   }
