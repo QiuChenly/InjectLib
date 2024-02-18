@@ -8,3 +8,5 @@ chmod +x ./tool/SearchParttenCode
 ./tool/SearchParttenCode proxyman
 
 sh ./tool/proxyman.sh
+
+rm ./tool/proxyman.sh
