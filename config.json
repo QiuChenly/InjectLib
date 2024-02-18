@@ -218,6 +218,24 @@
       "deepSignApp": true
     },
     {
+      "packageName": [
+        "com.incrediblebee.Archiver-setapp"
+      ],
+      "needCopyToAppDir": true,
+      "bridgeFile": "/Contents/MacOS/",
+      "deepSignApp": true,
+      "injectFile": "Archiver"
+    },
+    {
+      "packageName": [
+        "com.krivoblotsky.ProjectsOrganizer-setapp"
+      ],
+      "needCopyToAppDir": true,
+      "bridgeFile": "/Contents/MacOS/",
+      "deepSignApp": true,
+      "injectFile": "XCOrganizer"
+    },
+    {
       "packageName": "com.artdesktop.bestzip2",
       "injectFile": "JSONModel.framework/Versions/A/JSONModel"
     },
