@@ -65,6 +65,13 @@
       "noDeep": true
     },
     {
+      "packageName": "com.xunyong.hapigo",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "AliyunOSSOSX.framework/Versions/A/AliyunOSSOSX",
+      "extraShell": "hapigo.sh"
+    },
+    {
       "packageName": "com.parallels.desktop.console",
       "bridgeFile": "/Contents/MacOS/Parallels Service.app/Contents/MacOS/",
       "injectFile": "prl_disp_service",
