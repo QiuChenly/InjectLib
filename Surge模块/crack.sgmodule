@@ -10,5 +10,8 @@ MediaMate = type=http-request,pattern=^https:\/\/api\.gumroad\.com\/v2\/licenses
 
 MacUpdater = type=http-request,pattern=^https:\/\/.*?\.execute-api.*\.amazonaws\.com\/default\/.*, script-path=https://raw.githubusercontent.com/QiuChenlyOpenSource/91QiuChen/main/Surge模块/crack.js, requires-body=true, timeout=10, script-update-interval=604800
 
+IShot = type=http-response,pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/QiuChenlyOpenSource/91QiuChen/main/Surge模块/crack.js, requires-body=true, timeout=10, script-update-interval=604800
+
 [MITM]
-hostname = %APPEND% v3.paddleapi.com, api.elpass.app, api.gumroad.com, .*?.execute-api.*.amazonaws.com
+hostname = %APPEND% v3.paddleapi.com, api.elpass.app, api.gumroad.com, .*?.execute-api.*.amazonaws.com,buy.itunes.apple.com
+
