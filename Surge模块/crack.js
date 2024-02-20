@@ -1,5 +1,5 @@
 const hostname = ['v3.paddleapi.com','api.elpass.app','api.gumroad.com',
-  'amazonaws.com'
+  'amazonaws.com','buy.itunes.apple.com'
   // '/.*?\.execute-api.*\.amazonaws\.com/'
   ]
 const url = $request.url;
@@ -32,6 +32,10 @@ const handleRequest = () => {
     // /default/
     if (['meddle-activate','meddle-authenticate','meddle-deactivate'].some(end => path.endsWith(end))) {
       MacUpdater();
+    }
+  }  else if (domain === (hostname[4])){
+    if (path.endsWith('verifyReceipt')){
+      IShot();
     }
   }
 
@@ -173,5 +177,21 @@ const MacUpdater = () => {
     },
   });
 };
+
+// ishot
+const IShot = () => {
+  let body = JSON.parse($response.body);
+  body = {
+    "status" : 0,
+    "receipt" : {
+      "in_app" : [
+        {
+          "expires_date_ms":2038608488000
+        }
+      ],
+    },
+  };
+  $done({body : JSON.stringify(body)});
+}
 
 handleRequest();
