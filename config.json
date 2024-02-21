@@ -431,6 +431,12 @@
       "injectFile": "Bandizip365"
     },
     {
+      "packageName": "org.cindori.Sensei",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "Sparkle.framework/Versions/B/Sparkle"
+    },
+    {
       "packageName": "com.proxyman.NSProxy",
       "injectFile": "Moya.framework/Versions/A/Moya",
       "needCopyToAppDir": true,
