@@ -87,7 +87,7 @@ https://twitter.com/QiuChenly
 
 1. 下载整个仓库并解压，双击运行"原神_启动.command"并输入密码，按照提示操作。
    <br>
-   小白不知道点哪里下载整个仓库？[点我下载](https://github.com/QiuChenlyOpenSource/InjectLib/archive/refs/heads/main.zip)
+   小白不知道点哪里下载整个仓库？[点我下载](https://github.com/QiuChenlyOpenSource/91QiuChen/archive/refs/heads/main.zip)
 2. 要是你不差这几分钟时间，从头到尾先认真读一遍这个readme，可能你看完之后会解决你的部分疑惑。
 
 # 【用前必读】重要提示
@@ -221,11 +221,13 @@ https://twitter.com/QiuChenly
 | CleanShot                                       | [4.6.2](https://updates.getcleanshot.com/v3/CleanShot-X-4.6.2.dmg)                                                                                                      |   ✅   |   ✅   | ✅   | 不通杀                                                                                                                                                                             | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
 | com.edrawsoft.edrawmax/com.edrawsoft.mindmaster | 自己去官网下                                                                                                                                                                  |   ✅   |   ✅   | ✅   | 不通杀                                                                                                                                                                             | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
 | UlyssesMac                                      | [MAS版本](https://apps.apple.com/us/app/ulysses-%E5%86%99%E4%BD%9C-%E7%AC%94%E8%AE%B0-%E6%97%A5%E8%AE%B0-%E5%8D%9A%E5%AE%A2/id1225570693?l=zh-Hans-CN)                    |   ✅   |   ✅   | ✅   | 苹果应用商店版本,后续版本通杀                                                                                                                                                                 | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
-| MindMac                                         | [官网版本](https://github.com/MindMacApp/MindMac/releases/download/1.8.7/MindMac_1.8.7.dmg)                                                                                 |   ✅   |   ✅   | ✅   | 官网版本,后续版本通杀                                                                                                                                                                     | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
+| MindMac                                         | [官网版本](https://github.com/MindMacApp/MindMac/releases/download/1.8.7/MindMac_1.8.7.dmg)                                                                                 |   ✅   |   ✅   | ✅   | 官网版本,后续版本通杀 随便输入序列号激活                                                                                                                                                                    | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
 | Archiver | [4.0.0](https://storage.googleapis.com/incrediblebee/apps/Archiver-4/Archiver.zip) | ✅ | ✅ | ✅ | 通杀 | [oilrich25](https://github.com/oilrich25) | ✅正常维护中 |
 | Downie 4 | [4.7.2](https://software.charliemonroe.net/trial/downie/v4/Downie_4_4663.dmg) | ✅ | ✅ | ✅ | 通杀 | [oilrich25](https://github.com/oilrich25) | ✅正常维护中 |
 | VOX | [latest](https://vox.rocks/app-download?app=vox) | ✅ | ✅ | ✅ | 通杀 | [Antibiotics](https://github.com/Antibioticss) | ✅正常维护中 |
 |MediaMate|[通杀](https://wouter01.github.io/MediaMate/)|✅ | ✅ | ✅|注入后使用生成的序列号直接激活 |[QiuChenly](https://github.com/QiuChenly) | ✅正常维护中|
+|LuminarNeo Mas版本|[1.18.2-通杀](https://apps.apple.com/cn/app/luminar-neo-ai-photo-editor/id1584373150?mt=12)|✅ | ✅ | ✅| 直接注入即可激活。如果没有意外后续版本通杀。 |[QiuChenly](https://github.com/QiuChenly) | ✅正常维护中|
+| Sensei 系统信息查看工具 |[通杀](https://s3.amazonaws.com/cindori/Sensei.dmg)|✅ | ✅ | ✅| 直接注入，大开App随便输入邮箱激活码即可激活。如果没有意外后续版本通杀。 |[QiuChenly](https://github.com/QiuChenly) | ✅正常维护中|
 
 
 | SetApp版本            | 版本                                                                                 | ARM64 | Intel | SIP | 特殊要求          | 维护者                                       | 维护状态   |

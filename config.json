@@ -437,6 +437,12 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle"
     },
     {
+      "packageName": "com.skylum.luminarneomas",
+      "injectFile": "CocoaLumberjack.framework/Versions/A/CocoaLumberjack",
+      "needCopyToAppDir": true,
+      "deepSignApp": true
+    },
+    {
       "packageName": "com.proxyman.NSProxy",
       "injectFile": "Moya.framework/Versions/A/Moya",
       "needCopyToAppDir": true,
