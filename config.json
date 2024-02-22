@@ -434,7 +434,8 @@
       "packageName": "org.cindori.Sensei",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle"
+      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+      "extraShell": "senseiAgent.sh"
     },
     {
       "packageName": "com.skylum.luminarneomas",
