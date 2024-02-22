@@ -42,5 +42,12 @@
     "replaceIntel": "{{==intel==}}",
     "replaceARM": "{{==arm64==}}",
     "fixPlist": true
+  },
+  "sensei": {
+    "locate": [
+      "/Applications/Sensei.app/Contents/Library/LaunchServices/org.cindori.SenseiHelper"
+    ],
+    "out": "sensei.sh",
+    "fixPlist": true
   }
 }
