@@ -341,6 +341,14 @@
       "noDeep": true
     },
     {
+      "packageName": "com.autodesk.Maya.2024",
+      "appBaseLocate": "/Applications/Autodesk/maya2024/Maya.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Maya",
+      "needCopyToAppDir": true,
+      "noDeep": true
+    },
+    {
       "packageName": "com.adobe.InDesign",
       "appBaseLocate": "/Applications/Adobe InDesign 2024/Adobe InDesign 2024.app",
       "bridgeFile": "/Contents/MacOS/",

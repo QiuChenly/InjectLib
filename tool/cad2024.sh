@@ -13,7 +13,6 @@ sudo $BASE_PATH/insert_dylib $BASE_PATH/libInjectLib.dylib "$main.bak" "$main"
 
 # 修改通过服务器认证文件
 helper='/Library/Application Support/Autodesk/AdskLicensing/13.3.0.9688/AdskLicensingAgent/AdskLicensingAgent.app/Contents/PlugIns/libadlmint.dylib'
-
 echo C7010: 6A 00 58 C3 |sudo xxd -r - "$helper" #intel
 echo 57bdb0: 00 00 80 D2 C0 03 5F D6 |sudo xxd -r - "$helper" #arm64
 
