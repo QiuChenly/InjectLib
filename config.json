@@ -615,6 +615,19 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "DevMateKit.framework/Versions/A/DevMateKit"
+    },
+        {
+      "packageName": "com.hezongyidev.Bob",
+      "injectFile": "Bob",
+      "bridgeFile": "/Contents/MacOS/",
+      "needCopyToAppDir": true,
+      "deepSignApp": true
+    },
+    {
+      "packageName": "com.mcneel.rhinoceros.8",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "RhCore.framework/Versions/A/RhCore"
     }
   ]
 }
