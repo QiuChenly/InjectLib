@@ -349,6 +349,13 @@
       "noDeep": true
     },
     {
+      "packageName": "design.yugen.Flow",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Flow",
+      "needCopyToAppDir": true,
+      "noDeep": true
+    },
+    {
       "packageName": "com.adobe.InDesign",
       "appBaseLocate": "/Applications/Adobe InDesign 2024/Adobe InDesign 2024.app",
       "bridgeFile": "/Contents/MacOS/",
@@ -616,7 +623,7 @@
       "deepSignApp": true,
       "injectFile": "DevMateKit.framework/Versions/A/DevMateKit"
     },
-        {
+    {
       "packageName": "com.hezongyidev.Bob",
       "injectFile": "Bob",
       "bridgeFile": "/Contents/MacOS/",
