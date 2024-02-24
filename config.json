@@ -349,6 +349,14 @@
       "noDeep": true
     },
     {
+      "packageName": "com.autodesk.AutoCAD2024",
+      "appBaseLocate": "/Applications/Autodesk/AutoCAD 2024/AutoCAD 2024.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "AutoCAD",
+      "needCopyToAppDir": true,
+      "noDeep": true
+    },
+    {
       "packageName": "design.yugen.Flow",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Flow",
