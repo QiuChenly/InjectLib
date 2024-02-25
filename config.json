@@ -49,7 +49,7 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "noDeep": true
+      "extraShell": "setapp.sh"
     },
     {
       "packageName": "com.tweety.MediaMate",
