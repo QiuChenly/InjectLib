@@ -39,6 +39,6 @@ xattr -c '/Applications/BuhoCleaner.app'
 src_info='/Applications/BuhoCleaner.app/Contents/Info.plist'
 /usr/libexec/PlistBuddy -c "Set :SMPrivilegedExecutables:com.drbuho.BuhoCleaner.PrivilegedHelperTool \"identifier \\\"com.drbuho.BuhoCleaner.PrivilegedHelperTool\\\"\"" "$src_info"
 
-codesign -f -s - --all-architectures --deep /Applications/BuhoCleaner.app/Contents/Library/LaunchServices/com.drbuho.BuhoCleaner.PrivilegedHelperTool
+/usr/bin/codesign -f -s - --all-architectures --deep /Applications/BuhoCleaner.app/Contents/Library/LaunchServices/com.drbuho.BuhoCleaner.PrivilegedHelperTool
 
 echo "恭喜你！你的Mac已经被我植入了后门程序,现在即将结束整个进程，特工已经在对面楼中布下天罗地网，请主动自首争取宽大处理(虽然宽大不了几天)，记得下辈子不要用盗版软件🙏。\n"

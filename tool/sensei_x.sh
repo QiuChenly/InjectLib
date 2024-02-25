@@ -11,5 +11,5 @@ helper='/Applications/Sensei.app/Contents/Library/LaunchServices/org.cindori.Sen
 xattr -c '/Applications/Sensei.app'
 src_info='/Applications/Sensei.app/Contents/Info.plist'
 /usr/libexec/PlistBuddy -c "Set :SMPrivilegedExecutables:org.cindori.SenseiHelper \"identifier \\\"org.cindori.SenseiHelper\\\"\"" "$src_info"
-codesign -f -s - --all-architectures --deep /Applications/Sensei.app/Contents/Library/LaunchServices/org.cindori.SenseiHelper
-codesign -f -s - --all-architectures --deep /Applications/Sensei.app
+/usr/bin/codesign -f -s - --all-architectures --deep /Applications/Sensei.app/Contents/Library/LaunchServices/org.cindori.SenseiHelper
+/usr/bin/codesign -f -s - --all-architectures --deep /Applications/Sensei.app

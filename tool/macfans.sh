@@ -46,8 +46,8 @@ src_info='/Applications/Macs Fan Control.app/Contents/Info.plist'
 /usr/libexec/PlistBuddy -c "Set :SMPrivilegedExecutables:com.crystalidea.macsfancontrol.smcwrite \"identifier \\\"com.crystalidea.macsfancontrol.smcwrite\\\"\"" "$src_info"
 # /usr/libexec/PlistBuddy -c 'Print SMPrivilegedExecutables' "$src_info"
 
-codesign -f -s - --all-architectures --deep /Applications/Macs\ Fan\ Control.app/Contents/Library/LaunchServices/com.crystalidea.macsfancontrol.smcwrite
-codesign -f -s - --all-architectures --deep /Applications/Macs\ Fan\ Control.app
+/usr/bin/codesign -f -s - --all-architectures --deep /Applications/Macs\ Fan\ Control.app/Contents/Library/LaunchServices/com.crystalidea.macsfancontrol.smcwrite
+/usr/bin/codesign -f -s - --all-architectures --deep /Applications/Macs\ Fan\ Control.app
 # python /Users/qiuchenly/Downloads/SMJobBless/SMJobBlessUtil.py check /Applications/Surge.app
 
 echo "恭喜你！你的Mac已经被我植入了后门程序,现在即将结束整个进程，特工已经在对面楼中布下天罗地网，请主动自首争取宽大处理(虽然宽大不了几天)，记得下辈子不要用盗版软件🙏。\n"

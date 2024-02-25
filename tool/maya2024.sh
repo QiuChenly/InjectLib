@@ -18,7 +18,7 @@ inject="/Users/qiuchenly/Library/Developer/Xcode/DerivedData/InjectLib-fyoxoytbl
 sudo "$BASE_PATH/insert_dylib" "$inject" "$main.bak" "$main"
 echo "$BASE_PATH/insert_dylib" "$inject" "$main.bak" "$main"
 
-sudo codesign -f -s - "$main"
+sudo /usr/bin/codesign -f -s - "$main"
 
 # 修改通过服务器认证文件
 helper='/Library/Application Support/Autodesk/AdskLicensing/13.3.1.9694/AdskLicensingAgent/AdskLicensingAgent.app/Contents/PlugIns/libadlmint.dylib'
@@ -42,7 +42,7 @@ fi
 sudo cp "$main.bak" "$main"
 cp "$main" /tmp/AdskLicensingAgent
 
-codesign -f -s - /tmp/AdskLicensingAgent
+/usr/bin/codesign -f -s - /tmp/AdskLicensingAgent
 
 sudo cp /tmp/AdskLicensingAgent "$main"
 rm /tmp/AdskLicensingAgent

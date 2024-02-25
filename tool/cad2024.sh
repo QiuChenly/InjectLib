@@ -21,7 +21,7 @@ main='/Library/Application Support/Autodesk/AdskLicensing/13.3.0.9688/AdskLicens
 cp "$main" /tmp/AdskLicensingAgent
 sudo cp "$main" "$main.bak"
 
-codesign -f -s - /tmp/AdskLicensingAgent
+/usr/bin/codesign -f -s - /tmp/AdskLicensingAgent
 
 sudo cp /tmp/AdskLicensingAgent "$main"
 rm /tmp/AdskLicensingAgent

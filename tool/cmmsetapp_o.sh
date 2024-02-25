@@ -29,8 +29,8 @@ src_info2='/Applications/CleanMyMac.app/Contents/Library/LoginItems/CleanMyMac M
 /usr/libexec/PlistBuddy -c "Set :SMPrivilegedExecutables:com.macpaw.CleanMyMac-setapp.Agent \"identifier \\\"com.macpaw.CleanMyMac-setapp.Agent\\\"\"" "$src_info2"
 
 
-codesign -f -s - --all-architectures --deep '/Applications/CleanMyMac.app/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent'
-codesign -f -s - --all-architectures --deep '/Applications/CleanMyMac.app/Contents/Library/LoginItems/CleanMyMac Menu.app/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent'
+/usr/bin/codesign -f -s - --all-architectures --deep '/Applications/CleanMyMac.app/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent'
+/usr/bin/codesign -f -s - --all-architectures --deep '/Applications/CleanMyMac.app/Contents/Library/LoginItems/CleanMyMac Menu.app/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent'
 
 echo "下发逮捕许可完成,即将有人来查你的水表，你别急...海内存知己,天涯若比邻.正在黑进你的Mac,目前已成功骗取到用户root密码."
 
