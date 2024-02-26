@@ -153,7 +153,9 @@
     },
     {
       "packageName": "com.coderforart.MWeb3",
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle"
+      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+      "needCopyToAppDir": true,
+      "deepSignApp": true
     },
     {
       "packageName": "com.nektony.App-Cleaner-SIII",
