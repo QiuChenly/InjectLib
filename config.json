@@ -159,7 +159,29 @@
       "packageName": "com.nektony.App-Cleaner-SIII",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "injectFile": "NektonyFallManager.framework/Versions/A/NektonyFallManager"
+      "injectFile": "NektonyFallManager.framework/Versions/A/NektonyFallManager",
+      "extraShell": "Nektony/AppCleaner.sh"
+    },
+    {
+      "packageName": "com.nektony.MacCleaner-PRO-SIII",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "Sparkle.framework/Versions/A/Sparkle",
+      "extraShell": "Nektony/MacCleanerPro.sh"
+    },
+    {
+      "packageName": "com.nektony.Disk-Expert-SIII",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "Sparkle.framework/Versions/A/Sparkle",
+      "extraShell": "Nektony/DiskSpaceAnalyzer.sh"
+    },
+    {
+      "packageName": "com.nektony.Duplicate-File-Finder-SIII",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "Sparkle.framework/Versions/A/Sparkle",
+      "extraShell": "Nektony/DuplicateFileFinder.sh"
     },
     {
       "packageName": "li.zihua.medis2",
