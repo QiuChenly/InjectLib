@@ -667,6 +667,13 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "RhCore.framework/Versions/A/RhCore"
+    },
+    {
+      "packageName": "QReader.MarginStudyMac",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "noDeep": true,
+      "injectFile": "Alamofire.framework/Versions/A/Alamofire"
     }
   ]
 }
