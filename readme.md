@@ -1,14 +1,12 @@
-<p style="font-size: 31px;text-align: center;">InjectLib</p>
-<p style="font-size: 28px;text-align: center;">macOS集成注入框架</p>
-<p style="text-align: center;">秋城落叶<br/>Creative & Design</p>
-<p style="text-align: center;">for<br>My MacBook Pro 16 in-ch i9-9980HK@Turbo 5.0Ghz</p>
+<img src="./style.svg" width="800" height="590">
 
-<p style="text-align: center;">🔞全球各❤️地❤️服❤️务🔞<br/>
+![GitHub contributors](https://img.shields.io/github/contributors/QiuChenlyOpenSource/91QiuChen.svg?style=flat-square)
+
+<p align="center">🔞全球各❤️地❤️服❤️务🔞<br/>
 🔞①线至①⑧线城市齐全🔞<br/>
 🔞汇❤️编 🚗与🤤ASM约❤️会🔞<br/>
 🔞 一❤️个❤️人独自在家❤️火❤️热❤️难❤️耐 玩🔞逆🔞向 🔞<br/>
 🔞找Qiu❤️Chen❤️l❤️y❤️Open❤️Source🔞<br/></p>
-
 
 <!-- TOC -->
 * [加入小团体](#加入小团体)
@@ -61,11 +59,11 @@ pr，全都是download&git pull. 没有人愿意提PR，一个都没有。声称
 
 關注我的Telegram頻道和群組,分享最新資訊和技術。
 <br>
-頻道: https://t.me/qiuchenlymac
+頻道: **<https://t.me/qiuchenlymac>**
 
 别让欲望击穿你の意志
 <br>
-群組: https://t.me/+f3BWmkjVCzQwYzM1 <br>
+群組: **<https://t.me/+f3BWmkjVCzQwYzM1>**
 <br>
 關注我的Twitter:
 https://twitter.com/QiuChenly
