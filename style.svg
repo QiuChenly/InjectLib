@@ -8,6 +8,7 @@
     html {
       background-color: #000;
     }
+
     @keyframes rotate {
       0% {
         transform: rotate(1deg);
