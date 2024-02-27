@@ -89,7 +89,6 @@
       animation: 6s ease-in-out 2s normal forwards infinite logo-fade;
     }
     .logo-s {
-      margin-top: 40px;
       margin-bottom: 40px;
       margin-left: 50%;
       transform: translateX(-50%);
@@ -98,6 +97,10 @@
       height: 200px;
       justify-content: center;
       align-items: center;
+      padding: 20px 0 ;
+
+      background-color: #000;
+      border-radius: 10px;
     }
   </style>
   <div class="container">
