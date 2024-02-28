@@ -265,7 +265,7 @@ Twitter: https://twitter.com/QiuChenly
 
 纯小白另可参见:
 
-1. [Wolffya編寫的小白参考說明](https://github.com/wolffya/InjectLib/tree/secondary)
+1. [Wolffya編寫的小白参考說明](https://github.com/wolffya/InjectLib1/blob/main/readme.md)
 2. [LanYunDev編寫的Surge一鍵激活腳本](./Surge一键脚本)
 
 Surge 更新地址: https://www.nssurge.com/mac/v5/appcast-signed-beta.xml <br>
