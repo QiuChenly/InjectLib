@@ -660,7 +660,8 @@
       "injectFile": "Bob",
       "bridgeFile": "/Contents/MacOS/",
       "needCopyToAppDir": true,
-      "deepSignApp": true
+      "deepSignApp": true,
+      "extraShell": "bob.sh"
     },
     {
       "packageName": "com.mcneel.rhinoceros.8",
@@ -674,6 +675,14 @@
       "deepSignApp": true,
       "noDeep": true,
       "injectFile": "Alamofire.framework/Versions/A/Alamofire"
+    },
+    {
+      "packageName": "cc.ffitch.shottr",
+      "injectFile": "Shottr",
+      "bridgeFile": "/Contents/MacOS/",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "extraShell": "shottr.sh"
     }
   ]
 }
