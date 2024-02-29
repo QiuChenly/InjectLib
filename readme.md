@@ -189,7 +189,7 @@ Twitter: https://twitter.com/QiuChenly
 | Xnip                                            | [通殺](https://apps.apple.com/cn/app/xnip-%E6%88%AA%E5%9B%BE-%E6%A0%87%E6%B3%A8/id1221250572?mt=12)                                                                       |   ✅   |   ✅   | ✅   | 通殺不要問為什麼                                                                                                                                                                        | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
 | Camtasia 2023                                   | [2023.3.4(124306)通杀](https://www.techsmith.com/camtasia.html)                                                                                                           |   ✅   |   ✅   | ✅   | 通殺不要問為什麼                                                                                                                                                                        | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
 | Final Cut Pro Trial                             | [(10.6.10)通杀](https://secure-appldnld.apple.com/Final_Cut_Pro_X/042-60959-20231004-B5BFDED9-9530-49C9-97EB-B7B617BC5026/FinalCutProTrial.dmg)                           |   ✅   |   ✅   | ✅   | 通殺不要問為什麼                                                                                                                                                                        | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
-| Surge 5                                         | [5.4.4-2558](https://dl.nssurge.com/mac/v5/Surge-5.4.4-2558-7f44bd9ea3f6ea91a5dd6f4f441ed5b4.zip)                                                                       |   ✅   |   ✅   | ✅   | 老有聪明人自己没搞好出问题来问我该怎么办 不是我的问题我怎么知道怎么办？你不问开发者你问我？傻逼吧你？                                                                                                                             | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
+| Surge 5                                         | [5.4.4-2583](https://dl.nssurge.com/mac/v5/Surge-5.4.4-2583-43d7f07a361cf29c761c0d52e3547243.zip)                                                                       |   ✅   |   ✅   | ✅   | 老有聪明人自己没搞好出问题来问我该怎么办 不是我的问题我怎么知道怎么办？你不问开发者你问我？傻逼吧你？                                                                                                                             | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
 | CleanShot                                       | [4.6.2](https://updates.getcleanshot.com/v3/CleanShot-X-4.6.2.dmg)                                                                                                      |   ✅   |   ✅   | ✅   | 不通杀                                                                                                                                                                             | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
 | com.edrawsoft.edrawmax/com.edrawsoft.mindmaster | 自己去官网下                                                                                                                                                                  |   ✅   |   ✅   | ✅   | 不通杀                                                                                                                                                                             | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
 | UlyssesMac                                      | [MAS版本](https://apps.apple.com/us/app/ulysses-%E5%86%99%E4%BD%9C-%E7%AC%94%E8%AE%B0-%E6%97%A5%E8%AE%B0-%E5%8D%9A%E5%AE%A2/id1225570693?l=zh-Hans-CN)                    |   ✅   |   ✅   | ✅   | 苹果应用商店版本,后续版本通杀                                                                                                                                                                 | [QiuChenly](https://github.com/QiuChenly) | ✅正常维护中 |
@@ -429,48 +429,6 @@ echo $(echo $(ioreg -rd1 -c IOPlatformExpertDevice | awk '/IOPlatformUUID/ { pri
 </details>
 
 ***
-
-# Surge crack 模块支持激活的 macOS App
-
-<details>
-<summary>点击展开</summary>
-
-已测试支持以下App:
-
-| App           | 版本      | 特殊说明                                           |
-|:--------------|:--------|:-----------------------------------------------|
-| AlDente Pro   | 1.22    |                                                |
-| AirBuddy      | 2.7.1   |                                                |
-| Downie 4      | 4.6.27  | `B7EE3D3C-B7EE3D3C-B7EE3D3C-B7EE3D3C-B7EE3D3C` |
-| One Switch    | 1.31    |                                                |
-| Rectangle Pro | 3.0.8   |                                                |
-| Swish         | 1.10.2  |                                                |
-| TG Pro        | 2.8.2   |                                                |
-| Timemator     | 3.0.3   |                                                |
-| Multitouch    | 1.27.23 |                                                |
-
-
-Surge可以利用拦截修改http返回值的方式破解上面的app而无需修改原始App.
-
-步骤:
-
-1️⃣.Surge开启MitM和脚本功能,打开HTTPS解密
-
-![Surge.png](imgs/Surge.png)
-
-![Surge_1.png](imgs/Surge_1.png)
-
-2️⃣.添加模块([Surge模块](https://raw.githubusercontent.com/QiuChenlyOpenSource/91QiuChen/main/Surge模块/crack.sgmodule))
-
-![Surge_2.png](imgs/Surge_2.png)
-
-3️⃣.更新外部资源
-
-![Surge_3.png](imgs/Surge_3.png)
-
-4️⃣.在App中随意输入序列号和邮箱,点击激活后秒激活
-
-</details>
 
 # 目的
 
