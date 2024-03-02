@@ -58,6 +58,8 @@ Twitter: https://twitter.com/QiuChenly
    小白不知道点哪里下载整个仓库？[点我下载](https://github.com/QiuChenlyOpenSource/91QiuChen/archive/refs/heads/main.zip)
 2. 要是你不差这几分钟时间，从头到尾先认真读一遍这个readme，可能你看完之后会解决你的部分疑惑。
 3. 有很多同学自作聪明,看到tool下有对应的app名字的Shell以为执行shell就能破解了，懒的运行command或者ruby，这种dinner你要是觉得你要是比我懂，就滚去自己弄，要么就出问题之后别nmb加群问我为什么失败。
+4. 关于“通杀”的最高解释:
+   通杀只能说一个范围内的通杀，开发者新版本加什么代码我怎么知道？如果通杀不了，你就去提issues，描述自己的细节，而不是在这骂没用，在这叫没法激活。这种dinner你滚远一点，我懒得喷但是不代表我不会喷你。
 
 # 【用前必读】重要提示
 
