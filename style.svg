@@ -98,14 +98,19 @@
       justify-content: center;
       align-items: center;
       padding: 20px 0 ;
+      
 
       background-color: #000;
       border-radius: 10px;
     }
+
+    .logo-s #apple {
+      animation: 6s ease 2s normal forwards infinite logo-fade;
+    }
   </style>
   <div class="container">
     <div class="logo-s">
-      <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+      <svg id="apple" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
         <g>
           <title>Layer 1</title>
           <path
