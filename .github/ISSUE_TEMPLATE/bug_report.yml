@@ -21,7 +21,7 @@ body:
       placeholder: Bug description
     validations:
       required: true
-  - type: input
+  - type: textarea
     id: reproduction
     attributes:
       label: Reproduction
@@ -61,6 +61,36 @@ body:
             有 我的电脑xxxxxxxx
     validations:
       required: true
+  - type: textarea
+    id: if-modify-nvram
+    attributes:
+      label: 是否修改了nvram的内核启动参数（黑苹果）
+      description: 如果你修改了nvram，请提供更多信息
+      placeholder: |
+        我使用了xxxx -v alc-layout-id=xx等
+  - type: textarea
+    id: if-use-oc-patcher
+    attributes:
+      label: 是否使用了需要修改系统文件的工具（黑苹果）
+      description: 如果你使用了OpenCore LegecyPatcher等需要修改系统文件的工具，请提供更多信息
+      placeholder: |
+        我用了xxx，且关闭了xxx
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: 你期望的正确行为是什么？
+      placeholder: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Info
+      description: 有什么额外的信息需要提供吗？
+      placeholder: |
+        我已经尝试了xxx，但是没有效果
+        我还发现了xxx
   - type: textarea
     id: log
     attributes:
