@@ -1,0 +1,93 @@
+name: 🐞 Bug report
+description: Report an issue
+labels: [pending triage]
+body:
+  - type: checkboxes
+    id: checkboxes_validations
+    attributes:
+      label: 检查事项
+      description: 请检查以下事项
+      options:
+        - label: 已确保 InjectLib 更新到最新版本
+          required: true
+        - label: 已确保软件版本为 InjectLib 支持范围
+          required: true
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: 描述问题
+      description: |
+        对错误内容的清晰简洁的描述，如：“测试发现 xxx 无法激活（版本为 vx.x.x）”。
+      placeholder: Bug description
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 最小复现
+      description: 需要[**最小复现**](https://stackoverflow.com/help/minimal-reproducible-example)，否则问题可能会被关闭，恕不另行通知。 [**为什么以及如何？**](https://antfu.me/posts/why-reproductives-are-required)
+      placeholder: |
+        打开上述软件，输入xxxx后，点击xxxx，软件发生闪退/崩溃。
+        许可证信息示例如下：
+        ```
+        xxx
+        ```
+    validations:
+      required: true
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: 系统情况
+      description: 根据实际情况勾选以下内容
+      options:
+        - label: SIP 是否启动
+        - label: 是否为黑苹果（如果是黑苹果，请回答在下方标注了黑苹果的问题）
+  - type: textarea
+    id: system-info
+    attributes:
+      label: 系统信息
+      description: 描述你的系统信息
+      render: Shell
+      placeholder: |
+        OS: macOS xxx
+        CPU: xxx
+        Memory: xx GB
+    validations:
+      required: true
+  - type: textarea
+    id: if-modify-nvram
+    attributes:
+      label: 是否修改了nvram的内核启动参数（黑苹果）
+      description: 如果你修改了nvram，请提供更多信息
+      placeholder: |
+        我使用了xxxx -v alc-layout-id=xx等
+  - type: textarea
+    id: if-use-oc-patcher
+    attributes:
+      label: 是否使用了需要修改系统文件的工具（黑苹果）
+      description: 如果你使用了OpenCore LegecyPatcher等需要修改系统文件的工具，请提供更多信息
+      placeholder: |
+        我用了xxx，且关闭了xxx
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: 期望行为
+      description: 你期望的正确行为是什么？
+      placeholder: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: 额外信息
+      description: 有什么额外的信息需要提供吗？
+      placeholder: |
+        我已经尝试了xxx，但是没有效果
+        我还发现了xxx
+  - type: textarea
+    id: log
+    attributes:
+      label: Crash Log
+      description: 上传你的崩溃日志
+      placeholder: |
+        把文件拖拉进来即可上传
