@@ -25,7 +25,7 @@ body:
     id: reproduction
     attributes:
       label: Reproduction
-      description: **需要**[最小复现](https://stackoverflow.com/help/minimal-reproducible-example)，否则问题可能会被关闭，恕不另行通知。 [**为什么以及如何？**](https://antfu.me/posts/why-reproductives-are-required)
+      description: 需要[**最小复现**](https://stackoverflow.com/help/minimal-reproducible-example)，否则问题可能会被关闭，恕不另行通知。 [**为什么以及如何？**](https://antfu.me/posts/why-reproductives-are-required)
       placeholder: |
         打开上述软件，输入xxxx后，点击xxxx，软件发生闪退/崩溃。
         许可证信息示例如下：
