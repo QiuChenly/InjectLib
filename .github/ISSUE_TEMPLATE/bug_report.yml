@@ -1,9 +1,9 @@
 name: 🐞 Bug report
 description: Report an issue
-# labels: [pending triage]
+labels: [pending triage]
 body:
   - type: checkboxes
-    id: checkboxes
+    id: checkboxes_validations
     attributes:
       label: Validations
       description: 请检查以下事项
