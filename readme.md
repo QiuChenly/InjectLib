@@ -46,6 +46,11 @@ Twitter: https://twitter.com/QiuChenly
 
 [![启动](https://i2.hdslb.com/bfs/archive/966fe6fe2c1329919bb8972d69fb8c09d17047cc.jpg@100w_100h_1c.png)](https://ipfs.lanyundev.com/ipfs/bafybeigpm6ocaba2wlgi7zgio3lu7hzqxgrviiicuwc5xbddlo77leabcy/6e51fccaeb5343bda366d42e68c3c705.MP4)
 
+# 重新编写的在线使用文档
+
+目前还没有写完，如果有没有的内容可以回来看下面。
+https://qiuchenlyopensource.github.io/Documentaions/
+
 # 警告
 
 上方表格中App的SIP状态为"✅"则可以不用关闭SIP即可使用,并且注入下载文件夹不需要保留，注入后可以删除。
