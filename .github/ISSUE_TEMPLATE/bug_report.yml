@@ -1,0 +1,70 @@
+name: 🐞 Bug report
+description: Report an issue
+# labels: [pending triage]
+body:
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: Validations
+      description: 请检查以下事项
+      options:
+        - label: 已确保 InjectLib 更新到最新版本
+          required: true
+        - label: 已确保软件版本为 InjectLib 支持范围
+          required: true
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: |
+        对错误内容的清晰简洁的描述，如：“测试发现 xxx 无法激活（版本为 vx.x.x）”。
+      placeholder: Bug description
+    validations:
+      required: true
+  - type: input
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: **需要**[最小复现](https://stackoverflow.com/help/minimal-reproducible-example)，否则问题可能会被关闭，恕不另行通知。 [**为什么以及如何？**](https://antfu.me/posts/why-reproductives-are-required)
+      placeholder: |
+        打开上述软件，输入xxxx后，点击xxxx，软件发生闪退/崩溃。
+        许可证信息示例如下：
+        ```
+        xxx
+        ```
+    validations:
+      required: true
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: System Info
+      description: 根据实际情况勾选以下内容
+      options:
+        - label: SIP 是否启动
+        - label: 是否为黑苹果（如果是黑苹果，请在下方 System Info 中提供更多信息）
+  - type: textarea
+    id: system-info
+    attributes:
+      label: System Info
+      description: 描述你的系统信息
+      render: Shell
+      placeholder: |
+        OS: macOS xxx
+        CPU: xxx
+        Memory: xx GB
+        如果是黑苹果，请提供更多信息:
+          是否修改了nvram的内核启动参数: 
+            是，我用的是xxxx -v alc-layout-id=xx等
+          是否使用了OpenCore LegecyPatcher等需要修改系统文件的工具: 
+            是，我用了xxx，且关闭了xxx
+          还有什么需要补充的环境信息吗: 
+            有 我的电脑xxxxxxxx
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Crash Log
+      description: 上传你的崩溃日志
+      placeholder: |
+        把文件拖拉进来即可上传
