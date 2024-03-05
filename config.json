@@ -30,6 +30,61 @@
       "extraShell": "surgeAgent.sh"
     },
     {
+      "packageName": "com.globaldelight.Boom3D-setapp",
+      "appBaseLocate": "/Applications/Setapp/Boom 3D.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Boom 3D",
+      "needCopyToAppDir": true
+    },
+    {
+      "packageName": "com.krill.CodeRunner-setapp",
+      "appBaseLocate": "/Applications/Setapp/CodeRunner.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "CodeRunner",
+      "needCopyToAppDir": true
+    },
+    {
+      "packageName": "com.getcleanshot.app-setapp",
+      "appBaseLocate": "/Applications/Setapp/CleanShot X.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "CleanShot X Setapp",
+      "needCopyToAppDir": true
+    },
+    {
+      "packageName": "com.bytieful.Gitfox-setapp",
+      "appBaseLocate": "/Applications/Setapp/Gitfox.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Gitfox",
+      "needCopyToAppDir": true
+    },
+    {
+      "packageName": "com.proxyman.NSProxy-setapp",
+      "appBaseLocate": "/Applications/Setapp/Proxyman.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Proxyman",
+      "extraShell": "proxyManAgent.sh",
+      "needCopyToAppDir": true
+    },
+    {
+      "packageName": [
+        "com.macpaw.CleanMyMac-setapp"
+      ],
+      "appBaseLocate": "/Applications/Setapp/CleanMyMac X.app",
+      "injectFile": "Announcements.framework/Versions/A/Announcements",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "extraShell": "cmmxSetAppAgent.sh"
+    },
+    {
+      "packageName": [
+        "com.macpaw.CleanMyMac-setapp.Menu"
+      ],
+      "appBaseLocate": "/Applications/Setapp/CleanMyMac X.app/Contents/Library/LoginItems/CleanMyMac Menu.app",
+      "injectFile": "CMMNotifications.framework/Versions/A/CMMNotifications",
+      "needCopyToAppDir": true,
+      "deepSignApp": true
+    },
+    {
       "packageName": [
         "com.edrawsoft.edrawmax",
         "com.edrawsoft.mindmaster"
@@ -223,27 +278,9 @@
     },
     {
       "packageName": [
-        "com.macpaw.CleanMyMac-setapp"
-      ],
-      "injectFile": "Announcements.framework/Versions/A/Announcements",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "extraShell": "cmmxSetAppAgent.sh"
-    },
-    {
-      "packageName": [
         "com.macpaw.CleanMyMac4.Menu"
       ],
       "appBaseLocate": "/Applications/CleanMyMac X.app/Contents/Library/LoginItems/CleanMyMac X Menu.app",
-      "injectFile": "CMMNotifications.framework/Versions/A/CMMNotifications",
-      "needCopyToAppDir": true,
-      "deepSignApp": true
-    },
-    {
-      "packageName": [
-        "com.macpaw.CleanMyMac-setapp.Menu"
-      ],
-      "appBaseLocate": "/Applications/CleanMyMac.app/Contents/Library/LoginItems/CleanMyMac Menu.app",
       "injectFile": "CMMNotifications.framework/Versions/A/CMMNotifications",
       "needCopyToAppDir": true,
       "deepSignApp": true

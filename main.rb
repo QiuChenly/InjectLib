@@ -129,6 +129,8 @@ def main
     next if action != 'y'
     puts "开始注入App: #{packageName}"
 
+    system "xattr -cr #{appBaseLocate}"
+
     dest = appBaseLocate + bridgeFile + injectFile
     backup = dest + '_backup'
 
