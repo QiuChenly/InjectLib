@@ -24,6 +24,7 @@ def scan_apps():
     base_dirs = ['/Applications', '/Applications/Setapp']
 
     for base_dir in base_dirs:
+        if not os.path.exists(base_dir): continue
         lst = os.listdir(base_dir)
         for app in lst:
             app_info_file = os.path.join(base_dir, app, 'Contents', 'Info.plist')
