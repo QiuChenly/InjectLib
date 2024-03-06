@@ -1,4 +1,4 @@
-tccutil reset All org.cindori.batteries
+tccutil reset All io.fadel.Batteries-setapp
 helper="/Applications/Setapp/Batteries.app/Contents/Library/LoginItems/io.fadel.Batteries-setapp.Helper.app/Contents/MacOS/io.fadel.Batteries-setapp.Helper"
 backup="${helper}_backup"
 if [ -e "$backup" ];
@@ -11,8 +11,8 @@ else
   cp "$helper" "$backup"
 fi
 echo "准备自动计算Helper偏移参数..."
-cp ./tool/batteries_x.sh ./tool/batteries.sh
+cp ./tool/Setapps/batteries_x.sh ./tool/Setapps/batteries.sh
 chmod +x ./tool/SearchParttenCode
 ./tool/SearchParttenCode batteries
-sh ./tool/batteries.sh
-rm ./tool/batteries.sh
+sh ./tool/Setapps/batteries.sh
+rm ./tool/Setapps/batteries.sh
