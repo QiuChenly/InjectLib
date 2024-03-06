@@ -69,7 +69,11 @@ def main
   puts "注入时请根据提示输入'y' 或者按下回车键跳过这一项。\n"
   puts "When i find useful options, pls follow my prompts enter 'y' or press enter key to jump that item.\n"
 
+  start_time = Time.now
   install_apps = scan_apps
+  end_time = Time.now
+  elapsed_time = end_time - start_time
+  puts "====\t检查本地App耗时: #{elapsed_time}秒\t====\n"
 
   # prepare resolve package lst
   appLst = []
@@ -100,8 +104,28 @@ def main
     entitlements = app['entitlements']
     noSignTarget = app['noSignTarget']
     noDeep = app ['noDeep']
+    tccutil = app ['tccutil']
+    autoHandleSetapp = app ['autoHandleSetapp']
 
     localApp = install_apps.select { |_app| _app['CFBundleIdentifier'] == packageName }
+
+    unless autoHandleSetapp.nil?
+      puts "扫描Setapp #{packageName} 中..."
+      result = `sudo find /Applications/Setapp -name "*.app" -type d -exec sh -c 'plutil -p "$1/Contents/Info.plist" 2>/dev/null | grep -q "#{packageName}" && echo "$1"' _ {} \\;`
+      # 获得appBaseLocate
+      appBaseLocate =  result.chomp
+      if appBaseLocate.nil? || !Dir.exist?(appBaseLocate)
+        puts "Setapp #{packageName} 不存在..."
+        next
+      end
+      # bridgeFile
+      bridgeFile = "/Contents/MacOS/"
+      # injectFile
+      injectFile = File.basename(Dir.glob("#{appBaseLocate + bridgeFile}*").first)
+
+      # puts "Setapp自动处理结果如下 [#{appBaseLocate}] [#{bridgeFile}] [#{injectFile}]"
+    end
+
     if localApp.empty? && (appBaseLocate.nil? || !Dir.exist?(appBaseLocate))
       next
     end
@@ -198,6 +222,11 @@ def main
     end
 
     system "sudo xattr -cr #{dest.match(/(.+\.app)/)}"
+
+    unless tccutil.nil?
+      # puts "处理 tccutil reset All"
+      system "tccutil reset All #{localApp['CFBundleIdentifier']}"
+    end
 
     puts 'App处理完成。'
   }
