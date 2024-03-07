@@ -106,7 +106,7 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "extraShell": "setapp.sh"
+      "extraShell": "Setapps/setapp.sh"
     },
     {
       "packageName": "com.tweety.MediaMate",
@@ -971,7 +971,7 @@
       "deepSignApp": true
     },
     {
-      "packageName":"io.fadel.Batteries-setapp",
+      "packageName": "io.fadel.Batteries-setapp",
       "appBaseLocate": "/Applications/Setapp/Batteries.app",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Batteries",
