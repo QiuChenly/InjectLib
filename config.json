@@ -102,6 +102,12 @@
       "deepSignApp": true
     },
     {
+      "packageName": "studio.fireball.moment",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "Sparkle.framework/Versions/B/Sparkle"
+    },
+    {
       "packageName": "com.setapp.DesktopClient",
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
