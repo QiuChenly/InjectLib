@@ -84,7 +84,7 @@ def main():
         print(" \\__\\_\\_\\__,_|\\____|_| |_|\\___|_| |_|_|\\__, |")
         print("                                        |___/")
         print(f"自动注入版本号: {proc_version}")
-        print("Design By QiuChenly(github.com/qiuchenly)")
+        print("Original Design By QiuChenly(github.com/qiuchenly), Py ver. by X1a0He")
         print("注入时请根据提示输入'y' 或者按下回车键跳过这一项。")
 
         start_time = time.time()
@@ -247,7 +247,7 @@ def main():
 
             print("App处理完成。")
     except KeyboardInterrupt:
-        print("\n用户中断了程序执行")
+        print("\n用户手动退出程序,祝你使用愉快,再见.")
 
 
 if __name__ == "__main__":
