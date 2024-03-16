@@ -17,7 +17,8 @@
     "noSignTarget": "默认注入后会对目标文件进行签名,我们有时候不需要这个行为。",
     "noDeep": "--deep 控制",
     "tccutil": "自动执行tccutil reset All CFBundleIdentifier，不太完善，仅setapp测试通过",
-    "autoHandleSetapp": "自动根据 CFBundleIdentifier 找出App的appBaseLocate，并拼接/Contents/MacOS/为bridgeFile，且默认找出bridgeFile下的对应二进制程序，不太完善，仅setapp测试通过"
+    "autoHandleSetapp": "自动根据 CFBundleIdentifier 找出App的appBaseLocate，并拼接/Contents/MacOS/为bridgeFile，且默认找出bridgeFile下的对应二进制程序，不太完善，仅setapp测试通过",
+    "useOptool": "使用新的注入工具"
   },
   "basePublicConfig": {
     "bridgeFile": "/Contents/Frameworks/"
@@ -445,9 +446,11 @@
     {
       "packageName": "com.adobe.LightroomClassicCC7",
       "appBaseLocate": "/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app",
-      "injectFile": "AgUI.framework/Versions/A/AgUI",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Adobe Lightroom Classic",
+      "useOptool": true,
       "needCopyToAppDir": true,
-      "noDeep": true,
+      "noSignTarget": true,
       "entitlements": "signkeep.xml"
     },
     {

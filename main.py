@@ -118,6 +118,7 @@ def main():
             no_sign_target = app.get("noSignTarget")
             no_deep = app.get("noDeep")
             tccutil = app.get("tccutil")
+            useOptool = app.get("useOptool")
             auto_handle_setapp = app.get("autoHandleSetapp")
 
             local_app = [
@@ -194,10 +195,15 @@ def main():
 
             current = Path(__file__).resolve()
 
-            sh = f"chmod +x {current.parent}/tool/insert_dylib"
+            sh = f"chmod +x {current.parent}/tool/insert_dylib && chmod +x {current.parent}/tool/optool"
             subprocess.run(sh, shell=True)
 
-            sh = f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/libInjectLib.dylib' '{backup}' '{dest}'"
+            sh = (
+                f"sudo {current.parent}/tool/optool install -p '{current.parent}/tool/libInjectLib.dylib' -t '{dest}'"
+                if useOptool is not None
+                else f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/libInjectLib.dylib' '{backup}' '{dest}'"
+            )
+
             if need_copy_to_app_dir is not None:
                 source_dylib = f"{current.parent}/tool/libInjectLib.dylib"
                 destination_dylib = (
@@ -206,7 +212,11 @@ def main():
                 subprocess.run(f"cp {source_dylib} {destination_dylib}", shell=True)
                 # shutil.copy(source_dylib, destination_dylib)
                 insert_command = rf"sudo {current.parent}/tool/insert_dylib {destination_dylib} '{backup}' '{dest}'"
-                sh = insert_command
+                sh = (
+                    insert_command
+                    if useOptool is not None
+                    else rf"sudo {current.parent}/tool/optool install -p {destination_dylib} -t '{dest}' --resign"
+                )
 
             subprocess.run(sh, shell=True)
 
