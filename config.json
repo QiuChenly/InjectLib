@@ -327,7 +327,9 @@
     {
       "packageName": "com.adobe.Photoshop",
       "appBaseLocate": "/Applications/Adobe Photoshop (Beta)/Adobe Photoshop (Beta).app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM"
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "deepSignApp": true,
+      "noDeep": true
     },
     {
       "packageName": "com.adobe.lightroomCC",
