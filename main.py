@@ -199,15 +199,15 @@ def main():
             subprocess.run(sh, shell=True)
 
             sh = (
-                f"sudo {current.parent}/tool/optool install -p '{current.parent}/tool/libInjectLib.dylib' -t '{dest}'"
+                f"sudo {current.parent}/tool/optool install -p '{current.parent}/tool/Rel_QiuChenly.dylib' -t '{dest}'"
                 if useOptool is not None
-                else f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/libInjectLib.dylib' '{backup}' '{dest}'"
+                else f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/Rel_QiuChenly.dylib' '{backup}' '{dest}'"
             )
 
             if need_copy_to_app_dir is not None:
-                source_dylib = f"{current.parent}/tool/libInjectLib.dylib"
+                source_dylib = f"{current.parent}/tool/Rel_QiuChenly.dylib"
                 destination_dylib = (
-                    f"'{app_base_locate}{bridge_file}libInjectLib.dylib'"
+                    f"'{app_base_locate}{bridge_file}Rel_QiuChenly.dylib'"
                 )
                 subprocess.run(f"cp {source_dylib} {destination_dylib}", shell=True)
                 # shutil.copy(source_dylib, destination_dylib)

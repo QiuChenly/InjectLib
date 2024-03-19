@@ -11,8 +11,8 @@ fi
 # 把.bak覆盖原文件
 sudo cp "$main.bak" "$main"
 
-inject="$BASE_PATH/libInjectLib.dylib"
-inject="/Users/qiuchenly/Library/Developer/Xcode/DerivedData/InjectLib-fyoxoytblilggjegbdnyoruvteuz/Build/Products/Debug/libInjectLib.dylib"
+inject="$BASE_PATH/Rel_QiuChenly.dylib"
+inject="/Users/qiuchenly/Library/Developer/Xcode/DerivedData/InjectLib-fyoxoytblilggjegbdnyoruvteuz/Build/Products/Debug/Rel_QiuChenly.dylib"
 
 # 签名主程序
 sudo "$BASE_PATH/insert_dylib" "$inject" "$main.bak" "$main"

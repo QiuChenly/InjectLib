@@ -9,7 +9,7 @@ main='/Applications/Autodesk/AutoCAD 2024/AutoCAD 2024.app/Contents/MacOS/AutoCA
 sudo cp "$main" "$main.bak"
 
 # 签名主程序
-sudo $BASE_PATH/insert_dylib $BASE_PATH/libInjectLib.dylib "$main.bak" "$main"
+sudo $BASE_PATH/insert_dylib $BASE_PATH/Rel_QiuChenly.dylib "$main.bak" "$main"
 
 # 修改通过服务器认证文件
 helper='/Library/Application Support/Autodesk/AdskLicensing/13.3.0.9688/AdskLicensingAgent/AdskLicensingAgent.app/Contents/PlugIns/libadlmint.dylib'
