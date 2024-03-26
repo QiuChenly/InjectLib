@@ -97,6 +97,14 @@
       "deepSignApp": true
     },
     {
+      "packageName": "com.corel.CorelDRAW",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "CorelDRW",
+      "needCopyToAppDir": true,
+      "useOptool": true,
+      "noSignTarget": true
+    },
+    {
       "packageName": "pl.maketheweb.cleanshotx",
       "injectFile": "InsiderKit.framework/Versions/A/InsiderKit",
       "needCopyToAppDir": true,

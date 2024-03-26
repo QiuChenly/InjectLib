@@ -204,18 +204,18 @@ def main():
                 else f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/Rel_QiuChenly.dylib' '{backup}' '{dest}'"
             )
 
-            if need_copy_to_app_dir is not None:
+            if need_copy_to_app_dir:
                 source_dylib = f"{current.parent}/tool/Rel_QiuChenly.dylib"
                 destination_dylib = (
                     f"'{app_base_locate}{bridge_file}Rel_QiuChenly.dylib'"
                 )
                 subprocess.run(f"cp {source_dylib} {destination_dylib}", shell=True)
                 # shutil.copy(source_dylib, destination_dylib)
-                insert_command = rf"sudo {current.parent}/tool/insert_dylib {destination_dylib} '{backup}' '{dest}'"
+                insert_command = rf"sudo cp '{dest}' /tmp/app && sudo {current.parent}/tool/optool install -p {destination_dylib} -t /tmp/app --resign && sudo cp /tmp/app '{dest}'"
                 sh = (
                     insert_command
-                    if useOptool is not None
-                    else rf"sudo {current.parent}/tool/optool install -p {destination_dylib} -t '{dest}' --resign"
+                    if useOptool
+                    else rf"sudo {current.parent}/tool/insert_dylib {destination_dylib} '{backup}' '{dest}'"
                 )
 
             subprocess.run(sh, shell=True)
