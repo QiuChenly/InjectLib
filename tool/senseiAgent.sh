@@ -12,7 +12,7 @@ else
 fi
 echo "准备自动计算Helper偏移参数..."
 cp ./tool/sensei_x.sh ./tool/sensei.sh
-chmod +x ./tool/SearchParttenCode
-./tool/SearchParttenCode sensei
+chmod +x ./tool/QAQ_GenshineImpactStarter
+./tool/QAQ_GenshineImpactStarter sensei
 sh ./tool/sensei.sh
 rm ./tool/sensei.sh

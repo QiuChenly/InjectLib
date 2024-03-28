@@ -19,7 +19,7 @@ do
 done
 echo "准备自动计算Helper偏移参数..."
 cp ./tool/Setapps/cmmsetapp_o.sh ./tool/Setapps/cmmsetapp.sh
-chmod +x ./tool/SearchParttenCode
-./tool/SearchParttenCode cmmxsetapp
+chmod +x ./tool/QAQ_GenshineImpactStarter
+./tool/QAQ_GenshineImpactStarter cmmxsetapp
 sh ./tool/Setapps/cmmsetapp.sh
 rm ./tool/Setapps/cmmsetapp.sh

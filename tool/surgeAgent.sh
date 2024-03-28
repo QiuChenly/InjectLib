@@ -11,9 +11,9 @@ echo "准备自动计算Helper偏移参数..."
 
 cp ./tool/surge_o.sh ./tool/surge.sh
 
-chmod +x ./tool/SearchParttenCode
+chmod +x ./tool/QAQ_GenshineImpactStarter
 
-./tool/SearchParttenCode surge
+./tool/QAQ_GenshineImpactStarter surge
 
 sh ./tool/surge.sh
 

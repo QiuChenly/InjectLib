@@ -12,7 +12,7 @@ else
 fi
 echo "准备自动计算Helper偏移参数..."
 cp ./tool/Setapps/proxyman_o.sh ./tool/Setapps/proxyman.sh
-chmod +x ./tool/SearchParttenCode
-./tool/SearchParttenCode proxymansetapp
+chmod +x ./tool/QAQ_GenshineImpactStarter
+./tool/QAQ_GenshineImpactStarter proxymansetapp
 sh ./tool/Setapps/proxyman.sh
 rm ./tool/Setapps/proxyman.sh

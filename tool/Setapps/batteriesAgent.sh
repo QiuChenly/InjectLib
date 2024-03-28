@@ -12,7 +12,7 @@ else
 fi
 echo "准备自动计算Helper偏移参数..."
 cp ./tool/Setapps/batteries_x.sh ./tool/Setapps/batteries.sh
-chmod +x ./tool/SearchParttenCode
-./tool/SearchParttenCode batteries
+chmod +x ./tool/QAQ_GenshineImpactStarter
+./tool/QAQ_GenshineImpactStarter batteries
 sh ./tool/Setapps/batteries.sh
 rm ./tool/Setapps/batteries.sh
