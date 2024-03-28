@@ -120,8 +120,17 @@
       "packageName": "com.setapp.DesktopClient",
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "extraShell": "Setapps/setapp.sh"
+      "noSignTarget": true,
+      "useOptool": true
+    },
+    {
+      "packageName": "com.setapp.DesktopClient.SetappAgent",
+      "appBaseLocate": "/Applications/Setapp.app/Contents/Library/LaunchServices/Setapp.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "SetappAgent",
+      "useOptool": true,
+      "noSignTarget": true,
+      "needCopyToAppDir": true
     },
     {
       "packageName": "com.tweety.MediaMate",
