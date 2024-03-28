@@ -957,7 +957,6 @@
         "app.monsterwriter.client-setapp",
         "com.savingsapp.Savings-setapp",
         "nl.nielsmouthaan.daily.main-setapp",
-        "codes.rambo.AirBuddy-setapp",
         "com.hankuper.adlock.desktop-setapp",
         "com.pixyzehn.Expenses-setapp",
         "com.app.menubarx-setapp",
@@ -999,6 +998,23 @@
       "injectFile": "Batteries",
       "needCopyToAppDir": true,
       "extraShell": "Setapps/batteriesAgent.sh"
+    },
+    {
+      "packageName": "codes.rambo.AirBuddy-setapp",
+      "appBaseLocate": "/Applications/Setapp/AirBuddy.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "AirBuddy",
+      "needCopyToAppDir": true,
+      "extraShell": "Setapps/airBuddyAgent.sh",
+      "tccutil": true
+    },
+    {
+      "packageName": "codes.rambo.AirBuddy-setapp.AirBuddyHelper",
+      "appBaseLocate": "/Applications/Setapp/AirBuddy.app/Contents/Library/LoginItems/AirBuddyHelper.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "AirBuddyHelper",
+      "needCopyToAppDir": true,
+      "tccutil": true
     }
   ]
 }

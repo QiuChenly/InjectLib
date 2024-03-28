@@ -61,6 +61,13 @@
     "out": "sensei.sh",
     "fixPlist": true
   },
+  "airbuddy": {
+    "locate": [
+      "/Applications/Setapp/AirBuddy.app/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer"
+    ],
+    "out": "airbuddy.sh",
+    "fixPlist": true
+  },
   "batteries": {
     "locate": [
       "/Applications/Setapp/Batteries.app/Contents/Library/LoginItems/io.fadel.Batteries-setapp.Helper.app/Contents/MacOS/io.fadel.Batteries-setapp.Helper"
