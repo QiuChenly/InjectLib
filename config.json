@@ -746,6 +746,18 @@
       "extraShell": "bob.sh"
     },
     {
+      "packageName": "com.zeroonetwenty.BlueHarvest5",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "Sparkle.framework/Versions/A/Sparkle"
+    },
+    {
+      "packageName": "com.culturedcode.ThingsMac",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "Base.framework/Versions/A/Base"
+    },
+    {
       "packageName": "com.mcneel.rhinoceros.8",
       "needCopyToAppDir": true,
       "deepSignApp": true,
