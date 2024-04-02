@@ -294,6 +294,18 @@
       "injectFile": "DropoverAWS.framework/Versions/A/DropoverAWS"
     },
     {
+      "packageName": "com.hankinsoft.osx.sqlprostudio",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "HSCore.framework/Versions/A/HSCore"
+    },
+    {
+      "packageName": "com.bohemiancoding.sketch3",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "Bugsnag.framework/Versions/A/Bugsnag"
+    },
+    {
       "packageName": [
         "com.macpaw.CleanMyMac4"
       ],
