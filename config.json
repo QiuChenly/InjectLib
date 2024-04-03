@@ -758,6 +758,12 @@
       "injectFile": "Base.framework/Versions/A/Base"
     },
     {
+      "packageName": "app.kaleidoscope.v4",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "SofaUIKit.framework/Versions/A/SofaUIKit"
+    },
+    {
       "packageName": "com.mcneel.rhinoceros.8",
       "needCopyToAppDir": true,
       "deepSignApp": true,
