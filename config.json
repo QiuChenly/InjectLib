@@ -221,7 +221,7 @@
       "appBaseLocate": "/Applications/Stash.app",
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
-      "deepSignApp": true,
+      "noSignTarget": true,
       "extraShell": "stashAgent.sh"
     },
     {
