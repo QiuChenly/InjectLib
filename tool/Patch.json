@@ -9,6 +9,13 @@
     "replaceIntel": "{{==intel==}}",
     "replaceARM": "{{==arm64==}}"
   },
+  "stash": {
+    "locate": [
+      "/Applications/Stash.app/Contents/Library/LaunchServices/ws.stash.app.mac.daemon.helper"
+    ],
+    "out": "stash.sh",
+    "fixPlist": true
+  },
   "cmmx": {
     "locate": [
       "/Applications/CleanMyMac X.app/Contents/Library/LaunchServices/com.macpaw.CleanMyMac4.Agent"

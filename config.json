@@ -222,7 +222,7 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "extraShell": "stash.sh"
+      "extraShell": "stashAgent.sh"
     },
     {
       "packageName": "com.firecore.infuse",
