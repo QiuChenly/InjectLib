@@ -250,10 +250,13 @@ def main():
             subprocess.run(f"sudo xattr -cr '{dest}'", shell=True)
 
             if tccutil is not None:
-                # print("处理 tccutil reset All")
-                subprocess.run(
-                    f"tccutil reset All {local_app['CFBundleIdentifier']}", shell=True
-                )
+                if isinstance(tccutil, list):
+                    for service in tccutil:
+                        # print(f"处理 tccutil reset {service}")
+                        subprocess.run(f"tccutil reset {service} {local_app['CFBundleIdentifier']}", shell=True)
+                else:
+                    # print("处理 tccutil reset All")
+                    subprocess.run(f"tccutil reset All {local_app['CFBundleIdentifier']}", shell=True)
 
             print("App处理完成。")
     except KeyboardInterrupt:

@@ -16,7 +16,7 @@
     "entitlements": "用于跳过部分权限 在启用SIP的macOS上 如ARM64",
     "noSignTarget": "默认注入后会对目标文件进行签名,我们有时候不需要这个行为。",
     "noDeep": "--deep 控制",
-    "tccutil": "自动执行tccutil reset All CFBundleIdentifier，不太完善，仅setapp测试通过",
+    "tccutil": "自动执行tccutil reset xxx CFBundleIdentifier，true为All，详细可用数组",
     "autoHandleSetapp": "自动根据 CFBundleIdentifier 找出App的appBaseLocate，并拼接/Contents/MacOS/为bridgeFile，且默认找出bridgeFile下的对应二进制程序，不太完善，仅setapp测试通过",
     "useOptool": "使用新的注入工具"
   },
@@ -150,7 +150,7 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "AliyunOSSOSX.framework/Versions/A/AliyunOSSOSX",
-      "extraShell": "hapigo.sh"
+      "tccutil": ["All", "AddressBook", "Calendar", "Reminders", "ScreenCapture", "Accessibility"]
     },
     {
       "packageName": "com.parallels.desktop.console",
@@ -174,7 +174,7 @@
       "noDeep": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "extraShell": "bartender.sh"
+      "tccutil": ["All", "Camera", "Microphone", "ScreenCapture"]
     },
     {
       "packageName": "com.pixelmatorteam.pixelmator.touch.x.photo",
@@ -207,7 +207,6 @@
       "needCopyToAppDir": true,
       "noDeep": true,
       "deepSignApp": true,
-      "extraShell": "tablePlus.sh"
     },
     {
       "packageName": "app.elpass.macos",
@@ -243,28 +242,28 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "NektonyFallManager.framework/Versions/A/NektonyFallManager",
-      "extraShell": "Nektony/AppCleaner.sh"
+      "tccutil": ["All", "AddressBook", "Reminders", "Photos", "AppleEvents"]
     },
     {
       "packageName": "com.nektony.MacCleaner-PRO-SIII",
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "extraShell": "Nektony/MacCleanerPro.sh"
+      "tccutil": ["All", "AddressBook", "Calendar", "Reminders", "Photos", "AppleEvents"]
     },
     {
       "packageName": "com.nektony.Disk-Expert-SIII",
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "extraShell": "Nektony/DiskSpaceAnalyzer.sh"
+      "tccutil": ["All", "Reminders", "Photos"]
     },
     {
       "packageName": "com.nektony.Duplicate-File-Finder-SIII",
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "extraShell": "Nektony/DuplicateFileFinder.sh"
+      "tccutil": ["All", "Photos"]
     },
     {
       "packageName": "li.zihua.medis2",
@@ -285,7 +284,8 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "TSCAccount.framework/Versions/A/TSCAccount",
-      "extraShell": "camtasia.sh"
+      "extraShell": "camtasia.sh",
+      "tccutil": ["Camera", "Microphone", "ScreenCapture", "All"]
     },
     {
       "packageName": "me.damir.dropover-mac",
@@ -537,7 +537,7 @@
       "packageName": "com.mac.utility.screen.recorder",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "OmniRecorder",
-      "extraShell": "recorder.sh"
+      "tccutil": ["All", "Camera", "Microphone", "ScreenCapture"]
     },
     {
       "packageName": "com.mac.utility.media.player",
@@ -682,17 +682,17 @@
     {
       "packageName": "com.wiheads.paste",
       "bridgeFile": "/Contents/MacOS/",
-      "extraShell": "paste.sh",
       "injectFile": "Paste",
       "needCopyToAppDir": true,
-      "deepSignApp": true
+      "deepSignApp": true,
+      "tccutil": ["All", "Camera", "Microphone", "ScreenCapture"]
     },
     {
       "packageName": "cn.better365.ishot",
       "injectFile": "PTHotKey.framework/Versions/A/PTHotKey",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "extraShell": "ishot.sh"
+      "tccutil": ["All", "Camera", "Microphone", "ScreenCapture"]
     },
     {
       "packageName": "com.drbuho.BuhoCleaner",
@@ -743,7 +743,8 @@
       "bridgeFile": "/Contents/MacOS/",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "extraShell": "bob.sh"
+      "extraShell": "bob.sh",
+      "tccutil": ["All"]
     },
     {
       "packageName": "com.zeroonetwenty.BlueHarvest5",
@@ -782,7 +783,7 @@
       "bridgeFile": "/Contents/MacOS/",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "extraShell": "shottr.sh"
+      "tccutil": ["All"]
     },
     {
       "packageName": "com.setapp.DesktopClient",

@@ -1,1 +1,0 @@
-xattr -cr /Applications/TablePlus.app
