@@ -199,16 +199,14 @@ def main():
             subprocess.run(sh, shell=True)
 
             sh = (
-                f"sudo {current.parent}/tool/optool install -p '{current.parent}/tool/Rel_QiuChenly.dylib' -t '{dest}'"
+                f"sudo {current.parent}/tool/optool install -p '{current.parent}/tool/91QiuChenly.dylib' -t '{dest}'"
                 if useOptool is not None
-                else f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/Rel_QiuChenly.dylib' '{backup}' '{dest}'"
+                else f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/91QiuChenly.dylib' '{backup}' '{dest}'"
             )
 
             if need_copy_to_app_dir:
-                source_dylib = f"{current.parent}/tool/Rel_QiuChenly.dylib"
-                destination_dylib = (
-                    f"'{app_base_locate}{bridge_file}Rel_QiuChenly.dylib'"
-                )
+                source_dylib = f"{current.parent}/tool/91QiuChenly.dylib"
+                destination_dylib = f"'{app_base_locate}{bridge_file}91QiuChenly.dylib'"
                 subprocess.run(f"cp {source_dylib} {destination_dylib}", shell=True)
                 # shutil.copy(source_dylib, destination_dylib)
                 insert_command = rf"sudo cp '{dest}' /tmp/app && sudo {current.parent}/tool/optool install -p {destination_dylib} -t /tmp/app --resign && sudo cp /tmp/app '{dest}'"
@@ -253,10 +251,16 @@ def main():
                 if isinstance(tccutil, list):
                     for service in tccutil:
                         # print(f"处理 tccutil reset {service}")
-                        subprocess.run(f"tccutil reset {service} {local_app['CFBundleIdentifier']}", shell=True)
+                        subprocess.run(
+                            f"tccutil reset {service} {local_app['CFBundleIdentifier']}",
+                            shell=True,
+                        )
                 else:
                     # print("处理 tccutil reset All")
-                    subprocess.run(f"tccutil reset All {local_app['CFBundleIdentifier']}", shell=True)
+                    subprocess.run(
+                        f"tccutil reset All {local_app['CFBundleIdentifier']}",
+                        shell=True,
+                    )
 
             print("App处理完成。")
     except KeyboardInterrupt:

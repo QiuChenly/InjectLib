@@ -182,10 +182,10 @@ def main
     backup = Shellwords.escape(backup)
     dest = Shellwords.escape(dest)
 
-    sh = "sudo #{current}/tool/insert_dylib #{current}/tool/Rel_QiuChenly.dylib #{backup} #{dest}"
+    sh = "sudo #{current}/tool/insert_dylib #{current}/tool/91QiuChenly.dylib #{backup} #{dest}"
     unless needCopy2AppDir.nil?
-      system "sudo cp #{current}/tool/Rel_QiuChenly.dylib #{Shellwords.escape(appBaseLocate + bridgeFile)}Rel_QiuChenly.dylib"
-      sh = "sudo #{current}/tool/insert_dylib #{Shellwords.escape(appBaseLocate + bridgeFile)}Rel_QiuChenly.dylib #{backup} #{dest}"
+      system "sudo cp #{current}/tool/91QiuChenly.dylib #{Shellwords.escape(appBaseLocate + bridgeFile)}91QiuChenly.dylib"
+      sh = "sudo #{current}/tool/insert_dylib #{Shellwords.escape(appBaseLocate + bridgeFile)}91QiuChenly.dylib #{backup} #{dest}"
     end
     # puts sh
     system sh

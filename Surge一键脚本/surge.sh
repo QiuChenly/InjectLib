@@ -104,14 +104,14 @@ fi
 if [[ ! -e "../tool/insert_dylib" ]]; then
   echo "⚠️ 确保上级tool目录中存在insert_dylib" && exit 1
 fi
-if [[ ! -e "../tool/Rel_QiuChenly.dylib" ]]; then
-  echo "⚠️ 确保上级tool目录中存在Rel_QiuChenly.dylib" && exit 1
+if [[ ! -e "../tool/91QiuChenly.dylib" ]]; then
+  echo "⚠️ 确保上级tool目录中存在91QiuChenly.dylib" && exit 1
 fi
 
 chmod +x "../tool/insert_dylib"
-sudo cp -f "../tool/Rel_QiuChenly.dylib" "/Applications/Surge.app/Contents/Frameworks/Rel_QiuChenly.dylib" || exit 1
+sudo cp -f "../tool/91QiuChenly.dylib" "/Applications/Surge.app/Contents/Frameworks/91QiuChenly.dylib" || exit 1
 sudo cp -f "/Applications/Surge.app/Contents/Frameworks/Bugsnag.framework/Versions/A/Bugsnag" "/Applications/Surge.app/Contents/Frameworks/Bugsnag.framework/Versions/A/Bugsnag_backup" || exit 1
-sudo ../tool/insert_dylib "/Applications/Surge.app/Contents/Frameworks/Rel_QiuChenly.dylib" "/Applications/Surge.app/Contents/Frameworks/Bugsnag.framework/Versions/A/Bugsnag_backup" "/Applications/Surge.app/Contents/Frameworks/Bugsnag.framework/Versions/A/Bugsnag" || exit 1
+sudo ../tool/insert_dylib "/Applications/Surge.app/Contents/Frameworks/91QiuChenly.dylib" "/Applications/Surge.app/Contents/Frameworks/Bugsnag.framework/Versions/A/Bugsnag_backup" "/Applications/Surge.app/Contents/Frameworks/Bugsnag.framework/Versions/A/Bugsnag" || exit 1
 
 cd "${SCRIPT_DIR}/.." || exit 1
 sudo bash ./tool/surgeAgent.sh
