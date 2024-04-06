@@ -206,7 +206,7 @@
       "injectFile": "SSH.framework/Versions/A/SSH",
       "needCopyToAppDir": true,
       "noDeep": true,
-      "deepSignApp": true,
+      "deepSignApp": true
     },
     {
       "packageName": "app.elpass.macos",
@@ -743,7 +743,6 @@
       "bridgeFile": "/Contents/MacOS/",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "extraShell": "bob.sh",
       "tccutil": ["All"]
     },
     {
