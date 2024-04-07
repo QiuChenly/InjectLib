@@ -85,5 +85,12 @@
     "replaceARM": "{{==arm64==}}",
     "out": "batteries.sh",
     "fixPlist": true
+  },
+  "aldente": {
+    "locate": [
+      "/Applications/AlDente.app/Contents/Library/LaunchServices/com.apphousekitchen.aldente-pro.helper"
+    ],
+    "out": "aldente.sh",
+    "fixPlist": true
   }
 }

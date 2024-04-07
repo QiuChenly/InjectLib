@@ -1054,6 +1054,14 @@
       "injectFile": "AirBuddyHelper",
       "needCopyToAppDir": true,
       "tccutil": true
+    },
+    {
+      "packageName": "com.apphousekitchen.aldente-pro",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "Sparkle.framework/Versions/A/Sparkle",
+      "extraShell": "aldenteAgent.sh",
+      "tccutil": ["All"]
     }
   ]
 }
