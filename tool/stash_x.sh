@@ -6,7 +6,6 @@ if [ $option = 'y' ]; then #判断用户是否输入，如果未输入则打印e
   sudo /bin/rm /Library/LaunchDaemons/ws.stash.app.mac.daemon.helper.plist
   sudo /bin/rm /Library/PrivilegedHelperTools/ws.stash.app.mac.daemon.helper
 fi
-sudo chmod 744 "/Applications/Stash.app/Contents/Library/LaunchServices/ws.stash.app.mac.daemon.helper"
 xattr -c '/Applications/Stash.app'
 src_info='/Applications/Stash.app/Contents/Info.plist'
 /usr/libexec/PlistBuddy -c "Set :SMPrivilegedExecutables:ws.stash.app.mac.daemon.helper \"identifier \\\"ws.stash.app.mac.daemon.helper\\\"\"" "$src_info"

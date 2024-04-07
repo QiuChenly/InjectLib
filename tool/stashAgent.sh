@@ -1,4 +1,3 @@
-tccutil reset All ws.stash.app.mac
 helper="/Applications/Stash.app/Contents/Library/LaunchServices/ws.stash.app.mac.daemon.helper"
 backup="${helper}_backup"
 if [ -e "$backup" ];
