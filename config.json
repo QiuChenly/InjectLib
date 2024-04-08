@@ -702,7 +702,8 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "entitlements": "signkeep.xml",
-      "extraShell": "buhoCleaner.sh"
+      "extraShell": "buhoCleanerAgent.sh",
+      "tccutil": ["All"]
     },
     {
       "packageName": "org.qcad",

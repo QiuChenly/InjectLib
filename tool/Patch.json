@@ -92,5 +92,16 @@
     ],
     "out": "aldente.sh",
     "fixPlist": true
+  },
+  "buhoCleaner": {
+    "locate": [
+      "/Applications/BuhoCleaner.app/Contents/Library/LaunchServices/com.drbuho.BuhoCleaner.PrivilegedHelperTool"
+    ],
+    "arm": "1F 20 03 D5 70 4A 03 58 00 02 1F D6",
+    "x86": "FF 25 1A 28 00 00",
+    "replaceIntel": "{{==intel==}}",
+    "replaceARM": "{{==arm64==}}",
+    "out": "buhocleaner.sh",
+    "fixPlist": true
   }
 }
