@@ -490,8 +490,6 @@
         "com.microsoft.Word"
       ],
       "needCopyToAppDir": true,
-      "useOptool": true,
-      "noSignTarget": true,
       "injectFile": "ADAL4.framework/Versions/A/ADAL4"
     },
     {
