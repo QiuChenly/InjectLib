@@ -497,10 +497,8 @@
         "com.microsoft.Outlook"
       ],
       "needCopyToAppDir": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "useOptool": true,
-      "injectFile": "Microsoft Outlook",
-      "noSignTarget": true
+      "injectFile": "ADAL4.framework/Versions/A/ADAL4",
+      "entitlements": "signkeep.xml"
     },
     {
       "packageName": "com.sublimetext.4",
