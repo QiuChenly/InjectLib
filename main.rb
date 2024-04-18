@@ -1,6 +1,5 @@
 require 'json'
 require 'fileutils'
-require './Utils'
 require 'pathname'
 require 'shellwords'
 

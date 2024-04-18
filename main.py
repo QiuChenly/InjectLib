@@ -66,6 +66,28 @@ def check_compatible(
 
     return False
 
+def handle_helper(app_base, target_helper):
+    subprocess.run("chmod +x ./tool/GenShineImpactStarter", shell=True)
+    subprocess.run(f"./tool/GenShineImpactStarter '{target_helper}'", shell=True)
+    subprocess.run(
+        f"./tool/optool install -p '{app_base}/Contents/Frameworks/91QiuChenly.dylib' -t '{target_helper}'",
+        shell=True)
+    helper_name = target_helper.split("/")[-1]
+    subprocess.run(f"sudo /bin/launchctl unload /Library/LaunchDaemons/{helper_name}.plist", shell=True)
+    subprocess.run(f"sudo /usr/bin/killall -u root -9 {helper_name}", shell=True)
+    subprocess.run(f"sudo /bin/rm /Library/LaunchDaemons/{helper_name}.plist", shell=True)
+    subprocess.run(f"sudo /bin/rm /Library/PrivilegedHelperTools/{helper_name}", shell=True)
+    subprocess.run(f"sudo xattr -c '{app_base}'", shell=True)
+    src_info = f"{app_base}/Contents/Info.plist"
+    command = [
+        "/usr/libexec/PlistBuddy",
+        "-c",
+        f"Set :SMPrivilegedExecutables:{helper_name} 'identifier \\\"{helper_name}\\\"'",
+        src_info
+    ]
+    subprocess.run(command, text=True)
+    subprocess.run(f"/usr/bin/codesign -f -s - --all-architectures --deep \"{target_helper}\"", shell=True)
+    subprocess.run(f"/usr/bin/codesign -f -s - --all-architectures --deep \"{app_base}\"", shell=True)
 
 def main():
     try:
@@ -119,6 +141,8 @@ def main():
             tccutil = app.get("tccutil")
             useOptool = app.get("useOptool")
             auto_handle_setapp = app.get("autoHandleSetapp")
+            auto_handle_helper = app.get('autoHandleHelper')
+            helper_file = app.get('helperFile')
 
             local_app = [
                 local_app
@@ -245,6 +269,19 @@ def main():
                 subprocess.run(f"{sign_prefix} '{app_base_locate}'", shell=True)
 
             subprocess.run(f"sudo xattr -cr '{dest}'", shell=True)
+
+            if auto_handle_helper:
+                # print("自动处理Helper中...")
+                if helper_file is not None:
+                    if isinstance(helper_file, list):
+                        for helper in helper_file:
+                            target_helper = f"{app_base_locate}{helper}"
+                            if os.path.exists(target_helper):
+                                handle_helper(app_base_locate, target_helper)
+                    else:
+                        target_helper = f"{app_base_locate}{helper_file}"
+                        if (os.path.exists(target_helper)):
+                            handle_helper(app_base_locate, target_helper)
 
             if tccutil is not None:
                 if isinstance(tccutil, list):

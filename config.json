@@ -18,7 +18,9 @@
     "noDeep": "--deep 控制",
     "tccutil": "自动执行tccutil reset xxx CFBundleIdentifier，true为All，详细可用数组",
     "autoHandleSetapp": "自动根据 CFBundleIdentifier 找出App的appBaseLocate，并拼接/Contents/MacOS/为bridgeFile，且默认找出bridgeFile下的对应二进制程序，不太完善，仅setapp测试通过",
-    "useOptool": "使用新的注入工具"
+    "useOptool": "使用新的注入工具",
+    "autoHandleHelper": "是否自动处理helper文件",
+    "helperFile": "helper文件的路径，例如/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper，可以传数组"
   },
   "basePublicConfig": {
     "bridgeFile": "/Contents/Frameworks/"
@@ -31,8 +33,12 @@
       "injectFile": "Bugsnag.framework/Versions/A/Bugsnag",
       "needCopyToAppDir": true,
       "noSignTarget": true,
-      "extraShell": "surgeAgent.sh",
-      "useOptool": true
+      "useOptool": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper",
+      "tccutil": [
+        "All"
+      ]
     },
     {
       "packageName": "com.globaldelight.Boom3D-setapp",
@@ -67,8 +73,13 @@
       "appBaseLocate": "/Applications/Setapp/Proxyman.app",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Proxyman",
-      "extraShell": "Setapps/proxyManSetappAgent.sh",
-      "needCopyToAppDir": true
+      "needCopyToAppDir": true,
+      "noSignTarget": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.proxyman.NSProxy.HelperTool",
+      "tccutil": [
+        "All"
+      ]
     },
     {
       "packageName": [
@@ -77,8 +88,14 @@
       "appBaseLocate": "/Applications/Setapp/CleanMyMac X.app",
       "injectFile": "Announcements.framework/Versions/A/Announcements",
       "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "extraShell": "Setapps/cmmxSetAppAgent.sh"
+      "noSignTarget": true,
+      "useOptool": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent",
+      "tccutil": [
+        "All",
+        "Bluetooth"
+      ]
     },
     {
       "packageName": [
@@ -87,7 +104,13 @@
       "appBaseLocate": "/Applications/Setapp/CleanMyMac X.app/Contents/Library/LoginItems/CleanMyMac Menu.app",
       "injectFile": "CMMNotifications.framework/Versions/A/CMMNotifications",
       "needCopyToAppDir": true,
-      "deepSignApp": true
+      "noSignTarget": true,
+      "useOptool": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent",
+      "tccutil": [
+        "All"
+      ]
     },
     {
       "packageName": [
@@ -234,8 +257,10 @@
       "appBaseLocate": "/Applications/Stash.app",
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "extraShell": "stashAgent.sh",
+      "noSignTarget": true,
+      "useOptool": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/ws.stash.app.mac.daemon.helper",
       "tccutil": [
         "All"
       ]
@@ -353,8 +378,14 @@
       ],
       "injectFile": "Announcements.framework/Versions/A/Announcements",
       "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "extraShell": "cmmxAgent.sh"
+      "noSignTarget": true,
+      "useOptool": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac4.Agent",
+      "tccutil": [
+        "All",
+        "Bluetooth"
+      ]
     },
     {
       "packageName": [
@@ -363,7 +394,13 @@
       "appBaseLocate": "/Applications/CleanMyMac X.app/Contents/Library/LoginItems/CleanMyMac X Menu.app",
       "injectFile": "CMMNotifications.framework/Versions/A/CMMNotifications",
       "needCopyToAppDir": true,
-      "deepSignApp": true
+      "noSignTarget": true,
+      "useOptool": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac4.Agent",
+      "tccutil": [
+        "All"
+      ]
     },
     {
       "packageName": [
@@ -605,9 +642,11 @@
     {
       "packageName": "org.cindori.Sensei",
       "needCopyToAppDir": true,
-      "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "extraShell": "senseiAgent.sh"
+      "noSignTarget": true,
+      "useOptool": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/org.cindori.SenseiHelper"
     },
     {
       "packageName": "com.skylum.luminarneomas",
@@ -619,8 +658,9 @@
       "packageName": "com.proxyman.NSProxy",
       "injectFile": "Moya.framework/Versions/A/Moya",
       "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "extraShell": "proxyManAgent.sh"
+      "noSignTarget": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.proxyman.NSProxy.HelperTool"
     },
     {
       "packageName": [
@@ -754,7 +794,9 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "entitlements": "signkeep.xml",
-      "extraShell": "buhoCleanerAgent.sh",
+      "useOptool": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.drbuho.BuhoCleaner.PrivilegedHelperTool",
       "tccutil": [
         "All"
       ]
@@ -1096,7 +1138,10 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Batteries",
       "needCopyToAppDir": true,
-      "extraShell": "Setapps/batteriesAgent.sh"
+      "noSignTarget": true,
+      "useOptool": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/io.fadel.Batteries-setapp.Helper"
     },
     {
       "packageName": "codes.rambo.AirBuddy-setapp",
@@ -1104,8 +1149,11 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "AirBuddy",
       "needCopyToAppDir": true,
-      "extraShell": "Setapps/airBuddyAgent.sh",
-      "tccutil": true
+      "tccutil": true,
+      "noSignTarget": true,
+      "useOptool": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer"
     },
     {
       "packageName": "codes.rambo.AirBuddy-setapp.AirBuddyHelper",
@@ -1118,9 +1166,11 @@
     {
       "packageName": "com.apphousekitchen.aldente-pro",
       "needCopyToAppDir": true,
-      "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "extraShell": "aldenteAgent.sh",
+      "noSignTarget": true,
+      "useOptool": true,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.apphousekitchen.aldente-pro.helper",
       "tccutil": [
         "All"
       ]
