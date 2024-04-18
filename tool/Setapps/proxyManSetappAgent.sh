@@ -1,8 +1,7 @@
 tccutil reset All com.proxyman.NSProxy-setapp
 helper="/Applications/Setapp/Proxyman.app/Contents/Library/LaunchServices/com.proxyman.NSProxy.HelperTool"
 backup="${helper}_backup"
-if [ -e "$backup" ];
-then
+if [ -e "$backup" ]; then
   echo "检测到helper备份文件存在，可能是二次注入，删除已注入的helper"
   rm "$helper"
   cp "$backup" "$helper"
@@ -12,7 +11,7 @@ else
 fi
 echo "准备自动计算Helper偏移参数..."
 cp ./tool/Setapps/proxyman_o.sh ./tool/Setapps/proxyman.sh
-chmod +x ./tool/QAQ_GenshineImpactStarter
-./tool/QAQ_GenshineImpactStarter proxymansetapp
+chmod +x ./tool/GenShineImpactStarter
+./tool/GenShineImpactStarter proxymansetapp
 sh ./tool/Setapps/proxyman.sh
 rm ./tool/Setapps/proxyman.sh

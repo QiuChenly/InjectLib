@@ -30,7 +30,9 @@
       "bridgeFile": "/Contents/Frameworks/",
       "injectFile": "Bugsnag.framework/Versions/A/Bugsnag",
       "needCopyToAppDir": true,
-      "extraShell": "surgeAgent.sh"
+      "noSignTarget": true,
+      "extraShell": "surgeAgent.sh",
+      "useOptool": true
     },
     {
       "packageName": "com.globaldelight.Boom3D-setapp",
@@ -150,7 +152,14 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "AliyunOSSOSX.framework/Versions/A/AliyunOSSOSX",
-      "tccutil": ["All", "AddressBook", "Calendar", "Reminders", "ScreenCapture", "Accessibility"]
+      "tccutil": [
+        "All",
+        "AddressBook",
+        "Calendar",
+        "Reminders",
+        "ScreenCapture",
+        "Accessibility"
+      ]
     },
     {
       "packageName": "com.parallels.desktop.console",
@@ -174,7 +183,12 @@
       "noDeep": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "tccutil": ["All", "Camera", "Microphone", "ScreenCapture"]
+      "tccutil": [
+        "All",
+        "Camera",
+        "Microphone",
+        "ScreenCapture"
+      ]
     },
     {
       "packageName": "com.pixelmatorteam.pixelmator.touch.x.photo",
@@ -222,15 +236,17 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "extraShell": "stashAgent.sh",
-      "tccutil": ["All"]
+      "tccutil": [
+        "All"
+      ]
     },
     {
       "packageName": "com.firecore.infuse",
       "injectFile": "GZIP.framework/Versions/A/GZIP",
       "needCopyToAppDir": true,
-      "noDeep": true,
-      "deepSignApp": true,
-      "entitlements": "signkeep.xml"
+      "entitlements": "signkeep.xml",
+      "useOptool": true,
+      "deepSignApp": true
     },
     {
       "packageName": "com.coderforart.MWeb3",
@@ -243,28 +259,48 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "NektonyFallManager.framework/Versions/A/NektonyFallManager",
-      "tccutil": ["All", "AddressBook", "Reminders", "Photos", "AppleEvents"]
+      "tccutil": [
+        "All",
+        "AddressBook",
+        "Reminders",
+        "Photos",
+        "AppleEvents"
+      ]
     },
     {
       "packageName": "com.nektony.MacCleaner-PRO-SIII",
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "tccutil": ["All", "AddressBook", "Calendar", "Reminders", "Photos", "AppleEvents"]
+      "tccutil": [
+        "All",
+        "AddressBook",
+        "Calendar",
+        "Reminders",
+        "Photos",
+        "AppleEvents"
+      ]
     },
     {
       "packageName": "com.nektony.Disk-Expert-SIII",
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "tccutil": ["All", "Reminders", "Photos"]
+      "tccutil": [
+        "All",
+        "Reminders",
+        "Photos"
+      ]
     },
     {
       "packageName": "com.nektony.Duplicate-File-Finder-SIII",
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "tccutil": ["All", "Photos"]
+      "tccutil": [
+        "All",
+        "Photos"
+      ]
     },
     {
       "packageName": "li.zihua.medis2",
@@ -286,7 +322,12 @@
       "deepSignApp": true,
       "injectFile": "TSCAccount.framework/Versions/A/TSCAccount",
       "extraShell": "camtasia.sh",
-      "tccutil": ["Camera", "Microphone", "ScreenCapture", "All"]
+      "tccutil": [
+        "Camera",
+        "Microphone",
+        "ScreenCapture",
+        "All"
+      ]
     },
     {
       "packageName": "me.damir.dropover-mac",
@@ -534,7 +575,12 @@
       "packageName": "com.mac.utility.screen.recorder",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "OmniRecorder",
-      "tccutil": ["All", "Camera", "Microphone", "ScreenCapture"]
+      "tccutil": [
+        "All",
+        "Camera",
+        "Microphone",
+        "ScreenCapture"
+      ]
     },
     {
       "packageName": "com.mac.utility.media.player",
@@ -682,14 +728,24 @@
       "injectFile": "Paste",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "tccutil": ["All", "Camera", "Microphone", "ScreenCapture"]
+      "tccutil": [
+        "All",
+        "Camera",
+        "Microphone",
+        "ScreenCapture"
+      ]
     },
     {
       "packageName": "cn.better365.ishot",
       "injectFile": "PTHotKey.framework/Versions/A/PTHotKey",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "tccutil": ["All", "Camera", "Microphone", "ScreenCapture"]
+      "tccutil": [
+        "All",
+        "Camera",
+        "Microphone",
+        "ScreenCapture"
+      ]
     },
     {
       "packageName": "com.drbuho.BuhoCleaner",
@@ -699,7 +755,9 @@
       "deepSignApp": true,
       "entitlements": "signkeep.xml",
       "extraShell": "buhoCleanerAgent.sh",
-      "tccutil": ["All"]
+      "tccutil": [
+        "All"
+      ]
     },
     {
       "packageName": "org.qcad",
@@ -741,7 +799,9 @@
       "bridgeFile": "/Contents/MacOS/",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "tccutil": ["All"]
+      "tccutil": [
+        "All"
+      ]
     },
     {
       "packageName": "com.zeroonetwenty.BlueHarvest5",
@@ -780,7 +840,9 @@
       "bridgeFile": "/Contents/MacOS/",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "tccutil": ["All"]
+      "tccutil": [
+        "All"
+      ]
     },
     {
       "packageName": "com.setapp.DesktopClient",
@@ -1059,7 +1121,9 @@
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
       "extraShell": "aldenteAgent.sh",
-      "tccutil": ["All"]
+      "tccutil": [
+        "All"
+      ]
     }
   ]
 }

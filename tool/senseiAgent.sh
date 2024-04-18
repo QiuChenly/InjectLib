@@ -1,8 +1,7 @@
 tccutil reset All org.cindori.Sensei
 helper="/Applications/Sensei.app/Contents/Library/LaunchServices/org.cindori.SenseiHelper"
 backup="${helper}_backup"
-if [ -e "$backup" ];
-then
+if [ -e "$backup" ]; then
   echo "检测到helper备份文件存在，可能是二次注入，删除已注入的helper"
   rm "$helper"
   cp "$backup" "$helper"
@@ -12,7 +11,7 @@ else
 fi
 echo "准备自动计算Helper偏移参数..."
 cp ./tool/sensei_x.sh ./tool/sensei.sh
-chmod +x ./tool/QAQ_GenshineImpactStarter
-./tool/QAQ_GenshineImpactStarter sensei
+chmod +x ./tool/GenShineImpactStarter
+./tool/GenShineImpactStarter sensei
 sh ./tool/sensei.sh
 rm ./tool/sensei.sh
