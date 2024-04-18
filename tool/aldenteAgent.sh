@@ -1,7 +1,6 @@
 helper="/Applications/AlDente.app/Contents/Library/LaunchServices/com.apphousekitchen.aldente-pro.helper"
 backup="${helper}_backup"
-if [ -e "$backup" ];
-then
+if [ -e "$backup" ]; then
   echo "检测到helper备份文件存在，可能是二次注入，删除已注入的helper"
   rm "$helper"
   cp "$backup" "$helper"
@@ -11,7 +10,7 @@ else
 fi
 echo "准备自动计算Helper偏移参数..."
 cp ./tool/aldente_x.sh ./tool/aldente.sh
-chmod +x ./tool/QAQ_GenshineImpactStarter
-./tool/QAQ_GenshineImpactStarter aldente
+chmod +x ./tool/GenShineImpactStarter
+./tool/GenShineImpactStarter aldente
 sh ./tool/aldente.sh
 rm ./tool/aldente.sh

@@ -1,10 +1,9 @@
-
 echo "准备自动计算Helper偏移参数..."
 
 cp ./tool/cmm_o.sh ./tool/cmm.sh
 
-chmod +x ./tool/QAQ_GenshineImpactStarter
+chmod +x ./tool/GenShineImpactStarter
 
-./tool/QAQ_GenshineImpactStarter cmmx
+./tool/GenShineImpactStarter cmmx
 
 sh ./tool/cmm.sh

@@ -6,7 +6,6 @@ import shutil
 from pathlib import Path
 import time
 
-
 def read_input(prompt):
     return input(prompt).strip().lower()
 
