@@ -248,13 +248,19 @@ def main():
 
             if need_copy_to_app_dir:
                 source_dylib = f"{current.parent}/tool/91QiuChenly.dylib"
-                if app.get("forQiuChenly"):
+
+                isDevHome = os.getenv("InjectLibDev")
+                if isDevHome is not None:
                     # 开发者自己的prebuild库路径 直接在.zshrc设置环境变量这里就可以读取到。
                     # export InjectLibDev="自己的路径/91QiuChenly.dylib" # 要设置全路径哦
-                    source_dylib = os.getenv("InjectLibDev")
+                    source_dylib = isDevHome
                 destination_dylib = f"'{app_base_locate}{bridge_file}91QiuChenly.dylib'"
-                subprocess.run(f"cp {source_dylib} {destination_dylib}", shell=True)
-                # shutil.copy(source_dylib, destination_dylib)
+
+                subprocess.run(
+                    f"{'ln -f -s' if isDevHome is not None  else 'cp'} {source_dylib} {destination_dylib}",
+                    shell=True,
+                )
+
                 insert_command = rf"sudo cp '{dest}' /tmp/app && sudo {current.parent}/tool/optool install -p {destination_dylib} -t /tmp/app --resign && sudo cp /tmp/app '{dest}'"
                 sh = (
                     insert_command

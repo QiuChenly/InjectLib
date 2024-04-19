@@ -385,8 +385,7 @@
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac4.Agent",
       "tccutil": [
-        "All",
-        "Bluetooth"
+        "All"
       ]
     },
     {
