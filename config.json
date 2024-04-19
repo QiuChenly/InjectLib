@@ -20,7 +20,8 @@
     "autoHandleSetapp": "自动根据 CFBundleIdentifier 找出App的appBaseLocate，并拼接/Contents/MacOS/为bridgeFile，且默认找出bridgeFile下的对应二进制程序，不太完善，仅setapp测试通过",
     "useOptool": "使用新的注入工具",
     "autoHandleHelper": "是否自动处理helper文件",
-    "helperFile": "helper文件的路径，例如/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper，可以传数组"
+    "helperFile": "helper文件的路径，例如/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper，可以传数组",
+    "forQiuChenly": "专门为QiuChenly特供的App，看到这条的你硬改也没用。"
   },
   "basePublicConfig": {
     "bridgeFile": "/Contents/Frameworks/"
@@ -38,7 +39,8 @@
       "helperFile": "/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper",
       "tccutil": [
         "All"
-      ]
+      ],
+      "forQiuChenly": true
     },
     {
       "packageName": "com.globaldelight.Boom3D-setapp",
