@@ -67,7 +67,8 @@
       "packageName": "com.heavylightapps.lasso",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Lasso",
-      "needCopyToAppDir": true
+      "needCopyToAppDir": true,
+      "forQiuChenly": true
     },
     {
       "packageName": "com.proxyman.NSProxy-setapp",
@@ -206,7 +207,6 @@
     {
       "packageName": "com.pixelmatorteam.pixelmator.touch.x.photo",
       "needCopyToAppDir": true,
-      "deepSignApp": true,
       "injectFile": "PXMPhotoKitUI.framework/Versions/A/PXMPhotoKitUI"
     },
     {
