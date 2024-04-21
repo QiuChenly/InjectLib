@@ -68,7 +68,13 @@ def check_compatible(
     return False
 
 
-def handle_helper(app_base, target_helper):
+def handle_helper(app_base, target_helper, component_apps):
+    """增强Helper
+
+    Args:
+        app_base (dict): app信息
+        target_helper (string): helper文件路径
+    """
     subprocess.run("chmod +x ./tool/GenShineImpactStarter", shell=True)
     subprocess.run(f"./tool/GenShineImpactStarter '{target_helper}'", shell=True)
     subprocess.run(
@@ -76,26 +82,32 @@ def handle_helper(app_base, target_helper):
         shell=True,
     )
     helper_name = target_helper.split("/")[-1]
-    subprocess.run(
-        f"sudo /bin/launchctl unload /Library/LaunchDaemons/{helper_name}.plist",
-        shell=True,
-    )
-    subprocess.run(f"sudo /usr/bin/killall -u root -9 {helper_name}", shell=True)
-    subprocess.run(
-        f"sudo /bin/rm /Library/LaunchDaemons/{helper_name}.plist", shell=True
-    )
-    subprocess.run(
-        f"sudo /bin/rm /Library/PrivilegedHelperTools/{helper_name}", shell=True
-    )
+
+    # 检查是否存在
+    target = f"/Library/LaunchDaemons/{helper_name}.plist"
+    if os.path.exists(target):
+        subprocess.run(
+            f"sudo /bin/launchctl unload {target}",
+            shell=True,
+        )
+        subprocess.run(f"sudo /usr/bin/killall -u root -9 {helper_name}", shell=True)
+        subprocess.run(f"sudo /bin/rm {target}", shell=True)
+        subprocess.run(
+            f"sudo /bin/rm /Library/PrivilegedHelperTools/{helper_name}", shell=True
+        )
     subprocess.run(f"sudo xattr -c '{app_base}'", shell=True)
-    src_info = f"{app_base}/Contents/Info.plist"
-    command = [
-        "/usr/libexec/PlistBuddy",
-        "-c",
-        f"Set :SMPrivilegedExecutables:{helper_name} 'identifier \\\"{helper_name}\\\"'",
-        src_info,
-    ]
-    subprocess.run(command, text=True)
+
+    src_info = [f"{app_base}/Contents/Info.plist"]
+    src_info.extend([f"{app_base}{i}/Contents/Info.plist" for i in component_apps])
+
+    for i in src_info:
+        command = [
+            "/usr/libexec/PlistBuddy",
+            "-c",
+            f"Set :SMPrivilegedExecutables:{helper_name} 'identifier \\\"{helper_name}\\\"'",
+            i,
+        ]
+        subprocess.run(command, text=True)
     subprocess.run(
         f'/usr/bin/codesign -f -s - --all-architectures --deep "{target_helper}"',
         shell=True,
@@ -103,6 +115,22 @@ def handle_helper(app_base, target_helper):
     subprocess.run(
         f'/usr/bin/codesign -f -s - --all-architectures --deep "{app_base}"', shell=True
     )
+
+
+def getAppMainExecutable(app_base):
+    # 读取Contents/Info.plist中的CFBundleExecutable
+    with open(f"{app_base}/Contents/Info.plist", "rb") as f:
+        app_info = plistlib.load(f)
+        return app_info["CFBundleExecutable"]
+
+
+# 获取BundleID
+def getBundleID(
+    app_base,
+):
+    with open(f"{app_base}/Contents/Info.plist", "rb") as f:
+        app_info = plistlib.load(f)
+        return app_info["CFBundleIdentifier"]
 
 
 def main():
@@ -162,6 +190,7 @@ def main():
             auto_handle_setapp = app.get("autoHandleSetapp")
             auto_handle_helper = app.get("autoHandleHelper")
             helper_file = app.get("helperFile")
+            componentApp = app.get("componentApp")
 
             local_app = [
                 local_app
@@ -242,17 +271,19 @@ def main():
 
             sh = (
                 f"sudo {current.parent}/tool/optool install -p '{current.parent}/tool/91QiuChenly.dylib' -t '{dest}'"
-                if useOptool is not None
+                if useOptool is None or useOptool is True
                 else f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/91QiuChenly.dylib' '{backup}' '{dest}'"
             )
 
             if need_copy_to_app_dir:
                 source_dylib = f"{current.parent}/tool/91QiuChenly.dylib"
-
                 isDevHome = os.getenv("InjectLibDev")
+                # 打印isDevHome
+                print(isDevHome, "isDevHome")
                 if isDevHome is not None:
                     # 开发者自己的prebuild库路径 直接在.zshrc设置环境变量这里就可以读取到。
-                    # export InjectLibDev="自己的路径/91QiuChenly.dylib" # 要设置全路径哦
+                    # export InjectLibDev="自己的路径/91QiuChenly.dylib"
+                    # 要设置全路径哦 并且不要用sudo python3 main.py 启动 否则读不到你的环境变量
                     source_dylib = isDevHome
                 destination_dylib = f"'{app_base_locate}{bridge_file}91QiuChenly.dylib'"
 
@@ -261,14 +292,24 @@ def main():
                     shell=True,
                 )
 
-                insert_command = rf"sudo cp '{dest}' /tmp/app && sudo {current.parent}/tool/optool install -p {destination_dylib} -t /tmp/app --resign && sudo cp /tmp/app '{dest}'"
-                sh = (
-                    insert_command
-                    if useOptool
-                    else rf"sudo {current.parent}/tool/insert_dylib {destination_dylib} '{backup}' '{dest}'"
-                )
+                sh = []
+                if componentApp:
+                    desireApp = [dest]
+                    desireApp.extend(
+                        [
+                            f"{app_base_locate}{i}/Contents/MacOS/{getAppMainExecutable(app_base_locate+i)}"
+                            for i in componentApp
+                        ]
+                    )
+                    for it in desireApp:
+                        if useOptool is None or useOptool is True:
+                            bsh = rf"sudo cp '{it}' /tmp/app && sudo {current.parent}/tool/optool install -p {destination_dylib} -t /tmp/app --resign && sudo cp /tmp/app '{it}'"
+                        else:
+                            bsh = rf"sudo {current.parent}/tool/insert_dylib {destination_dylib} '{backup}' '{it}'"
+                        sh.append(bsh)
 
-            subprocess.run(sh, shell=True)
+            for shs in sh:
+                subprocess.run(shs, shell=True)
 
             sign_prefix = "codesign -f -s - --timestamp=none --all-architectures"
 
@@ -298,34 +339,28 @@ def main():
                 subprocess.run(f"{sign_prefix} '{app_base_locate}'", shell=True)
 
             subprocess.run(f"sudo xattr -cr '{dest}'", shell=True)
-
-            if auto_handle_helper:
-                # print("自动处理Helper中...")
-                if helper_file is not None:
-                    if isinstance(helper_file, list):
-                        for helper in helper_file:
-                            target_helper = f"{app_base_locate}{helper}"
-                            if os.path.exists(target_helper):
-                                handle_helper(app_base_locate, target_helper)
-                    else:
-                        target_helper = f"{app_base_locate}{helper_file}"
-                        if os.path.exists(target_helper):
-                            handle_helper(app_base_locate, target_helper)
-
-            if tccutil is not None:
-                if isinstance(tccutil, list):
-                    for service in tccutil:
-                        # print(f"处理 tccutil reset {service}")
-                        subprocess.run(
-                            f"tccutil reset {service} {local_app['CFBundleIdentifier']}",
-                            shell=True,
+            if auto_handle_helper and helper_file:
+                if isinstance(helper_file, list):
+                    for helper in helper_file:
+                        handle_helper(
+                            app_base_locate, f"{app_base_locate}{helper}", componentApp
                         )
                 else:
-                    # print("处理 tccutil reset All")
-                    subprocess.run(
-                        f"tccutil reset All {local_app['CFBundleIdentifier']}",
-                        shell=True,
+                    handle_helper(
+                        app_base_locate, f"{app_base_locate}{helper_file}", componentApp
                     )
+
+            if tccutil := tccutil:
+                # 如果componentApp不为空，则创建一个数组
+                ids = [local_app["CFBundleIdentifier"]]
+                ids.extend([getBundleID(app_base_locate + i) for i in componentApp])
+
+                for id in ids:
+                    if isinstance(tccutil, str):
+                        subprocess.run(f"tccutil reset {tccutil} {id}", shell=True)
+                    else:
+                        for i in tccutil:
+                            subprocess.run(f"tccutil reset {i} {id}", shell=True)
 
             print("App处理完成。")
     except KeyboardInterrupt:
