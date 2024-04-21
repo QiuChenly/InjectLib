@@ -90,24 +90,14 @@
       "injectFile": "Announcements.framework/Versions/A/Announcements",
       "needCopyToAppDir": true,
       "noSignTarget": true,
-      "useOptool": true,
       "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent",
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": [
-        "com.macpaw.CleanMyMac-setapp.Menu"
+      "helperFile": [
+        "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent",
+        "/Contents/Library/LoginItems/CleanMyMac Menu.app/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent"
       ],
-      "appBaseLocate": "/Applications/Setapp/CleanMyMac X.app/Contents/Library/LoginItems/CleanMyMac Menu.app",
-      "injectFile": "CMMNotifications.framework/Versions/A/CMMNotifications",
-      "needCopyToAppDir": true,
-      "noSignTarget": true,
-      "useOptool": true,
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent",
+      "componentApp": [
+        "/Contents/Library/LoginItems/CleanMyMac Menu.app"
+      ],
       "tccutil": [
         "All"
       ]
