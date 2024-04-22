@@ -256,6 +256,10 @@ def main():
             subprocess.run(["sudo", "chmod", "-R", "777", app_base_locate])
             subprocess.run(["sudo", "xattr", "-cr", app_base_locate])
 
+            subprocess.run(
+                ["sudo", "pkill", "-f", getAppMainExecutable(app_base_locate)]
+            )
+
             # dest = os.path.join(app_base_locate, bridge_file, inject_file)
             dest = rf"{app_base_locate}{bridge_file}{inject_file}"
             backup = rf"{dest}_backup"
