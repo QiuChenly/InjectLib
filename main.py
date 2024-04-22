@@ -98,7 +98,8 @@ def handle_helper(app_base, target_helper, component_apps):
     subprocess.run(f"sudo xattr -c '{app_base}'", shell=True)
 
     src_info = [f"{app_base}/Contents/Info.plist"]
-    src_info.extend([f"{app_base}{i}/Contents/Info.plist" for i in component_apps])
+    if isinstance(component_apps, list):
+        src_info.extend([f"{app_base}{i}/Contents/Info.plist" for i in component_apps])
 
     for i in src_info:
         command = [
@@ -349,7 +350,8 @@ def main():
             if tccutil := tccutil:
                 # 如果componentApp不为空，则创建一个数组
                 ids = [local_app["CFBundleIdentifier"]]
-                ids.extend([getBundleID(app_base_locate + i) for i in componentApp])
+                if isinstance(componentApp, list):
+                    ids.extend([getBundleID(app_base_locate + i) for i in componentApp])
 
                 for id in ids:
                     if isinstance(tccutil, str):
