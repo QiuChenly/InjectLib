@@ -10,6 +10,7 @@ def decompressAsar():
 def pack2asar():
     cmd = 'asar p /Applications/Termius\ Beta.app/Contents/Resources/app /Applications/Termius\ Beta.app/Contents/Resources/app.asar --unpack-dir "{node_modules/@termius,out}"'
     os.system(cmd)
+    os.system("xattr -cr /Applications/Termius\ Beta.app")
 
 
 files: list[str] = []
@@ -29,8 +30,16 @@ def main():
     with open("lang.txt") as lang:
         cnLang = [ll for ll in lang.read().splitlines() if len(ll) > 0]
 
-    prefixLink = "/Applications/Termius Beta.app/Contents/Resources/app/js"
-    lstFile = [prefixLink + "/" + ls for ls in os.listdir(prefixLink)]
+    prefixLink = [
+        "/Applications/Termius Beta.app/Contents/Resources/app/background-process/assets",
+        "/Applications/Termius Beta.app/Contents/Resources/app/ui-process/assets",
+        "/Applications/Termius Beta.app/Contents/Resources/app/main-process",
+    ]
+
+    lstFile = []
+    for li in prefixLink:
+        lstFile1 = [li + "/" + ls for ls in os.listdir(li) if ls.endswith(".js")]
+        lstFile.extend(lstFile1)
 
     for file in lstFile:
         if path.exists(file):
@@ -60,7 +69,9 @@ def main():
     pack2asar()
 
 
-if not os.path.exists("/Applications/Termius\ Beta.app/Contents/Resources/app.asar_副本"):
+if not os.path.exists(
+    "/Applications/Termius\ Beta.app/Contents/Resources/app.asar_副本"
+):
     os.system(
         "cp /Applications/Termius\ Beta.app/Contents/Resources/app.asar /Applications/Termius\ Beta.app/Contents/Resources/app.asar_副本"
     )

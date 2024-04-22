@@ -229,6 +229,8 @@ label:"Name"|label:"名称"
 {role:"cut"}|{label:"剪切",role:"cut"}
 {role:"minimize"}|{label:"最小化",role:"minimize"}
 
+"Find a host or ssh user@hostname..."|"秋城落叶破解汉化. 你可以查找一个已知主机或ssh user@hostname直接登录一个主机开始..."
+
 
 "We’ve credited your account with a free 14 day trial of Termius Premium. Get Termius on iOS or Android, and keep everything synced automatically."|"我们已为您的帐户提供Termius 高级版的14天免费试用。 在iOS或Android上获取Termius，并自动保持所有同步。"
 `\n      An item named "${A}" already exists in this location. \n      Do you want to replace it with the one you are moving?\n    `|`\n     此目录已存在名为 "${A}" 的项目. \n      您确定要用您移动的覆盖它吗?\n    `
@@ -244,7 +246,6 @@ label:"Name"|label:"名称"
 "Affects this device only, saved credentials will not be synced"|"仅影响此设备，保存的凭据将不会同步"
 "Create an account to unlock all Premium features for 14 days."|"创建一个账户解锁所有高级版特性14天。"
 "Connecting to a host requires adding one to Termius first."|"连接到主机需要先要将其添加到向Termius。"
-"Find a host or ssh user@hostname..."|"秋城落叶破解汉化. 你可以查找一个已知主机或ssh user@hostname直接登录一个主机开始..."
 "Enable notification bell (backend flag won't change)"|"启用通知铃声（后端标志不会更改）"
 "Manage Subscription":"Learn more about Premium"|"管理订阅":"了解更多关于高级版"
 "Manage Billing Information":"Manage Subscription"|"管理帐单信息":"管理订阅"
@@ -290,6 +291,9 @@ has been downloaded and will be automatically installed on exit`|退出时将会
 "with port forwarding rules."|"通过端口转发规则."
 "Edit snippet":"Add snippet"|"编辑代码片段":"添加代码片段"
 "To create a port forwarding rule"|"在创建端口转发规则之前"
+
+
+
 "Sync keys and identities"|"同步密钥和身份凭据"
 " at the end of trial period."|"，在试用期结束后"
 "Enable new virtualized list"|"启用新的虚拟列表"
@@ -491,6 +495,8 @@ label:"Tags"|label:"标记"
 "Enter IP or Hostname..."|"输入IP或主机名"
 "IP or Hostname"|"IP或主机名"
 "Parent Group"|"父组"
+
+
 "Agent Forwarding"|"代理转发"
 "Startup Command"|"启动命令"
 "Jump Hosts"|"跳转主机"
@@ -704,7 +710,6 @@ title:"Add most common commands for"|title:"添加最常见的命令"
 "Start over"|"重新开始"
 "Copy logs"|"复制日志"
 "Hide logs":"Show logs"|"隐藏日志":"显示日志"
-"Share this ",|"分享这个","主机地址"))},temp = {"删除字段":JSON.stringify(JSON.stringify(
 "SSH on"|"SSH 在"
 " ","port"|" ","端口"
 "Telnet on"|"Telnet 在"
@@ -722,6 +727,7 @@ Leave your feedback"|留下你的反馈"
 "New Forwarding"|"新建端口转发"
 ,"Terminal")|,"终端")
 " snippets"|" 个片段"
+
 title:"Add most common commands for"|title:"开始为以下角色添加更多常用的命令"
 title:"Ask AI to write a command for you"|title:"询问AI并让它帮你编写命令"
 "You ","don't"," have file type associations yet"|"你现在 ","还没有"," 关联的文件类型"

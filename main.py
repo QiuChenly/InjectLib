@@ -153,6 +153,9 @@ def main():
         print("Original Design By QiuChenly(github.com/qiuchenly), Py ver. by X1a0He")
         print("注入时请根据提示输入'y' 或者按下回车键跳过这一项。")
 
+        # QiuChenlyTeam 特殊变量
+        isDevHome = os.getenv("InjectLibDev")
+
         start_time = time.time()
         install_apps = scan_apps()
         end_time = time.time()
@@ -250,7 +253,8 @@ def main():
                 continue
             print(f"开始注入App: {package_name}")
 
-            subprocess.run(["xattr", "-cr", app_base_locate])
+            subprocess.run(["sudo", "chmod", "-R", "777", app_base_locate])
+            subprocess.run(["sudo", "xattr", "-cr", app_base_locate])
 
             # dest = os.path.join(app_base_locate, bridge_file, inject_file)
             dest = rf"{app_base_locate}{bridge_file}{inject_file}"
@@ -276,7 +280,6 @@ def main():
 
             if need_copy_to_app_dir:
                 source_dylib = f"{current.parent}/tool/91QiuChenly.dylib"
-                isDevHome = os.getenv("InjectLibDev")
                 if isDevHome is not None:
                     # 开发者自己的prebuild库路径 直接在.zshrc设置环境变量这里就可以读取到。
                     # export InjectLibDev="自己的路径/91QiuChenly.dylib"
