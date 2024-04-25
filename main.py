@@ -312,8 +312,10 @@ def main():
                         bsh = rf"sudo {current.parent}/tool/insert_dylib {destination_dylib} '{backup}' '{it}'"
                     sh.append(bsh)
 
-            for shs in sh:
-                subprocess.run(shs, shell=True)
+            if isinstance(sh, list):
+                [subprocess.run(command, shell=True) for command in sh]
+            else:
+                subprocess.run(sh, shell=True)
 
             sign_prefix = "codesign -f -s - --timestamp=none --all-architectures"
 
