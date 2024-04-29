@@ -413,15 +413,15 @@
     {
       "packageName": "com.adobe.Photoshop",
       "appBaseLocate": "/Applications/Adobe Photoshop 2024/Adobe Photoshop 2024.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Adobe Photoshop 2024",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
       "deepSignApp": true
     },
     {
       "packageName": "com.adobe.illustrator",
       "appBaseLocate": "/Applications/Adobe Illustrator 2024/Adobe Illustrator.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Adobe Illustrator",
       "needCopyToAppDir": true,
       "noDeep": true
     },

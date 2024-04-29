@@ -251,6 +251,36 @@ def main():
             action = read_input("").strip().lower()
             if action != "y":
                 continue
+
+            # 检查是否为com.adobe开头
+            if local_app["CFBundleIdentifier"].startswith("com.adobe"):
+                # 检查是否存在/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js
+                if not os.path.exists(
+                    "/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js"
+                ):
+                    # 替换文件中的key:"getEntitlementStatus",value:function(e){为key:"getEntitlementStatus",value:function(e){return "Entitled Installed"
+                    with open(
+                        "/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js",
+                        "r",
+                        encoding="utf-8",
+                    ) as f:
+                        content = f.read()
+                    # 判断是否写过了
+                    if (
+                        'key:"getEntitlementStatus",value:function(e){return "Entitled Installed"'
+                        not in content
+                    ):
+                        content = content.replace(
+                            'key:"getEntitlementStatus",value:function(e){',
+                            'key:"getEntitlementStatus",value:function(e){return "Entitled Installed"',
+                        )
+                        with open(
+                            "/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js",
+                            "w",
+                            encoding="utf-8",
+                        ) as f:
+                            f.write(content)
+
             print(f"开始注入App: {package_name}")
 
             subprocess.run(["sudo", "chmod", "-R", "777", app_base_locate])
