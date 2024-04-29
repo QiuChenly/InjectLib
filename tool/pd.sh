@@ -5,6 +5,20 @@ BASE_PATH=$(
   pwd
 )
 
+sudo cp 'tool/91QiuChenly.dylib' '/Applications/Parallels Desktop.app/Contents/MacOS/Parallels Service.app/Contents/MacOS/91QiuChenly.dylib'
+
+ori="/Applications/Parallels Desktop.app/Contents/MacOS/Parallels Service.app/Contents/MacOS/prl_disp_service"
+backup="/Applications/Parallels Desktop.app/Contents/MacOS/Parallels Service.app/Contents/MacOS/prl_disp_service_backup"
+
+# 检查备份是否存在
+if [ -f "${backup}" ]; then
+  cp "${backup}" "${ori}"
+fi
+
+cp -f "${ori}" "${backup}"
+
+tool/insert_dylib '/Applications/Parallels Desktop.app/Contents/MacOS/Parallels Service.app/Contents/MacOS/91QiuChenly.dylib' "${backup}" "${ori}"
+
 COLOR_INFO='\033[0;34m'
 COLOR_ERR='\033[0;35m'
 NOCOLOR='\033[0m'

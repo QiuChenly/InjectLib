@@ -195,6 +195,7 @@ def main():
             auto_handle_helper = app.get("autoHandleHelper")
             helper_file = app.get("helperFile")
             componentApp = app.get("componentApp")
+            onlysh = app.get("onlysh")
 
             local_app = [
                 local_app
@@ -251,6 +252,12 @@ def main():
             action = read_input("").strip().lower()
             if action != "y":
                 continue
+            
+            if onlysh:
+                subprocess.run(
+                    f"sudo sh tool/{extra_shell}", shell=True
+                )
+                continue
 
             # 检查是否为com.adobe开头
             if local_app["CFBundleIdentifier"].startswith("com.adobe"):
@@ -299,9 +306,9 @@ def main():
                 action = read_input("").strip().lower()
                 if action == "n":
                     os.remove(backup)
-                    shutil.copy(dest, backup)
+                    subprocess.run(f"sudo cp '{dest}' '{backup}'", shell=True)
             else:
-                shutil.copy(dest, backup)
+                subprocess.run(f"sudo cp '{dest}' '{backup}'", shell=True)
 
             current = Path(__file__).resolve()
 
@@ -337,7 +344,7 @@ def main():
                     )
                 for it in desireApp:
                     if useOptool is None or useOptool is True:
-                        bsh = rf"sudo cp '{it}' /tmp/app && sudo {current.parent}/tool/optool install -p {destination_dylib} -t /tmp/app --resign && sudo cp /tmp/app '{it}'"
+                        bsh = rf"sudo cp '{it}' /tmp/app && sudo {current.parent}/tool/optool install -p {destination_dylib} -t /tmp/app {"--resign" if not no_sign_target else ''} && sudo cp /tmp/app '{it}'"
                     else:
                         bsh = rf"sudo {current.parent}/tool/insert_dylib {destination_dylib} '{backup}' '{it}'"
                     sh.append(bsh)

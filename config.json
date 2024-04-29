@@ -180,15 +180,9 @@
       "bridgeFile": "/Contents/MacOS/Parallels Service.app/Contents/MacOS/",
       "injectFile": "prl_disp_service",
       "extraShell": "pd.sh",
-      "noDeep": true,
-      "supportSubVersion": [
-        "53606",
-        "53488",
-        "53614",
-        "53621",
-        "54570",
-        "54729",
-        "54734"
+      "onlysh": true,
+      "supportVersion": [
+        "19.1.0"
       ]
     },
     {
