@@ -38,7 +38,7 @@ Twitter: https://twitter.com/QiuChenly
 
 點擊圖片進入新世界.
 
-[![启动](https://i2.hdslb.com/bfs/archive/966fe6fe2c1329919bb8972d69fb8c09d17047cc.jpg@100w_100h_1c.png)](https://ipfs.lanyundev.com/ipfs/bafybeigpm6ocaba2wlgi7zgio3lu7hzqxgrviiicuwc5xbddlo77leabcy/6e51fccaeb5343bda366d42e68c3c705.MP4)
+[![启动](https://i2.hdslb.com/bfs/archive/966fe6fe2c1329919bb8972d69fb8c09d17047cc.jpg@100w_100h_1c.png)](imgs/bengbuzhule.mp4)
 
 # 操作系统要求 & 代码编译环境要求
 
