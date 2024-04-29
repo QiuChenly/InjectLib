@@ -1,5 +1,10 @@
-=await this.api.bulkAccount()|={account:{authorized_features:{show_trial_section:false,show_subscription_section:true,show_github_account_section:false},pro_mode:true,need_to_update_subscription:false,current_period:{from:"2023-01-01T00:00:00",until:"2099-01-01T00:00:00"},plan_type:"Premium",user_type:"Premium",expired_screen_type:null},student:null,trial:null,personal_subscription:{now:"2023-11-09T02:26:33",status:"SUCCESS",platform:"stripe",current_period:{from:"2023-01-01T00:00:00",until:"2099-01-01T00:00:00"},revokable:true,refunded:false,cancelable:true,reactivatable:false,currency:"usd",created_at:"2023-01-01T00:00:00",updated_at:"2023-11-09T02:26:33",valid_until:"2099-01-01T00:00:00",auto_renew:true,price:360,verbose_plan_name:"Termius Business Monthly",plan_type:"TEAM_BUSINESS",is_expired:false},access_objects:[{period:{start:"2023-01-01T00:00:00",end:"2099-01-01T00:00:00"},title:"Business",}]}
-await this.shouldRequestPasswordToEnableSharing(e)|false
+regex:async shouldRequestPasswordToEnableSharing.*?return.*?}|async shouldRequestPasswordToEnableSharing(e){return false}
+regex:didUserSeeSuggestionToTryPremium:.*?,set|didUserSeeSuggestionToTryPremium:()=>{return !0},set
+regex:return \w.user.account.pro_mode|return !0
+X=W;|X=()=>{};
+regex:=\w=>\w>=2|=()=>{return !1}
+regex:,n.push\(.*?path:"/account"}\),|,
+let r="/account"|let r="/terminal"
 
 title:"Terminal"|title:"终端"
 title:"Shortcuts"|title:"快捷键"
