@@ -1,5 +1,6 @@
 import os
-from os import path, read
+import re
+from os import path
 
 
 def decompressAsar():
@@ -13,19 +14,23 @@ def pack2asar():
     os.system("xattr -cr /Applications/Termius\ Beta.app")
 
 
-files: list[str] = []
-
 files_cache: dict[str:str] = {}
 
 
 def main():
+    if not os.path.exists("/Applications/Termius\ Beta.app/Contents/Resources/app.asar_副本"):
+        os.system(
+            "cp /Applications/Termius\ Beta.app/Contents/Resources/app.asar /Applications/Termius\ Beta.app/Contents/Resources/app.asar_副本")
+    else:
+        os.system(
+            "cp /Applications/Termius\ Beta.app/Contents/Resources/app.asar_副本 /Applications/Termius\ Beta.app/Contents/Resources/app.asar")
+
+    os.system("rm -rf /Applications/Termius\ Beta.app/Contents/Resources/app")
+    # 防止自动更新
+    os.system("rm -rf /Applications/Termius\ Beta.app/Contents/Resources/app-update.yml")
+
     if not path.exists("/Applications/Termius Beta.app/Contents/Resources/app"):
         decompressAsar()
-
-    # read chinese
-    bg_progress = ""
-    ui_progress = ""
-    cnLang: list[str] = []
 
     with open("lang.txt") as lang:
         cnLang = [ll for ll in lang.read().splitlines() if len(ll) > 0]
@@ -45,39 +50,24 @@ def main():
         if path.exists(file):
             with open(file) as lang:
                 files_cache[file] = lang.read()
-
-    for lang in cnLang:
-        mKey, mValue = lang.split("|")
-
-        lastFile = ""
-        for cache in files_cache:
-            fileContent = files_cache[cache]
-            inx = fileContent.find(mKey)
-            if inx == -1:
-                if lastFile != mKey:
-                    lastFile = mKey
-                    print("找不到", cache, mKey, mValue)
-                continue
+    for cache in files_cache:
+        print('dont worry')
+        file_content = files_cache[cache]
+        for lang in cnLang:
+            old_value, new_value = lang.split("|")
+            if old_value.startswith("regex:"):
+                old_value = re.compile(old_value[6:])
+                regex = re.compile(old_value)
+                file_content = regex.sub(new_value, file_content)
             else:
-                print("替换了", cache, mKey, mValue)
-                fileContent = fileContent.replace(mKey, mValue)
-                files_cache[cache] = fileContent
+                file_content = file_content.replace(old_value, new_value)
+        files_cache[cache] = file_content
 
     for fileOut in files_cache:
         with open(fileOut, "w", encoding="utf-8") as u:
             u.write(files_cache[fileOut])
     pack2asar()
+    print("done")
 
 
-if not os.path.exists(
-    "/Applications/Termius\ Beta.app/Contents/Resources/app.asar_副本"
-):
-    os.system(
-        "cp /Applications/Termius\ Beta.app/Contents/Resources/app.asar /Applications/Termius\ Beta.app/Contents/Resources/app.asar_副本"
-    )
-else:
-    os.system(
-        "cp /Applications/Termius\ Beta.app/Contents/Resources/app.asar_副本 /Applications/Termius\ Beta.app/Contents/Resources/app.asar"
-    )
-os.system("rm -rf /Applications/Termius\ Beta.app/Contents/Resources/app")
 main()
