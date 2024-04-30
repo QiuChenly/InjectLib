@@ -4,30 +4,30 @@ from os import path
 
 
 def decompressAsar():
-    cmd = "asar extract /Applications/Termius\ Beta.app/Contents/Resources/app.asar /Applications/Termius\ Beta.app/Contents/Resources/app"
+    cmd = "asar extract /Applications/Termius\\ Beta.app/Contents/Resources/app.asar /Applications/Termius\\ Beta.app/Contents/Resources/app"
     os.system(cmd)
 
 
 def pack2asar():
-    cmd = 'asar p /Applications/Termius\ Beta.app/Contents/Resources/app /Applications/Termius\ Beta.app/Contents/Resources/app.asar --unpack-dir "{node_modules/@termius,out}"'
+    cmd = 'asar p /Applications/Termius\\ Beta.app/Contents/Resources/app /Applications/Termius\\ Beta.app/Contents/Resources/app.asar --unpack-dir "{node_modules/@termius,out}"'
     os.system(cmd)
-    os.system("xattr -cr /Applications/Termius\ Beta.app")
+    os.system("xattr -cr /Applications/Termius\\ Beta.app")
 
 
 files_cache: dict[str:str] = {}
 
 
 def main():
-    if not os.path.exists("/Applications/Termius\ Beta.app/Contents/Resources/app.asar_副本"):
+    if not os.path.exists("/Applications/Termius\\ Beta.app/Contents/Resources/app.asar_副本"):
         os.system(
-            "cp /Applications/Termius\ Beta.app/Contents/Resources/app.asar /Applications/Termius\ Beta.app/Contents/Resources/app.asar_副本")
+            "cp /Applications/Termius\\ Beta.app/Contents/Resources/app.asar /Applications/Termius\\ Beta.app/Contents/Resources/app.asar_副本")
     else:
         os.system(
-            "cp /Applications/Termius\ Beta.app/Contents/Resources/app.asar_副本 /Applications/Termius\ Beta.app/Contents/Resources/app.asar")
+            "cp /Applications/Termius\\ Beta.app/Contents/Resources/app.asar_副本 /Applications/Termius\\ Beta.app/Contents/Resources/app.asar")
 
-    os.system("rm -rf /Applications/Termius\ Beta.app/Contents/Resources/app")
+    os.system("rm -rf /Applications/Termius\\ Beta.app/Contents/Resources/app")
     # 防止自动更新
-    os.system("rm -rf /Applications/Termius\ Beta.app/Contents/Resources/app-update.yml")
+    os.system("rm -rf /Applications/Termius\\ Beta.app/Contents/Resources/app-update.yml")
 
     if not path.exists("/Applications/Termius Beta.app/Contents/Resources/app"):
         decompressAsar()
@@ -51,7 +51,7 @@ def main():
             with open(file) as lang:
                 files_cache[file] = lang.read()
     for cache in files_cache:
-        print('dont worry')
+        print(f"你好像很急，我知道你很急，但是你先别急, {cache}")
         file_content = files_cache[cache]
         for lang in cnLang:
             old_value, new_value = lang.split("|")
@@ -67,7 +67,7 @@ def main():
         with open(fileOut, "w", encoding="utf-8") as u:
             u.write(files_cache[fileOut])
     pack2asar()
-    print("done")
+    print("Done.")
 
 
 main()
