@@ -5,6 +5,10 @@ X=W;|X=()=>{};
 regex:=\w=>\w>=2|=()=>{return !1}
 regex:,n.push\(.*?path:"/account"}\),|,
 let r="/account"|let r="/terminal"
+api.termius.com|localhost
+sentry.io|localhost
+split.io|localhost
+mixpanel.com|localhost
 
 title:"Terminal"|title:"终端"
 title:"Shortcuts"|title:"快捷键"

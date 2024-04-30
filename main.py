@@ -344,7 +344,7 @@ def main():
                     )
                 for it in desireApp:
                     if useOptool is None or useOptool is True:
-                        bsh = rf"sudo cp '{it}' /tmp/app && sudo {current.parent}/tool/optool install -p {destination_dylib} -t /tmp/app {"--resign" if not no_sign_target else ''} && sudo cp /tmp/app '{it}'"
+                        bsh = rf"sudo cp '{it}' /tmp/app && sudo {current.parent}/tool/optool install -p {destination_dylib} -t /tmp/app {'--resign' if not no_sign_target else ''} && sudo cp /tmp/app '{it}'"
                     else:
                         bsh = rf"sudo {current.parent}/tool/insert_dylib {destination_dylib} '{backup}' '{it}'"
                     sh.append(bsh)
