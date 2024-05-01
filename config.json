@@ -1129,6 +1129,14 @@
       "tccutil": [
         "All"
       ]
+    },
+    {
+      "packageName": "com.mac.utility.media.hub",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "MediaCenter",
+      "tccutil": [
+        "All"
+      ]
     }
   ]
 }
