@@ -252,11 +252,9 @@ def main():
             action = read_input("").strip().lower()
             if action != "y":
                 continue
-            
+
             if onlysh:
-                subprocess.run(
-                    f"sudo sh tool/{extra_shell}", shell=True
-                )
+                subprocess.run(f"sudo sh tool/{extra_shell}", shell=True)
                 continue
 
             # 检查是否为com.adobe开头
@@ -321,15 +319,16 @@ def main():
 
             if need_copy_to_app_dir:
                 source_dylib = f"{current.parent}/tool/91QiuChenly.dylib"
-                if isDevHome is not None:
+                if isDevHome:
                     # 开发者自己的prebuild库路径 直接在.zshrc设置环境变量这里就可以读取到。
                     # export InjectLibDev="自己的路径/91QiuChenly.dylib"
                     # 要设置全路径哦 并且不要用sudo python3 main.py 启动 否则读不到你的环境变量
                     source_dylib = isDevHome
                 destination_dylib = f"'{app_base_locate}{bridge_file}91QiuChenly.dylib'"
 
+                command = "ln -f -s" if isDevHome else "cp"
                 subprocess.run(
-                    f"{'ln -f -s' if isDevHome is not None  else 'cp'} {source_dylib} {destination_dylib}",
+                    f"{command} {source_dylib} {destination_dylib}",
                     shell=True,
                 )
 
