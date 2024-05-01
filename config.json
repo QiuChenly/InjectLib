@@ -41,7 +41,7 @@
       "tccutil": [
         "All"
       ],
-      "forQiuChenly": true
+      "forQiuChenly": false
     },
     {
       "packageName": [
