@@ -353,7 +353,7 @@ def main():
             else:
                 subprocess.run(sh, shell=True)
 
-            sign_prefix = "codesign -f -s - --timestamp=none --all-architectures"
+            sign_prefix = "/usr/bin/codesign -f -s - --timestamp=none --all-architectures"
 
             if no_deep is None:
                 print("Need Deep Sign.")

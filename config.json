@@ -1134,6 +1134,7 @@
       "packageName": "com.mac.utility.media.hub",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "MediaCenter",
+      "needCopyToAppDir": true,
       "tccutil": [
         "All"
       ]
