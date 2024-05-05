@@ -275,6 +275,7 @@ def main():
                         'key:"getEntitlementStatus",value:function(e){return "Entitled Installed"'
                         not in content
                     ):
+                        # sed -i "s#key:\"getEntitlementStatus\",value:function(e){#key:\"getEntitlementStatus\",value:function(e){return \"Entitled Installed\"#g" /Applications/Utilities/Adobe\ Creative\ Cloud/Components/Apps/Apps1_0.js
                         content = content.replace(
                             'key:"getEntitlementStatus",value:function(e){',
                             'key:"getEntitlementStatus",value:function(e){return "Entitled Installed"',

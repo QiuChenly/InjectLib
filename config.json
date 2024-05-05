@@ -402,7 +402,8 @@
       "entitlements": "signkeep.xml",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "noDeep": true
+      "noDeep": true,
+      "useOptool": false
     },
     {
       "packageName": "com.adobe.Photoshop",
