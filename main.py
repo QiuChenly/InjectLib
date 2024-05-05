@@ -259,6 +259,10 @@ def main():
 
             # 检查是否为com.adobe开头
             if local_app["CFBundleIdentifier"].startswith("com.adobe"):
+                subprocess.run(
+                    "sudo chmod -R 777 '/Applications/Utilities/Adobe Creative Cloud/Components/Apps/*'",
+                    shell=True,
+                )
                 # 检查是否存在/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js
                 if not os.path.exists(
                     "/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js"
@@ -278,7 +282,7 @@ def main():
                         # sed -i "s#key:\"getEntitlementStatus\",value:function(e){#key:\"getEntitlementStatus\",value:function(e){return \"Entitled Installed\"#g" /Applications/Utilities/Adobe\ Creative\ Cloud/Components/Apps/Apps1_0.js
                         content = content.replace(
                             'key:"getEntitlementStatus",value:function(e){',
-                            'key:"getEntitlementStatus",value:function(e){return "Entitled Installed"',
+                            'key:"getEntitlementStatus",value:function(e){return "Entitled Installed";',
                         )
                         with open(
                             "/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js",
@@ -354,7 +358,9 @@ def main():
             else:
                 subprocess.run(sh, shell=True)
 
-            sign_prefix = "/usr/bin/codesign -f -s - --timestamp=none --all-architectures"
+            sign_prefix = (
+                "/usr/bin/codesign -f -s - --timestamp=none --all-architectures"
+            )
 
             if no_deep is None:
                 print("Need Deep Sign.")

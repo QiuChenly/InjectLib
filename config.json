@@ -418,21 +418,24 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Adobe Illustrator",
       "needCopyToAppDir": true,
-      "noDeep": true
+      "noDeep": true,
+      "useOptool": false
     },
     {
       "packageName": "com.adobe.ame.application.24",
       "appBaseLocate": "/Applications/Adobe Media Encoder 2024/Adobe Media Encoder 2024.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
-      "noDeep": true
+      "noDeep": true,
+      "useOptool": false
     },
     {
       "packageName": "com.adobe.AfterEffects",
       "appBaseLocate": "/Applications/Adobe After Effects 2024/Adobe After Effects 2024.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
-      "noDeep": true
+      "noDeep": true,
+      "useOptool": false
     },
     {
       "packageName": "com.apple.FinalCutTrial",
@@ -445,21 +448,24 @@
       "appBaseLocate": "/Applications/Adobe Animate 2024/Adobe Animate 2024.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
-      "noDeep": true
+      "noDeep": true,
+      "useOptool": false
     },
     {
       "packageName": "com.adobe.Audition",
       "appBaseLocate": "/Applications/Adobe Audition 2024/Adobe Audition 2024.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
-      "noDeep": true
+      "noDeep": true,
+      "useOptool": false
     },
     {
       "packageName": "com.adobe.PremierePro.23",
       "appBaseLocate": "/Applications/Adobe Premiere Pro 2024/Adobe Premiere Pro 2024.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
-      "noDeep": true
+      "noDeep": true,
+      "useOptool": false
     },
     {
       "packageName": "com.adobe.Acrobat.Pro",
@@ -474,7 +480,8 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "PublicLib.dylib",
       "needCopyToAppDir": true,
-      "noDeep": true
+      "noDeep": true,
+      "useOptool": false
     },
     {
       "packageName": "com.autodesk.Maya.2024",
@@ -505,7 +512,8 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "PublicLib.dylib",
       "needCopyToAppDir": true,
-      "noDeep": true
+      "noDeep": true,
+      "useOptool": false
     },
     {
       "packageName": "com.adobe.LightroomClassicCC7",
