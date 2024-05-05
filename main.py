@@ -78,7 +78,7 @@ def handle_helper(app_base, target_helper, component_apps):
     subprocess.run("chmod +x ./tool/GenShineImpactStarter", shell=True)
     subprocess.run(f"./tool/GenShineImpactStarter '{target_helper}'", shell=True)
     subprocess.run(
-        f"./tool/optool install -p '{app_base}/Contents/Frameworks/91QiuChenly.dylib' -t '{target_helper}'",
+        f"./tool/insert_dylib '{app_base}/Contents/Frameworks/91QiuChenly.dylib' '{target_helper}' '{target_helper}'",
         shell=True,
     )
     helper_name = target_helper.split("/")[-1]
@@ -190,7 +190,6 @@ def main():
             no_sign_target = app.get("noSignTarget")
             no_deep = app.get("noDeep")
             tccutil = app.get("tccutil")
-            useOptool = app.get("useOptool")
             auto_handle_setapp = app.get("autoHandleSetapp")
             auto_handle_helper = app.get("autoHandleHelper")
             helper_file = app.get("helperFile")
@@ -315,12 +314,10 @@ def main():
 
             current = Path(__file__).resolve()
 
-            sh = f"chmod +x {current.parent}/tool/insert_dylib && chmod +x {current.parent}/tool/optool"
+            sh = f"chmod +x {current.parent}/tool/insert_dylib"
             subprocess.run(sh, shell=True)
 
-            sh = f"sudo {current.parent}/tool/optool install -p '{current.parent}/tool/91QiuChenly.dylib' -t '{dest}'"
-            if useOptool is False:
-                sh = f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/91QiuChenly.dylib' '{backup}' '{dest}'"
+            sh = f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/91QiuChenly.dylib' '{backup}' '{dest}'"
 
             if need_copy_to_app_dir:
                 source_dylib = f"{current.parent}/tool/91QiuChenly.dylib"
@@ -347,10 +344,7 @@ def main():
                         ]
                     )
                 for it in desireApp:
-                    if useOptool is None or useOptool is True:
-                        bsh = rf"sudo cp '{it}' /tmp/app && sudo {current.parent}/tool/optool install -p {destination_dylib} -t /tmp/app {'--resign' if not no_sign_target else ''} && sudo cp /tmp/app '{it}'"
-                    else:
-                        bsh = rf"sudo {current.parent}/tool/insert_dylib {destination_dylib} '{backup}' '{it}'"
+                    bsh = rf"sudo {current.parent}/tool/insert_dylib {destination_dylib} '{backup}' '{it}'"
                     sh.append(bsh)
 
             if isinstance(sh, list):

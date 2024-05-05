@@ -18,7 +18,6 @@
     "noDeep": "--deep 控制",
     "tccutil": "自动执行tccutil reset xxx CFBundleIdentifier，true为All，详细可用数组。目前会将所有的值在componentApp操作一遍默认行为。",
     "autoHandleSetapp": "自动根据 CFBundleIdentifier 找出App的appBaseLocate，并拼接/Contents/MacOS/为bridgeFile，且默认找出bridgeFile下的对应二进制程序，不太完善，仅setapp测试通过",
-    "useOptool": "使用新的注入工具 默认自动使用OPTOOL 设为false回退到insert_dylib",
     "autoHandleHelper": "是否自动处理helper文件",
     "helperFile": "helper文件的路径，例如/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper，可以传数组",
     "componentApp": "组合app,有些大型app是由很多子app组成的,单独处理意义也不大,就这样吧.",
@@ -35,7 +34,6 @@
       "injectFile": "Bugsnag.framework/Versions/A/Bugsnag",
       "needCopyToAppDir": true,
       "noSignTarget": true,
-      "useOptool": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper",
       "tccutil": [
@@ -50,7 +48,6 @@
       "injectFile": "Announcements.framework/Versions/A/Announcements",
       "needCopyToAppDir": true,
       "noSignTarget": true,
-      "useOptool": true,
       "autoHandleHelper": true,
       "helperFile": [
         "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac4.Agent",
@@ -117,7 +114,6 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "CorelDRW",
       "needCopyToAppDir": true,
-      "useOptool": true,
       "noSignTarget": true
     },
     {
@@ -136,15 +132,13 @@
       "packageName": "com.setapp.DesktopClient",
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
-      "noSignTarget": true,
-      "useOptool": true
+      "noSignTarget": true
     },
     {
       "packageName": "com.setapp.DesktopClient.SetappAgent",
       "appBaseLocate": "/Applications/Setapp.app/Contents/Library/LaunchServices/Setapp.app",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "SetappAgent",
-      "useOptool": true,
       "noSignTarget": true,
       "needCopyToAppDir": true
     },
@@ -242,7 +236,6 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
       "noSignTarget": true,
-      "useOptool": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/ws.stash.app.mac.daemon.helper",
       "tccutil": [
@@ -254,7 +247,6 @@
       "injectFile": "GZIP.framework/Versions/A/GZIP",
       "needCopyToAppDir": true,
       "entitlements": "signkeep.xml",
-      "useOptool": true,
       "deepSignApp": true
     },
     {
@@ -520,7 +512,6 @@
       "appBaseLocate": "/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Adobe Lightroom Classic",
-      "useOptool": true,
       "needCopyToAppDir": true,
       "noSignTarget": true,
       "entitlements": "signkeep.xml"
@@ -608,7 +599,6 @@
       "needCopyToAppDir": true,
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "noSignTarget": true,
-      "useOptool": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/org.cindori.SenseiHelper"
     },
@@ -758,7 +748,6 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "entitlements": "signkeep.xml",
-      "useOptool": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/com.drbuho.BuhoCleaner.PrivilegedHelperTool",
       "tccutil": [
@@ -1103,7 +1092,6 @@
       "injectFile": "Batteries",
       "needCopyToAppDir": true,
       "noSignTarget": true,
-      "useOptool": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/io.fadel.Batteries-setapp.Helper"
     },
@@ -1115,7 +1103,6 @@
       "needCopyToAppDir": true,
       "tccutil": true,
       "noSignTarget": true,
-      "useOptool": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer"
     },
@@ -1132,7 +1119,6 @@
       "needCopyToAppDir": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
       "noSignTarget": true,
-      "useOptool": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/com.apphousekitchen.aldente-pro.helper",
       "tccutil": [
