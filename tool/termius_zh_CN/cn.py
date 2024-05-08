@@ -56,8 +56,7 @@ def main():
         for lang in cnLang:
             old_value, new_value = lang.split("|")
             if old_value.startswith("regex:"):
-                old_value = re.compile(old_value[6:])
-                regex = re.compile(old_value)
+                regex = re.compile(old_value[6:])
                 file_content = regex.sub(new_value, file_content)
             else:
                 file_content = file_content.replace(old_value, new_value)

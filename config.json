@@ -820,7 +820,7 @@
       "packageName": "com.mcneel.rhinoceros.8",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "injectFile": "RhCore.framework/Versions/A/RhCore"
+      "injectFile": "Sparkle.framework/Versions/B/Sparkle"
     },
     {
       "packageName": "QReader.MarginStudyMac",
