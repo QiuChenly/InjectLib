@@ -76,7 +76,7 @@ def handle_helper(app_base, target_helper, component_apps, SMExtra):
         target_helper (string): helper文件路径
     """
     subprocess.run("chmod +x ./tool/GenShineImpactStarter", shell=True)
-    subprocess.run(f"./tool/GenShineImpactStarter '{target_helper}' {"" if SMExtra is None else SMExtra}", shell=True)
+    subprocess.run(f"./tool/GenShineImpactStarter '{target_helper}' {'' if SMExtra is None else SMExtra}", shell=True)
     subprocess.run(
         f"./tool/insert_dylib '{app_base}/Contents/Frameworks/91QiuChenly.dylib' '{target_helper}' '{target_helper}'",
         shell=True,
