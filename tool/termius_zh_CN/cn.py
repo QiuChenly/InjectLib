@@ -18,16 +18,22 @@ files_cache: dict[str:str] = {}
 
 
 def main():
-    if not os.path.exists("/Applications/Termius\\ Beta.app/Contents/Resources/app.asar_副本"):
+    if not os.path.exists(
+        "/Applications/Termius\\ Beta.app/Contents/Resources/app.asar_副本"
+    ):
         os.system(
-            "cp /Applications/Termius\\ Beta.app/Contents/Resources/app.asar /Applications/Termius\\ Beta.app/Contents/Resources/app.asar_副本")
+            "cp /Applications/Termius\\ Beta.app/Contents/Resources/app.asar /Applications/Termius\\ Beta.app/Contents/Resources/app.asar_副本"
+        )
     else:
         os.system(
-            "cp /Applications/Termius\\ Beta.app/Contents/Resources/app.asar_副本 /Applications/Termius\\ Beta.app/Contents/Resources/app.asar")
+            "cp /Applications/Termius\\ Beta.app/Contents/Resources/app.asar_副本 /Applications/Termius\\ Beta.app/Contents/Resources/app.asar"
+        )
 
     os.system("rm -rf /Applications/Termius\\ Beta.app/Contents/Resources/app")
     # 防止自动更新
-    os.system("rm -rf /Applications/Termius\\ Beta.app/Contents/Resources/app-update.yml")
+    os.system(
+        "rm -rf /Applications/Termius\\ Beta.app/Contents/Resources/app-update.yml"
+    )
 
     if not path.exists("/Applications/Termius Beta.app/Contents/Resources/app"):
         decompressAsar()

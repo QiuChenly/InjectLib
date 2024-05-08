@@ -68,7 +68,7 @@ def check_compatible(
     return False
 
 
-def handle_helper(app_base, target_helper, component_apps):
+def handle_helper(app_base, target_helper, component_apps, SMExtra):
     """增强Helper
 
     Args:
@@ -76,7 +76,7 @@ def handle_helper(app_base, target_helper, component_apps):
         target_helper (string): helper文件路径
     """
     subprocess.run("chmod +x ./tool/GenShineImpactStarter", shell=True)
-    subprocess.run(f"./tool/GenShineImpactStarter '{target_helper}'", shell=True)
+    subprocess.run(f"./tool/GenShineImpactStarter '{target_helper}' {"" if SMExtra is None else SMExtra}", shell=True)
     subprocess.run(
         f"./tool/insert_dylib '{app_base}/Contents/Frameworks/91QiuChenly.dylib' '{target_helper}' '{target_helper}'",
         shell=True,
@@ -195,6 +195,7 @@ def main():
             helper_file = app.get("helperFile")
             componentApp = app.get("componentApp")
             onlysh = app.get("onlysh")
+            SMExtra = app.get("SMExtra")
 
             local_app = [
                 local_app
@@ -386,11 +387,17 @@ def main():
                 if isinstance(helper_file, list):
                     for helper in helper_file:
                         handle_helper(
-                            app_base_locate, f"{app_base_locate}{helper}", componentApp
+                            app_base_locate,
+                            f"{app_base_locate}{helper}",
+                            componentApp,
+                            SMExtra,
                         )
                 else:
                     handle_helper(
-                        app_base_locate, f"{app_base_locate}{helper_file}", componentApp
+                        app_base_locate,
+                        f"{app_base_locate}{helper_file}",
+                        componentApp,
+                        SMExtra,
                     )
 
             if tccutil := tccutil:

@@ -42,6 +42,23 @@
       "forQiuChenly": false
     },
     {
+      "packageName": "codes.rambo.AirBuddy",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "AirBuddy",
+      "onlysh": true,
+      "extraShell": "airbuddy.sh",
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer",
+      "SMExtra": "codes.rambo.AirBuddy",
+      "needCopyToAppDir": true,
+      "componentApp": [
+        "/Contents/Library/LoginItems/AirBuddyHelper.app"
+      ],
+      "tccutil": [
+        "All"
+      ]
+    },
+    {
       "packageName": [
         "com.macpaw.CleanMyMac4"
       ],
@@ -1101,7 +1118,9 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "AirBuddy",
       "needCopyToAppDir": true,
-      "tccutil": true,
+      "tccutil": [
+        "All"
+      ],
       "noSignTarget": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer"
@@ -1112,7 +1131,9 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "AirBuddyHelper",
       "needCopyToAppDir": true,
-      "tccutil": true
+      "tccutil": [
+        "All"
+      ]
     },
     {
       "packageName": "com.apphousekitchen.aldente-pro",
