@@ -759,6 +759,15 @@
       ]
     },
     {
+      "packageName": "com.better365.autoinput",
+      "injectFile": "PTHotKey.framework/Versions/A/PTHotKey",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "tccutil": [
+        "All"
+      ]
+    },
+    {
       "packageName": "com.drbuho.BuhoCleaner",
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
       "bridgeFile": "/Contents/Frameworks/DesktopApplication.framework/Versions/A/Frameworks/",
