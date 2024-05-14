@@ -399,19 +399,20 @@ def main():
                         componentApp,
                         SMExtra,
                     )
+            if tccutil is not None:
+                if tccutil := tccutil:
+                    # 如果componentApp不为空，则创建一个数组
+                    ids = [local_app["CFBundleIdentifier"]]
+                    if isinstance(componentApp, list):
+                        ids.extend([getBundleID(app_base_locate + i) for i in componentApp])
 
-            if tccutil := tccutil:
-                # 如果componentApp不为空，则创建一个数组
-                ids = [local_app["CFBundleIdentifier"]]
-                if isinstance(componentApp, list):
-                    ids.extend([getBundleID(app_base_locate + i) for i in componentApp])
-
-                for id in ids:
-                    if isinstance(tccutil, str):
-                        subprocess.run(f"tccutil reset {tccutil} {id}", shell=True)
-                    else:
-                        for i in tccutil:
-                            subprocess.run(f"tccutil reset {i} {id}", shell=True)
+                    for id in ids:
+                        if isinstance(tccutil, str):
+                            subprocess.run(f"tccutil reset {tccutil} {id}", shell=True)
+                        else:
+                            if isinstance(tccutil, list):
+                                for i in tccutil:
+                                    subprocess.run(f"tccutil reset {i} {id}", shell=True)
 
             print("App处理完成。")
     except KeyboardInterrupt:
