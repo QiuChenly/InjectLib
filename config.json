@@ -199,7 +199,6 @@
     {
       "packageName": "com.surteesstudios.Bartender",
       "needCopyToAppDir": true,
-      "noDeep": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
       "tccutil": [
@@ -679,8 +678,7 @@
     },
     {
       "packageName": [
-        "tonyapp.devutils",
-        "me.tdinh.devutils-setapp"
+        "tonyapp.devutils"
       ],
       "needCopyToAppDir": true,
       "deepSignApp": true,
