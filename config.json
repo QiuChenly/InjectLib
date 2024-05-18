@@ -197,6 +197,16 @@
       ]
     },
     {
+      "packageName": "com.parallels.desktop.console",
+      "bridgeFile": "/Contents/MacOS/Parallels Service.app/Contents/MacOS/",
+      "injectFile": "prl_disp_service",
+      "extraShell": "pd193.sh",
+      "onlysh": true,
+      "supportVersion": [
+        "19.3.1"
+      ]
+    },
+    {
       "packageName": "com.surteesstudios.Bartender",
       "needCopyToAppDir": true,
       "deepSignApp": true,
