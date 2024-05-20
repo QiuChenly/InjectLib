@@ -857,7 +857,10 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle"
     },
     {
-      "packageName": "QReader.MarginStudyMac",
+      "packageName": [
+        "QReader.MarginStudyMac",
+        "QReader.MarginStudy.easy"
+      ],
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "noDeep": true,
@@ -1168,6 +1171,15 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "MediaCenter",
       "needCopyToAppDir": true,
+      "tccutil": [
+        "All"
+      ]
+    },
+    {
+      "packageName": "com.onmyway133.PastePal",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "tccutil": [
         "All"
       ]
