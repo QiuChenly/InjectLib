@@ -21,7 +21,7 @@ sudo cp "./tool/91QiuChenly.dylib" "/Applications/Parallels Desktop.app/Contents
 
 para_load="@rpath/91QiuChenly.dylib"
 pd_dir="/Applications/Parallels Desktop.app"
-insert_dylib_file="insert_dylib"
+insert_dylib_file="tool/insert_dylib"
 
 # patch dispatcher
 pd_dispatcher_file="$pd_dir/Contents/MacOS/Parallels Service.app/Contents/MacOS/prl_disp_service"
