@@ -1,7 +1,7 @@
 COLOR_INFO='\033[0;34m'
 COLOR_ERR='\033[0;35m'
 NOCOLOR='\033[0m'
-PDFM_VER="19.3.1-54941"
+PDFM_VER="19.4.0-54962"
 
 echo "${COLOR_INFO}[*] 确保你的版本是: https://download.parallels.com/desktop/v19/${PDFM_VER}/ParallelsDesktop-${PDFM_VER}.dmg"
 
