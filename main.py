@@ -76,7 +76,10 @@ def handle_helper(app_base, target_helper, component_apps, SMExtra):
         target_helper (string): helper文件路径
     """
     subprocess.run("chmod +x ./tool/GenShineImpactStarter", shell=True)
-    subprocess.run(f"./tool/GenShineImpactStarter '{target_helper}' {'' if SMExtra is None else SMExtra}", shell=True)
+    subprocess.run(
+        f"./tool/GenShineImpactStarter '{target_helper}' {'' if SMExtra is None else SMExtra}",
+        shell=True,
+    )
     subprocess.run(
         f"./tool/insert_dylib '{app_base}/Contents/Frameworks/91QiuChenly.dylib' '{target_helper}' '{target_helper}'",
         shell=True,
@@ -260,7 +263,7 @@ def main():
             # 检查是否为com.adobe开头
             if local_app["CFBundleIdentifier"].startswith("com.adobe"):
                 subprocess.run(
-                    "sudo chmod -R 777 '/Applications/Utilities/Adobe Creative Cloud/Components/Apps/*'",
+                    "sudo chmod -R 777 /Applications/Utilities/Adobe\ Creative\ Cloud/Components/Apps/*",
                     shell=True,
                 )
                 # 检查是否存在/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js
@@ -404,7 +407,9 @@ def main():
                     # 如果componentApp不为空，则创建一个数组
                     ids = [local_app["CFBundleIdentifier"]]
                     if isinstance(componentApp, list):
-                        ids.extend([getBundleID(app_base_locate + i) for i in componentApp])
+                        ids.extend(
+                            [getBundleID(app_base_locate + i) for i in componentApp]
+                        )
 
                     for id in ids:
                         if isinstance(tccutil, str):
@@ -412,7 +417,9 @@ def main():
                         else:
                             if isinstance(tccutil, list):
                                 for i in tccutil:
-                                    subprocess.run(f"tccutil reset {i} {id}", shell=True)
+                                    subprocess.run(
+                                        f"tccutil reset {i} {id}", shell=True
+                                    )
 
             print("App处理完成。")
     except KeyboardInterrupt:

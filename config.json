@@ -370,7 +370,10 @@
       "injectFile": "HSCore.framework/Versions/A/HSCore"
     },
     {
-      "packageName": "com.bohemiancoding.sketch3",
+      "packageName": [
+        "com.bohemiancoding.sketch3",
+        "com.bohemiancoding.sketch3.appstore"
+      ],
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Bugsnag.framework/Versions/A/Bugsnag"

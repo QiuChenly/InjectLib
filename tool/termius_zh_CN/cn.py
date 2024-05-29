@@ -72,7 +72,11 @@ def main():
         with open(fileOut, "w", encoding="utf-8") as u:
             u.write(files_cache[fileOut])
     pack2asar()
+    os.system("xattr -cr /Applications/Termius\ Beta.app")
     print("Done.")
 
+
+# os.system("sudo xattr -cr '/Applications/Termius Beta.app'")
+# os.system("sudo codesign -f -s - '/Applications/Termius Beta.app'")
 
 main()
