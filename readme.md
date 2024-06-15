@@ -1,12 +1,12 @@
-<a href="https://github.com/QiuChenlyOpenSource">
+<a href="https://github.com/QiuChenly/InjectLib">
 <img src="./style.svg" width="800" height="590">
 </a>
 
 ## 荣誉贡献榜
-![GitHub contributors](https://img.shields.io/github/contributors/QiuChenlyOpenSource/91QiuChen.svg?style=flat-square)
+![GitHub contributors](https://img.shields.io/github/contributors/QiuChenly/InjectLib.svg?style=flat-square)
 
-<a href="https://github.com/QiuChenlyOpenSource/91QiuChen/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=QiuChenlyOpenSource/91QiuChen" />
+<a href="https://github.com/QiuChenly/InjectLib/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=QiuChenly/InjectLib" />
 </a>
 <br />
 <br />
