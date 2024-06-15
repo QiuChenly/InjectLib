@@ -5,7 +5,7 @@
 2. docker compose up -d
 
 ## 对应版本
-emby/embyserver:4.9.0.18
+emby/embyserver:4.9.0.23
 
 ## 注意事项
 1. emby config自动存在于一个独立的镜像。如果需要docker compose down的时候也删掉这个配置保存内容，带上-v。

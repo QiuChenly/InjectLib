@@ -68,7 +68,7 @@ def check_compatible(
     return False
 
 
-def handle_helper(app_base, target_helper, component_apps, SMExtra):
+def handle_helper(app_base, target_helper, component_apps, SMExtra, bridge_path):
     """增强Helper
 
     Args:
@@ -81,7 +81,7 @@ def handle_helper(app_base, target_helper, component_apps, SMExtra):
         shell=True,
     )
     subprocess.run(
-        f"./tool/insert_dylib '{app_base}/Contents/Frameworks/91QiuChenly.dylib' '{target_helper}' '{target_helper}'",
+        f"./tool/insert_dylib '{bridge_path}91QiuChenly.dylib' '{target_helper}' '{target_helper}'",
         shell=True,
     )
     helper_name = target_helper.split("/")[-1]
@@ -387,20 +387,20 @@ def main():
 
             subprocess.run(f"sudo xattr -cr '{dest}'", shell=True)
             if auto_handle_helper and helper_file:
+                helpers = []
+
                 if isinstance(helper_file, list):
-                    for helper in helper_file:
-                        handle_helper(
-                            app_base_locate,
-                            f"{app_base_locate}{helper}",
-                            componentApp,
-                            SMExtra,
-                        )
+                    helpers = helper_file
                 else:
+                    helpers.append(helper_file)
+
+                for helper in helpers:
                     handle_helper(
                         app_base_locate,
-                        f"{app_base_locate}{helper_file}",
+                        f"{app_base_locate}{helper}",
                         componentApp,
                         SMExtra,
+                        f"{app_base_locate}{bridge_file}",
                     )
             if tccutil is not None:
                 if tccutil := tccutil:

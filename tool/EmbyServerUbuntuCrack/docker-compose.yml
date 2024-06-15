@@ -1,6 +1,6 @@
 services:
   docker_emby_system:
-    image: emby/embyserver:4.9.0.18
+    image: emby/embyserver:4.9.0.23
     privileged: true
     container_name: docker_emby_system
     hostname: "MediaServerCenter"
