@@ -529,13 +529,7 @@
       "packageName": [
         "com.microsoft.Excel",
         "com.microsoft.Powerpoint",
-        "com.microsoft.Word"
-      ],
-      "needCopyToAppDir": true,
-      "injectFile": "ADAL4.framework/Versions/A/ADAL4"
-    },
-    {
-      "packageName": [
+        "com.microsoft.Word",
         "com.microsoft.Outlook"
       ],
       "needCopyToAppDir": true,
