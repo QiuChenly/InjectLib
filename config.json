@@ -1135,7 +1135,7 @@
     {
       "packageName": "com.apphousekitchen.aldente-pro",
       "needCopyToAppDir": true,
-      "injectFile": "Sparkle.framework/Versions/A/Sparkle",
+      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "noSignTarget": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/com.apphousekitchen.aldente-pro.helper",
