@@ -36,9 +36,7 @@
       "noSignTarget": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper",
-      "tccutil": [
-        "All"
-      ],
+      "tccutil": ["All"],
       "forQiuChenly": false
     },
     {
@@ -51,17 +49,11 @@
       "helperFile": "/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer",
       "SMExtra": "codes.rambo.AirBuddy",
       "needCopyToAppDir": true,
-      "componentApp": [
-        "/Contents/Library/LoginItems/AirBuddyHelper.app"
-      ],
-      "tccutil": [
-        "All"
-      ]
+      "componentApp": ["/Contents/Library/LoginItems/AirBuddyHelper.app"],
+      "tccutil": ["All"]
     },
     {
-      "packageName": [
-        "com.macpaw.CleanMyMac4"
-      ],
+      "packageName": ["com.macpaw.CleanMyMac4"],
       "injectFile": "Announcements.framework/Versions/A/Announcements",
       "needCopyToAppDir": true,
       "noSignTarget": true,
@@ -70,12 +62,8 @@
         "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac4.Agent",
         "/Contents/Library/LoginItems/CleanMyMac X Menu.app/Contents/Library/LaunchServices/com.macpaw.CleanMyMac4.Agent"
       ],
-      "componentApp": [
-        "/Contents/Library/LoginItems/CleanMyMac X Menu.app"
-      ],
-      "tccutil": [
-        "All"
-      ]
+      "componentApp": ["/Contents/Library/LoginItems/CleanMyMac X Menu.app"],
+      "tccutil": ["All"]
     },
     {
       "packageName": "com.heavylightapps.lasso",
@@ -83,6 +71,16 @@
       "injectFile": "Lasso",
       "needCopyToAppDir": true,
       "forQiuChenly": true
+    },
+    {
+      "packageName": "com.drbuho.disktool.BuhoNTFS",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "BuhoNTFS",
+      "needCopyToAppDir": true,
+      "forQiuChenly": false,
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.drbuho.disktool.NTFSHelperTool",
+      "tccutil": ["All"]
     },
     {
       "packageName": "com.proxyman.NSProxy-setapp",
@@ -93,14 +91,10 @@
       "noSignTarget": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/com.proxyman.NSProxy.HelperTool",
-      "tccutil": [
-        "All"
-      ]
+      "tccutil": ["All"]
     },
     {
-      "packageName": [
-        "com.macpaw.CleanMyMac-setapp"
-      ],
+      "packageName": ["com.macpaw.CleanMyMac-setapp"],
       "appBaseLocate": "/Applications/Setapp/CleanMyMac X.app",
       "injectFile": "Announcements.framework/Versions/A/Announcements",
       "needCopyToAppDir": true,
@@ -110,18 +104,11 @@
         "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent",
         "/Contents/Library/LoginItems/CleanMyMac Menu.app/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent"
       ],
-      "componentApp": [
-        "/Contents/Library/LoginItems/CleanMyMac Menu.app"
-      ],
-      "tccutil": [
-        "All"
-      ]
+      "componentApp": ["/Contents/Library/LoginItems/CleanMyMac Menu.app"],
+      "tccutil": ["All"]
     },
     {
-      "packageName": [
-        "com.edrawsoft.edrawmax",
-        "com.edrawsoft.mindmaster"
-      ],
+      "packageName": ["com.edrawsoft.edrawmax", "com.edrawsoft.mindmaster"],
       "injectFile": "QtXml.framework/Versions/5/QtXml",
       "needCopyToAppDir": true,
       "deepSignApp": true
@@ -191,12 +178,7 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "tccutil": [
-        "All",
-        "Camera",
-        "Microphone",
-        "ScreenCapture"
-      ]
+      "tccutil": ["All", "Camera", "Microphone", "ScreenCapture"]
     },
     {
       "packageName": "com.pixelmatorteam.pixelmator.touch.x.photo",
@@ -244,9 +226,7 @@
       "noSignTarget": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/ws.stash.app.mac.daemon.helper",
-      "tccutil": [
-        "All"
-      ]
+      "tccutil": ["All"]
     },
     {
       "packageName": "com.firecore.infuse",
@@ -266,13 +246,7 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "NektonyFallManager.framework/Versions/A/NektonyFallManager",
-      "tccutil": [
-        "All",
-        "AddressBook",
-        "Reminders",
-        "Photos",
-        "AppleEvents"
-      ]
+      "tccutil": ["All", "AddressBook", "Reminders", "Photos", "AppleEvents"]
     },
     {
       "packageName": "com.nektony.MacCleaner-PRO-SIII",
@@ -293,21 +267,14 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "tccutil": [
-        "All",
-        "Reminders",
-        "Photos"
-      ]
+      "tccutil": ["All", "Reminders", "Photos"]
     },
     {
       "packageName": "com.nektony.Duplicate-File-Finder-SIII",
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "tccutil": [
-        "All",
-        "Photos"
-      ]
+      "tccutil": ["All", "Photos"]
     },
     {
       "packageName": "li.zihua.medis2",
@@ -329,12 +296,7 @@
       "deepSignApp": true,
       "injectFile": "TSCAccount.framework/Versions/A/TSCAccount",
       "extraShell": "camtasia.sh",
-      "tccutil": [
-        "Camera",
-        "Microphone",
-        "ScreenCapture",
-        "All"
-      ]
+      "tccutil": ["Camera", "Microphone", "ScreenCapture", "All"]
     },
     {
       "packageName": "me.damir.dropover-mac",
@@ -358,18 +320,14 @@
       "injectFile": "Bugsnag.framework/Versions/A/Bugsnag"
     },
     {
-      "packageName": [
-        "com.incrediblebee.Archiver-setapp"
-      ],
+      "packageName": ["com.incrediblebee.Archiver-setapp"],
       "needCopyToAppDir": true,
       "bridgeFile": "/Contents/MacOS/",
       "deepSignApp": true,
       "injectFile": "Archiver"
     },
     {
-      "packageName": [
-        "com.krivoblotsky.ProjectsOrganizer-setapp"
-      ],
+      "packageName": ["com.krivoblotsky.ProjectsOrganizer-setapp"],
       "needCopyToAppDir": true,
       "bridgeFile": "/Contents/MacOS/",
       "deepSignApp": true,
@@ -570,12 +528,7 @@
       "packageName": "com.mac.utility.screen.recorder",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "OmniRecorder",
-      "tccutil": [
-        "All",
-        "Camera",
-        "Microphone",
-        "ScreenCapture"
-      ]
+      "tccutil": ["All", "Camera", "Microphone", "ScreenCapture"]
     },
     {
       "packageName": "com.mac.utility.media.player",
@@ -664,17 +617,13 @@
       "injectFile": "BERegistration.framework/Versions/A/BERegistration"
     },
     {
-      "packageName": [
-        "tonyapp.devutils"
-      ],
+      "packageName": ["tonyapp.devutils"],
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "DiffMatchPatch.framework/Versions/A/DiffMatchPatch"
     },
     {
-      "packageName": [
-        "com.ideasoncanvas.mindnode.macos-setapp"
-      ],
+      "packageName": ["com.ideasoncanvas.mindnode.macos-setapp"],
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "CanvasLayout_19E0F1ED461C44E6_PackageProduct.framework/Versions/A/CanvasLayout_19E0F1ED461C44E6_PackageProduct"
@@ -724,33 +673,21 @@
       "injectFile": "Paste",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "tccutil": [
-        "All",
-        "Camera",
-        "Microphone",
-        "ScreenCapture"
-      ]
+      "tccutil": ["All", "Camera", "Microphone", "ScreenCapture"]
     },
     {
       "packageName": "cn.better365.ishot",
       "injectFile": "PTHotKey.framework/Versions/A/PTHotKey",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "tccutil": [
-        "All",
-        "Camera",
-        "Microphone",
-        "ScreenCapture"
-      ]
+      "tccutil": ["All", "Camera", "Microphone", "ScreenCapture"]
     },
     {
       "packageName": "com.better365.autoinput",
       "injectFile": "PTHotKey.framework/Versions/A/PTHotKey",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "tccutil": [
-        "All"
-      ]
+      "tccutil": ["All"]
     },
     {
       "packageName": "com.drbuho.BuhoCleaner",
@@ -761,9 +698,7 @@
       "entitlements": "signkeep.xml",
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/com.drbuho.BuhoCleaner.PrivilegedHelperTool",
-      "tccutil": [
-        "All"
-      ]
+      "tccutil": ["All"]
     },
     {
       "packageName": "org.qcad",
@@ -805,9 +740,7 @@
       "bridgeFile": "/Contents/MacOS/",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "tccutil": [
-        "All"
-      ]
+      "tccutil": ["All"]
     },
     {
       "packageName": "com.zeroonetwenty.BlueHarvest5",
@@ -834,10 +767,7 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle"
     },
     {
-      "packageName": [
-        "QReader.MarginStudyMac",
-        "QReader.MarginStudy.easy"
-      ],
+      "packageName": ["QReader.MarginStudyMac", "QReader.MarginStudy.easy"],
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "noDeep": true,
@@ -849,9 +779,7 @@
       "bridgeFile": "/Contents/MacOS/",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "tccutil": [
-        "All"
-      ]
+      "tccutil": ["All"]
     },
     {
       "packageName": "com.setapp.DesktopClient",
@@ -1115,9 +1043,7 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "AirBuddy",
       "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ],
+      "tccutil": ["All"],
       "noSignTarget": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer"
@@ -1128,9 +1054,7 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "AirBuddyHelper",
       "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ]
+      "tccutil": ["All"]
     },
     {
       "packageName": "com.apphousekitchen.aldente-pro",
@@ -1139,27 +1063,21 @@
       "noSignTarget": true,
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/com.apphousekitchen.aldente-pro.helper",
-      "tccutil": [
-        "All"
-      ]
+      "tccutil": ["All"]
     },
     {
       "packageName": "com.mac.utility.media.hub",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "MediaCenter",
       "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ]
+      "tccutil": ["All"]
     },
     {
       "packageName": "com.onmyway133.PastePal",
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "tccutil": [
-        "All"
-      ]
+      "tccutil": ["All"]
     }
   ]
 }
