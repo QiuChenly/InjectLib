@@ -37,7 +37,7 @@
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper",
       "tccutil": ["All"],
-      "forQiuChenly": false
+      "forQiuChenly": true
     },
     {
       "packageName": "codes.rambo.AirBuddy",
