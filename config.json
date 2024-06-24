@@ -338,12 +338,10 @@
       "injectFile": "JSONModel.framework/Versions/A/JSONModel"
     },
     {
-      "packageName": [
-        "com.navicat.NavicatPremium",
-        "com.navicat.NavicatForOracle",
-        "com.navicat.NavicatForMySQL"
-      ],
-      "injectFile": "EE.framework/Versions/A/EE",
+      "packageName": "com.navicat.NavicatPremium",
+      "appBaseLocate": "/Applications/Navicat Premium.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Navicat Premium",
       "needCopyToAppDir": true
     },
     {
