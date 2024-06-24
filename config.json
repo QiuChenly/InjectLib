@@ -478,7 +478,6 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Adobe Lightroom Classic",
       "needCopyToAppDir": true,
-      "noSignTarget": true,
       "entitlements": "signkeep.xml"
     },
     {
