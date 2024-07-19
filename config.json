@@ -158,12 +158,6 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle"
     },
     {
-      "packageName": "com.setapp.DesktopClient",
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "needCopyToAppDir": true,
-      "noSignTarget": true
-    },
-    {
       "packageName": "com.setapp.DesktopClient.SetappAgent",
       "appBaseLocate": "/Applications/Setapp.app/Contents/Library/LaunchServices/Setapp.app",
       "bridgeFile": "/Contents/MacOS/",
