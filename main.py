@@ -67,6 +67,12 @@ def check_compatible(
 
     return False
 
+def handle_keygen(bundleIdentifier):
+    user_dir = os.path.expanduser("~");
+    # 取出用户名
+    username = user_dir.split("/")[-1]
+    subprocess.run("chmod +x ./tool/KeygenStarter", shell=True)
+    subprocess.run(f"./tool/KeygenStarter '{bundleIdentifier}' '{username}'", shell=True)
 
 def handle_helper(app_base, target_helper, component_apps, SMExtra, bridge_path):
     """增强Helper
@@ -199,6 +205,7 @@ def main():
             componentApp = app.get("componentApp")
             onlysh = app.get("onlysh")
             SMExtra = app.get("SMExtra")
+            keygen = app.get("keygen")
 
             local_app = [
                 local_app
@@ -302,6 +309,11 @@ def main():
             subprocess.run(
                 ["sudo", "pkill", "-f", getAppMainExecutable(app_base_locate)]
             )
+
+            if keygen is not None:
+                print("正在注册App...")
+                handle_keygen(local_app["CFBundleIdentifier"])
+                continue
 
             # dest = os.path.join(app_base_locate, bridge_file, inject_file)
             dest = rf"{app_base_locate}{bridge_file}{inject_file}"

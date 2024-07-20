@@ -21,7 +21,8 @@
     "autoHandleHelper": "是否自动处理helper文件",
     "helperFile": "helper文件的路径，例如/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper，可以传数组",
     "componentApp": "组合app,有些大型app是由很多子app组成的,单独处理意义也不大,就这样吧.",
-    "forQiuChenly": "专门为QiuChenly特供的App，看到这条的你硬改也没用。"
+    "forQiuChenly": "专门为QiuChenly特供的App，看到这条的你硬改也没用。",
+    "keygen": "不注入app，生成key破解，适用于重签名后丢失某特性的app，为true时，其他配置默认失效"
   },
   "basePublicConfig": {
     "bridgeFile": "/Contents/Frameworks/"
@@ -747,13 +748,12 @@
       ]
     },
     {
+      "packageName": "cn.better365.iRightMouse",
+      "keygen": true
+    },
+    {
       "packageName": "com.better365.autoinput",
-      "injectFile": "PTHotKey.framework/Versions/A/PTHotKey",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "tccutil": [
-        "All"
-      ]
+      "keygen": true
     },
     {
       "packageName": "com.drbuho.BuhoCleaner",
