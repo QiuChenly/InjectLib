@@ -1163,6 +1163,10 @@
       "tccutil": [
         "All"
       ]
+    },
+    {
+      "packageName": "com.binarynights.ForkLift",
+      "keygen": true
     }
   ]
 }
