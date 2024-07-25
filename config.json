@@ -1166,7 +1166,10 @@
     },
     {
       "packageName": "com.binarynights.ForkLift",
-      "keygen": true
+      "needCopyToAppDir": true,
+      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.binarynights.ForkLiftHelper"
     }
   ]
 }
