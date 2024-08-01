@@ -1170,6 +1170,14 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "autoHandleHelper": true,
       "helperFile": "/Contents/Library/LaunchServices/com.binarynights.ForkLiftHelper"
+    },
+    {
+      "packageName": "md.obsidian",
+      "needCopyToAppDir": true,
+      "injectFile": "",
+      "noDeep": true,
+      "noSignTarget": true,
+      "extraShell": "obsidian.sh"
     }
   ]
 }
