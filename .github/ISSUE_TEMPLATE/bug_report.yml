@@ -1,5 +1,5 @@
-name: 🐞 Bug report
-description: Report an issue
+name: 🐞 报告Bug点我
+description: 报告问题的模板
 labels: [pending triage]
 body:
   - type: checkboxes
@@ -40,8 +40,9 @@ body:
       label: 系统情况
       description: 根据实际情况勾选以下内容
       options:
-        - label: SIP 是否启动
-        - label: 是否为黑苹果（如果是黑苹果，请回答在下方标注了黑苹果的问题）
+        - label: SIP 开着还是关着？
+        - label: 是否为黑苹果（如果是黑苹果，请回答在下方标注为黑苹果的问题）
+        - label: 黑苹果是否amfi_getout_of_my_way开了？或者操作过amfi相关属性和amfi相关quirk？
   - type: textarea
     id: system-info
     attributes:
