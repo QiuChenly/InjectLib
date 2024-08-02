@@ -1178,6 +1178,19 @@
       "noDeep": true,
       "noSignTarget": true,
       "extraShell": "obsidian.sh"
+    },
+    {
+      "packageName": "com.bjango.istatmenus",
+      "appBaseLocate": "/Applications/iStat Menus.app",
+      "injectFile": "BBRUpdater.framework/Versions/A/BBRUpdater",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "autoHandleHelper": true,
+      "extraShell": "iStatMenus.sh",
+      "helperFile": [
+        "/Contents/Resources/Components.bundle/Contents/Library/LaunchServices/com.bjango.istatmenus.installer",
+        "/Contents/Library/LaunchServices/com.bjango.istatmenus.installer"
+      ]
     }
   ]
 }
