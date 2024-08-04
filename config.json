@@ -86,6 +86,12 @@
       "forQiuChenly": true
     },
     {
+      "packageName": "com.edovia.screens.5",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Screens 5",
+      "needCopyToAppDir": true
+    },
+    {
       "packageName": "com.drbuho.disktool.BuhoNTFS",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "BuhoNTFS",
