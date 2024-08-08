@@ -263,7 +263,8 @@
     },
     {
       "packageName": "com.firecore.infuse",
-      "injectFile": "GZIP.framework/Versions/A/GZIP",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Infuse",
       "needCopyToAppDir": true,
       "entitlements": "signkeep.xml",
       "deepSignApp": true
