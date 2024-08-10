@@ -1,7 +1,7 @@
 {
   "project": "InjectShell",
   "Author": "QiuChenly",
-  "Version": 2.2,
+  "Version": 3.0,
   "Description": {
     "desc": "这是一个用于解释说明json对象用途的说明文档。basePublicConfig里面的同名配置如果在AppList里面配置了相同的Key，则优先使用AppList里面的值。",
     "bridgeFile": "app路径和注入文件路径之间的中间路径，有些app只能注入到/Contents，所以加了这个。",
@@ -84,6 +84,14 @@
       "injectFile": "Lasso",
       "needCopyToAppDir": true,
       "forQiuChenly": true
+    },
+    {
+      "packageName": "com.hexrays.ida64",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "ida64",
+      "needCopyToAppDir": true,
+      "noSignTarget": true,
+      "extraShell": "copyLicense.sh"
     },
     {
       "packageName": "com.edovia.screens.5",
