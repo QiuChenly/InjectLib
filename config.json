@@ -769,11 +769,11 @@
       ]
     },
     {
-      "packageName": "cn.better365.iRightMouse",
-      "keygen": true
-    },
-    {
-      "packageName": "com.better365.autoinput",
+      "packageName": [
+        "cn.better365.iRightMouse",
+        "com.better365.autoinput",
+        "com.binarynights.ForkLift"
+      ],
       "keygen": true
     },
     {
@@ -1184,13 +1184,6 @@
       "tccutil": [
         "All"
       ]
-    },
-    {
-      "packageName": "com.binarynights.ForkLift",
-      "needCopyToAppDir": true,
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/com.binarynights.ForkLiftHelper"
     },
     {
       "packageName": "md.obsidian",
