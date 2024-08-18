@@ -106,6 +106,12 @@
       "needCopyToAppDir": true
     },
     {
+      "packageName": "com.onmyway133.PastePal",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "PastePal",
+      "needCopyToAppDir": true
+    },
+    {
       "packageName": "com.drbuho.disktool.BuhoNTFS",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "BuhoNTFS",
