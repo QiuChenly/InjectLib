@@ -569,11 +569,19 @@
       "packageName": [
         "com.microsoft.Excel",
         "com.microsoft.Powerpoint",
-        "com.microsoft.Word",
         "com.microsoft.Outlook"
       ],
       "needCopyToAppDir": true,
       "injectFile": "ADAL4.framework/Versions/A/ADAL4",
+      "entitlements": "signkeep.xml"
+    }, {
+      "packageName": [
+        "com.microsoft.Word"
+      ],
+      "needCopyToAppDir": true,
+      "injectFile": "Microsoft Word",
+      "bridgeFile": "/Contents/MacOS/",
+      "deepSignApp": false,
       "entitlements": "signkeep.xml"
     },
     {
