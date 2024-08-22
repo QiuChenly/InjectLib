@@ -334,6 +334,15 @@
       ]
     },
     {
+      "packageName": "com.nektony.Duplicates-Finder",
+      "injectFile": "OpenSSL.framework/Versions/A/OpenSSL",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "tccutil": [
+        "All"
+      ]
+    },
+    {
       "packageName": "com.nektony.Duplicate-File-Finder-SIII",
       "needCopyToAppDir": true,
       "deepSignApp": true,
