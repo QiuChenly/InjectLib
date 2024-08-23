@@ -1209,14 +1209,6 @@
       ]
     },
     {
-      "packageName": "md.obsidian",
-      "needCopyToAppDir": true,
-      "injectFile": "",
-      "noDeep": true,
-      "noSignTarget": true,
-      "extraShell": "obsidian.sh"
-    },
-    {
       "packageName": "com.bjango.istatmenus",
       "appBaseLocate": "/Applications/iStat Menus.app",
       "injectFile": "BBRUpdater.framework/Versions/A/BBRUpdater",
