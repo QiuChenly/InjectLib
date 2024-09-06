@@ -185,14 +185,6 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle"
     },
     {
-      "packageName": "com.setapp.DesktopClient.SetappAgent",
-      "appBaseLocate": "/Applications/Setapp.app/Contents/Library/LaunchServices/Setapp.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "SetappAgent",
-      "noSignTarget": true,
-      "needCopyToAppDir": true
-    },
-    {
       "packageName": "com.tweety.MediaMate",
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
