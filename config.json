@@ -106,6 +106,12 @@
       "needCopyToAppDir": true
     },
     {
+      "packageName": "lo.cafe.NotchNook-setapp",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "NotchNook",
+      "needCopyToAppDir": true
+    },
+    {
       "packageName": "com.onmyway133.PastePal",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "PastePal",
