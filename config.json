@@ -378,12 +378,6 @@
       ]
     },
     {
-      "packageName": "me.damir.dropover-mac",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "DropoverAWS.framework/Versions/A/DropoverAWS"
-    },
-    {
       "packageName": "com.hankinsoft.osx.sqlprostudio",
       "needCopyToAppDir": true,
       "deepSignApp": true,
@@ -792,6 +786,7 @@
     },
     {
       "packageName": [
+        "me.damir.dropover-mac",
         "cn.better365.iRightMouse",
         "com.better365.autoinput",
         "com.binarynights.ForkLift"
