@@ -297,7 +297,8 @@
       "packageName": "com.nektony.App-Cleaner-SIII",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "injectFile": "NektonyFallManager.framework/Versions/A/NektonyFallManager",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "App Cleaner 8",
       "tccutil": [
         "All",
         "AddressBook",
