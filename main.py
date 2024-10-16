@@ -9,6 +9,28 @@ import time
 
 def read_input(prompt):
     return input(prompt).strip().lower()
+def search_apps(app_list, install_apps, keyword):
+    matched_apps = []
+    for app in app_list:
+        package_name = app.get("packageName")
+        
+        # 检查 packageName
+        if isinstance(package_name, list):
+            if any(keyword.lower() in name.lower() for name in package_name):
+                matched_apps.append(app)
+                continue
+        elif isinstance(package_name, str) and keyword.lower() in package_name.lower():
+            matched_apps.append(app)
+            continue
+        
+        # packageName没有匹配则检查 CFBundleName
+        for installed_app in install_apps:
+            if installed_app.get("CFBundleIdentifier") == package_name:
+                if keyword.lower() in installed_app.get("CFBundleName", "").lower():
+                    matched_apps.append(app)
+                    break
+    
+    return matched_apps
 
 
 def parse_app_info(app_base_locate, app_info_file):
@@ -171,18 +193,50 @@ def main():
         elapsed_time = end_time - start_time
         print("扫描本地App耗时: {:.2f}s".format(elapsed_time))
         app_Lst = []
-        for app in app_list:
-            package_name = app["packageName"]
-            # 获取macOS系统当前用户账户
-            if app.get("forQiuChenly") and not os.path.exists("/Users/qiuchenly"):
-                continue
-            if isinstance(package_name, list):  # 如果是list就检查多项
-                for name in package_name:
-                    tmp = app.copy()
+        print("请输入应用名称或包名的关键字进行搜索,或直接按回车键遍历所有支持的应用:")
+        keyword = input().strip()
+
+        if keyword:
+            matched_apps = search_apps(app_list, install_apps, keyword)
+            if not matched_apps:
+                print("未找到匹配的应用程序。")
+                return
+
+            print("找到以下匹配的应用程序:")
+            for i, app in enumerate(matched_apps, 1):
+                package_name = app.get("packageName")
+                if isinstance(package_name, list):
+                    package_name = " / ".join(package_name)
+                print(f"{i}. {package_name}")
+
+            print("请输入要注入的应用程序编号,或输入0退出:")
+            choice = input().strip()
+            if not choice.isdigit() or int(choice) == 0 or int(choice) > len(matched_apps):
+                print("已退出程序。")
+                return
+
+            selected_app = matched_apps[int(choice) - 1]
+            app_Lst = []
+            if isinstance(selected_app["packageName"], list):
+                for name in selected_app["packageName"]:
+                    tmp = selected_app.copy()
                     tmp["packageName"] = name
                     app_Lst.append(tmp)
             else:
-                app_Lst.append(app)
+                app_Lst.append(selected_app)             
+        else:
+            for app in app_list:
+                package_name = app["packageName"]
+                # 获取macOS系统当前用户账户
+                if app.get("forQiuChenly") and not os.path.exists("/Users/qiuchenly"):
+                    continue
+                if isinstance(package_name, list):  # 如果是list就检查多项
+                    for name in package_name:
+                        tmp = app.copy()
+                        tmp["packageName"] = name
+                        app_Lst.append(tmp)
+                else:
+                    app_Lst.append(app)
 
         for app in app_Lst:
             package_name = app.get("packageName")
