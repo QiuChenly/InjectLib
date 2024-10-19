@@ -9,28 +9,13 @@ import time
 
 def read_input(prompt):
     return input(prompt).strip().lower()
+
 def search_apps(app_list, install_apps, keyword):
-    matched_apps = []
-    for app in app_list:
-        package_name = app.get("packageName")
-        
-        # 检查 packageName
-        if isinstance(package_name, list):
-            if any(keyword.lower() in name.lower() for name in package_name):
-                matched_apps.append(app)
-                continue
-        elif isinstance(package_name, str) and keyword.lower() in package_name.lower():
-            matched_apps.append(app)
-            continue
-        
-        # packageName没有匹配则检查 CFBundleName
-        for installed_app in install_apps:
-            if installed_app.get("CFBundleIdentifier") == package_name:
-                if keyword.lower() in installed_app.get("CFBundleName", "").lower():
-                    matched_apps.append(app)
-                    break
-    
-    return matched_apps
+    keyword = keyword.lower()
+    installed_apps = {app['CFBundleIdentifier']: app['CFBundleName'].lower() for app in install_apps}
+    def is_match(pn): return any(keyword in p.lower() for p in (pn if isinstance(pn, list) else [pn]))
+    return [{**app, "packageName": pn} for app in app_list
+        if (pn := app.get("packageName")) and is_match(pn) and any(pid == pn and keyword in name for pid, name in installed_apps.items())]
 
 
 def parse_app_info(app_base_locate, app_info_file):
@@ -68,12 +53,7 @@ def scan_apps():
     return appList
 
 
-def check_compatible(
-    compatible_version_code,
-    compatible_version_subcode,
-    app_version_code,
-    app_subversion_code,
-):
+def check_compatible(compatible_version_code, compatible_version_subcode, app_version_code, app_subversion_code):
     if compatible_version_code is None and compatible_version_subcode is None:
         return True
 
@@ -90,9 +70,8 @@ def check_compatible(
     return False
 
 def handle_keygen(bundleIdentifier):
-    user_dir = os.path.expanduser("~");
     # 取出用户名
-    username = user_dir.split("/")[-1]
+    username = os.path.expanduser("~").split("/")[-1]
     subprocess.run("chmod +x ./tool/KeygenStarter", shell=True)
     subprocess.run(f"./tool/KeygenStarter '{bundleIdentifier}' '{username}'", shell=True)
 
@@ -104,28 +83,17 @@ def handle_helper(app_base, target_helper, component_apps, SMExtra, bridge_path)
         target_helper (string): helper文件路径
     """
     subprocess.run("chmod +x ./tool/GenShineImpactStarter", shell=True)
-    subprocess.run(
-        f"./tool/GenShineImpactStarter '{target_helper}' {'' if SMExtra is None else SMExtra}",
-        shell=True,
-    )
-    subprocess.run(
-        f"./tool/insert_dylib '{bridge_path}91QiuChenly.dylib' '{target_helper}' '{target_helper}'",
-        shell=True,
-    )
+    subprocess.run(f"./tool/GenShineImpactStarter '{target_helper}' {'' if SMExtra is None else SMExtra}", shell=True)
+    subprocess.run(f"./tool/insert_dylib '{bridge_path}91QiuChenly.dylib' '{target_helper}' '{target_helper}'", shell=True)
     helper_name = target_helper.split("/")[-1]
 
     # 检查是否存在
     target = f"/Library/LaunchDaemons/{helper_name}.plist"
     if os.path.exists(target):
-        subprocess.run(
-            f"sudo /bin/launchctl unload {target}",
-            shell=True,
-        )
+        subprocess.run(f"sudo /bin/launchctl unload {target}", shell=True)
         subprocess.run(f"sudo /usr/bin/killall -u root -9 {helper_name}", shell=True)
         subprocess.run(f"sudo /bin/rm {target}", shell=True)
-        subprocess.run(
-            f"sudo /bin/rm /Library/PrivilegedHelperTools/{helper_name}", shell=True
-        )
+        subprocess.run(f"sudo /bin/rm /Library/PrivilegedHelperTools/{helper_name}", shell=True)
     subprocess.run(f"sudo xattr -c '{app_base}'", shell=True)
 
     src_info = [f"{app_base}/Contents/Info.plist"]
@@ -133,20 +101,10 @@ def handle_helper(app_base, target_helper, component_apps, SMExtra, bridge_path)
         src_info.extend([f"{app_base}{i}/Contents/Info.plist" for i in component_apps])
 
     for i in src_info:
-        command = [
-            "/usr/libexec/PlistBuddy",
-            "-c",
-            f"Set :SMPrivilegedExecutables:{helper_name} 'identifier \\\"{helper_name}\\\"'",
-            i,
-        ]
+        command = ["/usr/libexec/PlistBuddy", "-c", f"Set :SMPrivilegedExecutables:{helper_name} 'identifier \\\"{helper_name}\\\"'", i]
         subprocess.run(command, text=True)
-    subprocess.run(
-        f'/usr/bin/codesign -f -s - --all-architectures --deep "{target_helper}"',
-        shell=True,
-    )
-    subprocess.run(
-        f'/usr/bin/codesign -f -s - --all-architectures --deep "{app_base}"', shell=True
-    )
+    subprocess.run(f'/usr/bin/codesign -f -s - --all-architectures --deep "{target_helper}"', shell=True)
+    subprocess.run(f'/usr/bin/codesign -f -s - --all-architectures --deep "{app_base}"', shell=True)
 
 
 def getAppMainExecutable(app_base):
@@ -157,9 +115,7 @@ def getAppMainExecutable(app_base):
 
 
 # 获取BundleID
-def getBundleID(
-    app_base,
-):
+def getBundleID(app_base):
     with open(f"{app_base}/Contents/Info.plist", "rb") as f:
         app_info = plistlib.load(f)
         return app_info["CFBundleIdentifier"]
@@ -174,69 +130,51 @@ def main():
         app_list = config["AppList"]
         proc_version = config["Version"]
 
-        print("  ___  _        ____ _                _  ")
-        print(" / _ \\(_)_   _ / ___| |_   ___ _ __ | |_   _ ")
-        print("| | | | | | | | |  | '_ \\ / _ \\ '_ \\| | | | |")
-        print("| |_| | | |_| | |__| | | |  __/ | | | | |_| |")
-        print(" \\__\\_\\_\\__,_|\\____|_| |_|\\___|_| |_|_|\\__, |")
-        print("                                        |___/")
-        print(f"自动注入版本号: {proc_version}")
+        print()
+        print("  ██████╗ ██╗██╗   ██╗ ██████╗██╗  ██╗███████╗███╗   ██╗██╗  ██╗   ██╗ ")
+        print(" ██╔═══██╗██║██║   ██║██╔════╝██║  ██║██╔════╝████╗  ██║██║  ╚██╗ ██╔╝ ")
+        print(" ██║   ██║██║██║   ██║██║     ███████║█████╗  ██╔██╗ ██║██║   ╚████╔╝  ")
+        print(" ██║▄▄ ██║██║██║   ██║██║     ██╔══██║██╔══╝  ██║╚██╗██║██║    ╚██╔╝   ")
+        print(" ╚██████╔╝██║╚██████╔╝╚██████╗██║  ██║███████╗██║ ╚████║███████╗██║    ")
+        print("  ╚══▀▀═╝ ╚═╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝    ")
+        print()
         print("Original Design By QiuChenly(github.com/qiuchenly), Py ver. by X1a0He")
+        print(f"自动注入版本号: {proc_version}")
         print("注入时请根据提示输入'y' 或者按下回车键跳过这一项。")
 
         # QiuChenlyTeam 特殊变量
         isDevHome = os.getenv("InjectLibDev")
 
-        start_time = time.time()
+#         start_time = time.time()
         install_apps = scan_apps()
-        end_time = time.time()
-        elapsed_time = end_time - start_time
-        print("扫描本地App耗时: {:.2f}s".format(elapsed_time))
+#         end_time = time.time()
+#         elapsed_time = end_time - start_time
+#         print("扫描本地App耗时: {:.2f}s".format(elapsed_time))
         app_Lst = []
-        print("请输入应用名称或包名的关键字进行搜索,或直接按回车键遍历所有支持的应用:")
-        keyword = input().strip()
+        keyword = input("请输入应用名称或包名的关键字进行搜索,或直接按回车键遍历所有支持的应用: ").strip()
 
         if keyword:
             matched_apps = search_apps(app_list, install_apps, keyword)
             if not matched_apps:
                 print("未找到匹配的应用程序。")
-                return
+                exit(0)
 
             print("找到以下匹配的应用程序:")
             for i, app in enumerate(matched_apps, 1):
                 package_name = app.get("packageName")
-                if isinstance(package_name, list):
-                    package_name = " / ".join(package_name)
-                print(f"{i}. {package_name}")
+                print(f"{i}. {' / '.join(package_name) if isinstance(package_name, list) else package_name}")
 
-            print("请输入要注入的应用程序编号,或输入0退出:")
-            choice = input().strip()
-            if not choice.isdigit() or int(choice) == 0 or int(choice) > len(matched_apps):
-                print("已退出程序。")
-                return
-
-            selected_app = matched_apps[int(choice) - 1]
-            app_Lst = []
-            if isinstance(selected_app["packageName"], list):
-                for name in selected_app["packageName"]:
-                    tmp = selected_app.copy()
-                    tmp["packageName"] = name
-                    app_Lst.append(tmp)
+            choice = input("请输入要注入的应用程序编号,或输入0退出: ").strip()
+            if choice.isdigit() and 0 < int(choice) <= len(matched_apps):
+                selected_app = matched_apps[int(choice) - 1]
+                app_Lst = [selected_app.copy() | {"packageName": name} for name in (selected_app["packageName"] if isinstance(selected_app["packageName"], list) else [selected_app["packageName"]])]
             else:
-                app_Lst.append(selected_app)             
+                print("已退出程序。")
+                exit(0)
         else:
-            for app in app_list:
-                package_name = app["packageName"]
-                # 获取macOS系统当前用户账户
-                if app.get("forQiuChenly") and not os.path.exists("/Users/qiuchenly"):
-                    continue
-                if isinstance(package_name, list):  # 如果是list就检查多项
-                    for name in package_name:
-                        tmp = app.copy()
-                        tmp["packageName"] = name
-                        app_Lst.append(tmp)
-                else:
-                    app_Lst.append(app)
+            app_Lst = [app.copy() | {"packageName": name} for app in app_list
+               if not (app.get("forQiuChenly") and not os.path.exists("/Users/qiuchenly"))
+               for name in (app["packageName"] if isinstance(app["packageName"], list) else [app["packageName"]])]
 
         for app in app_Lst:
             package_name = app.get("packageName")
@@ -292,27 +230,14 @@ def main():
             if auto_handle_setapp is not None:
                 bridge_file = "/Contents/MacOS/"
                 executableAppName = local_app["CFBundleExecutable"]
-                inject_file = os.path.basename(
-                    app_base_locate + bridge_file + executableAppName
-                )
-                print(
-                    f"======== Setapp下一个App的处理结果如下 [{app_base_locate}] [{bridge_file}] [{inject_file}]"
-                )
+                inject_file = os.path.basename(app_base_locate + bridge_file + executableAppName)
+                print(f"======== Setapp下一个App的处理结果如下 [{app_base_locate}] [{bridge_file}] [{inject_file}]")
 
-            if not check_compatible(
-                support_version,
-                support_subversion,
-                local_app["CFBundleShortVersionString"],
-                local_app["CFBundleVersion"],
-            ):
-                print(
-                    f"[😅] [{local_app['CFBundleName']}] - [{local_app['CFBundleShortVersionString']}] - [{local_app['CFBundleIdentifier']}]不是受支持的版本，跳过注入😋。"
-                )
+            if not check_compatible(support_version, support_subversion, local_app["CFBundleShortVersionString"], local_app["CFBundleVersion"],):
+                print(f"[😅] [{local_app['CFBundleName']}] - [{local_app['CFBundleShortVersionString']}] - [{local_app['CFBundleIdentifier']}]不是受支持的版本，跳过注入😋。")
                 continue
 
-            print(
-                f"[🤔] [{local_app['CFBundleName']}] - [{local_app['CFBundleShortVersionString']}] 是受支持的版本，是否需要注入？y/n(默认n)"
-            )
+            print(f"[🤔] [{local_app['CFBundleName']}] - [{local_app['CFBundleShortVersionString']}] 是受支持的版本，是否需要注入？y/n(默认n)")
             action = read_input("").strip().lower()
             if action != "y":
                 continue
@@ -322,38 +247,38 @@ def main():
                 continue
 
             # 检查是否为com.adobe开头
-            if local_app["CFBundleIdentifier"].startswith("com.adobe"):
-                subprocess.run(
-                    "sudo chmod -R 777 /Applications/Utilities/Adobe\ Creative\ Cloud/Components/Apps/*",
-                    shell=True,
-                )
-                # 检查是否存在/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js
-                if not os.path.exists(
-                    "/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js"
-                ):
-                    # 替换文件中的key:"getEntitlementStatus",value:function(e){为key:"getEntitlementStatus",value:function(e){return "Entitled Installed"
-                    with open(
-                        "/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js",
-                        "r",
-                        encoding="utf-8",
-                    ) as f:
-                        content = f.read()
-                    # 判断是否写过了
-                    if (
-                        'key:"getEntitlementStatus",value:function(e){return "Entitled Installed"'
-                        not in content
-                    ):
-                        # sed -i "s#key:\"getEntitlementStatus\",value:function(e){#key:\"getEntitlementStatus\",value:function(e){return \"Entitled Installed\"#g" /Applications/Utilities/Adobe\ Creative\ Cloud/Components/Apps/Apps1_0.js
-                        content = content.replace(
-                            'key:"getEntitlementStatus",value:function(e){',
-                            'key:"getEntitlementStatus",value:function(e){return "Entitled Installed";',
-                        )
-                        with open(
-                            "/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js",
-                            "w",
-                            encoding="utf-8",
-                        ) as f:
-                            f.write(content)
+#             if local_app["CFBundleIdentifier"].startswith("com.adobe"):
+#                 subprocess.run(
+#                     "sudo chmod -R 777 /Applications/Utilities/Adobe Creative Cloud/Components/Apps/*",
+#                     shell=True,
+#                 )
+#                 # 检查是否存在/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js
+#                 if not os.path.exists(
+#                     "/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js"
+#                 ):
+#                     # 替换文件中的key:"getEntitlementStatus",value:function(e){为key:"getEntitlementStatus",value:function(e){return "Entitled Installed"
+#                     with open(
+#                         "/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js",
+#                         "r",
+#                         encoding="utf-8",
+#                     ) as f:
+#                         content = f.read()
+#                     # 判断是否写过了
+#                     if (
+#                         'key:"getEntitlementStatus",value:function(e){return "Entitled Installed"'
+#                         not in content
+#                     ):
+#                         # sed -i "s#key:\"getEntitlementStatus\",value:function(e){#key:\"getEntitlementStatus\",value:function(e){return \"Entitled Installed\"#g" /Applications/Utilities/Adobe\ Creative\ Cloud/Components/Apps/Apps1_0.js
+#                         content = content.replace(
+#                             'key:"getEntitlementStatus",value:function(e){',
+#                             'key:"getEntitlementStatus",value:function(e){return "Entitled Installed";',
+#                         )
+#                         with open(
+#                             "/Applications/Utilities/Adobe Creative Cloud/Components/Apps/Apps1_0.js",
+#                             "w",
+#                             encoding="utf-8",
+#                         ) as f:
+#                             f.write(content)
 
             print(f"开始注入App: {package_name}")
 
