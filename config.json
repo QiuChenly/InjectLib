@@ -244,6 +244,7 @@
       "needCopyToAppDir": true,
       "noSignTarget": true,
       "autoHandleHelper": true,
+      "helperNoInject": true,
       "helperFile": "/Contents/Library/LaunchServices/ws.stash.app.mac.daemon.helper",
       "tccutil": ["All"]
     },

@@ -82,7 +82,7 @@ def handle_keygen(bundleIdentifier):
     subprocess.run("chmod +x ./tool/KeygenStarter", shell=True)
     subprocess.run(f"./tool/KeygenStarter '{bundleIdentifier}' '{username}'", shell=True)
 
-def handle_helper(app_base, target_helper, component_apps, SMExtra, bridge_path):
+def handle_helper(app_base, target_helper, component_apps, SMExtra, bridge_path, useOptool,helperNoInject):
     """增强Helper
 
     Args:
@@ -91,7 +91,15 @@ def handle_helper(app_base, target_helper, component_apps, SMExtra, bridge_path)
     """
     subprocess.run("chmod +x ./tool/GenShineImpactStarter", shell=True)
     subprocess.run(f"./tool/GenShineImpactStarter '{target_helper}' {'' if SMExtra is None else SMExtra}", shell=True)
-    subprocess.run(f"./tool/insert_dylib '{bridge_path}91QiuChenly.dylib' '{target_helper}' '{target_helper}'", shell=True)
+    if useOptool:
+        sh = f"./tool/optool install -p '{bridge_path}91QiuChenly.dylib' -t '{target_helper}'"
+    else:
+        sh = f"./tool/insert_dylib '{bridge_path}91QiuChenly.dylib' '{target_helper}' '{target_helper}'"
+    
+    if helperNoInject:
+        pass
+    else:
+        subprocess.run(sh, shell=True)
     helper_name = target_helper.split("/")[-1]
 
     # 检查是否存在
@@ -217,6 +225,8 @@ def main():
             onlysh = app.get("onlysh")
             SMExtra = app.get("SMExtra")
             keygen = app.get("keygen")
+            useOptool = app.get("useOptool")
+            helperNoInject = app.get("helperNoInject") 
 
             local_app = [
                 local_app
@@ -329,9 +339,13 @@ def main():
             current = Path(__file__).resolve()
 
             sh = f"chmod +x {current.parent}/tool/insert_dylib"
+            sh = f"chmod +x {current.parent}/tool/optool"
             subprocess.run(sh, shell=True)
 
-            sh = f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/91QiuChenly.dylib' '{backup}' '{dest}'"
+            if useOptool:
+                sh = f"sudo {current.parent}/tool/optool install -p '{current.parent}/tool/91QiuChenly.dylib' -t '{dest}'"
+            else:
+                sh = f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/91QiuChenly.dylib' '{backup}' '{dest}'"
 
             if need_copy_to_app_dir:
                 source_dylib = f"{current.parent}/tool/91QiuChenly.dylib"
@@ -358,7 +372,10 @@ def main():
                         ]
                     )
                 for it in desireApp:
-                    bsh = rf"sudo {current.parent}/tool/insert_dylib {destination_dylib} '{backup}' '{it}'"
+                    if useOptool:
+                        bsh = rf"sudo {current.parent}/tool/optool install -p {destination_dylib} -t '{it}'"
+                    else:
+                        bsh = rf"sudo {current.parent}/tool/insert_dylib {destination_dylib} '{backup}' '{it}'"
                     sh.append(bsh)
 
             if isinstance(sh, list):
@@ -411,6 +428,8 @@ def main():
                         componentApp,
                         SMExtra,
                         f"{app_base_locate}{bridge_file}",
+                        useOptool,
+                        helperNoInject
                     )
             if tccutil is not None:
                 if tccutil := tccutil:
