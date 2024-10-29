@@ -1179,6 +1179,16 @@
       ]
     },
     {
+      "packageName": "codes.rambo.AirBuddyHelper",
+      "appBaseLocate": "/Applications/AirBuddy.app/Contents/Library/LoginItems/AirBuddyHelper.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "AirBuddyHelper",
+      "needCopyToAppDir": true,
+      "tccutil": [
+        "All"
+      ]
+    },
+    {
       "packageName": "com.apphousekitchen.aldente-pro",
       "needCopyToAppDir": true,
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",

@@ -12,7 +12,7 @@ fi
 
 cp tool/91QiuChenly.dylib /Applications/AirBuddy.app/Contents/MacOS/91QiuChenly.dylib
 
-insert_dylib @executable_path/91QiuChenly.dylib /Applications/AirBuddy.app/Contents/MacOS/AirBuddy_backup /Applications/AirBuddy.app/Contents/MacOS/AirBuddy
+tool/insert_dylib @executable_path/91QiuChenly.dylib /Applications/AirBuddy.app/Contents/MacOS/AirBuddy_backup /Applications/AirBuddy.app/Contents/MacOS/AirBuddy
 
 codesign -f -s - /Applications/AirBuddy.app/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer
 
