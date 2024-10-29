@@ -4,7 +4,7 @@
 .vscode
 .ruby-lsp
 IACPLHttpTransferClient
-tool/DIffPatchCode.py
+Diff*.py
 tool/GiftGot.py
 config_pd.json
 tool/pd*.sh
