@@ -493,6 +493,13 @@
       "noDeep": true
     },
     {
+      "packageName": "com.literatureandlatte.scrivener3",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Scrivener",
+      "needCopyToAppDir": true,
+      "noDeep": true
+    },
+    {
       "packageName": "com.adobe.Adobe-Animate-2024.application",
       "appBaseLocate": "/Applications/Adobe Animate 2024/Adobe Animate 2024.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
