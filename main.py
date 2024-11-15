@@ -227,6 +227,8 @@ def main():
             keygen = app.get("keygen")
             useOptool = app.get("useOptool")
             helperNoInject = app.get("helperNoInject") 
+            # forceSignMainExecute
+            forceSignMainExecute = app.get("forceSignMainExecute")
 
             local_app = [
                 local_app
@@ -411,6 +413,9 @@ def main():
 
             if deep_sign_app:
                 subprocess.run(f"{sign_prefix} '{app_base_locate}'", shell=True)
+
+            if forceSignMainExecute:
+                subprocess.run(f"cp '{dest}' /tmp/test && codesign -fs - /tmp/test && cp /tmp/test '{dest}'", shell=True)
 
             subprocess.run(f"sudo xattr -cr '{dest}'", shell=True)
             if auto_handle_helper and helper_file:
