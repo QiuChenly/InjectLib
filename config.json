@@ -487,7 +487,8 @@
     },
     {
       "packageName": "com.apple.FinalCutTrial",
-      "injectFile": "TLKit.framework/Versions/A/TLKit",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Final Cut Pro Trial",
       "needCopyToAppDir": true,
       "noDeep": true
     },
