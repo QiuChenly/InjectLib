@@ -556,6 +556,24 @@
       "noDeep": true
     },
     {
+      "packageName": "com.autodesk.AutoCAD2025",
+      "appBaseLocate": "/Applications/Autodesk/AutoCAD 2025/AutoCAD 2025.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "AutoCAD",
+      "needCopyToAppDir": true,
+      "noDeep": true
+    },
+    {
+      "packageName": "com.autodesk.AutoCADWatt",
+      "appBaseLocate": "/Applications/Autodesk/AutoCAD Watt/AutoCAD Watt.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "AutoCAD",
+      "needCopyToAppDir": true,
+      "deepSignApp": false,
+      "noSignTarget": true,
+      "noDeep": true
+    },
+    {
       "packageName": "design.yugen.Flow",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Flow",
