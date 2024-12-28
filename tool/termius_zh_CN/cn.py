@@ -4,14 +4,14 @@ from os import path
 
 
 def decompressAsar():
-    cmd = "asar extract /Applications/Termius\\ Beta.app/Contents/Resources/app.asar /Applications/Termius\\ Beta.app/Contents/Resources/app"
+    cmd = "asar extract /Applications/Termius.app/Contents/Resources/app.asar /Applications/Termius.app/Contents/Resources/app"
     os.system(cmd)
 
 
 def pack2asar():
-    cmd = 'asar p /Applications/Termius\\ Beta.app/Contents/Resources/app /Applications/Termius\\ Beta.app/Contents/Resources/app.asar --unpack-dir "{node_modules/@termius,out}"'
+    cmd = 'asar p /Applications/Termius.app/Contents/Resources/app /Applications/Termius.app/Contents/Resources/app.asar --unpack-dir "{node_modules/@termius,out}"'
     os.system(cmd)
-    os.system("xattr -cr /Applications/Termius\\ Beta.app")
+    os.system("xattr -cr /Applications/Termius.app")
 
 
 files_cache: dict[str:str] = {}
@@ -19,32 +19,32 @@ files_cache: dict[str:str] = {}
 
 def main():
     if not os.path.exists(
-        "/Applications/Termius\\ Beta.app/Contents/Resources/app.asar_副本"
+        "/Applications/Termius.app/Contents/Resources/app.asar_副本"
     ):
         os.system(
-            "cp /Applications/Termius\\ Beta.app/Contents/Resources/app.asar /Applications/Termius\\ Beta.app/Contents/Resources/app.asar_副本"
+            "cp /Applications/Termius.app/Contents/Resources/app.asar /Applications/Termius.app/Contents/Resources/app.asar_副本"
         )
     else:
         os.system(
-            "cp /Applications/Termius\\ Beta.app/Contents/Resources/app.asar_副本 /Applications/Termius\\ Beta.app/Contents/Resources/app.asar"
+            "cp /Applications/Termius.app/Contents/Resources/app.asar_副本 /Applications/Termius.app/Contents/Resources/app.asar"
         )
 
-    os.system("rm -rf /Applications/Termius\\ Beta.app/Contents/Resources/app")
+    os.system("rm -rf /Applications/Termius.app/Contents/Resources/app")
     # 防止自动更新
     os.system(
-        "rm -rf /Applications/Termius\\ Beta.app/Contents/Resources/app-update.yml"
+        "rm -rf /Applications/Termius.app/Contents/Resources/app-update.yml"
     )
 
-    if not path.exists("/Applications/Termius Beta.app/Contents/Resources/app"):
+    if not path.exists("/Applications/Termius.app/Contents/Resources/app"):
         decompressAsar()
 
     with open("lang.txt") as lang:
         cnLang = [ll for ll in lang.read().splitlines() if len(ll) > 0]
 
     prefixLink = [
-        "/Applications/Termius Beta.app/Contents/Resources/app/background-process/assets",
-        "/Applications/Termius Beta.app/Contents/Resources/app/ui-process/assets",
-        "/Applications/Termius Beta.app/Contents/Resources/app/main-process",
+        "/Applications/Termius.app/Contents/Resources/app/background-process/assets",
+        "/Applications/Termius.app/Contents/Resources/app/ui-process/assets",
+        "/Applications/Termius.app/Contents/Resources/app/main-process",
     ]
 
     lstFile = []
@@ -72,11 +72,12 @@ def main():
         with open(fileOut, "w", encoding="utf-8") as u:
             u.write(files_cache[fileOut])
     pack2asar()
-    os.system("xattr -cr /Applications/Termius\ Beta.app")
+    os.system("xattr -cr /Applications/Termius.app")
     print("Done.")
 
 
-# os.system("sudo xattr -cr '/Applications/Termius Beta.app'")
-# os.system("sudo codesign -f -s - '/Applications/Termius Beta.app'")
+# os.system("sudo xattr -cr '/Applications/Termius.app'")
+# os.system("sudo codesign -f -s - '/Applications/Termius.app'")
+os.system("sudo npm i -g @electron/asar")
 
 main()
