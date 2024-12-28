@@ -78,6 +78,6 @@ def main():
 
 # os.system("sudo xattr -cr '/Applications/Termius.app'")
 # os.system("sudo codesign -f -s - '/Applications/Termius.app'")
-os.system("sudo npm i -g @electron/asar")
+os.system("npm i -g @electron/asar")
 
 main()
