@@ -229,6 +229,10 @@ def main():
             helperNoInject = app.get("helperNoInject") 
             # forceSignMainExecute
             forceSignMainExecute = app.get("forceSignMainExecute")
+            dylibSelect = app.get("dylibSelect") # 选择注入的库
+            
+            if dylibSelect is None:
+                dylibSelect = "91QiuChenly.dylib"
 
             local_app = [
                 local_app
@@ -345,18 +349,18 @@ def main():
             subprocess.run(sh, shell=True)
 
             if useOptool:
-                sh = f"sudo {current.parent}/tool/optool install -p '{current.parent}/tool/91QiuChenly.dylib' -t '{dest}'"
+                sh = f"sudo {current.parent}/tool/optool install -p '{current.parent}/tool/{dylibSelect}' -t '{dest}'"
             else:
-                sh = f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/91QiuChenly.dylib' '{backup}' '{dest}'"
+                sh = f"sudo {current.parent}/tool/insert_dylib '{current.parent}/tool/{dylibSelect}' '{backup}' '{dest}'"
 
             if need_copy_to_app_dir:
-                source_dylib = f"{current.parent}/tool/91QiuChenly.dylib"
+                source_dylib = f"{current.parent}/tool/{dylibSelect}"
                 if isDevHome:
                     # 开发者自己的prebuild库路径 直接在.zshrc设置环境变量这里就可以读取到。
                     # export InjectLibDev="自己的路径/91QiuChenly.dylib"
                     # 要设置全路径哦 并且不要用sudo python3 main.py 启动 否则读不到你的环境变量
                     source_dylib = isDevHome
-                destination_dylib = f"'{app_base_locate}{bridge_file}91QiuChenly.dylib'"
+                destination_dylib = f"'{app_base_locate}{bridge_file}{dylibSelect}'"
 
                 command = "ln -f -s" if isDevHome else "cp"
                 subprocess.run(
