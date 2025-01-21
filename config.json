@@ -273,7 +273,8 @@
       "appBaseLocate": "/Applications/Elpass.app",
       "injectFile": "MMMarkdown.framework/Versions/A/MMMarkdown",
       "needCopyToAppDir": true,
-      "deepSignApp": true
+      "deepSignApp": true,
+      "dylibSelect":"CoreInject.dylib"
     },
     {
       "packageName": "ws.stash.app.mac",
@@ -314,7 +315,8 @@
         "Reminders",
         "Photos",
         "AppleEvents"
-      ]
+      ],
+      "dylibSelect":"CoreInject.dylib"
     },
     {
       "packageName": "com.nektony.MacCleaner-PRO-SIII",
@@ -878,7 +880,8 @@
       "helperFile": "/Contents/Library/LaunchServices/com.drbuho.BuhoCleaner.PrivilegedHelperTool",
       "tccutil": [
         "All"
-      ]
+      ],
+      "dylibSelect":"CoreInject.dylib"
     },
     {
       "packageName": "org.qcad",

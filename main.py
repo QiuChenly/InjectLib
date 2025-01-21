@@ -158,7 +158,7 @@ def main():
         print("注入时请根据提示输入'y' 或者按下回车键跳过这一项。")
 
         # QiuChenlyTeam 特殊变量
-        isDevHome = os.getenv("InjectLibDev")
+        isDevHome = False #os.getenv("InjectLibDev")
 
 #         start_time = time.time()
         install_apps = scan_apps()
