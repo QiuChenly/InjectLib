@@ -274,7 +274,7 @@
       "injectFile": "MMMarkdown.framework/Versions/A/MMMarkdown",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "ws.stash.app.mac",
@@ -302,7 +302,7 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.nektony.App-Cleaner-SIII",
@@ -317,7 +317,7 @@
         "Photos",
         "AppleEvents"
       ],
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.nektony.MacCleaner-PRO-SIII",
@@ -447,23 +447,16 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Adobe Lightroom",
       "entitlements": "signkeep.xml",
-      "dylibSelect":"CoreInject.dylib",
+      "dylibSelect": "CoreInject.dylib",
       "needCopyToAppDir": true,
       "noDeep": true
-    },
-    {
-      "packageName": "com.adobe.Photoshop",
-      "appBaseLocate": "/Applications/Adobe Photoshop 2024/Adobe Photoshop 2024.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "deepSignApp": true
     },
     {
       "packageName": "com.adobe.Photoshop",
       "appBaseLocate": "/Applications/Adobe Photoshop 2025/Adobe Photoshop 2025.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
-      "dylibSelect":"CoreInject.dylib",
+      "dylibSelect": "CoreInject.dylib",
       "deepSignApp": true
     },
     {
@@ -473,7 +466,7 @@
       "injectFile": "Adobe Illustrator",
       "needCopyToAppDir": true,
       "noDeep": true,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.adobe.illustrator",
@@ -544,14 +537,15 @@
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
       "noDeep": true,
-      "dylibSelect":"CoreInject.dylib"
-    },{
+      "dylibSelect": "CoreInject.dylib"
+    },
+    {
       "packageName": "com.adobe.distiller",
       "appBaseLocate": "/Applications/Adobe Acrobat DC/Acrobat Distiller.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
       "noDeep": true,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.adobe.InCopy",
@@ -560,7 +554,7 @@
       "injectFile": "Adobe InCopy 2025",
       "needCopyToAppDir": true,
       "noDeep": true,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.autodesk.Maya.2024",
@@ -620,7 +614,7 @@
       "appBaseLocate": "/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Adobe Lightroom Classic",
-      "dylibSelect":"CoreInject.dylib",
+      "dylibSelect": "CoreInject.dylib",
       "noDeep": true,
       "needCopyToAppDir": true,
       "entitlements": "signkeep.xml"
@@ -737,7 +731,7 @@
       "injectFile": "CocoaLumberjack.framework/Versions/A/CocoaLumberjack",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.proxyman.NSProxy",
@@ -892,7 +886,7 @@
       "tccutil": [
         "All"
       ],
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "org.qcad",
