@@ -301,7 +301,8 @@
       "packageName": "com.coderforart.MWeb3",
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
-      "deepSignApp": true
+      "deepSignApp": true,
+      "dylibSelect":"CoreInject.dylib"
     },
     {
       "packageName": "com.nektony.App-Cleaner-SIII",
@@ -446,10 +447,9 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Adobe Lightroom",
       "entitlements": "signkeep.xml",
+      "dylibSelect":"CoreInject.dylib",
       "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "noDeep": true,
-      "useOptool": false
+      "noDeep": true
     },
     {
       "packageName": "com.adobe.Photoshop",
@@ -463,6 +463,7 @@
       "appBaseLocate": "/Applications/Adobe Photoshop 2025/Adobe Photoshop 2025.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
+      "dylibSelect":"CoreInject.dylib",
       "deepSignApp": true
     },
     {
@@ -472,7 +473,7 @@
       "injectFile": "Adobe Illustrator",
       "needCopyToAppDir": true,
       "noDeep": true,
-      "useOptool": false
+      "dylibSelect":"CoreInject.dylib"
     },
     {
       "packageName": "com.adobe.illustrator",
@@ -542,16 +543,24 @@
       "appBaseLocate": "/Applications/Adobe Acrobat DC/Adobe Acrobat.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
-      "noDeep": true
+      "noDeep": true,
+      "dylibSelect":"CoreInject.dylib"
+    },{
+      "packageName": "com.adobe.distiller",
+      "appBaseLocate": "/Applications/Adobe Acrobat DC/Acrobat Distiller.app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "dylibSelect":"CoreInject.dylib"
     },
     {
       "packageName": "com.adobe.InCopy",
-      "appBaseLocate": "/Applications/Adobe InCopy 2024/Adobe InCopy 2024.app",
+      "appBaseLocate": "/Applications/Adobe InCopy 2025/Adobe InCopy 2025.app",
       "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "PublicLib.dylib",
+      "injectFile": "Adobe InCopy 2025",
       "needCopyToAppDir": true,
       "noDeep": true,
-      "useOptool": false
+      "dylibSelect":"CoreInject.dylib"
     },
     {
       "packageName": "com.autodesk.Maya.2024",
@@ -611,6 +620,8 @@
       "appBaseLocate": "/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Adobe Lightroom Classic",
+      "dylibSelect":"CoreInject.dylib",
+      "noDeep": true,
       "needCopyToAppDir": true,
       "entitlements": "signkeep.xml"
     },
