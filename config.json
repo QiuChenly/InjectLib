@@ -555,6 +555,14 @@
       "needCopyToAppDir": true,
       "noDeep": true,
       "dylibSelect": "CoreInject.dylib"
+    },{
+      "packageName": "com.adobe.InCopy",
+      "appBaseLocate": "/Applications/Adobe InDesign 2025/Adobe InDesign 2025.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Adobe InDesign 2025",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.autodesk.Maya.2024",
