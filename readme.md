@@ -18,6 +18,12 @@
 
 # 你这玩意我怎么使用？
 
+你有两种选择。
+
+1. 加群询问获取帮助: **<https://t.me/+f3BWmkjVCzQwYzM1>**
+   
+2. 继续向下阅读并访问文档说明使用:
+
 点下面的链接进入在线文档，有操作指南。
 
 目前还没有写完，如果有没有的、看不懂的内容可以提Issues。
@@ -29,8 +35,11 @@
 关注我的频道，进群获取最新的推送资讯。
 
 頻道: **<https://t.me/qiuchenlymac>**
+
 群組: **<https://t.me/+f3BWmkjVCzQwYzM1>**
+
 Twitter: https://twitter.com/QiuChenly
+
 <br>
 關注QiuChenly喵，關注落葉的Twitter喵。謝謝大家喵。
 
