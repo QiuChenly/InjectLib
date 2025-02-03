@@ -318,9 +318,25 @@
         "AppleEvents"
       ],
       "dylibSelect": "CoreInject.dylib"
+    },{
+      "packageName": "com.nektony.App-Cleaner-SIII",
+      "appBaseLocate": "/Applications/MacCleaner 3 Pro/App Cleaner 8.app",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "App Cleaner 8",
+      "tccutil": [
+        "All",
+        "AddressBook",
+        "Reminders",
+        "Photos",
+        "AppleEvents"
+      ],
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.nektony.MacCleaner-PRO-SIII",
+      "appBaseLocate": "/Applications/MacCleaner 3 Pro/MacCleaner Pro 3.app",
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
@@ -331,10 +347,12 @@
         "Reminders",
         "Photos",
         "AppleEvents"
-      ]
+      ],
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.nektony.Disk-Expert-SIII",
+      "appBaseLocate": "/Applications/MacCleaner 3 Pro/Disk Expert 5.app",
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
@@ -342,7 +360,8 @@
         "All",
         "Reminders",
         "Photos"
-      ]
+      ],
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.nektony.Duplicates-Finder",
@@ -351,17 +370,20 @@
       "deepSignApp": true,
       "tccutil": [
         "All"
-      ]
+      ],
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.nektony.Duplicate-File-Finder-SIII",
+      "appBaseLocate": "/Applications/MacCleaner 3 Pro/Duplicate File Finder 8.app",
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/A/Sparkle",
       "tccutil": [
         "All",
         "Photos"
-      ]
+      ],
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "li.zihua.medis2",
