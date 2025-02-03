@@ -432,7 +432,8 @@
       "appBaseLocate": "/Applications/Navicat Premium.app",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Navicat Premium",
-      "needCopyToAppDir": true
+      "needCopyToAppDir": true,
+      "dylibSelect":"CoreInject.dylib"
     },
     {
       "packageName": "com.adobe.Photoshop",
