@@ -22,7 +22,7 @@
 
 仍然遇到问题？你有两种选择。
 
-1. 加群询问获取帮助: **<https://t.me/+f3BWmkjVCzQwYzM1>**
+1. 加群询问获取帮助: **https://t.me/+VvqTr-2EFaZhYzA1**
    
 2. 继续向下阅读并访问文档说明使用:
 
@@ -38,7 +38,7 @@
 
 頻道: **<https://t.me/qiuchenlymac>**
 
-群組: **<https://t.me/+f3BWmkjVCzQwYzM1>**
+群組: **https://t.me/+VvqTr-2EFaZhYzA1**
 
 Twitter: https://twitter.com/QiuChenly
 
