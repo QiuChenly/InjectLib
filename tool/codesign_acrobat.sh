@@ -1,0 +1,1 @@
+codesign -fs - "/Applications/Adobe Acrobat DC/Adobe Acrobat.app"

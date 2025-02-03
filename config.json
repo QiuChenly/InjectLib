@@ -538,7 +538,8 @@
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
       "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib",
+      "extraShell":"codesign_acrobat.sh"
     },
     {
       "packageName": "com.adobe.distiller",
