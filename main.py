@@ -367,6 +367,12 @@ def main():
                     f"{command} {source_dylib} {destination_dylib}",
                     shell=True,
                 )
+                
+                # codesign
+                subprocess.run(
+                    f"codesign -fs - --timestamp=none --all-architectures {destination_dylib}",
+                    shell=True,
+                )
 
                 sh = []
                 desireApp = [dest]
