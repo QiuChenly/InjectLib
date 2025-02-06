@@ -403,6 +403,7 @@ def main():
             if no_sign_target is None:
                 print("开始签名...")
                 subprocess.run(f"{sign_prefix} '{dest}'", shell=True)
+                subprocess.run(f"{sign_prefix} '{app_base_locate}'", shell=True)
 
             if disable_library_validate is not None:
                 subprocess.run(
