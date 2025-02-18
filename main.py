@@ -82,7 +82,7 @@ def handle_keygen(bundleIdentifier):
     subprocess.run("chmod +x ./tool/KeygenStarter", shell=True)
     subprocess.run(f"./tool/KeygenStarter '{bundleIdentifier}' '{username}'", shell=True)
 
-def handle_helper(app_base, target_helper, component_apps, SMExtra, bridge_path, useOptool,helperNoInject):
+def handle_helper(app_base, target_helper, component_apps, SMExtra, bridge_path, useOptool,helperNoInject,dylibSelect):
     """增强Helper
 
     Args:
@@ -92,9 +92,9 @@ def handle_helper(app_base, target_helper, component_apps, SMExtra, bridge_path,
     subprocess.run("chmod +x ./tool/GenShineImpactStarter", shell=True)
     subprocess.run(f"./tool/GenShineImpactStarter '{target_helper}' {'' if SMExtra is None else SMExtra}", shell=True)
     if useOptool:
-        sh = f"./tool/optool install -p '{bridge_path}91QiuChenly.dylib' -t '{target_helper}'"
+        sh = f"./tool/optool install -p '{bridge_path}{dylibSelect}' -t '{target_helper}'"
     else:
-        sh = f"./tool/insert_dylib '{bridge_path}91QiuChenly.dylib' '{target_helper}' '{target_helper}'"
+        sh = f"./tool/insert_dylib '{bridge_path}{dylibSelect}' '{target_helper}' '{target_helper}'"
     
     if helperNoInject:
         pass
@@ -445,7 +445,8 @@ def main():
                         SMExtra,
                         f"{app_base_locate}{bridge_file}",
                         useOptool,
-                        helperNoInject
+                        helperNoInject,
+                        dylibSelect
                     )
             if tccutil is not None:
                 if tccutil := tccutil:

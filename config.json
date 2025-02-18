@@ -68,6 +68,7 @@
       "needCopyToAppDir": true,
       "noSignTarget": true,
       "autoHandleHelper": true,
+      "dylibSelect": "CoreInject.dylib",
       "helperFile": [
         "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac5.Agent"
       ],
@@ -190,7 +191,8 @@
       "packageName": "pl.maketheweb.cleanshotx",
       "injectFile": "InsiderKit.framework/Versions/A/InsiderKit",
       "needCopyToAppDir": true,
-      "deepSignApp": true
+      "deepSignApp": true,
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "studio.fireball.moment",
