@@ -463,7 +463,7 @@ label:"Tags"|label:"标记"
 "Stop"|"停止"
 "Create"|"创建"
 "Personal"|"个人"
-'Type "ssh user@hostname -p port" to connect...'|'输入"ssh user@hostname -p port"以连接...'
+'Type "ssh user@hostname -p port" to connect...'|'输入"ssh user@hostname -p port"以连接. Powerd by QiuChenly破解汉化'
 "Serial Connection"|"串行连接"
 "Open Serial Connection"|"打开串行连接"
 "Choose your way to get started"|"选择开始方式"
