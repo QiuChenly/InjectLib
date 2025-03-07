@@ -686,11 +686,11 @@
     },
     {
       "packageName": "com.sublimetext.4",
-      "needCopyToAppDir": true,
-      "noSignTarget": true,
       "entitlements": "signkeep.xml",
       "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "sublime_text"
+      "injectFile": "sublime_text",
+      "extraShell":"sublime.sh",
+      "onlysh":true
     },
     {
       "packageName": "com.sublimemerge",
