@@ -1,4 +1,5 @@
 /usr/bin/codesign -f -s - --timestamp=none --all-architectures --deep "tool/CoreInject.dylib"
+sudo mkdir -p /usr/local/lib
 sudo cp "tool/CoreInject.dylib" /usr/local/lib/qcly
 cp '/Applications/Sublime Text.app/Contents/MacOS/sublime_text' '/Applications/Sublime Text.app/Contents/MacOS/sublime_text_backup'
 sudo tool/insert_dylib qcly '/Applications/Sublime Text.app/Contents/MacOS/sublime_text_backup' '/Applications/Sublime Text.app/Contents/MacOS/sublime_text'
