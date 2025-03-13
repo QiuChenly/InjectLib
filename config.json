@@ -98,7 +98,8 @@
       "needCopyToAppDir": true,
       "noSignTarget": true,
       "supportVersion": [
-        "9.0.241217"
+        "9.0.241217",
+        "9.1.250226"
       ],
       "extraShell": "copyLicense.sh"
     },
@@ -689,8 +690,8 @@
       "entitlements": "signkeep.xml",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "sublime_text",
-      "extraShell":"sublime.sh",
-      "onlysh":true
+      "extraShell": "sublime.sh",
+      "onlysh": true
     },
     {
       "packageName": "com.sublimemerge",
