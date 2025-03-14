@@ -459,7 +459,10 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Navicat Premium",
       "needCopyToAppDir": true,
-      "dylibSelect": "CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib",
+      "supportVersion":[
+        "17.2.2"
+      ]
     },
     {
       "packageName": "com.adobe.Photoshop",
