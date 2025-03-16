@@ -156,21 +156,30 @@
       "packageName": [
         "com.macpaw.CleanMyMac-setapp"
       ],
-      "appBaseLocate": "/Applications/Setapp/CleanMyMac X.app",
-      "injectFile": "Announcements.framework/Versions/A/Announcements",
+      "appBaseLocate": "/Applications/Setapp/CleanMyMac.app",
+      "injectFile": "ActivationService.framework/Versions/A/ActivationService",
       "needCopyToAppDir": true,
       "noSignTarget": true,
       "autoHandleHelper": true,
       "helperFile": [
-        "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent",
-        "/Contents/Library/LoginItems/CleanMyMac Menu.app/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent"
-      ],
-      "componentApp": [
-        "/Contents/Library/LoginItems/CleanMyMac Menu.app"
+        "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent"
       ],
       "tccutil": [
         "All"
-      ]
+      ],
+      "dylibSelect":"CoreInject.dylib"
+    },
+    {
+      "packageName": [
+        "com.macpaw.CleanMyMac-setapp.Menu"
+      ],
+      "appBaseLocate": "/Applications/Setapp/CleanMyMac.app/Contents/Library/LoginItems/CleanMyMac_5_Setapp_Menu.app",
+      "injectFile": "ActivationService.framework/Versions/A/ActivationService",
+      "needCopyToAppDir": true,
+      "tccutil": [
+        "All"
+      ],
+      "dylibSelect":"CoreInject.dylib"
     },
     {
       "packageName": [
@@ -1012,7 +1021,8 @@
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "needCopyToAppDir": true,
       "deepSignApp": true,
-      "extraShell": "Setapps/setapp.sh"
+      "extraShell": "Setapps/setapp.sh",
+      "dylibSelect":"CoreInject.dylib"
     },
     {
       "packageName": [
@@ -1251,7 +1261,8 @@
       "needCopyToAppDir": true,
       "tccutil": true,
       "autoHandleSetapp": true,
-      "deepSignApp": true
+      "deepSignApp": true,
+      "dylibSelect":"CoreInject.dylib"
     },
     {
       "packageName": "io.fadel.Batteries-setapp",
