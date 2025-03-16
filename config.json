@@ -1256,7 +1256,8 @@
         "com.cynapse.numerics.ios-setapp",
         "co.podzim.PDFPals-setapp",
         "com.lowtechguys.Clop-setapp",
-        "com.dreamer.habits-setapp"
+        "com.dreamer.habits-setapp",
+        "com.smallwhite-media.SwiftyLaunch-setapp"
       ],
       "needCopyToAppDir": true,
       "tccutil": true,
