@@ -1293,6 +1293,15 @@
       "dylibSelect": "CoreInject.dylib"
     },
     {
+      "packageName":"info.eurocomp.Timing-setapp.TimingHelper",
+      "appBaseLocate":"/Applications/Setapp/Timing.app/Contents/Library/LoginItems/TimingHelper.app",
+      "needCopyToAppDir": true,
+      "tccutil": true,
+      "autoHandleSetapp": true,
+      "deepSignApp": true,
+      "dylibSelect": "CoreInject.dylib"
+    },
+    {
       "packageName": "io.fadel.Batteries-setapp",
       "appBaseLocate": "/Applications/Setapp/Batteries.app",
       "bridgeFile": "/Contents/MacOS/",
