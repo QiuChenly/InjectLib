@@ -474,56 +474,6 @@
       ]
     },
     {
-      "packageName": "com.adobe.Photoshop",
-      "appBaseLocate": "/Applications/Adobe Photoshop (Beta)/Adobe Photoshop (Beta).app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "deepSignApp": true,
-      "noDeep": true
-    },
-    {
-      "packageName": "com.adobe.lightroomCC",
-      "appBaseLocate": "/Applications/Adobe Lightroom CC/Adobe Lightroom.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Adobe Lightroom",
-      "entitlements": "signkeep.xml",
-      "dylibSelect": "CoreInject.dylib",
-      "needCopyToAppDir": true,
-      "noDeep": true
-    },
-    {
-      "packageName": "com.adobe.Photoshop",
-      "appBaseLocate": "/Applications/Adobe Photoshop 2025/Adobe Photoshop 2025.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "dylibSelect": "CoreInject.dylib",
-      "deepSignApp": true
-    },
-    {
-      "packageName": "com.adobe.illustrator",
-      "appBaseLocate": "/Applications/Adobe Illustrator 2025/Adobe Illustrator.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Adobe Illustrator",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.ame.application.24",
-      "appBaseLocate": "/Applications/Adobe Media Encoder 2024/Adobe Media Encoder 2024.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "useOptool": false
-    },
-    {
-      "packageName": "com.adobe.AfterEffects",
-      "appBaseLocate": "/Applications/Adobe After Effects 2024/Adobe After Effects 2024.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "useOptool": false
-    },
-    {
       "packageName": "com.apple.FinalCutTrial",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Final Cut Pro Trial",
@@ -536,65 +486,6 @@
       "injectFile": "Scrivener",
       "needCopyToAppDir": true,
       "noDeep": true
-    },
-    {
-      "packageName": "com.adobe.Adobe-Animate-2024.application",
-      "appBaseLocate": "/Applications/Adobe Animate 2024/Adobe Animate 2024.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "useOptool": false
-    },
-    {
-      "packageName": "com.adobe.Audition",
-      "appBaseLocate": "/Applications/Adobe Audition 2024/Adobe Audition 2024.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "useOptool": false
-    },
-    {
-      "packageName": "com.adobe.PremierePro.23",
-      "appBaseLocate": "/Applications/Adobe Premiere Pro 2024/Adobe Premiere Pro 2024.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "useOptool": false
-    },
-    {
-      "packageName": "com.adobe.Acrobat.Pro",
-      "appBaseLocate": "/Applications/Adobe Acrobat DC/Adobe Acrobat.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib",
-      "extraShell": "codesign_acrobat.sh"
-    },
-    {
-      "packageName": "com.adobe.distiller",
-      "appBaseLocate": "/Applications/Adobe Acrobat DC/Acrobat Distiller.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.InCopy",
-      "appBaseLocate": "/Applications/Adobe InCopy 2025/Adobe InCopy 2025.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Adobe InCopy 2025",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.InCopy",
-      "appBaseLocate": "/Applications/Adobe InDesign 2025/Adobe InDesign 2025.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Adobe InDesign 2025",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.autodesk.Maya.2024",
@@ -641,6 +532,148 @@
       "noDeep": true
     },
     {
+      "packageName": "com.adobe.lightroomCC",
+      "appBaseLocate": "/Applications/Adobe Lightroom CC/Adobe Lightroom.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Adobe Lightroom",
+      "entitlements": "signkeep.xml",
+      "dylibSelect": "CoreInject.dylib",
+      "needCopyToAppDir": true,
+      "noDeep": true
+    },{
+      "packageName": "com.adobe.LightroomClassicCC7",
+      "appBaseLocate": "/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Adobe Lightroom Classic",
+      "dylibSelect": "CoreInject.dylib",
+      "needCopyToAppDir": true,
+      "noSignTarget":true,
+      "extraShell":"signLrc.sh"
+    },
+    {
+      "packageName": "com.adobe.Photoshop",
+      "appBaseLocate": "/Applications/Adobe Photoshop (Beta)/Adobe Photoshop (Beta).app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "deepSignApp": true,
+      "dylibSelect": "CoreInject.dylib",
+      "noDeep": true
+    },
+    {
+      "packageName": "com.adobe.Photoshop",
+      "appBaseLocate": "/Applications/Adobe Photoshop 2025/Adobe Photoshop 2025.app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "needCopyToAppDir": true,
+      "dylibSelect": "CoreInject.dylib"
+    },
+    {
+      "packageName": "com.adobe.illustrator",
+      "appBaseLocate": "/Applications/Adobe Illustrator 2025/Adobe Illustrator.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Adobe Illustrator",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "dylibSelect": "CoreInject.dylib"
+    },
+    {
+      "packageName": "com.adobe.ame.application.24",
+      "appBaseLocate": "/Applications/Adobe Media Encoder 2024/Adobe Media Encoder 2024.app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "needCopyToAppDir": true,
+      "noDeep": true
+    }, {
+      "packageName": "com.adobe.ame.application.25",
+      "appBaseLocate": "/Applications/Adobe Media Encoder 2025/Adobe Media Encoder 2025.app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "dylibSelect":"CoreInject.dylib"
+    },
+    {
+      "packageName": "com.adobe.AfterEffects",
+      "appBaseLocate": "/Applications/Adobe After Effects 2024/Adobe After Effects 2024.app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "useOptool": false
+    },{
+      "packageName": "com.adobe.AfterEffects",
+      "appBaseLocate": "/Applications/Adobe After Effects 2025/Adobe After Effects 2025.app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "useOptool": false,
+      "dylibSelect":"CoreInject.dylib"
+    },
+    {
+      "packageName": "com.adobe.Adobe-Animate-2024.application",
+      "appBaseLocate": "/Applications/Adobe Animate 2024/Adobe Animate 2024.app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "useOptool": false,
+      "dylibSelect":"CoreInject.dylib"
+    },
+    {
+      "packageName": "com.adobe.Audition",
+      "appBaseLocate": "/Applications/Adobe Audition 2024/Adobe Audition 2024.app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "useOptool": false,
+      "dylibSelect":"CoreInject.dylib"
+    },
+    {
+      "packageName": "com.adobe.PremierePro.23",
+      "appBaseLocate": "/Applications/Adobe Premiere Pro 2024/Adobe Premiere Pro 2024.app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "useOptool": false
+    },{
+      "packageName": "com.adobe.PremierePro.25",
+      "appBaseLocate": "/Applications/Adobe Premiere Pro 2025/Adobe Premiere Pro 2025.app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "useOptool": false,
+      "dylibSelect":"CoreInject.dylib"
+    },
+    {
+      "packageName": "com.adobe.Acrobat.Pro",
+      "appBaseLocate": "/Applications/Adobe Acrobat DC/Adobe Acrobat.app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "dylibSelect": "CoreInject.dylib",
+      "extraShell": "codesign_acrobat.sh"
+    },
+    {
+      "packageName": "com.adobe.distiller",
+      "appBaseLocate": "/Applications/Adobe Acrobat DC/Acrobat Distiller.app",
+      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "dylibSelect": "CoreInject.dylib"
+    },
+    {
+      "packageName": "com.adobe.InCopy",
+      "appBaseLocate": "/Applications/Adobe InCopy 2025/Adobe InCopy 2025.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Adobe InCopy 2025",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "dylibSelect": "CoreInject.dylib"
+    },
+    {
+      "packageName": "com.adobe.InDesign",
+      "appBaseLocate": "/Applications/Adobe InDesign 2025/Adobe InDesign 2025.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Adobe InDesign 2025",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "dylibSelect": "CoreInject.dylib"
+    },
+    {
       "packageName": "com.adobe.InDesign",
       "appBaseLocate": "/Applications/Adobe InDesign 2024/Adobe InDesign 2024.app",
       "bridgeFile": "/Contents/MacOS/",
@@ -648,16 +681,6 @@
       "needCopyToAppDir": true,
       "noDeep": true,
       "useOptool": false
-    },
-    {
-      "packageName": "com.adobe.LightroomClassicCC7",
-      "appBaseLocate": "/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Adobe Lightroom Classic",
-      "dylibSelect": "CoreInject.dylib",
-      "noDeep": true,
-      "needCopyToAppDir": true,
-      "entitlements": "signkeep.xml"
     },
     {
       "packageName": [
