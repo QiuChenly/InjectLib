@@ -167,7 +167,7 @@
       "tccutil": [
         "All"
       ],
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": [
@@ -179,7 +179,7 @@
       "tccutil": [
         "All"
       ],
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": [
@@ -469,7 +469,7 @@
       "injectFile": "Navicat Premium",
       "needCopyToAppDir": true,
       "dylibSelect": "CoreInject.dylib",
-      "supportVersion":[
+      "supportVersion": [
         "17.2.2"
       ]
     },
@@ -1022,7 +1022,34 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "extraShell": "Setapps/setapp.sh",
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
+    },
+    {
+      "packageName": "com.bjango.istatmenus-setapp",
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.bjango.istatmenus.installer",
+      "needCopyToAppDir": true,
+      "tccutil": true,
+      "autoHandleSetapp": true,
+      "deepSignApp": true,
+      "dylibSelect": "CoreInject.dylib",
+      "extraShell": "rmiStat.sh"
+    },
+    {
+      "packageName": "com.bjango.istatmenus-setapp.status",
+      "appBaseLocate": "/Applications/Setapp/iStat Menus.app/Contents/Resources/Components.bundle/Contents/Resources/iStat Menus Menubar.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "iStat Menus Menubar",
+      "needCopyToAppDir": true,
+      "dylibSelect": "CoreInject.dylib"
+    },
+    {
+      "packageName": "com.bjango.istatmenus-setapp.agent",
+      "appBaseLocate": "/Applications/Setapp/iStat Menus.app/Contents/Resources/Components.bundle/Contents/Resources/iStat Menus Helper.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "iStat Menus Helper",
+      "needCopyToAppDir": true,
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": [
@@ -1066,7 +1093,6 @@
         "com.71squared.focused-setapp",
         "com.krill.CodeRunner-setapp",
         "com.hahainteractive.GoodTask-setapp",
-        "com.bjango.istatmenus-setapp",
         "com.p5sys.jumpdesktop-setapp",
         "com.moneywiz.personalfinance-setapp",
         "com.belightsoft.GetBackup-setapp",
@@ -1263,7 +1289,7 @@
       "tccutil": true,
       "autoHandleSetapp": true,
       "deepSignApp": true,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "io.fadel.Batteries-setapp",
