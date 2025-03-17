@@ -145,8 +145,8 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Proxyman",
       "needCopyToAppDir": true,
-      "noSignTarget": true,
       "autoHandleHelper": true,
+      "dylibSelect": "CoreInject.dylib",
       "helperFile": "/Contents/Library/LaunchServices/com.proxyman.NSProxy.HelperTool",
       "tccutil": [
         "All"
@@ -1053,6 +1053,7 @@
     },
     {
       "packageName": [
+        "co.podzim.BoltGPT-setapp",
         "com.macpaw.Gemini-setapp",
         "com.macpaw.WallWiz-setapp",
         "com.macpaw.clearvpn.macos-setapp",
