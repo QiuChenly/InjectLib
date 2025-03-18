@@ -1310,7 +1310,9 @@
         "com.smallwhite-media.SwiftyLaunch-setapp"
       ],
       "needCopyToAppDir": true,
-      "tccutil": true,
+      "tccutil": [
+        "All"
+      ],
       "autoHandleSetapp": true,
       "deepSignApp": true,
       "dylibSelect": "CoreInject.dylib"
@@ -1319,7 +1321,9 @@
       "packageName":"info.eurocomp.Timing-setapp.TimingHelper",
       "appBaseLocate":"/Applications/Setapp/Timing.app/Contents/Library/LoginItems/TimingHelper.app",
       "needCopyToAppDir": true,
-      "tccutil": true,
+      "tccutil": [
+        "All"
+      ],
       "autoHandleSetapp": true,
       "deepSignApp": true,
       "dylibSelect": "CoreInject.dylib"
