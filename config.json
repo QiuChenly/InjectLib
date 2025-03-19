@@ -184,11 +184,12 @@
     {
       "packageName": [
         "com.edrawsoft.edrawmax",
-        "com.edrawsoft.mindmaster"
+        "com.edrawsoft.mindmaster",
+        "com.edrawsoft.EdrawProj"
       ],
       "injectFile": "QtXml.framework/Versions/5/QtXml",
       "needCopyToAppDir": true,
-      "deepSignApp": true
+      "dylibSelect":"CoreInject.dylib"
     },
     {
       "packageName": "com.corel.CorelDRAW",
