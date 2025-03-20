@@ -479,7 +479,20 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Final Cut Pro Trial",
       "needCopyToAppDir": true,
-      "noDeep": true
+      "noDeep": true,
+      "dylibSelect":"CoreInject.dylib"
+    },{
+      "packageName": "com.apple.logic10",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Logic Pro",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "dylibSelect":"CoreInject.dylib",
+     "tccutil": [
+        "All"
+      ],
+      "autoHandleHelper":true,
+      "helperFile":"/Contents/Library/LaunchServices/com.apple.musicapps.InstallerHelperTool"
     },
     {
       "packageName": "com.literatureandlatte.scrivener3",
