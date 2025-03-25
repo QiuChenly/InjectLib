@@ -189,7 +189,7 @@
       ],
       "injectFile": "QtXml.framework/Versions/5/QtXml",
       "needCopyToAppDir": true,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.corel.CorelDRAW",
@@ -480,19 +480,20 @@
       "injectFile": "Final Cut Pro Trial",
       "needCopyToAppDir": true,
       "noDeep": true,
-      "dylibSelect":"CoreInject.dylib"
-    },{
+      "dylibSelect": "CoreInject.dylib"
+    },
+    {
       "packageName": "com.apple.logic10",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Logic Pro",
       "needCopyToAppDir": true,
       "noDeep": true,
-      "dylibSelect":"CoreInject.dylib",
-     "tccutil": [
+      "dylibSelect": "CoreInject.dylib",
+      "tccutil": [
         "All"
       ],
-      "autoHandleHelper":true,
-      "helperFile":"/Contents/Library/LaunchServices/com.apple.musicapps.InstallerHelperTool"
+      "autoHandleHelper": true,
+      "helperFile": "/Contents/Library/LaunchServices/com.apple.musicapps.InstallerHelperTool"
     },
     {
       "packageName": "com.literatureandlatte.scrivener3",
@@ -554,15 +555,16 @@
       "dylibSelect": "CoreInject.dylib",
       "needCopyToAppDir": true,
       "noDeep": true
-    },{
+    },
+    {
       "packageName": "com.adobe.LightroomClassicCC7",
       "appBaseLocate": "/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Adobe Lightroom Classic",
       "dylibSelect": "CoreInject.dylib",
       "needCopyToAppDir": true,
-      "noSignTarget":true,
-      "extraShell":"signLrc.sh"
+      "noSignTarget": true,
+      "extraShell": "signLrc.sh"
     },
     {
       "packageName": "com.adobe.Photoshop",
@@ -594,13 +596,14 @@
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
       "noDeep": true
-    }, {
+    },
+    {
       "packageName": "com.adobe.ame.application.25",
       "appBaseLocate": "/Applications/Adobe Media Encoder 2025/Adobe Media Encoder 2025.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
       "noDeep": true,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.adobe.AfterEffects",
@@ -609,14 +612,15 @@
       "needCopyToAppDir": true,
       "noDeep": true,
       "useOptool": false
-    },{
+    },
+    {
       "packageName": "com.adobe.AfterEffects",
       "appBaseLocate": "/Applications/Adobe After Effects 2025/Adobe After Effects 2025.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
       "noDeep": true,
       "useOptool": false,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.adobe.Adobe-Animate-2024.application",
@@ -625,7 +629,7 @@
       "needCopyToAppDir": true,
       "noDeep": true,
       "useOptool": false,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.adobe.Audition",
@@ -634,7 +638,7 @@
       "needCopyToAppDir": true,
       "noDeep": true,
       "useOptool": false,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.adobe.PremierePro.23",
@@ -643,14 +647,15 @@
       "needCopyToAppDir": true,
       "noDeep": true,
       "useOptool": false
-    },{
+    },
+    {
       "packageName": "com.adobe.PremierePro.25",
       "appBaseLocate": "/Applications/Adobe Premiere Pro 2025/Adobe Premiere Pro 2025.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
       "noDeep": true,
       "useOptool": false,
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.adobe.Acrobat.Pro",
@@ -794,6 +799,14 @@
       "deepSignApp": true,
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Bandizip365"
+    },
+    {
+      "packageName": "com.wuziqi.SenPlayer",
+      "needCopyToAppDir": true,
+      "deepSignApp": true,
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "SenPlayer",
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "org.cindori.Sensei",
@@ -1332,8 +1345,8 @@
       "dylibSelect": "CoreInject.dylib"
     },
     {
-      "packageName":"info.eurocomp.Timing-setapp.TimingHelper",
-      "appBaseLocate":"/Applications/Setapp/Timing.app/Contents/Library/LoginItems/TimingHelper.app",
+      "packageName": "info.eurocomp.Timing-setapp.TimingHelper",
+      "appBaseLocate": "/Applications/Setapp/Timing.app/Contents/Library/LoginItems/TimingHelper.app",
       "needCopyToAppDir": true,
       "tccutil": [
         "All"
