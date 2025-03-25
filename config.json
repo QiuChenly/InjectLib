@@ -806,7 +806,10 @@
       "deepSignApp": true,
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "SenPlayer",
-      "dylibSelect": "CoreInject.dylib"
+      "dylibSelect": "CoreInject.dylib",
+      "supportVersion": [
+        "5.2.2"
+      ]
     },
     {
       "packageName": "org.cindori.Sensei",
