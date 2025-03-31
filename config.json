@@ -516,7 +516,8 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "AutoCAD",
       "needCopyToAppDir": true,
-      "noDeep": true
+      "noDeep": true,
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.autodesk.AutoCAD2025",
@@ -527,7 +528,20 @@
       "forceSignMainExecute": true,
       "deepSignApp": false,
       "noSignTarget": true,
-      "noDeep": true
+      "noDeep": true,
+      "dylibSelect": "CoreInject.dylib"
+    },
+    {
+      "packageName": "com.autodesk.AutoCAD2026",
+      "appBaseLocate": "/Applications/Autodesk/AutoCAD 2026/AutoCAD 2026.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "AutoCAD",
+      "needCopyToAppDir": true,
+      "forceSignMainExecute": true,
+      "deepSignApp": false,
+      "noSignTarget": true,
+      "noDeep": true,
+      "dylibSelect": "CoreInject.dylib"
     },
     {
       "packageName": "com.autodesk.AutoCADWatt",
