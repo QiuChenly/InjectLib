@@ -301,6 +301,9 @@
       "helperFile": "/Contents/Library/LaunchServices/ws.stash.app.mac.daemon.helper",
       "tccutil": [
         "All"
+      ],
+      "supportVersion":[
+        "3.1.0"
       ]
     },
     {
@@ -914,7 +917,10 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "dylibSelect":"CoreInject.dylib"
+      "dylibSelect":"CoreInject.dylib",
+      "supportVersion":[
+        "1.9.2"
+      ]
     },
     {
       "packageName": "tech.baye.servercat",
