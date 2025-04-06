@@ -44,6 +44,16 @@
       "forQiuChenly": false
     },
     {
+      "packageName":"com.gokoding.ScreenSage-Pro",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "ScreenSage Pro",
+      "dylibSelect":"CoreInject.dylib",
+      "needCopyToAppDir":true,
+      "tccutil": [
+        "All"
+      ]
+     },
+    {
       "packageName": "codes.rambo.AirBuddy",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "AirBuddy",
