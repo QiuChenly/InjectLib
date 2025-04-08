@@ -135,7 +135,11 @@
       "packageName": "com.onmyway133.PastePal",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "PastePal",
-      "needCopyToAppDir": true
+      "needCopyToAppDir": true,
+      "dylibSelect":"CoreInject.dylib",
+      "tccutil": [
+        "All"
+      ]
     },
     {
       "packageName": "com.drbuho.disktool.BuhoNTFS",
@@ -485,7 +489,8 @@
       "needCopyToAppDir": true,
       "dylibSelect": "CoreInject.dylib",
       "supportVersion": [
-        "17.2.4"
+        "17.2.4",
+        "17.2.5"
       ]
     },
     {
@@ -1449,15 +1454,6 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "MediaCenter",
       "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "com.onmyway133.PastePal",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
       "tccutil": [
         "All"
       ]
