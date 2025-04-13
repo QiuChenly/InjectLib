@@ -1470,6 +1470,13 @@
         "/Contents/Resources/Components.bundle/Contents/Library/LaunchServices/com.bjango.istatmenus.installer",
         "/Contents/Library/LaunchServices/com.bjango.istatmenus.installer"
       ]
+    },
+    {
+      "packageName": "pro.betterdisplay.BetterDisplay",
+      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+      "needCopyToAppDir": true,
+      "noDeep": true,
+      "deepSignApp": true
     }
   ]
 }
