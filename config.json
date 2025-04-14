@@ -132,6 +132,14 @@
       "needCopyToAppDir": true
     },
     {
+      "packageName": "com.henrikruscon.Alcove",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Alcove",
+      "dylibSelect":"CoreInject.dylib",
+      "needCopyToAppDir": true,
+      "tccutil":["All"]
+    },
+    {
       "packageName": "com.onmyway133.PastePal",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "PastePal",
