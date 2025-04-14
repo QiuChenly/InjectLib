@@ -44,15 +44,15 @@
       "forQiuChenly": false
     },
     {
-      "packageName":"com.gokoding.ScreenSage-Pro",
+      "packageName": "com.gokoding.ScreenSage-Pro",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "ScreenSage Pro",
-      "dylibSelect":"CoreInject.dylib",
-      "needCopyToAppDir":true,
+      "dylibSelect": "CoreInject.dylib",
+      "needCopyToAppDir": true,
       "tccutil": [
         "All"
       ]
-     },
+    },
     {
       "packageName": "codes.rambo.AirBuddy",
       "bridgeFile": "/Contents/MacOS/",
@@ -135,16 +135,21 @@
       "packageName": "com.henrikruscon.Alcove",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Alcove",
-      "dylibSelect":"CoreInject.dylib",
+      "dylibSelect": "CoreInject.dylib",
       "needCopyToAppDir": true,
-      "tccutil":["All"]
+      "supportVersion": [
+        "1.2.5"
+      ],
+      "tccutil": [
+        "All"
+      ]
     },
     {
       "packageName": "com.onmyway133.PastePal",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "PastePal",
       "needCopyToAppDir": true,
-      "dylibSelect":"CoreInject.dylib",
+      "dylibSelect": "CoreInject.dylib",
       "tccutil": [
         "All"
       ]
@@ -319,12 +324,12 @@
       "noSignTarget": true,
       "autoHandleHelper": true,
       "helperNoInject": true,
-      "dylibSelect":"CoreInject.dylib",
+      "dylibSelect": "CoreInject.dylib",
       "helperFile": "/Contents/Library/LaunchServices/ws.stash.app.mac.daemon.helper",
       "tccutil": [
         "All"
       ],
-      "supportVersion":[
+      "supportVersion": [
         "3.1.0"
       ]
     },
@@ -940,8 +945,8 @@
       "needCopyToAppDir": true,
       "deepSignApp": true,
       "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "dylibSelect":"CoreInject.dylib",
-      "supportVersion":[
+      "dylibSelect": "CoreInject.dylib",
+      "supportVersion": [
         "1.9.2"
       ]
     },
