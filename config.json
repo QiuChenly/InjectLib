@@ -137,9 +137,6 @@
       "injectFile": "Alcove",
       "dylibSelect": "CoreInject.dylib",
       "needCopyToAppDir": true,
-      "supportVersion": [
-        "1.2.5"
-      ],
       "tccutil": [
         "All"
       ]
