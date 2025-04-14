@@ -676,7 +676,7 @@
     },
     {
       "packageName": "com.adobe.Audition",
-      "appBaseLocate": "/Applications/Adobe Audition 2024/Adobe Audition 2024.app",
+      "appBaseLocate": "/Applications/Adobe Audition 2025/Adobe Audition 2025.app",
       "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
       "needCopyToAppDir": true,
       "noDeep": true,
