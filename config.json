@@ -92,6 +92,15 @@
       "injectFile": "Lasso",
       "needCopyToAppDir": true,
       "forQiuChenly": true
+    },{
+      "packageName": "com.DigiDNA.iMazing3Mac",
+      "bridgeFile": "/Contents/Frameworks/",
+      "injectFile": "GPod.framework/Versions/A/GPod",
+      "needCopyToAppDir": true,
+      "dylibSelect":"CoreInject.dylib",
+      "supportVersion":[
+        "3.1.2"
+      ]
     },
     {
       "packageName": "com.hexrays.ida64",
