@@ -87,18 +87,29 @@
       ]
     },
     {
+      "packageName": "com.readdle.SparkDesktop",
+      "appBaseLocate": "/Applications/Spark Desktop.app/Contents/Resources/app.asar.unpacked/node_modules/@spark/sparkcore-mac/bin/Release/SparkCore.bundle",
+      "injectFile": "MailCore.framework/Versions/A/MailCore",
+      "needCopyToAppDir": true,
+      "dylibSelect": "CoreInject.dylib",
+      "tccutil": [
+        "All"
+      ]
+    },
+    {
       "packageName": "com.heavylightapps.lasso",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Lasso",
       "needCopyToAppDir": true,
       "forQiuChenly": true
-    },{
+    },
+    {
       "packageName": "com.DigiDNA.iMazing3Mac",
       "bridgeFile": "/Contents/Frameworks/",
       "injectFile": "GPod.framework/Versions/A/GPod",
       "needCopyToAppDir": true,
-      "dylibSelect":"CoreInject.dylib",
-      "supportVersion":[
+      "dylibSelect": "CoreInject.dylib",
+      "supportVersion": [
         "3.1.2"
       ]
     },
@@ -127,8 +138,8 @@
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Screens 5",
       "needCopyToAppDir": true,
-      "dylibSelect":"CoreInject.dylib",
-      "supportVersion":[
+      "dylibSelect": "CoreInject.dylib",
+      "supportVersion": [
         "5.5.12"
       ]
     },
@@ -549,6 +560,16 @@
       "appBaseLocate": "/Applications/Autodesk/maya2024/Maya.app",
       "bridgeFile": "/Contents/MacOS/",
       "injectFile": "Maya",
+      "needCopyToAppDir": true,
+      "noDeep": true
+    },
+    {
+      "packageName": "com.autodesk.Maya.2026",
+      "dmg": "https://trial2.autodesk.com/NetSWDLD/prd/2026/MAYA/87B63493-70DA-3579-9BC8-275C3B637677/SFX/Autodesk_Maya_2026_ML_macOS.dmg",
+      "appBaseLocate": "/Applications/Autodesk/maya2026/Maya.app",
+      "bridgeFile": "/Contents/MacOS/",
+      "injectFile": "Maya",
+      "dylibSelect": "CoreInject.dylib",
       "needCopyToAppDir": true,
       "noDeep": true
     },
