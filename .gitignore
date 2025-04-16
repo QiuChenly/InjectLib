@@ -12,3 +12,10 @@ tool/ParallelsDesktop
 tool/没脑子和不高兴
 tool/Parallels_原始人_起洞.command
 tool/Gift*
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.bak

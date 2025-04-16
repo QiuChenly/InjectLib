@@ -1,1519 +1,1520 @@
 {
-  "project": "InjectShell",
-  "Author": "QiuChenly",
-  "Version": 3.0,
-  "Description": {
-    "desc": "这是一个用于解释说明json对象用途的说明文档。basePublicConfig里面的同名配置如果在AppList里面配置了相同的Key，则优先使用AppList里面的值。",
-    "bridgeFile": "app路径和注入文件路径之间的中间路径，有些app只能注入到/Contents，所以加了这个。",
-    "packageName": "app包名，用来确认App是否存在。",
-    "injectFile": "注入文件的相对app路径的路径",
-    "supportVersion": "支持的版本号，用于大版本号 如果不提供任意版本号则直接无条件注入",
-    "supportSubVersion": "更精确的子版本号，用于某些app大版本号不变但是经常变小版本号的陋习",
-    "extraShell": "额外的执行shell，比如PD18需要执行一些额外的shell，支持自定义。",
-    "needCopyToAppDir": "有些app需要复制到app目录中才能在SIP打开的时候运行 这个属性可以控制库文件被复制到Framework",
-    "deepSignApp": "自动签名整个App",
-    "disableLibraryValidate": "关闭库验证 暂时只为pd启用",
-    "entitlements": "用于跳过部分权限 在启用SIP的macOS上 如ARM64",
-    "noSignTarget": "默认注入后会对目标文件进行签名,我们有时候不需要这个行为。",
-    "noDeep": "--deep 控制",
-    "tccutil": "自动执行tccutil reset xxx CFBundleIdentifier，true为All，详细可用数组。目前会将所有的值在componentApp操作一遍默认行为。",
-    "autoHandleSetapp": "自动根据 CFBundleIdentifier 找出App的appBaseLocate，并拼接/Contents/MacOS/为bridgeFile，且默认找出bridgeFile下的对应二进制程序，不太完善，仅setapp测试通过",
-    "autoHandleHelper": "是否自动处理helper文件",
-    "helperFile": "helper文件的路径，例如/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper，可以传数组",
-    "componentApp": "组合app,有些大型app是由很多子app组成的,单独处理意义也不大,就这样吧.",
-    "forQiuChenly": "专门为QiuChenly特供的App，看到这条的你硬改也没用。",
-    "keygen": "不注入app，生成key破解，适用于重签名后丢失某特性的app，为true时，其他配置默认失效",
-    "dylibSelect": "选择哪一个注入库, 如果是CoreInject则表示这是新版重构代码后的注入库,没有就默认91."
-  },
-  "basePublicConfig": {
-    "bridgeFile": "/Contents/Frameworks/"
-  },
-  "AppList": [
-    {
-      "packageName": "com.nssurge.surge-mac",
-      "appBaseLocate": "/Applications/Surge.app",
-      "bridgeFile": "/Contents/Frameworks/",
-      "injectFile": "Bugsnag.framework/Versions/A/Bugsnag",
-      "needCopyToAppDir": true,
-      "noSignTarget": true,
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper",
-      "tccutil": [
-        "All"
-      ],
-      "forQiuChenly": false
-    },
-    {
-      "packageName": "com.gokoding.ScreenSage-Pro",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "ScreenSage Pro",
-      "dylibSelect": "CoreInject.dylib",
-      "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "codes.rambo.AirBuddy",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "AirBuddy",
-      "onlysh": true,
-      "extraShell": "airbuddy.sh",
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer",
-      "SMExtra": "codes.rambo.AirBuddy",
-      "needCopyToAppDir": true,
-      "componentApp": [
-        "/Contents/Library/LoginItems/AirBuddyHelper.app"
-      ],
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": [
-        "com.macpaw.CleanMyMac5"
-      ],
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "needCopyToAppDir": true,
-      "noSignTarget": true,
-      "autoHandleHelper": true,
-      "dylibSelect": "CoreInject.dylib",
-      "helperFile": [
-        "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac5.Agent"
-      ],
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "com.readdle.SparkDesktop",
-      "appBaseLocate": "/Applications/Spark Desktop.app/Contents/Resources/app.asar.unpacked/node_modules/@spark/sparkcore-mac/bin/Release/SparkCore.bundle",
-      "injectFile": "MailCore.framework/Versions/A/MailCore",
-      "needCopyToAppDir": true,
-      "dylibSelect": "CoreInject.dylib",
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "com.heavylightapps.lasso",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Lasso",
-      "needCopyToAppDir": true,
-      "forQiuChenly": true
-    },
-    {
-      "packageName": "com.DigiDNA.iMazing3Mac",
-      "bridgeFile": "/Contents/Frameworks/",
-      "injectFile": "GPod.framework/Versions/A/GPod",
-      "needCopyToAppDir": true,
-      "dylibSelect": "CoreInject.dylib",
-      "supportVersion": [
-        "3.1.2"
-      ]
-    },
-    {
-      "packageName": "com.hexrays.ida64",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "ida64",
-      "needCopyToAppDir": true,
-      "noSignTarget": true,
-      "extraShell": "copyLicense.sh"
-    },
-    {
-      "packageName": "com.hexrays.ida",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "ida",
-      "needCopyToAppDir": true,
-      "noSignTarget": true,
-      "supportVersion": [
-        "9.0.241217",
-        "9.1.250226"
-      ],
-      "extraShell": "copyLicense.sh"
-    },
-    {
-      "packageName": "com.edovia.screens.5",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Screens 5",
-      "needCopyToAppDir": true,
-      "dylibSelect": "CoreInject.dylib",
-      "supportVersion": [
-        "5.5.12"
-      ]
-    },
-    {
-      "packageName": "lo.cafe.NotchNook",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "NotchNook",
-      "needCopyToAppDir": true
-    },
-    {
-      "packageName": "lo.cafe.NotchNook-setapp",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "NotchNook",
-      "needCopyToAppDir": true
-    },
-    {
-      "packageName": "com.henrikruscon.Alcove",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Alcove",
-      "dylibSelect": "CoreInject.dylib",
-      "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "com.onmyway133.PastePal",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "PastePal",
-      "needCopyToAppDir": true,
-      "dylibSelect": "CoreInject.dylib",
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "com.drbuho.disktool.BuhoNTFS",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "BuhoNTFS",
-      "needCopyToAppDir": true,
-      "forQiuChenly": false,
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/com.drbuho.disktool.NTFSHelperTool",
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "com.proxyman.NSProxy-setapp",
-      "appBaseLocate": "/Applications/Setapp/Proxyman.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Proxyman",
-      "needCopyToAppDir": true,
-      "autoHandleHelper": true,
-      "dylibSelect": "CoreInject.dylib",
-      "helperFile": "/Contents/Library/LaunchServices/com.proxyman.NSProxy.HelperTool",
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": [
-        "com.macpaw.CleanMyMac-setapp"
-      ],
-      "appBaseLocate": "/Applications/Setapp/CleanMyMac.app",
-      "injectFile": "ActivationService.framework/Versions/A/ActivationService",
-      "needCopyToAppDir": true,
-      "noSignTarget": true,
-      "autoHandleHelper": true,
-      "helperFile": [
-        "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent"
-      ],
-      "tccutil": [
-        "All"
-      ],
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": [
-        "com.macpaw.CleanMyMac-setapp.Menu"
-      ],
-      "appBaseLocate": "/Applications/Setapp/CleanMyMac.app/Contents/Library/LoginItems/CleanMyMac_5_Setapp_Menu.app",
-      "injectFile": "ActivationService.framework/Versions/A/ActivationService",
-      "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ],
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": [
-        "com.edrawsoft.edrawmax",
-        "com.edrawsoft.mindmaster",
-        "com.edrawsoft.EdrawProj"
-      ],
-      "injectFile": "QtXml.framework/Versions/5/QtXml",
-      "needCopyToAppDir": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.corel.CorelDRAW",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "CorelDRW",
-      "needCopyToAppDir": true,
-      "noSignTarget": true
-    },
-    {
-      "packageName": "pl.maketheweb.cleanshotx",
-      "injectFile": "InsiderKit.framework/Versions/A/InsiderKit",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "studio.fireball.moment",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle"
-    },
-    {
-      "packageName": "com.tweety.MediaMate",
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "needCopyToAppDir": true,
-      "deepSignApp": true
-    },
-    {
-      "packageName": "com.moneywiz.personalfinance",
-      "injectFile": "Charts.framework/Versions/A/Charts",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "noDeep": true
-    },
-    {
-      "packageName": "com.xunyong.hapigo",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "AliyunOSSOSX.framework/Versions/A/AliyunOSSOSX",
-      "tccutil": [
-        "All",
-        "AddressBook",
-        "Calendar",
-        "Reminders",
-        "ScreenCapture",
-        "Accessibility"
-      ]
-    },
-    {
-      "packageName": "com.surteesstudios.Bartender",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "tccutil": [
-        "All",
-        "Camera",
-        "Microphone",
-        "ScreenCapture"
-      ]
-    },
-    {
-      "packageName": "com.pixelmatorteam.pixelmator.touch.x.photo",
-      "needCopyToAppDir": true,
-      "injectFile": "PXMPhotoKitUI.framework/Versions/A/PXMPhotoKitUI"
-    },
-    {
-      "packageName": "com.filmage.pro-lite.mac",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "KMDrawViewSDK_Mac.framework/Versions/A/KMDrawViewSDK_Mac"
-    },
-    {
-      "packageName": "com.crystalidea.macsfancontrol",
-      "injectFile": "QtMacExtras.framework/Versions/5/QtMacExtras",
-      "needCopyToAppDir": true,
-      "extraShell": "macfans.sh"
-    },
-    {
-      "packageName": "com.nonstrict.Bezel-direct",
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "deepSignApp": true
-    },
-    {
-      "packageName": "com.tinyapp.TablePlus",
-      "injectFile": "SSH.framework/Versions/A/SSH",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "deepSignApp": true
-    },
-    {
-      "packageName": "app.elpass.macos",
-      "appBaseLocate": "/Applications/Elpass.app",
-      "injectFile": "MMMarkdown.framework/Versions/A/MMMarkdown",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "ws.stash.app.mac",
-      "appBaseLocate": "/Applications/Stash.app",
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "needCopyToAppDir": true,
-      "noSignTarget": true,
-      "autoHandleHelper": true,
-      "helperNoInject": true,
-      "dylibSelect": "CoreInject.dylib",
-      "helperFile": "/Contents/Library/LaunchServices/ws.stash.app.mac.daemon.helper",
-      "tccutil": [
-        "All"
-      ],
-      "supportVersion": [
-        "3.1.0"
-      ]
-    },
-    {
-      "packageName": "com.firecore.infuse",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Infuse",
-      "needCopyToAppDir": true,
-      "entitlements": "signkeep.xml",
-      "deepSignApp": true
-    },
-    {
-      "packageName": "com.coderforart.MWeb3",
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.nektony.App-Cleaner-SIII",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "App Cleaner 8",
-      "tccutil": [
-        "All",
-        "AddressBook",
-        "Reminders",
-        "Photos",
-        "AppleEvents"
-      ],
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.nektony.App-Cleaner-SIII",
-      "appBaseLocate": "/Applications/MacCleaner 3 Pro/App Cleaner 8.app",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "App Cleaner 8",
-      "tccutil": [
-        "All",
-        "AddressBook",
-        "Reminders",
-        "Photos",
-        "AppleEvents"
-      ],
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.nektony.MacCleaner-PRO-SIII",
-      "appBaseLocate": "/Applications/MacCleaner 3 Pro/MacCleaner Pro 3.app",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "tccutil": [
-        "All",
-        "AddressBook",
-        "Calendar",
-        "Reminders",
-        "Photos",
-        "AppleEvents"
-      ],
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.nektony.Disk-Expert-SIII",
-      "appBaseLocate": "/Applications/MacCleaner 3 Pro/Disk Expert 5.app",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "tccutil": [
-        "All",
-        "Reminders",
-        "Photos"
-      ],
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.nektony.Duplicates-Finder",
-      "injectFile": "OpenSSL.framework/Versions/A/OpenSSL",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "tccutil": [
-        "All"
-      ],
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.nektony.Duplicate-File-Finder-SIII",
-      "appBaseLocate": "/Applications/MacCleaner 3 Pro/Duplicate File Finder 8.app",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "tccutil": [
-        "All",
-        "Photos"
-      ],
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "li.zihua.medis2",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "noDeep": true,
-      "injectFile": "HexFiend.framework/Versions/A/HexFiend"
-    },
-    {
-      "packageName": "com.zzd.Xnip",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "noDeep": true,
-      "injectFile": "DKDrawKit.framework/Versions/A/DKDrawKit"
-    },
-    {
-      "packageName": "com.techsmith.camtasia2023",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "TSCAccount.framework/Versions/A/TSCAccount",
-      "extraShell": "camtasia.sh",
-      "tccutil": [
-        "Camera",
-        "Microphone",
-        "ScreenCapture",
-        "All"
-      ]
-    },
-    {
-      "packageName": "com.hankinsoft.osx.sqlprostudio",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "HSCore.framework/Versions/A/HSCore"
-    },
-    {
-      "packageName": [
-        "com.bohemiancoding.sketch3",
-        "com.bohemiancoding.sketch3.appstore"
-      ],
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "Bugsnag.framework/Versions/A/Bugsnag"
-    },
-    {
-      "packageName": [
-        "com.incrediblebee.Archiver-setapp"
-      ],
-      "needCopyToAppDir": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "deepSignApp": true,
-      "injectFile": "Archiver"
-    },
-    {
-      "packageName": [
-        "com.krivoblotsky.ProjectsOrganizer-setapp"
-      ],
-      "needCopyToAppDir": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "deepSignApp": true,
-      "injectFile": "XCOrganizer"
-    },
-    {
-      "packageName": "com.artdesktop.bestzip2",
-      "injectFile": "JSONModel.framework/Versions/A/JSONModel"
-    },
-    {
-      "packageName": "com.navicat.NavicatPremium",
-      "appBaseLocate": "/Applications/Navicat Premium.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Navicat Premium",
-      "needCopyToAppDir": true,
-      "dylibSelect": "CoreInject.dylib",
-      "supportVersion": [
-        "17.2.4",
-        "17.2.5"
-      ]
-    },
-    {
-      "packageName": "com.apple.FinalCutTrial",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Final Cut Pro Trial",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.apple.logic10",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Logic Pro",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib",
-      "tccutil": [
-        "All"
-      ],
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/com.apple.musicapps.InstallerHelperTool"
-    },
-    {
-      "packageName": "com.literatureandlatte.scrivener3",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Scrivener",
-      "needCopyToAppDir": true,
-      "noDeep": true
-    },
-    {
-      "packageName": "com.autodesk.Maya.2024",
-      "appBaseLocate": "/Applications/Autodesk/maya2024/Maya.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Maya",
-      "needCopyToAppDir": true,
-      "noDeep": true
-    },
-    {
-      "packageName": "com.autodesk.Maya.2026",
-      "dmg": "https://trial2.autodesk.com/NetSWDLD/prd/2026/MAYA/87B63493-70DA-3579-9BC8-275C3B637677/SFX/Autodesk_Maya_2026_ML_macOS.dmg",
-      "appBaseLocate": "/Applications/Autodesk/maya2026/Maya.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Maya",
-      "dylibSelect": "CoreInject.dylib",
-      "needCopyToAppDir": true,
-      "noDeep": true
-    },
-    {
-      "packageName": "com.autodesk.AutoCAD2024",
-      "appBaseLocate": "/Applications/Autodesk/AutoCAD 2024/AutoCAD 2024.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "AutoCAD",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.autodesk.AutoCAD2025",
-      "appBaseLocate": "/Applications/Autodesk/AutoCAD 2025/AutoCAD 2025.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "AutoCAD",
-      "needCopyToAppDir": true,
-      "forceSignMainExecute": true,
-      "deepSignApp": false,
-      "noSignTarget": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.autodesk.AutoCAD2026",
-      "appBaseLocate": "/Applications/Autodesk/AutoCAD 2026/AutoCAD 2026.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "AutoCAD",
-      "needCopyToAppDir": true,
-      "forceSignMainExecute": true,
-      "deepSignApp": false,
-      "noSignTarget": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.autodesk.AutoCADWatt",
-      "appBaseLocate": "/Applications/Autodesk/AutoCAD Watt/AutoCAD Watt.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "AutoCAD",
-      "needCopyToAppDir": true,
-      "deepSignApp": false,
-      "noSignTarget": true,
-      "noDeep": true
-    },
-    {
-      "packageName": "design.yugen.Flow",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Flow",
-      "needCopyToAppDir": true,
-      "noDeep": true
-    },
-    {
-      "packageName": "com.adobe.lightroomCC",
-      "appBaseLocate": "/Applications/Adobe Lightroom CC/Adobe Lightroom.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Adobe Lightroom",
-      "entitlements": "signkeep.xml",
-      "dylibSelect": "CoreInject.dylib",
-      "needCopyToAppDir": true,
-      "noDeep": true
-    },
-    {
-      "packageName": "com.adobe.LightroomClassicCC7",
-      "appBaseLocate": "/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Adobe Lightroom Classic",
-      "dylibSelect": "CoreInject.dylib",
-      "needCopyToAppDir": true,
-      "noSignTarget": true,
-      "extraShell": "signLrc.sh"
-    },
-    {
-      "packageName": "com.adobe.Photoshop",
-      "appBaseLocate": "/Applications/Adobe Photoshop (Beta)/Adobe Photoshop (Beta).app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "deepSignApp": true,
-      "dylibSelect": "CoreInject.dylib",
-      "noDeep": true
-    },
-    {
-      "packageName": "com.adobe.Photoshop",
-      "appBaseLocate": "/Applications/Adobe Photoshop 2025/Adobe Photoshop 2025.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.illustrator",
-      "appBaseLocate": "/Applications/Adobe Illustrator 2025/Adobe Illustrator.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Adobe Illustrator",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.ame.application.24",
-      "appBaseLocate": "/Applications/Adobe Media Encoder 2024/Adobe Media Encoder 2024.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true
-    },
-    {
-      "packageName": "com.adobe.ame.application.25",
-      "appBaseLocate": "/Applications/Adobe Media Encoder 2025/Adobe Media Encoder 2025.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.AfterEffects",
-      "appBaseLocate": "/Applications/Adobe After Effects 2024/Adobe After Effects 2024.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "useOptool": false
-    },
-    {
-      "packageName": "com.adobe.AfterEffects",
-      "appBaseLocate": "/Applications/Adobe After Effects 2025/Adobe After Effects 2025.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "useOptool": false,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.Adobe-Animate-2024.application",
-      "appBaseLocate": "/Applications/Adobe Animate 2024/Adobe Animate 2024.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "useOptool": false,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.Audition",
-      "appBaseLocate": "/Applications/Adobe Audition 2025/Adobe Audition 2025.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "useOptool": false,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.PremierePro.23",
-      "appBaseLocate": "/Applications/Adobe Premiere Pro 2024/Adobe Premiere Pro 2024.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "useOptool": false
-    },
-    {
-      "packageName": "com.adobe.PremierePro.25",
-      "appBaseLocate": "/Applications/Adobe Premiere Pro 2025/Adobe Premiere Pro 2025.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "useOptool": false,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.Acrobat.Pro",
-      "appBaseLocate": "/Applications/Adobe Acrobat DC/Adobe Acrobat.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib",
-      "extraShell": "codesign_acrobat.sh"
-    },
-    {
-      "packageName": "com.adobe.distiller",
-      "appBaseLocate": "/Applications/Adobe Acrobat DC/Acrobat Distiller.app",
-      "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.InCopy",
-      "appBaseLocate": "/Applications/Adobe InCopy 2025/Adobe InCopy 2025.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Adobe InCopy 2025",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.InDesign",
-      "appBaseLocate": "/Applications/Adobe InDesign 2025/Adobe InDesign 2025.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Adobe InDesign 2025",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.adobe.InDesign",
-      "appBaseLocate": "/Applications/Adobe InDesign 2024/Adobe InDesign 2024.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "PublicLib.dylib",
-      "needCopyToAppDir": true,
-      "noDeep": true,
-      "useOptool": false
-    },
-    {
-      "packageName": [
-        "com.microsoft.Outlook"
-      ],
-      "needCopyToAppDir": true,
-      "injectFile": "ADAL4.framework/Versions/A/ADAL4",
-      "entitlements": "signkeep.xml"
-    },
-    {
-      "packageName": [
-        "com.microsoft.Excel"
-      ],
-      "needCopyToAppDir": true,
-      "injectFile": "Microsoft Excel",
-      "bridgeFile": "/Contents/MacOS/",
-      "deepSignApp": false,
-      "entitlements": "signkeep.xml"
-    },
-    {
-      "packageName": [
-        "com.microsoft.Powerpoint"
-      ],
-      "needCopyToAppDir": true,
-      "injectFile": "Microsoft PowerPoint",
-      "bridgeFile": "/Contents/MacOS/",
-      "deepSignApp": false,
-      "entitlements": "signkeep.xml"
-    },
-    {
-      "packageName": [
-        "com.microsoft.Word"
-      ],
-      "needCopyToAppDir": true,
-      "injectFile": "Microsoft Word",
-      "bridgeFile": "/Contents/MacOS/",
-      "deepSignApp": false,
-      "entitlements": "signkeep.xml"
-    },
-    {
-      "packageName": "com.sublimetext.4",
-      "entitlements": "signkeep.xml",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "sublime_text",
-      "extraShell": "sublime.sh",
-      "onlysh": true
-    },
-    {
-      "packageName": "com.sublimemerge",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "entitlements": "signkeep.xml",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "sublime_merge"
-    },
-    {
-      "packageName": "whbalzac.Huajian",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Live Wallpaper"
-    },
-    {
-      "packageName": "abnerworks.Typora",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Typora"
-    },
-    {
-      "packageName": "com.mac.utility.screen.recorder",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "OmniRecorder",
-      "tccutil": [
-        "All",
-        "Camera",
-        "Microphone",
-        "ScreenCapture"
-      ]
-    },
-    {
-      "packageName": "com.mac.utility.media.player",
-      "injectFile": "XADMaster.framework/Versions/A/XADMaster",
-      "needCopyToAppDir": true,
-      "deepSignApp": true
-    },
-    {
-      "packageName": "com.bandisoft.mac.bandizip",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Bandizip"
-    },
-    {
-      "packageName": "com.bandisoft.mac.bandizip365",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Bandizip365"
-    },
-    {
-      "packageName": "com.wuziqi.SenPlayer",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "SenPlayer",
-      "dylibSelect": "CoreInject.dylib",
-      "supportVersion": [
-        "5.2.2"
-      ]
-    },
-    {
-      "packageName": "org.cindori.Sensei",
-      "needCopyToAppDir": true,
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "noSignTarget": true,
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/org.cindori.SenseiHelper"
-    },
-    {
-      "packageName": "com.skylum.luminarneomas",
-      "injectFile": "CocoaLumberjack.framework/Versions/A/CocoaLumberjack",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.proxyman.NSProxy",
-      "injectFile": "Moya.framework/Versions/A/Moya",
-      "needCopyToAppDir": true,
-      "noSignTarget": true,
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/com.proxyman.NSProxy.HelperTool"
-    },
-    {
-      "packageName": [
-        "com.seriflabs.affinityphoto2",
-        "com.seriflabs.affinitydesigner2",
-        "com.seriflabs.affinitypublisher2"
-      ],
-      "injectFile": "liblibzlib.dylib",
-      "needCopyToAppDir": true,
-      "deepSignApp": true
-    },
-    {
-      "packageName": "com.panic.transmit.mas",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "ZipZap.framework/Versions/A/ZipZap"
-    },
-    {
-      "packageName": "com.ulyssesapp.mac",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "noDeep": true,
-      "injectFile": "KissXML.framework/Versions/A/KissXML"
-    },
-    {
-      "packageName": "app.mindmac.macos",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "noDeep": true,
-      "injectFile": "Paddle.framework/Versions/A/Paddle"
-    },
-    {
-      "packageName": "com.charliemonroe.Downie-4",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "noDeep": true,
-      "injectFile": "Paddle.framework/Versions/A/Paddle"
-    },
-    {
-      "packageName": "com.incrediblebee.Archiver4",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "noDeep": true,
-      "injectFile": "BERegistration.framework/Versions/A/BERegistration"
-    },
-    {
-      "packageName": [
-        "tonyapp.devutils"
-      ],
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "DiffMatchPatch.framework/Versions/A/DiffMatchPatch"
-    },
-    {
-      "packageName": [
-        "com.ideasoncanvas.mindnode.macos-setapp"
-      ],
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "CanvasLayout_19E0F1ED461C44E6_PackageProduct.framework/Versions/A/CanvasLayout_19E0F1ED461C44E6_PackageProduct"
-    },
-    {
-      "packageName": "app.mp3tag.Mp3tag",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "dylibSelect": "CoreInject.dylib",
-      "supportVersion": [
-        "1.9.2"
-      ]
-    },
-    {
-      "packageName": "tech.baye.servercat",
-      "needCopyToAppDir": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "deepSignApp": true,
-      "injectFile": "ServerCat"
-    },
-    {
-      "packageName": "com.ningle.shellbean",
-      "needCopyToAppDir": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "deepSignApp": true,
-      "injectFile": "ShellBean"
-    },
-    {
-      "packageName": "com.krill.CodeRunner",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "Sparkle.framework/Versions/A/Sparkle"
-    },
-    {
-      "packageName": "com.poke.SwiftUI-For-Designers",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "做个应用"
-    },
-    {
-      "packageName": "com.villow.wgt",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "BFPageControl.framework/Versions/A/BFPageControl"
-    },
-    {
-      "packageName": "com.wiheads.paste",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Paste",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "tccutil": [
-        "All",
-        "Camera",
-        "Microphone",
-        "ScreenCapture"
-      ]
-    },
-    {
-      "packageName": "cn.better365.ishot",
-      "injectFile": "PTHotKey.framework/Versions/A/PTHotKey",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "tccutil": [
-        "All",
-        "Camera",
-        "Microphone",
-        "ScreenCapture"
-      ]
-    },
-    {
-      "packageName": [
-        "me.damir.dropover-mac",
-        "cn.better365.iRightMouse",
-        "com.better365.autoinput",
-        "com.binarynights.ForkLift"
-      ],
-      "keygen": true
-    },
-    {
-      "packageName": "com.drbuho.BuhoCleaner",
-      "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-      "bridgeFile": "/Contents/Frameworks/DesktopApplication.framework/Versions/A/Frameworks/",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "entitlements": "signkeep.xml",
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/com.drbuho.BuhoCleaner.PrivilegedHelperTool",
-      "tccutil": [
-        "All"
-      ],
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "org.qcad",
-      "injectFile": "libqcadcustomwidgets.dylib",
-      "bridgeFile": "/Contents/PlugIns/designer/",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "noDeep": true
-    },
-    {
-      "packageName": "com.crossutility.quantumult-x",
-      "injectFile": "Quantumult X",
-      "bridgeFile": "/Contents/MacOS/",
-      "needCopyToAppDir": true,
-      "deepSignApp": true
-    },
-    {
-      "packageName": "com.corecode.MacUpdater",
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "needCopyToAppDir": true,
-      "deepSignApp": true
-    },
-    {
-      "packageName": "com.veertu.anka",
-      "injectFile": "Anka",
-      "bridgeFile": "/Contents/MacOS/",
-      "needCopyToAppDir": true,
-      "deepSignApp": true
-    },
-    {
-      "packageName": "com.coppertino.Vox",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "DevMateKit.framework/Versions/A/DevMateKit"
-    },
-    {
-      "packageName": "com.hezongyidev.Bob",
-      "injectFile": "Bob",
-      "bridgeFile": "/Contents/MacOS/",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "com.zeroonetwenty.BlueHarvest5",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "Sparkle.framework/Versions/A/Sparkle"
-    },
-    {
-      "packageName": "com.culturedcode.ThingsMac",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "Base.framework/Versions/A/Base"
-    },
-    {
-      "packageName": "app.kaleidoscope.v4",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "SofaUIKit.framework/Versions/A/SofaUIKit"
-    },
-    {
-      "packageName": "com.mcneel.rhinoceros.8",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle"
-    },
-    {
-      "packageName": [
-        "QReader.MarginStudyMac",
-        "QReader.MarginStudy.easy"
-      ],
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "noDeep": true,
-      "injectFile": "Alamofire.framework/Versions/A/Alamofire"
-    },
-    {
-      "packageName": "cc.ffitch.shottr",
-      "injectFile": "Shottr",
-      "bridgeFile": "/Contents/MacOS/",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "com.setapp.DesktopClient",
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "extraShell": "Setapps/setapp.sh",
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.bjango.istatmenus-setapp",
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/com.bjango.istatmenus.installer",
-      "needCopyToAppDir": true,
-      "tccutil": true,
-      "autoHandleSetapp": true,
-      "deepSignApp": true,
-      "dylibSelect": "CoreInject.dylib",
-      "extraShell": "rmiStat.sh"
-    },
-    {
-      "packageName": "com.bjango.istatmenus-setapp.status",
-      "appBaseLocate": "/Applications/Setapp/iStat Menus.app/Contents/Resources/Components.bundle/Contents/Resources/iStat Menus Menubar.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "iStat Menus Menubar",
-      "needCopyToAppDir": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "com.bjango.istatmenus-setapp.agent",
-      "appBaseLocate": "/Applications/Setapp/iStat Menus.app/Contents/Resources/Components.bundle/Contents/Resources/iStat Menus Helper.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "iStat Menus Helper",
-      "needCopyToAppDir": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": [
-        "co.podzim.BoltGPT-setapp",
-        "com.macpaw.Gemini-setapp",
-        "com.macpaw.WallWiz-setapp",
-        "com.macpaw.clearvpn.macos-setapp",
-        "com.pagico.pagico-setapp",
-        "com.brettterpstra.marked-setapp",
-        "com.incrediblebee.Archiver-setapp",
-        "com.incrediblebee.Renamer-setapp",
-        "io.sipapp.Sip-setapp",
-        "com.witt-software.PDF-Squeezer-setapp",
-        "com.witt-software.Rocket-Typist-setapp",
-        "com.adriangranados.wifiexplorer-setapp",
-        "com.intuitibits.wifisignal-setapp",
-        "com.eltima.elmedia-setapp",
-        "com.eltima.Folx3-setapp",
-        "com.eltima.photobulk-setapp",
-        "com.eltima.cloudmounter-setapp",
-        "com.eltima.cmd1-setapp",
-        "us.electronic.juststream-setapp",
-        "uk.co.menial.Base-setapp",
-        "com.littlefin.chroniclemac-setapp",
-        "net.shinyfrog.image2icon-setapp",
-        "com.globaldelight.Capto-setapp",
-        "com.globaldelight.Boom3D-setapp",
-        "info.eurocomp.Timing-setapp",
-        "com.dejal.simon-setapp",
-        "com.dejal.timeout-setapp",
-        "com.realmacsoftware.squash-setapp",
-        "com.remotemouse.remotemouseserver-setapp",
-        "com.tumult.hype-setapp",
-        "com.tumult.Whisk-setapp",
-        "com.hogbaysoftware.TaskPaper3-setapp",
-        "com.hogbaysoftware.Bike-setapp",
-        "com.xwavesoft.befocused-setapp",
-        "com.xwavesoft.cloudoutlinertwomac-setapp",
-        "com.pointum.hazeover-setapp",
-        "com.gifox.gifox-setapp",
-        "com.nikolaeu.numi-setapp",
-        "com.71squared.focused-setapp",
-        "com.krill.CodeRunner-setapp",
-        "com.hahainteractive.GoodTask-setapp",
-        "com.p5sys.jumpdesktop-setapp",
-        "com.moneywiz.personalfinance-setapp",
-        "com.belightsoft.GetBackup-setapp",
-        "com.belightsoft.SwiftPublisher-setapp",
-        "com.cleverfiles.DiskDrill-setapp",
-        "com.renfei.snippetslab-setapp",
-        "com.wiheads.paste-setapp",
-        "com.charliemonroe.Permute-setapp",
-        "com.charliemonroe.Downie-setapp",
-        "com.charliemonroe.UctoX-setapp",
-        "com.econtechnologies.chronosync-express-setapp",
-        "com.iflicksapp.iflicks-setapp",
-        "com.hankinsoft.sqlpro-studio-setapp",
-        "com.hankinsoft.osx.sqliteprofessional-setapp",
-        "com.mentalfaculty.studies-setapp",
-        "io.lacona.Lacona-setapp",
-        "com.rcg.forecastbar-setapp",
-        "net.coldx.App-for-WhatsApp-setapp",
-        "com.etwok.netspot-setapp",
-        "com.apptorium.Expressions-setapp",
-        "com.apptorium.Workspaces-setapp",
-        "com.apptorium.TeaCode-setapp",
-        "com.apptorium.SideNotes-setapp",
-        "com.macitbetter.betterzip-setapp",
-        "ch.tripmode.TripMode-setapp",
-        "com.komarovmobile.macworldclock-setapp",
-        "com.lightpillar.Mosaic-setapp",
-        "com.lightpillar.Spotless-setapp",
-        "net.projectwizards.merlinprojectexpress-setapp",
-        "com.twopeoplesoftware.Instant-Translate-setapp",
-        "com.ntrack.ntrack-setapp",
-        "com.softwareambience.Unclutter-setapp",
-        "com.betamagic.News-Explorer-setapp",
-        "com.betamagic.Movie-Explorer-Pro-setapp",
-        "net.mkswap.Dropshare-setapp",
-        "com.kryolokovlin.Noizio-setapp",
-        "com.luckymarmot.Paw-setapp",
-        "com.tayasui.sketchespro-setapp",
-        "com.binarynights.forklift-setapp",
-        "com.iconjar.iconjar-setapp",
-        "com.guidedways.TodoMac-setapp",
-        "com.mozkan.pdfsearch-setapp",
-        "com.mrFridge.Wokabulary-setapp",
-        "com.sindresorhus.Lungo-setapp",
-        "com.sindresorhus.Dato-setapp",
-        "com.bradjasper.focus-setapp",
-        "co.noteplan.NotePlan-setapp",
-        "com.unmarked.textsoap-setapp",
-        "com.soulmen.ulysses-setapp",
-        "com.chekazuja.keykey-setapp",
-        "com.chekaZuja.TaoGit-setapp",
-        "com.outercorner.osx.Secrets-setapp",
-        "com.outercorner.Secrets-setapp",
-        "com.surteesstudios.Bartender-setapp",
-        "com.shapeservices.implusosx-setapp",
-        "com.tinyapp.TablePlus-setapp",
-        "com.advasoft.touchretouchmacadva-setapp",
-        "com.hegenberg.bettertouchtool-setapp",
-        "com.GiovanniMariaCusaro.Aquarelo-setapp",
-        "com.nevercenter.camerabagcinema-setapp",
-        "com.creaceed.prizmo-setapp",
-        "com.busymac.busycal-setapp",
-        "com.busymac.busycontacts-setapp",
-        "com.mailrtech.canarymail-setapp",
-        "ca.brawer.uBar-setapp",
-        "com.magnetism.endurance-setapp",
-        "com.devstorm.dc3-setapp",
-        "io.moonitor-setapp",
-        "com.criminalbird.typeface-setapp",
-        "com.aptonic.Dropzone-setapp",
-        "com.neededapps.gluemotion-setapp",
-        "com.neededapps.metaimage-setapp",
-        "com.jeremyvizzini.snapmotion-setapp",
-        "com.neededapps.photosrevive-setapp",
-        "com.QReader.MarginStudyMac-setapp",
-        "com.gonitro.NitroPDFPro-setapp",
-        "com.eyen.taskheat-setapp",
-        "com.eyen.student-setapp",
-        "com.ideasoncanvas.mindnode.macos-setapp",
-        "com.c-command.toothfairy-setapp",
-        "com.getcleanshot.app-setapp",
-        "pl.maketheweb.pixelsnap2-setapp",
-        "com.techno-grafik.imeetingx-setapp",
-        "io.coressh.shell-setapp",
-        "com.sheetplanner.SheetPlanner2-setapp",
-        "at.EternalStorms.Yoink-setapp",
-        "at.EternalStorms.Transloader-setapp",
-        "com.BZG.unite-setapp",
-        "com.BZG.CoherencePro-setapp",
-        "com.skylum.luminarneo-setapp",
-        "com.red-sweater.marsedit4-setapp",
-        "com.goldieapp.GoldieApp-setapp",
-        "com.pureformstudio.diaryOSX-setapp",
-        "com.movist.movist-setapp",
-        "de.holtwick.mac.receipts-setapp",
-        "pl.growapps.Silenz-setapp",
-        "studio.fireball.OneSwitch-setapp",
-        "studio.fireball.moment-setapp",
-        "info.eurocomp.PocketCASMac-setapp",
-        "com.apparentsoft.trickster-setapp",
-        "com.cocoatech.PathFinder-setapp",
-        "com.slidepad.slidepad-setapp",
-        "com.mymixapps.pulltube-setapp",
-        "com.mymixapps.FilePane-setapp",
-        "io.fadel.MissionControlPlus-setapp",
-        "io.fadel.VidCap-setapp",
-        "io.fadel.TeleprompterX-setapp",
-        "com.mockuuups.studio-setapp",
-        "net.innovative-bytes.start-setapp",
-        "com.NeilSardesai.Step-Two-Mac-setapp",
-        "com.catforce.timemator-setapp",
-        "com.YAC.Backtrack-setapp",
-        "com.yac.serenity-setapp",
-        "com.iBoysoft.NTFS-Assistant-website-setapp",
-        "com.iboysoft.swift-menu-setapp",
-        "com.bytieful.Gitfox-setapp",
-        "com.dangercove.Carbonize-setapp",
-        "com.floschliep.Short-Menu-setapp",
-        "org.hejki.osx.sshce-setapp",
-        "com.stclairsoft.DefaultFolderX5-setapp",
-        "com.stclairsoft.AppTamer-setapp",
-        "com.rampatra.presentify-setapp",
-        "com.krivoblotsky.ProjectsOrganizer-setapp",
-        "com.nightbirdsevolve.Meta-setapp",
-        "com.zehfernandes.PliimPRO-setapp",
-        "app.diagrams.DiagramsMac-setapp",
-        "com.virae.webfont-setapp",
-        "co.highlyopinionated.swish-setapp",
-        "com.jetson.24hourwallpaper-setapp",
-        "com.jetson.magicwindowair-setapp",
-        "com.bridgetech.asset-catalog-setapp",
-        "com.valerijs.boguckis.TextSniper-setapp",
-        "com.flinto.Flinto-setapp",
-        "com.ArthurG.Euclid-Calculator-setapp",
-        "com.philipyoungg.session-setapp",
-        "com.rameerez.Hustl-setapp",
-        "me.tdinh.devutils-setapp",
-        "com.pixelingene.quicklens-setapp",
-        "app.keysmith.Keysmith-setapp",
-        "com.dueapps.duemac-setapp",
-        "com.kapeli.dash-setapp",
-        "com.grantdavisinteractive.Mimir-setapp",
-        "com.houdah.HoudahSpot-setapp",
-        "app.loshadki.OpenIn-setapp",
-        "net.lickability.Buildwatch-setapp",
-        "io.appmakes.Paletro-setapp",
-        "com.schriftgestaltung.GlyphsMini2-setapp",
-        "co.speeko.speek-setapp",
-        "nl.metamotifs.auxl-setapp",
-        "com.apphousekitchen.aldente-pro-setapp",
-        "com.onmyway133.Almighty-setapp",
-        "com.sids.DisplayBuddy-setapp",
-        "com.macplus-software.tabfinder-setapp",
-        "com.macplus-software.Lofi-Garden-setapp",
-        "com.macplus-software.Plus-setapp",
-        "com.quitallapp.quitall-setapp",
-        "com.amicoapps.widgetwall-setapp",
-        "com.mentalwalk.application-setapp",
-        "niteo.co.Pareto-setapp",
-        "app.monsterwriter.client-setapp",
-        "com.savingsapp.Savings-setapp",
-        "nl.nielsmouthaan.daily.main-setapp",
-        "com.hankuper.adlock.desktop-setapp",
-        "com.pixyzehn.Expenses-setapp",
-        "com.app.menubarx-setapp",
-        "app.tripsy.ios-setapp",
-        "com.jbapps.SpeedCut-setapp",
-        "app.minhnh.WallCal-setapp",
-        "com.cogsciapps.hook-setapp",
-        "com.PDFTechnologies.FilmageEditor-setapp",
-        "com.goodsnooze.vivid-setapp",
-        "com.devuap.beautyshotapp-setapp",
-        "com.acqualia.soulver-setapp",
-        "com.leomehlig.today-setapp",
-        "com.lukilabs.lukiapp-setapp",
-        "com.pilotmoon.popclip-setapp",
-        "net.rafaelconde.Hand-Mirror-setapp",
-        "com.sofriendly.lift-setapp",
-        "com.devuap.Typing-Mind-setapp",
-        "com.kamban.elephas-setapp",
-        "com.nonstrict.CleanPresenter-setapp",
-        "ai.getsound.desktop-setapp",
-        "com.readdle.SparkDesktop-setapp",
-        "com.bluebanana-software.inyourface-setapp",
-        "com.clobbr.ui-setapp",
-        "com.sagoskattis.murmurtype-setapp",
-        "com.cynapse.numerics.ios-setapp",
-        "co.podzim.PDFPals-setapp",
-        "com.lowtechguys.Clop-setapp",
-        "com.dreamer.habits-setapp",
-        "com.smallwhite-media.SwiftyLaunch-setapp"
-      ],
-      "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ],
-      "autoHandleSetapp": true,
-      "deepSignApp": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "info.eurocomp.Timing-setapp.TimingHelper",
-      "appBaseLocate": "/Applications/Setapp/Timing.app/Contents/Library/LoginItems/TimingHelper.app",
-      "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ],
-      "autoHandleSetapp": true,
-      "deepSignApp": true,
-      "dylibSelect": "CoreInject.dylib"
-    },
-    {
-      "packageName": "io.fadel.Batteries-setapp",
-      "appBaseLocate": "/Applications/Setapp/Batteries.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "Batteries",
-      "needCopyToAppDir": true,
-      "noSignTarget": true,
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/io.fadel.Batteries-setapp.Helper"
-    },
-    {
-      "packageName": "codes.rambo.AirBuddy-setapp",
-      "appBaseLocate": "/Applications/Setapp/AirBuddy.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "AirBuddy",
-      "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ],
-      "noSignTarget": true,
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer"
-    },
-    {
-      "packageName": "codes.rambo.AirBuddy-setapp.AirBuddyHelper",
-      "appBaseLocate": "/Applications/Setapp/AirBuddy.app/Contents/Library/LoginItems/AirBuddyHelper.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "AirBuddyHelper",
-      "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "codes.rambo.AirBuddyHelper",
-      "appBaseLocate": "/Applications/AirBuddy.app/Contents/Library/LoginItems/AirBuddyHelper.app",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "AirBuddyHelper",
-      "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "com.apphousekitchen.aldente-pro",
-      "needCopyToAppDir": true,
-      "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-      "noSignTarget": true,
-      "autoHandleHelper": true,
-      "helperFile": "/Contents/Library/LaunchServices/com.apphousekitchen.aldente-pro.helper",
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "com.mac.utility.media.hub",
-      "bridgeFile": "/Contents/MacOS/",
-      "injectFile": "MediaCenter",
-      "needCopyToAppDir": true,
-      "tccutil": [
-        "All"
-      ]
-    },
-    {
-      "packageName": "com.bjango.istatmenus",
-      "appBaseLocate": "/Applications/iStat Menus.app",
-      "injectFile": "BBRUpdater.framework/Versions/A/BBRUpdater",
-      "needCopyToAppDir": true,
-      "deepSignApp": true,
-      "autoHandleHelper": true,
-      "extraShell": "iStatMenus.sh",
-      "helperFile": [
-        "/Contents/Resources/Components.bundle/Contents/Library/LaunchServices/com.bjango.istatmenus.installer",
-        "/Contents/Library/LaunchServices/com.bjango.istatmenus.installer"
-      ]
-    }
-  ]
+    "project": "InjectShell",
+    "Author": "QiuChenly",
+    "Version": 3.0,
+    "Description": {
+        "desc": "这是一个用于解释说明json对象用途的说明文档。basePublicConfig里面的同名配置如果在AppList里面配置了相同的Key，则优先使用AppList里面的值。",
+        "bridgeFile": "app路径和注入文件路径之间的中间路径，有些app只能注入到/Contents，所以加了这个。",
+        "packageName": "app包名，用来确认App是否存在。",
+        "injectFile": "注入文件的相对app路径的路径",
+        "supportVersion": "支持的版本号，用于大版本号 如果不提供任意版本号则直接无条件注入",
+        "supportSubVersion": "更精确的子版本号，用于某些app大版本号不变但是经常变小版本号的陋习",
+        "extraShell": "额外的执行shell，比如PD18需要执行一些额外的shell，支持自定义。",
+        "needCopyToAppDir": "有些app需要复制到app目录中才能在SIP打开的时候运行 这个属性可以控制库文件被复制到Framework",
+        "deepSignApp": "自动签名整个App",
+        "disableLibraryValidate": "关闭库验证 暂时只为pd启用",
+        "entitlements": "用于跳过部分权限 在启用SIP的macOS上 如ARM64",
+        "noSignTarget": "默认注入后会对目标文件进行签名,我们有时候不需要这个行为。",
+        "noDeep": "--deep 控制",
+        "tccutil": "自动执行tccutil reset xxx CFBundleIdentifier，true为All，详细可用数组。目前会将所有的值在componentApp操作一遍默认行为。",
+        "autoHandleSetapp": "自动根据 CFBundleIdentifier 找出App的appBaseLocate，并拼接/Contents/MacOS/为bridgeFile，且默认找出bridgeFile下的对应二进制程序，不太完善，仅setapp测试通过",
+        "autoHandleHelper": "是否自动处理helper文件",
+        "helperFile": "helper文件的路径，例如/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper，可以传数组",
+        "componentApp": "组合app,有些大型app是由很多子app组成的,单独处理意义也不大,就这样吧.",
+        "forQiuChenly": "专门为QiuChenly特供的App，看到这条的你硬改也没用。",
+        "keygen": "不注入app，生成key破解，适用于重签名后丢失某特性的app，为true时，其他配置默认失效",
+        "dylibSelect": "选择哪一个注入库, 如果是CoreInject则表示这是新版重构代码后的注入库,没有就默认91."
+    },
+    "basePublicConfig": {
+        "bridgeFile": "/Contents/Frameworks/"
+    },
+    "AppList": [
+        {
+            "packageName": "com.nssurge.surge-mac",
+            "appBaseLocate": "/Applications/Surge.app",
+            "bridgeFile": "/Contents/Frameworks/",
+            "injectFile": "Bugsnag.framework/Versions/A/Bugsnag",
+            "needCopyToAppDir": true,
+            "noSignTarget": true,
+            "autoHandleHelper": true,
+            "helperFile": "/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper",
+            "tccutil": [
+                "All"
+            ],
+            "forQiuChenly": false
+        },
+        {
+            "packageName": "com.gokoding.ScreenSage-Pro",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "ScreenSage Pro",
+            "dylibSelect": "CoreInject.dylib",
+            "needCopyToAppDir": true,
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": "codes.rambo.AirBuddy",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "AirBuddy",
+            "onlysh": true,
+            "extraShell": "airbuddy.sh",
+            "autoHandleHelper": true,
+            "helperFile": "/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer",
+            "SMExtra": "codes.rambo.AirBuddy",
+            "needCopyToAppDir": true,
+            "componentApp": [
+                "/Contents/Library/LoginItems/AirBuddyHelper.app"
+            ],
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": [
+                "com.macpaw.CleanMyMac5"
+            ],
+            "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+            "needCopyToAppDir": true,
+            "noSignTarget": true,
+            "autoHandleHelper": true,
+            "dylibSelect": "CoreInject.dylib",
+            "helperFile": [
+                "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac5.Agent"
+            ],
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": "com.readdle.SparkDesktop",
+            "appBaseLocate": "/Applications/Spark Desktop.app/Contents/Resources/app.asar.unpacked/node_modules/@spark/sparkcore-mac/bin/Release/SparkCore.bundle",
+            "injectFile": "MailCore.framework/Versions/A/MailCore",
+            "needCopyToAppDir": true,
+            "dylibSelect": "CoreInject.dylib",
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": "com.heavylightapps.lasso",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Lasso",
+            "needCopyToAppDir": true,
+            "forQiuChenly": true
+        },
+        {
+            "packageName": "com.DigiDNA.iMazing3Mac",
+            "bridgeFile": "/Contents/Frameworks/",
+            "injectFile": "GPod.framework/Versions/A/GPod",
+            "needCopyToAppDir": true,
+            "dylibSelect": "CoreInject.dylib",
+            "supportVersion": [
+                "3.1.2"
+            ]
+        },
+        {
+            "packageName": "com.hexrays.ida64",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "ida64",
+            "needCopyToAppDir": true,
+            "noSignTarget": true,
+            "extraShell": "copyLicense.sh"
+        },
+        {
+            "packageName": "com.hexrays.ida",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "ida",
+            "needCopyToAppDir": true,
+            "noSignTarget": true,
+            "supportVersion": [
+                "9.0.241217",
+                "9.1.250226"
+            ],
+            "extraShell": "copyLicense.sh"
+        },
+        {
+            "packageName": "com.edovia.screens.5",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Screens 5",
+            "needCopyToAppDir": true,
+            "dylibSelect": "CoreInject.dylib",
+            "supportVersion": [
+                "5.5.12"
+            ]
+        },
+        {
+            "packageName": "lo.cafe.NotchNook",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "NotchNook",
+            "needCopyToAppDir": true
+        },
+        {
+            "packageName": "lo.cafe.NotchNook-setapp",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "NotchNook",
+            "needCopyToAppDir": true
+        },
+        {
+            "packageName": "com.henrikruscon.Alcove",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Alcove",
+            "dylibSelect": "CoreInject.dylib",
+            "needCopyToAppDir": true,
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": "com.onmyway133.PastePal",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "PastePal",
+            "needCopyToAppDir": true,
+            "dylibSelect": "CoreInject.dylib",
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": "com.drbuho.disktool.BuhoNTFS",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "BuhoNTFS",
+            "needCopyToAppDir": true,
+            "forQiuChenly": false,
+            "autoHandleHelper": true,
+            "helperFile": "/Contents/Library/LaunchServices/com.drbuho.disktool.NTFSHelperTool",
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": "com.proxyman.NSProxy-setapp",
+            "appBaseLocate": "/Applications/Setapp/Proxyman.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Proxyman",
+            "needCopyToAppDir": true,
+            "autoHandleHelper": true,
+            "dylibSelect": "CoreInject.dylib",
+            "helperFile": "/Contents/Library/LaunchServices/com.proxyman.NSProxy.HelperTool",
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": [
+                "com.macpaw.CleanMyMac-setapp"
+            ],
+            "appBaseLocate": "/Applications/Setapp/CleanMyMac.app",
+            "injectFile": "ActivationService.framework/Versions/A/ActivationService",
+            "needCopyToAppDir": true,
+            "noSignTarget": true,
+            "autoHandleHelper": true,
+            "helperFile": [
+                "/Contents/Library/LaunchServices/com.macpaw.CleanMyMac-setapp.Agent"
+            ],
+            "tccutil": [
+                "All"
+            ],
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": [
+                "com.macpaw.CleanMyMac-setapp.Menu"
+            ],
+            "appBaseLocate": "/Applications/Setapp/CleanMyMac.app/Contents/Library/LoginItems/CleanMyMac_5_Setapp_Menu.app",
+            "injectFile": "ActivationService.framework/Versions/A/ActivationService",
+            "needCopyToAppDir": true,
+            "tccutil": [
+                "All"
+            ],
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": [
+                "com.edrawsoft.edrawmax",
+                "com.edrawsoft.mindmaster",
+                "com.edrawsoft.EdrawProj"
+            ],
+            "injectFile": "QtXml.framework/Versions/5/QtXml",
+            "needCopyToAppDir": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.corel.CorelDRAW",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "CorelDRW",
+            "needCopyToAppDir": true,
+            "noSignTarget": true
+        },
+        {
+            "packageName": "pl.maketheweb.cleanshotx",
+            "injectFile": "InsiderKit.framework/Versions/A/InsiderKit",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "studio.fireball.moment",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "Sparkle.framework/Versions/B/Sparkle"
+        },
+        {
+            "packageName": "com.tweety.MediaMate",
+            "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+            "needCopyToAppDir": true,
+            "deepSignApp": true
+        },
+        {
+            "packageName": "com.moneywiz.personalfinance",
+            "injectFile": "Charts.framework/Versions/A/Charts",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "noDeep": true
+        },
+        {
+            "packageName": "com.xunyong.hapigo",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "AliyunOSSOSX.framework/Versions/A/AliyunOSSOSX",
+            "tccutil": [
+                "All",
+                "AddressBook",
+                "Calendar",
+                "Reminders",
+                "ScreenCapture",
+                "Accessibility"
+            ]
+        },
+        {
+            "packageName": "com.surteesstudios.Bartender",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "Sparkle.framework/Versions/A/Sparkle",
+            "tccutil": [
+                "All",
+                "Camera",
+                "Microphone",
+                "ScreenCapture"
+            ]
+        },
+        {
+            "packageName": "com.pixelmatorteam.pixelmator.touch.x.photo",
+            "needCopyToAppDir": true,
+            "injectFile": "PXMPhotoKitUI.framework/Versions/A/PXMPhotoKitUI"
+        },
+        {
+            "packageName": "com.filmage.pro-lite.mac",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "KMDrawViewSDK_Mac.framework/Versions/A/KMDrawViewSDK_Mac"
+        },
+        {
+            "packageName": "com.crystalidea.macsfancontrol",
+            "injectFile": "QtMacExtras.framework/Versions/5/QtMacExtras",
+            "needCopyToAppDir": true,
+            "extraShell": "macfans.sh"
+        },
+        {
+            "packageName": "com.nonstrict.Bezel-direct",
+            "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "deepSignApp": true
+        },
+        {
+            "packageName": "com.tinyapp.TablePlus",
+            "injectFile": "SSH.framework/Versions/A/SSH",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "deepSignApp": true
+        },
+        {
+            "packageName": "app.elpass.macos",
+            "appBaseLocate": "/Applications/Elpass.app",
+            "injectFile": "MMMarkdown.framework/Versions/A/MMMarkdown",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "ws.stash.app.mac",
+            "appBaseLocate": "/Applications/Stash.app",
+            "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+            "needCopyToAppDir": true,
+            "noSignTarget": true,
+            "autoHandleHelper": true,
+            "helperNoInject": true,
+            "dylibSelect": "CoreInject.dylib",
+            "helperFile": "/Contents/Library/LaunchServices/ws.stash.app.mac.daemon.helper",
+            "tccutil": [
+                "All"
+            ],
+            "supportVersion": [
+                "3.1.0"
+            ]
+        },
+        {
+            "packageName": "com.firecore.infuse",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Infuse",
+            "needCopyToAppDir": true,
+            "entitlements": "signkeep.xml",
+            "deepSignApp": true
+        },
+        {
+            "packageName": "com.coderforart.MWeb3",
+            "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.nektony.App-Cleaner-SIII",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "App Cleaner 8",
+            "tccutil": [
+                "All",
+                "AddressBook",
+                "Reminders",
+                "Photos",
+                "AppleEvents"
+            ],
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.nektony.App-Cleaner-SIII",
+            "appBaseLocate": "/Applications/MacCleaner 3 Pro/App Cleaner 8.app",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "App Cleaner 8",
+            "tccutil": [
+                "All",
+                "AddressBook",
+                "Reminders",
+                "Photos",
+                "AppleEvents"
+            ],
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.nektony.MacCleaner-PRO-SIII",
+            "appBaseLocate": "/Applications/MacCleaner 3 Pro/MacCleaner Pro 3.app",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "Sparkle.framework/Versions/A/Sparkle",
+            "tccutil": [
+                "All",
+                "AddressBook",
+                "Calendar",
+                "Reminders",
+                "Photos",
+                "AppleEvents"
+            ],
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.nektony.Disk-Expert-SIII",
+            "appBaseLocate": "/Applications/MacCleaner 3 Pro/Disk Expert 5.app",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "Sparkle.framework/Versions/A/Sparkle",
+            "tccutil": [
+                "All",
+                "Reminders",
+                "Photos"
+            ],
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.nektony.Duplicates-Finder",
+            "injectFile": "OpenSSL.framework/Versions/A/OpenSSL",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "tccutil": [
+                "All"
+            ],
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.nektony.Duplicate-File-Finder-SIII",
+            "appBaseLocate": "/Applications/MacCleaner 3 Pro/Duplicate File Finder 8.app",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "Sparkle.framework/Versions/A/Sparkle",
+            "tccutil": [
+                "All",
+                "Photos"
+            ],
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "li.zihua.medis2",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "noDeep": true,
+            "injectFile": "HexFiend.framework/Versions/A/HexFiend"
+        },
+        {
+            "packageName": "com.zzd.Xnip",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "noDeep": true,
+            "injectFile": "DKDrawKit.framework/Versions/A/DKDrawKit"
+        },
+        {
+            "packageName": "com.techsmith.camtasia2023",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "TSCAccount.framework/Versions/A/TSCAccount",
+            "extraShell": "camtasia.sh",
+            "tccutil": [
+                "Camera",
+                "Microphone",
+                "ScreenCapture",
+                "All"
+            ]
+        },
+        {
+            "packageName": "com.hankinsoft.osx.sqlprostudio",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "HSCore.framework/Versions/A/HSCore"
+        },
+        {
+            "packageName": [
+                "com.bohemiancoding.sketch3",
+                "com.bohemiancoding.sketch3.appstore"
+            ],
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "Bugsnag.framework/Versions/A/Bugsnag"
+        },
+        {
+            "packageName": [
+                "com.incrediblebee.Archiver-setapp"
+            ],
+            "needCopyToAppDir": true,
+            "bridgeFile": "/Contents/MacOS/",
+            "deepSignApp": true,
+            "injectFile": "Archiver"
+        },
+        {
+            "packageName": [
+                "com.krivoblotsky.ProjectsOrganizer-setapp"
+            ],
+            "needCopyToAppDir": true,
+            "bridgeFile": "/Contents/MacOS/",
+            "deepSignApp": true,
+            "injectFile": "XCOrganizer"
+        },
+        {
+            "packageName": "com.artdesktop.bestzip2",
+            "injectFile": "JSONModel.framework/Versions/A/JSONModel"
+        },
+        {
+            "packageName": "com.navicat.NavicatPremium",
+            "appBaseLocate": "/Applications/Navicat Premium.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Navicat Premium",
+            "needCopyToAppDir": true,
+            "dylibSelect": "CoreInject.dylib",
+            "supportVersion": [
+                "17.2.4",
+                "17.2.5"
+            ]
+        },
+        {
+            "packageName": "com.apple.FinalCutTrial",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Final Cut Pro Trial",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.apple.logic10",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Logic Pro",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "dylibSelect": "CoreInject.dylib",
+            "tccutil": [
+                "All"
+            ],
+            "autoHandleHelper": true,
+            "helperFile": "/Contents/Library/LaunchServices/com.apple.musicapps.InstallerHelperTool"
+        },
+        {
+            "packageName": "com.literatureandlatte.scrivener3",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Scrivener",
+            "needCopyToAppDir": true,
+            "noDeep": true
+        },
+        {
+            "packageName": "com.autodesk.Maya.2024",
+            "appBaseLocate": "/Applications/Autodesk/maya2024/Maya.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Maya",
+            "needCopyToAppDir": true,
+            "noDeep": true
+        },
+        {
+            "packageName": "com.autodesk.Maya.2026",
+            "dmg": "https://trial2.autodesk.com/NetSWDLD/prd/2026/MAYA/87B63493-70DA-3579-9BC8-275C3B637677/SFX/Autodesk_Maya_2026_ML_macOS.dmg",
+            "appBaseLocate": "/Applications/Autodesk/maya2026/Maya.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Maya",
+            "dylibSelect": "CoreInject.dylib",
+            "needCopyToAppDir": true,
+            "noDeep": true
+        },
+        {
+            "packageName": "com.autodesk.AutoCAD2024",
+            "appBaseLocate": "/Applications/Autodesk/AutoCAD 2024/AutoCAD 2024.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "AutoCAD",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.autodesk.AutoCAD2025",
+            "appBaseLocate": "/Applications/Autodesk/AutoCAD 2025/AutoCAD 2025.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "AutoCAD",
+            "needCopyToAppDir": true,
+            "forceSignMainExecute": true,
+            "deepSignApp": false,
+            "noSignTarget": true,
+            "noDeep": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.autodesk.AutoCAD2026",
+            "appBaseLocate": "/Applications/Autodesk/AutoCAD 2026/AutoCAD 2026.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "AutoCAD",
+            "needCopyToAppDir": true,
+            "forceSignMainExecute": true,
+            "deepSignApp": false,
+            "noSignTarget": true,
+            "noDeep": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.autodesk.AutoCADWatt",
+            "appBaseLocate": "/Applications/Autodesk/AutoCAD Watt/AutoCAD Watt.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "AutoCAD",
+            "needCopyToAppDir": true,
+            "deepSignApp": false,
+            "noSignTarget": true,
+            "noDeep": true
+        },
+        {
+            "packageName": "design.yugen.Flow",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Flow",
+            "needCopyToAppDir": true,
+            "noDeep": true
+        },
+        {
+            "packageName": "com.adobe.lightroomCC",
+            "appBaseLocate": "/Applications/Adobe Lightroom CC/Adobe Lightroom.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Adobe Lightroom",
+            "entitlements": "signkeep.xml",
+            "dylibSelect": "CoreInject.dylib",
+            "needCopyToAppDir": true,
+            "noDeep": true
+        },
+        {
+            "packageName": "com.adobe.LightroomClassicCC7",
+            "appBaseLocate": "/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Adobe Lightroom Classic",
+            "dylibSelect": "CoreInject.dylib",
+            "needCopyToAppDir": true,
+            "noSignTarget": true,
+            "extraShell": "signLrc.sh"
+        },
+        {
+            "packageName": "com.adobe.Photoshop",
+            "appBaseLocate": "/Applications/Adobe Photoshop (Beta)/Adobe Photoshop (Beta).app",
+            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+            "deepSignApp": true,
+            "dylibSelect": "CoreInject.dylib",
+            "noDeep": true
+        },
+        {
+            "packageName": "com.adobe.Photoshop",
+            "appBaseLocate": "/Applications/Adobe Photoshop 2025/Adobe Photoshop 2025.app",
+            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+            "needCopyToAppDir": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.adobe.illustrator",
+            "appBaseLocate": "/Applications/Adobe Illustrator 2025/Adobe Illustrator.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Adobe Illustrator",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.adobe.ame.application.24",
+            "appBaseLocate": "/Applications/Adobe Media Encoder 2024/Adobe Media Encoder 2024.app",
+            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+            "needCopyToAppDir": true,
+            "noDeep": true
+        },
+        {
+            "packageName": "com.adobe.ame.application.25",
+            "appBaseLocate": "/Applications/Adobe Media Encoder 2025/Adobe Media Encoder 2025.app",
+            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.adobe.AfterEffects",
+            "appBaseLocate": "/Applications/Adobe After Effects 2024/Adobe After Effects 2024.app",
+            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "useOptool": false
+        },
+        {
+            "packageName": "com.adobe.AfterEffects",
+            "appBaseLocate": "/Applications/Adobe After Effects 2025/Adobe After Effects 2025.app",
+            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "useOptool": false,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.adobe.Adobe-Animate-2024.application",
+            "appBaseLocate": "/Applications/Adobe Animate 2024/Adobe Animate 2024.app",
+            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "useOptool": false,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.adobe.Audition",
+            "appBaseLocate": "/Applications/Adobe Audition 2025/Adobe Audition 2025.app",
+            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "useOptool": false,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.adobe.PremierePro.23",
+            "appBaseLocate": "/Applications/Adobe Premiere Pro 2024/Adobe Premiere Pro 2024.app",
+            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "useOptool": false
+        },
+        {
+            "packageName": "com.adobe.PremierePro.25",
+            "appBaseLocate": "/Applications/Adobe Premiere Pro 2025/Adobe Premiere Pro 2025.app",
+            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "useOptool": false,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.adobe.Acrobat.Pro",
+            "appBaseLocate": "/Applications/Adobe Acrobat DC/Adobe Acrobat.app",
+            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "dylibSelect": "CoreInject.dylib",
+            "extraShell": "codesign_acrobat.sh"
+        },
+        {
+            "packageName": "com.adobe.distiller",
+            "appBaseLocate": "/Applications/Adobe Acrobat DC/Acrobat Distiller.app",
+            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.adobe.InCopy",
+            "appBaseLocate": "/Applications/Adobe InCopy 2025/Adobe InCopy 2025.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Adobe InCopy 2025",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.adobe.InDesign",
+            "appBaseLocate": "/Applications/Adobe InDesign 2025/Adobe InDesign 2025.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Adobe InDesign 2025",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.adobe.InDesign",
+            "appBaseLocate": "/Applications/Adobe InDesign 2024/Adobe InDesign 2024.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "PublicLib.dylib",
+            "needCopyToAppDir": true,
+            "noDeep": true,
+            "useOptool": false
+        },
+        {
+            "packageName": [
+                "com.microsoft.Outlook"
+            ],
+            "needCopyToAppDir": true,
+            "injectFile": "ADAL4.framework/Versions/A/ADAL4",
+            "entitlements": "signkeep.xml"
+        },
+        {
+            "packageName": [
+                "com.microsoft.Excel"
+            ],
+            "needCopyToAppDir": true,
+            "injectFile": "Microsoft Excel",
+            "bridgeFile": "/Contents/MacOS/",
+            "deepSignApp": false,
+            "entitlements": "signkeep.xml"
+        },
+        {
+            "packageName": [
+                "com.microsoft.Powerpoint"
+            ],
+            "needCopyToAppDir": true,
+            "injectFile": "Microsoft PowerPoint",
+            "bridgeFile": "/Contents/MacOS/",
+            "deepSignApp": false,
+            "entitlements": "signkeep.xml"
+        },
+        {
+            "packageName": [
+                "com.microsoft.Word"
+            ],
+            "needCopyToAppDir": true,
+            "injectFile": "Microsoft Word",
+            "bridgeFile": "/Contents/MacOS/",
+            "deepSignApp": false,
+            "entitlements": "signkeep.xml"
+        },
+        {
+            "packageName": "com.sublimetext.4",
+            "entitlements": "signkeep.xml",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "sublime_text",
+            "extraShell": "sublime.sh",
+            "onlysh": true
+        },
+        {
+            "packageName": "com.sublimemerge",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "entitlements": "signkeep.xml",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "sublime_merge"
+        },
+        {
+            "packageName": "whbalzac.Huajian",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Live Wallpaper"
+        },
+        {
+            "packageName": "abnerworks.Typora",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Typora"
+        },
+        {
+            "packageName": "com.mac.utility.screen.recorder",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "OmniRecorder",
+            "tccutil": [
+                "All",
+                "Camera",
+                "Microphone",
+                "ScreenCapture"
+            ]
+        },
+        {
+            "packageName": "com.mac.utility.media.player",
+            "injectFile": "XADMaster.framework/Versions/A/XADMaster",
+            "needCopyToAppDir": true,
+            "deepSignApp": true
+        },
+        {
+            "packageName": "com.bandisoft.mac.bandizip",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Bandizip"
+        },
+        {
+            "packageName": "com.bandisoft.mac.bandizip365",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Bandizip365"
+        },
+        {
+            "packageName": "com.wuziqi.SenPlayer",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "SenPlayer",
+            "dylibSelect": "CoreInject.dylib",
+            "supportVersion": [
+                "5.2.2"
+            ]
+        },
+        {
+            "packageName": "org.cindori.Sensei",
+            "needCopyToAppDir": true,
+            "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+            "noSignTarget": true,
+            "autoHandleHelper": true,
+            "helperFile": "/Contents/Library/LaunchServices/org.cindori.SenseiHelper"
+        },
+        {
+            "packageName": "com.skylum.luminarneomas",
+            "injectFile": "CocoaLumberjack.framework/Versions/A/CocoaLumberjack",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.proxyman.NSProxy",
+            "injectFile": "Moya.framework/Versions/A/Moya",
+            "needCopyToAppDir": true,
+            "noSignTarget": true,
+            "autoHandleHelper": true,
+            "helperFile": "/Contents/Library/LaunchServices/com.proxyman.NSProxy.HelperTool"
+        },
+        {
+            "packageName": [
+                "com.seriflabs.affinityphoto2",
+                "com.seriflabs.affinitydesigner2",
+                "com.seriflabs.affinitypublisher2"
+            ],
+            "injectFile": "liblibzlib.dylib",
+            "needCopyToAppDir": true,
+            "deepSignApp": true
+        },
+        {
+            "packageName": "com.panic.transmit.mas",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "ZipZap.framework/Versions/A/ZipZap"
+        },
+        {
+            "packageName": "com.ulyssesapp.mac",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "noDeep": true,
+            "injectFile": "KissXML.framework/Versions/A/KissXML"
+        },
+        {
+            "packageName": "app.mindmac.macos",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "noDeep": true,
+            "injectFile": "Paddle.framework/Versions/A/Paddle"
+        },
+        {
+            "packageName": "com.charliemonroe.Downie-4",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "noDeep": true,
+            "injectFile": "Paddle.framework/Versions/A/Paddle"
+        },
+        {
+            "packageName": "com.incrediblebee.Archiver4",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "noDeep": true,
+            "injectFile": "BERegistration.framework/Versions/A/BERegistration"
+        },
+        {
+            "packageName": [
+                "tonyapp.devutils"
+            ],
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "DiffMatchPatch.framework/Versions/A/DiffMatchPatch"
+        },
+        {
+            "packageName": [
+                "com.ideasoncanvas.mindnode.macos-setapp"
+            ],
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "CanvasLayout_19E0F1ED461C44E6_PackageProduct.framework/Versions/A/CanvasLayout_19E0F1ED461C44E6_PackageProduct"
+        },
+        {
+            "packageName": "app.mp3tag.Mp3tag",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+            "dylibSelect": "CoreInject.dylib",
+            "supportVersion": [
+                "1.9.2"
+            ]
+        },
+        {
+            "packageName": "tech.baye.servercat",
+            "needCopyToAppDir": true,
+            "bridgeFile": "/Contents/MacOS/",
+            "deepSignApp": true,
+            "injectFile": "ServerCat"
+        },
+        {
+            "packageName": "com.ningle.shellbean",
+            "needCopyToAppDir": true,
+            "bridgeFile": "/Contents/MacOS/",
+            "deepSignApp": true,
+            "injectFile": "ShellBean"
+        },
+        {
+            "packageName": "com.krill.CodeRunner",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "Sparkle.framework/Versions/A/Sparkle"
+        },
+        {
+            "packageName": "com.poke.SwiftUI-For-Designers",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "\u505a\u4e2a\u5e94\u7528"
+        },
+        {
+            "packageName": "com.villow.wgt",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "BFPageControl.framework/Versions/A/BFPageControl"
+        },
+        {
+            "packageName": "com.wiheads.paste",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Paste",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "tccutil": [
+                "All",
+                "Camera",
+                "Microphone",
+                "ScreenCapture"
+            ]
+        },
+        {
+            "packageName": "cn.better365.ishot",
+            "injectFile": "PTHotKey.framework/Versions/A/PTHotKey",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "tccutil": [
+                "All",
+                "Camera",
+                "Microphone",
+                "ScreenCapture"
+            ]
+        },
+        {
+            "packageName": [
+                "me.damir.dropover-mac",
+                "cn.better365.iRightMouse",
+                "com.better365.autoinput",
+                "com.binarynights.ForkLift"
+            ],
+            "keygen": true
+        },
+        {
+            "packageName": "com.drbuho.BuhoCleaner",
+            "injectFile": "Sparkle.framework/Versions/A/Sparkle",
+            "bridgeFile": "/Contents/Frameworks/DesktopApplication.framework/Versions/A/Frameworks/",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "entitlements": "signkeep.xml",
+            "autoHandleHelper": true,
+            "helperFile": "/Contents/Library/LaunchServices/com.drbuho.BuhoCleaner.PrivilegedHelperTool",
+            "tccutil": [
+                "All"
+            ],
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "org.qcad",
+            "injectFile": "libqcadcustomwidgets.dylib",
+            "bridgeFile": "/Contents/PlugIns/designer/",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "noDeep": true
+        },
+        {
+            "packageName": "com.crossutility.quantumult-x",
+            "injectFile": "Quantumult X",
+            "bridgeFile": "/Contents/MacOS/",
+            "needCopyToAppDir": true,
+            "deepSignApp": true
+        },
+        {
+            "packageName": "com.corecode.MacUpdater",
+            "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+            "needCopyToAppDir": true,
+            "deepSignApp": true
+        },
+        {
+            "packageName": "com.veertu.anka",
+            "injectFile": "Anka",
+            "bridgeFile": "/Contents/MacOS/",
+            "needCopyToAppDir": true,
+            "deepSignApp": true
+        },
+        {
+            "packageName": "com.coppertino.Vox",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "DevMateKit.framework/Versions/A/DevMateKit"
+        },
+        {
+            "packageName": "com.hezongyidev.Bob",
+            "injectFile": "Bob",
+            "bridgeFile": "/Contents/MacOS/",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": "com.zeroonetwenty.BlueHarvest5",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "Sparkle.framework/Versions/A/Sparkle"
+        },
+        {
+            "packageName": "com.culturedcode.ThingsMac",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "Base.framework/Versions/A/Base"
+        },
+        {
+            "packageName": "app.kaleidoscope.v4",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "SofaUIKit.framework/Versions/A/SofaUIKit"
+        },
+        {
+            "packageName": "com.mcneel.rhinoceros.8",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "injectFile": "Sparkle.framework/Versions/B/Sparkle"
+        },
+        {
+            "packageName": [
+                "QReader.MarginStudyMac",
+                "QReader.MarginStudy.easy"
+            ],
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "noDeep": true,
+            "injectFile": "Alamofire.framework/Versions/A/Alamofire"
+        },
+        {
+            "packageName": "cc.ffitch.shottr",
+            "injectFile": "Shottr",
+            "bridgeFile": "/Contents/MacOS/",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": "com.setapp.DesktopClient",
+            "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "extraShell": "Setapps/setapp.sh",
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.bjango.istatmenus-setapp",
+            "autoHandleHelper": true,
+            "helperFile": "/Contents/Library/LaunchServices/com.bjango.istatmenus.installer",
+            "needCopyToAppDir": true,
+            "tccutil": true,
+            "autoHandleSetapp": true,
+            "deepSignApp": true,
+            "dylibSelect": "CoreInject.dylib",
+            "extraShell": "rmiStat.sh"
+        },
+        {
+            "packageName": "com.bjango.istatmenus-setapp.status",
+            "appBaseLocate": "/Applications/Setapp/iStat Menus.app/Contents/Resources/Components.bundle/Contents/Resources/iStat Menus Menubar.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "iStat Menus Menubar",
+            "needCopyToAppDir": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "com.bjango.istatmenus-setapp.agent",
+            "appBaseLocate": "/Applications/Setapp/iStat Menus.app/Contents/Resources/Components.bundle/Contents/Resources/iStat Menus Helper.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "iStat Menus Helper",
+            "needCopyToAppDir": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": [
+                "co.podzim.BoltGPT-setapp",
+                "com.macpaw.Gemini-setapp",
+                "com.macpaw.WallWiz-setapp",
+                "com.macpaw.clearvpn.macos-setapp",
+                "com.pagico.pagico-setapp",
+                "com.brettterpstra.marked-setapp",
+                "com.incrediblebee.Archiver-setapp",
+                "com.incrediblebee.Renamer-setapp",
+                "io.sipapp.Sip-setapp",
+                "com.witt-software.PDF-Squeezer-setapp",
+                "com.witt-software.Rocket-Typist-setapp",
+                "com.adriangranados.wifiexplorer-setapp",
+                "com.intuitibits.wifisignal-setapp",
+                "com.eltima.elmedia-setapp",
+                "com.eltima.Folx3-setapp",
+                "com.eltima.photobulk-setapp",
+                "com.eltima.cloudmounter-setapp",
+                "com.eltima.cmd1-setapp",
+                "us.electronic.juststream-setapp",
+                "uk.co.menial.Base-setapp",
+                "com.littlefin.chroniclemac-setapp",
+                "net.shinyfrog.image2icon-setapp",
+                "com.globaldelight.Capto-setapp",
+                "com.globaldelight.Boom3D-setapp",
+                "info.eurocomp.Timing-setapp",
+                "com.dejal.simon-setapp",
+                "com.dejal.timeout-setapp",
+                "com.realmacsoftware.squash-setapp",
+                "com.remotemouse.remotemouseserver-setapp",
+                "com.tumult.hype-setapp",
+                "com.tumult.Whisk-setapp",
+                "com.hogbaysoftware.TaskPaper3-setapp",
+                "com.hogbaysoftware.Bike-setapp",
+                "com.xwavesoft.befocused-setapp",
+                "com.xwavesoft.cloudoutlinertwomac-setapp",
+                "com.pointum.hazeover-setapp",
+                "com.gifox.gifox-setapp",
+                "com.nikolaeu.numi-setapp",
+                "com.71squared.focused-setapp",
+                "com.krill.CodeRunner-setapp",
+                "com.hahainteractive.GoodTask-setapp",
+                "com.p5sys.jumpdesktop-setapp",
+                "com.moneywiz.personalfinance-setapp",
+                "com.belightsoft.GetBackup-setapp",
+                "com.belightsoft.SwiftPublisher-setapp",
+                "com.cleverfiles.DiskDrill-setapp",
+                "com.renfei.snippetslab-setapp",
+                "com.wiheads.paste-setapp",
+                "com.charliemonroe.Permute-setapp",
+                "com.charliemonroe.Downie-setapp",
+                "com.charliemonroe.UctoX-setapp",
+                "com.econtechnologies.chronosync-express-setapp",
+                "com.iflicksapp.iflicks-setapp",
+                "com.hankinsoft.sqlpro-studio-setapp",
+                "com.hankinsoft.osx.sqliteprofessional-setapp",
+                "com.mentalfaculty.studies-setapp",
+                "io.lacona.Lacona-setapp",
+                "com.rcg.forecastbar-setapp",
+                "net.coldx.App-for-WhatsApp-setapp",
+                "com.etwok.netspot-setapp",
+                "com.apptorium.Expressions-setapp",
+                "com.apptorium.Workspaces-setapp",
+                "com.apptorium.TeaCode-setapp",
+                "com.apptorium.SideNotes-setapp",
+                "com.macitbetter.betterzip-setapp",
+                "ch.tripmode.TripMode-setapp",
+                "com.komarovmobile.macworldclock-setapp",
+                "com.lightpillar.Mosaic-setapp",
+                "com.lightpillar.Spotless-setapp",
+                "net.projectwizards.merlinprojectexpress-setapp",
+                "com.twopeoplesoftware.Instant-Translate-setapp",
+                "com.ntrack.ntrack-setapp",
+                "com.softwareambience.Unclutter-setapp",
+                "com.betamagic.News-Explorer-setapp",
+                "com.betamagic.Movie-Explorer-Pro-setapp",
+                "net.mkswap.Dropshare-setapp",
+                "com.kryolokovlin.Noizio-setapp",
+                "com.luckymarmot.Paw-setapp",
+                "com.tayasui.sketchespro-setapp",
+                "com.binarynights.forklift-setapp",
+                "com.iconjar.iconjar-setapp",
+                "com.guidedways.TodoMac-setapp",
+                "com.mozkan.pdfsearch-setapp",
+                "com.mrFridge.Wokabulary-setapp",
+                "com.sindresorhus.Lungo-setapp",
+                "com.sindresorhus.Dato-setapp",
+                "com.bradjasper.focus-setapp",
+                "co.noteplan.NotePlan-setapp",
+                "com.unmarked.textsoap-setapp",
+                "com.soulmen.ulysses-setapp",
+                "com.chekazuja.keykey-setapp",
+                "com.chekaZuja.TaoGit-setapp",
+                "com.outercorner.osx.Secrets-setapp",
+                "com.outercorner.Secrets-setapp",
+                "com.surteesstudios.Bartender-setapp",
+                "com.shapeservices.implusosx-setapp",
+                "com.tinyapp.TablePlus-setapp",
+                "com.advasoft.touchretouchmacadva-setapp",
+                "com.hegenberg.bettertouchtool-setapp",
+                "com.GiovanniMariaCusaro.Aquarelo-setapp",
+                "com.nevercenter.camerabagcinema-setapp",
+                "com.creaceed.prizmo-setapp",
+                "com.busymac.busycal-setapp",
+                "com.busymac.busycontacts-setapp",
+                "com.mailrtech.canarymail-setapp",
+                "ca.brawer.uBar-setapp",
+                "com.magnetism.endurance-setapp",
+                "com.devstorm.dc3-setapp",
+                "io.moonitor-setapp",
+                "com.criminalbird.typeface-setapp",
+                "com.aptonic.Dropzone-setapp",
+                "com.neededapps.gluemotion-setapp",
+                "com.neededapps.metaimage-setapp",
+                "com.jeremyvizzini.snapmotion-setapp",
+                "com.neededapps.photosrevive-setapp",
+                "com.QReader.MarginStudyMac-setapp",
+                "com.gonitro.NitroPDFPro-setapp",
+                "com.eyen.taskheat-setapp",
+                "com.eyen.student-setapp",
+                "com.ideasoncanvas.mindnode.macos-setapp",
+                "com.c-command.toothfairy-setapp",
+                "com.getcleanshot.app-setapp",
+                "pl.maketheweb.pixelsnap2-setapp",
+                "com.techno-grafik.imeetingx-setapp",
+                "io.coressh.shell-setapp",
+                "com.sheetplanner.SheetPlanner2-setapp",
+                "at.EternalStorms.Yoink-setapp",
+                "at.EternalStorms.Transloader-setapp",
+                "com.BZG.unite-setapp",
+                "com.BZG.CoherencePro-setapp",
+                "com.skylum.luminarneo-setapp",
+                "com.red-sweater.marsedit4-setapp",
+                "com.goldieapp.GoldieApp-setapp",
+                "com.pureformstudio.diaryOSX-setapp",
+                "com.movist.movist-setapp",
+                "de.holtwick.mac.receipts-setapp",
+                "pl.growapps.Silenz-setapp",
+                "studio.fireball.OneSwitch-setapp",
+                "studio.fireball.moment-setapp",
+                "info.eurocomp.PocketCASMac-setapp",
+                "com.apparentsoft.trickster-setapp",
+                "com.cocoatech.PathFinder-setapp",
+                "com.slidepad.slidepad-setapp",
+                "com.mymixapps.pulltube-setapp",
+                "com.mymixapps.FilePane-setapp",
+                "io.fadel.MissionControlPlus-setapp",
+                "io.fadel.VidCap-setapp",
+                "io.fadel.TeleprompterX-setapp",
+                "com.mockuuups.studio-setapp",
+                "net.innovative-bytes.start-setapp",
+                "com.NeilSardesai.Step-Two-Mac-setapp",
+                "com.catforce.timemator-setapp",
+                "com.YAC.Backtrack-setapp",
+                "com.yac.serenity-setapp",
+                "com.iBoysoft.NTFS-Assistant-website-setapp",
+                "com.iboysoft.swift-menu-setapp",
+                "com.bytieful.Gitfox-setapp",
+                "com.dangercove.Carbonize-setapp",
+                "com.floschliep.Short-Menu-setapp",
+                "org.hejki.osx.sshce-setapp",
+                "com.stclairsoft.DefaultFolderX5-setapp",
+                "com.stclairsoft.AppTamer-setapp",
+                "com.rampatra.presentify-setapp",
+                "com.krivoblotsky.ProjectsOrganizer-setapp",
+                "com.nightbirdsevolve.Meta-setapp",
+                "com.zehfernandes.PliimPRO-setapp",
+                "app.diagrams.DiagramsMac-setapp",
+                "com.virae.webfont-setapp",
+                "co.highlyopinionated.swish-setapp",
+                "com.jetson.24hourwallpaper-setapp",
+                "com.jetson.magicwindowair-setapp",
+                "com.bridgetech.asset-catalog-setapp",
+                "com.valerijs.boguckis.TextSniper-setapp",
+                "com.flinto.Flinto-setapp",
+                "com.ArthurG.Euclid-Calculator-setapp",
+                "com.philipyoungg.session-setapp",
+                "com.rameerez.Hustl-setapp",
+                "me.tdinh.devutils-setapp",
+                "com.pixelingene.quicklens-setapp",
+                "app.keysmith.Keysmith-setapp",
+                "com.dueapps.duemac-setapp",
+                "com.kapeli.dash-setapp",
+                "com.grantdavisinteractive.Mimir-setapp",
+                "com.houdah.HoudahSpot-setapp",
+                "app.loshadki.OpenIn-setapp",
+                "net.lickability.Buildwatch-setapp",
+                "io.appmakes.Paletro-setapp",
+                "com.schriftgestaltung.GlyphsMini2-setapp",
+                "co.speeko.speek-setapp",
+                "nl.metamotifs.auxl-setapp",
+                "com.apphousekitchen.aldente-pro-setapp",
+                "com.onmyway133.Almighty-setapp",
+                "com.sids.DisplayBuddy-setapp",
+                "com.macplus-software.tabfinder-setapp",
+                "com.macplus-software.Lofi-Garden-setapp",
+                "com.macplus-software.Plus-setapp",
+                "com.quitallapp.quitall-setapp",
+                "com.amicoapps.widgetwall-setapp",
+                "com.mentalwalk.application-setapp",
+                "niteo.co.Pareto-setapp",
+                "app.monsterwriter.client-setapp",
+                "com.savingsapp.Savings-setapp",
+                "nl.nielsmouthaan.daily.main-setapp",
+                "com.hankuper.adlock.desktop-setapp",
+                "com.pixyzehn.Expenses-setapp",
+                "com.app.menubarx-setapp",
+                "app.tripsy.ios-setapp",
+                "com.jbapps.SpeedCut-setapp",
+                "app.minhnh.WallCal-setapp",
+                "com.cogsciapps.hook-setapp",
+                "com.PDFTechnologies.FilmageEditor-setapp",
+                "com.goodsnooze.vivid-setapp",
+                "com.devuap.beautyshotapp-setapp",
+                "com.acqualia.soulver-setapp",
+                "com.leomehlig.today-setapp",
+                "com.lukilabs.lukiapp-setapp",
+                "com.pilotmoon.popclip-setapp",
+                "net.rafaelconde.Hand-Mirror-setapp",
+                "com.sofriendly.lift-setapp",
+                "com.devuap.Typing-Mind-setapp",
+                "com.kamban.elephas-setapp",
+                "com.nonstrict.CleanPresenter-setapp",
+                "ai.getsound.desktop-setapp",
+                "com.readdle.SparkDesktop-setapp",
+                "com.bluebanana-software.inyourface-setapp",
+                "com.clobbr.ui-setapp",
+                "com.sagoskattis.murmurtype-setapp",
+                "com.cynapse.numerics.ios-setapp",
+                "co.podzim.PDFPals-setapp",
+                "com.lowtechguys.Clop-setapp",
+                "com.dreamer.habits-setapp",
+                "com.smallwhite-media.SwiftyLaunch-setapp"
+            ],
+            "needCopyToAppDir": true,
+            "tccutil": [
+                "All"
+            ],
+            "autoHandleSetapp": true,
+            "deepSignApp": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "info.eurocomp.Timing-setapp.TimingHelper",
+            "appBaseLocate": "/Applications/Setapp/Timing.app/Contents/Library/LoginItems/TimingHelper.app",
+            "needCopyToAppDir": true,
+            "tccutil": [
+                "All"
+            ],
+            "autoHandleSetapp": true,
+            "deepSignApp": true,
+            "dylibSelect": "CoreInject.dylib"
+        },
+        {
+            "packageName": "io.fadel.Batteries-setapp",
+            "appBaseLocate": "/Applications/Setapp/Batteries.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Batteries",
+            "needCopyToAppDir": true,
+            "noSignTarget": true,
+            "autoHandleHelper": true,
+            "helperFile": "/Contents/Library/LaunchServices/io.fadel.Batteries-setapp.Helper"
+        },
+        {
+            "packageName": "codes.rambo.AirBuddy-setapp",
+            "appBaseLocate": "/Applications/Setapp/AirBuddy.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "AirBuddy",
+            "needCopyToAppDir": true,
+            "tccutil": [
+                "All"
+            ],
+            "noSignTarget": true,
+            "autoHandleHelper": true,
+            "helperFile": "/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer"
+        },
+        {
+            "packageName": "codes.rambo.AirBuddy-setapp.AirBuddyHelper",
+            "appBaseLocate": "/Applications/Setapp/AirBuddy.app/Contents/Library/LoginItems/AirBuddyHelper.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "AirBuddyHelper",
+            "needCopyToAppDir": true,
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": "codes.rambo.AirBuddyHelper",
+            "appBaseLocate": "/Applications/AirBuddy.app/Contents/Library/LoginItems/AirBuddyHelper.app",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "AirBuddyHelper",
+            "needCopyToAppDir": true,
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": "com.apphousekitchen.aldente-pro",
+            "needCopyToAppDir": true,
+            "injectFile": "Sparkle.framework/Versions/B/Sparkle",
+            "noSignTarget": true,
+            "autoHandleHelper": true,
+            "helperFile": "/Contents/Library/LaunchServices/com.apphousekitchen.aldente-pro.helper",
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": "com.mac.utility.media.hub",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "MediaCenter",
+            "needCopyToAppDir": true,
+            "tccutil": [
+                "All"
+            ]
+        },
+        {
+            "packageName": "com.bjango.istatmenus",
+            "appBaseLocate": "/Applications/iStat Menus.app",
+            "injectFile": "BBRUpdater.framework/Versions/A/BBRUpdater",
+            "needCopyToAppDir": true,
+            "deepSignApp": true,
+            "autoHandleHelper": true,
+            "extraShell": "iStatMenus.sh",
+            "helperFile": [
+                "/Contents/Resources/Components.bundle/Contents/Library/LaunchServices/com.bjango.istatmenus.installer",
+                "/Contents/Library/LaunchServices/com.bjango.istatmenus.installer"
+            ]
+        }
+    ],
+    "Language": "zh_CN"
 }
