@@ -5,6 +5,7 @@ from src.ui.language_selector import change_language_with_menu
 from src.utils.color import Color
 from src.utils.i18n import I18n, _
 from src.utils.ui_helper import ensure_black_background, clear_screen, read_input, wait_for_enter, print_app_table_header, print_app_info
+from src.utils.input_helper import getch
 from src.ui.banner import print_banner
 from src.app.search import display_supported_apps, select_apps_by_keyword, show_all_supported_apps
 from src.app.framework import launch_framework_menu
@@ -150,43 +151,66 @@ class MenuManager:
             # 显示导航选项
             self._display_navigation_options()
             
-            # 显示当前页码信息
-            total_apps = len(self.app_manager.app_list)
-            current_page_info = f"{_('page_info', '第 {0}/{1} 页，共 {2} 个应用').format(self.current_page + 1, total_pages, total_apps)}"
-            print(f"\n{current_page_info}")
+            # 显示输入提示但不换行，使用flush确保立即显示
+            print("\n" + _("select_operation", "请选择操作: "), end='', flush=True)
             
-            choice = read_input("\n" + _("select_operation", "请选择操作: "))
+            # 获取单个字符输入
+            choice = getch()
             
-            # 处理页面导航
-            if choice == 'n':
-                if self.current_page < total_pages - 1:
-                    self.current_page += 1
-                else:
-                    print(_("last_page", "已经是最后一页"))
-                    wait_for_enter()
-            elif choice == 'p':
-                if self.current_page > 0:
-                    self.current_page -= 1
-                else:
-                    print(_("first_page", "已经是第一页"))
-                    wait_for_enter()
-            elif choice == 's':
-                return '1'  # 进入搜索功能
-            elif choice == 'l':
-                return '4'  # 切换语言
-            elif choice == 'q':
-                return '5'  # 退出程序
+            # 处理页面导航和特殊命令
+            if choice in ['n', 'p', 's', 'l', 'q', 'i']:
+                print(choice)  # 打印当前字符提供反馈
+                
+                if choice == 'n':
+                    if self.current_page < total_pages - 1:
+                        self.current_page += 1
+                    else:
+                        print(_("last_page", "已经是最后一页"))
+                        wait_for_enter()
+                elif choice == 'p':
+                    if self.current_page > 0:
+                        self.current_page -= 1
+                    else:
+                        print(_("first_page", "已经是第一页"))
+                        wait_for_enter()
+                elif choice == 's':
+                    return '1'  # 进入搜索功能
+                elif choice == 'l':
+                    return '4'  # 切换语言
+                elif choice == 'q':
+                    return '5'  # 退出程序
+                elif choice == 'i':
+                    # 检查是否有已选择的应用
+                    if self.app_manager.get_selected_count() > 0:
+                        return '3'  # 进入处理应用功能
+                    else:
+                        print(_("no_apps_selected", "未选择任何应用，请先选择应用"))
+                        wait_for_enter()
             elif choice.isdigit():
+                # 对于数字选择，需要读取完整的数字
+                full_choice = choice
+                print(choice, end='', flush=True)  # 打印第一个数字
+                
+                # 继续读取数字直到遇到非数字字符或Enter
+                while True:
+                    ch = getch()
+                    if ch.isdigit():
+                        full_choice += ch
+                        print(ch, end='', flush=True)
+                    elif ch == '\r' or ch == '\n':  # Enter键
+                        print()  # 换行
+                        break
+                    else:
+                        print()  # 换行
+                        break
+                
                 try:
-                    app_idx = int(choice)
-                    
-                    # 处理菜单选项
-                    if choice in ['1', '2', '3', '4', '5']:
-                        return choice
+                    app_idx = int(full_choice)
                     
                     # 检查是否是有效的应用索引（可能跨页）
                     total_apps = len(self.app_manager.get_installed_supported_apps())
                     
+                    # 首先检查是否是有效的应用编号
                     if 1 <= app_idx <= total_apps:
                         # 计算全局索引和页码
                         page_num = (app_idx - 1) // self.page_size
@@ -236,35 +260,47 @@ class MenuManager:
                     print(_("invalid_input", "无效的输入，请重新选择。"))
                     wait_for_enter()
             else:
+                print(choice)  # 打印无效字符
                 print(_("invalid_choice", "无效的选择，请重新选择"))
                 wait_for_enter()
     
     def _display_navigation_options(self):
         """显示导航选项"""
         print("\n" + _("operation_options", "操作选项:"))
-        print(f"{Color.cyan('n')}. {_('next_page', '下一页')} | {Color.cyan('p')}. {_('prev_page', '上一页')} | {Color.cyan('s')}. {_('search_app', '搜索应用')} | {Color.cyan('l')}. {_('switch_language', '切换语言')} | {Color.cyan('q')}. {_('exit', '退出程序')}")
-        print(f"{Color.cyan(_('number', '数字'))}. {_('select_app_for_injection', '选择应用进行注入')}")
+        
+        # 获取已选择的应用数量
+        selected_count = self.app_manager.get_selected_count()
+        
+        # 基本操作选项
+        nav_options = f"{Color.cyan('n')}. {_('next_page', '下一页')} | {Color.cyan('p')}. {_('prev_page', '上一页')} | {Color.cyan('s')}. {_('search_app', '搜索应用')} | {Color.cyan('l')}. {_('switch_language', '切换语言')} | {Color.cyan('q')}. {_('exit', '退出程序')}"
+        
+        # 如果已选择了应用，显示"开始注入"选项
+        if selected_count > 0:
+            nav_options += f" | {Color.cyan('i')}. {_('start_injection', '开始注入 ({0}个应用)').format(selected_count)}"
+            
+        print(nav_options)
+        print(f"{Color.cyan(_('number', '数字'))}. {_('select_app_for_injection', '选择应用进行注入 (输入1-9或01-09选择对应应用)')}")
     
     def handle_app_search(self):
         """处理应用搜索功能
         
         Returns:
-            list: 选择的应用列表
+            list: 匹配的应用列表
         """
-        keyword = input(_("enter_keyword", "请输入应用名称或包名的关键字进行搜索: ")).strip()
+        keyword = read_input(_("enter_keyword", "请输入关键字（按Enter返回上一级）: "))
         
         if not keyword:
-            print(_("no_keyword", "未输入关键字，返回主菜单..."))
             return []
         
-        # 使用 app_manager 中的搜索方法获取匹配的应用
+        # 搜索匹配的应用
         matched_apps = self.app_manager.search_by_keyword(keyword)
         
         if not matched_apps:
-            print(_("no_matching_apps", "未找到匹配的应用程序。"))
+            print(_("no_matching_apps", "未找到匹配的应用"))
+            wait_for_enter()
             return []
         
-        # 显示匹配的应用并允许选择
+        # 记录选择的应用
         app_Lst = []
         selected = set()
         
@@ -287,28 +323,69 @@ class MenuManager:
                 print(_("all_apps_selected", "所有应用已选中..."))
                 break
             
-            choice = input(_("enter_app_number", "请输入要选择的应用编号: ")).strip()
+            # 显示输入提示但不换行
+            print(_("enter_app_number", "请输入要选择的应用编号: "), end='', flush=True)
+            
+            # 获取单个字符输入
+            choice = getch()
             
             if choice == '0':
+                print(choice)
                 if not app_Lst:
                     return []
                 break
-            elif choice.isdigit() and 0 < int(choice) <= len(matched_apps):
-                index = int(choice) - 1
-                if index not in selected:
-                    app_Lst.append(matched_apps[index])
-                    selected.add(index)
-                    if len(selected) == len(matched_apps): 
-                        print(_("all_apps_selected", "所有应用已选中..."))
-                else:
-                    print(_("app_already_selected", "应用 {0} 已经被选择，请选择其他应用。").format(matched_apps[index].get('displayName')))
-            elif choice == '':
+            elif choice.isdigit():
+                # 对于数字选择，需要读取完整的数字
+                full_choice = choice
+                print(choice, end='', flush=True)  # 打印第一个数字
+                
+                # 继续读取数字直到遇到非数字字符或Enter
+                while True:
+                    ch = getch()
+                    if ch.isdigit():
+                        full_choice += ch
+                        print(ch, end='', flush=True)
+                    elif ch == '\r' or ch == '\n':  # Enter键
+                        print()  # 换行
+                        break
+                    else:
+                        print()  # 换行
+                        break
+                
+                try:
+                    app_idx = int(full_choice)
+                    if 0 < app_idx <= len(matched_apps):
+                        index = app_idx - 1
+                        if index not in selected:
+                            app_Lst.append(matched_apps[index])
+                            selected.add(index)
+                            print()  # 换行
+                            print(_("app_selected", "已选择应用: {0}").format(matched_apps[index].get('displayName')))
+                            if len(selected) == len(matched_apps): 
+                                print(_("all_apps_selected", "所有应用已选中..."))
+                        else:
+                            print()  # 换行
+                            print(_("app_already_selected", "应用 {0} 已经被选择，请选择其他应用。").format(matched_apps[index].get('displayName')))
+                        wait_for_enter()
+                    else:
+                        print()  # 换行
+                        print(_("invalid_app_number", "无效的应用编号"))
+                        wait_for_enter()
+                except ValueError:
+                    print()  # 换行
+                    print(_("invalid_input", "无效的输入"))
+                    wait_for_enter()
+            elif choice == '\r' or choice == '\n':  # Enter键
+                print()  # 换行
                 if not app_Lst:
                     print(_("no_app_selected", "未选择任何应用，请至少选择一个应用。"))
+                    wait_for_enter()
                 else:
                     break
             else:
+                print(choice)  # 打印无效字符
                 print(_("invalid_input", "无效的输入，请重新选择。"))
+                wait_for_enter()
         
         return app_Lst
     

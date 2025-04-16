@@ -25,6 +25,7 @@
   "exit": "退出程序",
   "number": "数字",
   "select_app_for_injection": "选择应用进行注入",
+  "start_injection": "开始注入 ({0}个应用)",
   "enter_keyword": "请输入应用名称或包名的关键字进行搜索: ",
   "no_keyword": "未输入关键字，返回主菜单...",
   "no_matching_apps": "未找到匹配的应用程序。",

@@ -1,8 +1,10 @@
 import os
 import sys
-from src.utils.ui_helper import read_input, ensure_black_background, format_app_info, print_app_table_header, print_app_info, wait_for_enter, BLACK_BG, WHITE_FG
+import re
+from src.utils.ui_helper import read_input, ensure_black_background, format_app_info, print_app_table_header, print_app_info, wait_for_enter, BLACK_BG, WHITE_FG, clear_screen
 from src.utils.color import Color, truncate_text, get_visible_length
 from src.utils.i18n import I18n, _
+from src.utils.input_helper import getch
 
 # 使用ui_helper中的函数替代重复代码
 def search_apps(app_list, install_apps, keyword):
@@ -126,65 +128,121 @@ def get_installed_apps_info(app_list, install_apps):
 
 def select_apps_by_keyword(app_list, install_apps):
     """通过关键字搜索选择应用"""
-    keyword = input(_("enter_keyword", "请输入应用名称或包名的关键字进行搜索: ")).strip()
-    
-    if not keyword:
-        print(_("no_keyword", "未输入关键字，返回主菜单..."))
-        return []
-    
-    matched_apps = search_apps(app_list, install_apps, keyword)
-    
-    if not matched_apps:
-        print(_("no_matching_apps", "未找到匹配的应用程序。"))
-        return []
-    
-    # 显示匹配的应用并允许选择
-    app_Lst = []
-    selected = set()
-    
-    while len(selected) < len(matched_apps):
-        print("\n" + _("found_matching_apps", "找到以下匹配的应用程序:"))
+    while True:
+        clear_screen()
         
-        # 打印表头
-        print_app_table_header(include_status=True)
+        # 显示提示信息
+        print(Color.cyan(_("keyword_search", "关键字搜索")) + "\n")
+        print(_("keyword_search_description", "请输入关键字进行搜索，支持应用名称和包名模糊搜索"))
+        print(_("keyword_search_example", "示例：输入\"wechat\"可搜索微信相关应用"))
         
-        for i, app in enumerate(matched_apps, 1):
-            status = "✅ " if i-1 in selected else ""
-            app_with_status = {**app, "status": status}
-            print_app_info(i, app_with_status, include_status=True)
+        # 获取用户输入
+        keyword = read_input("\n" + _("enter_keyword", "请输入关键字 (输入0返回上一级): "))
         
-        print(f"\n{_('selected_apps_count', '已选择 {0}/{1} 个应用').format(len(selected), len(matched_apps))}")
-        print(_("return_previous", "0. 返回上一级"))
-        print(_("confirm_selection", "Enter. 确认当前选择并继续"))
+        if keyword == '0':
+            return []
+            
+        if not keyword:
+            print(_("empty_keyword", "关键字不能为空"))
+            wait_for_enter()
+            continue
         
-        if len(selected) == len(matched_apps):
-            print(_("all_apps_selected", "所有应用已选中..."))
-            break
+        # 搜索匹配的应用
+        matched_apps = search_apps(app_list, install_apps, keyword)
         
-        choice = input(_("enter_app_number", "请输入要选择的应用编号: ")).strip()
+        if not matched_apps:
+            print(_("no_matching_apps", "未找到匹配的应用"))
+            wait_for_enter()
+            continue
         
-        if choice == '0':
-            if not app_Lst:
-                return []
-            break
-        elif choice.isdigit() and 0 < int(choice) <= len(matched_apps):
-            index = int(choice) - 1
-            if index not in selected:
-                app_Lst.append(matched_apps[index])
-                selected.add(index)
-                if len(selected) == len(matched_apps): 
-                    print(_("all_apps_selected", "所有应用已选中..."))
-            else:
-                print(_("app_already_selected", "应用 {0} 已经被选择，请选择其他应用。").format(matched_apps[index].get('displayName')))
-        elif choice == '':
-            if not app_Lst:
-                print(_("no_app_selected", "未选择任何应用，请至少选择一个应用。"))
-            else:
+        # 记录选择的应用列表
+        app_Lst = []
+        selected = set()
+        
+        while len(selected) < len(matched_apps):
+            print("\n" + _("found_matching_apps", "找到以下匹配的应用程序:"))
+            
+            # 打印表头
+            print_app_table_header(include_status=True)
+            
+            for i, app in enumerate(matched_apps, 1):
+                status = _("selected", "✅ 已选中") if i-1 in selected else ""
+                app_with_status = {**app, "status": status}
+                print_app_info(i, app_with_status, include_status=True)
+            
+            print(f"\n{_('selected_apps_count', '已选择 {0}/{1} 个应用').format(len(selected), len(matched_apps))}")
+            print(_("return_previous", "0. 返回上一级"))
+            print(_("confirm_selection", "Enter. 确认当前选择并继续"))
+            
+            if len(selected) == len(matched_apps):
+                print(_("all_apps_selected", "所有应用已选中..."))
                 break
-        else:
-            print(_("invalid_input", "无效的输入，请重新选择。"))
-    
-    return app_Lst
+            
+            # 显示输入提示但不换行
+            print(_("enter_app_number", "请输入要选择的应用编号: "), end='', flush=True)
+            
+            # 获取单个字符输入
+            choice = getch()
+            
+            if choice == '0':
+                print(choice)
+                if not app_Lst:
+                    return []
+                break
+            elif choice.isdigit():
+                # 对于数字选择，需要读取完整的数字
+                full_choice = choice
+                print(choice, end='', flush=True)  # 打印第一个数字
+                
+                # 继续读取数字直到遇到非数字字符或Enter
+                while True:
+                    ch = getch()
+                    if ch.isdigit():
+                        full_choice += ch
+                        print(ch, end='', flush=True)
+                    elif ch == '\r' or ch == '\n':  # Enter键
+                        print()  # 换行
+                        break
+                    else:
+                        print()  # 换行
+                        break
+                
+                try:
+                    app_idx = int(full_choice)
+                    if 0 < app_idx <= len(matched_apps):
+                        index = app_idx - 1
+                        if index not in selected:
+                            app_Lst.append(matched_apps[index])
+                            selected.add(index)
+                            print()  # 换行
+                            print(_("app_selected", "已选择应用: {0}").format(matched_apps[index].get('displayName')))
+                            if len(selected) == len(matched_apps): 
+                                print(_("all_apps_selected", "所有应用已选中..."))
+                        else:
+                            print()  # 换行
+                            print(_("app_already_selected", "应用 {0} 已经被选择，请选择其他应用。").format(matched_apps[index].get('displayName')))
+                        wait_for_enter()
+                    else:
+                        print()  # 换行
+                        print(_("invalid_app_number", "无效的应用编号"))
+                        wait_for_enter()
+                except ValueError:
+                    print()  # 换行
+                    print(_("invalid_input", "无效的输入"))
+                    wait_for_enter()
+            elif choice == '\r' or choice == '\n':  # Enter键
+                print()  # 换行
+                if not app_Lst:
+                    print(_("no_app_selected", "未选择任何应用，请至少选择一个应用。"))
+                    wait_for_enter()
+                else:
+                    break
+            else:
+                print(choice)  # 打印无效字符
+                print(_("invalid_input", "无效的输入，请重新选择。"))
+                wait_for_enter()
+        
+        return app_Lst
 
 
 def display_supported_apps(app_list, install_apps, page=0, page_size=20):
@@ -268,36 +326,70 @@ def show_all_supported_apps(app_list, install_apps):
         print("\n" + _("operation_options", "操作选项:"))
         print(f"{Color.cyan('n')}. {_('next_page', '下一页')} | {Color.cyan('p')}. {_('prev_page', '上一页')} | {Color.cyan(_('number', '数字'))}. {_('select_app', '选择应用')} | {Color.cyan('0')}. {_('confirm_and_return', '确认并返回')}")
         
-        choice = read_input("\n" + _("select_operation", "请选择操作: "))
+        # 显示输入提示但不换行
+        print("\n" + _("select_operation", "请选择操作: "), end='', flush=True)
         
-        if choice == 'n':
-            if page < total_pages - 1:
-                page += 1
-            else:
-                print(_("last_page", "已经是最后一页"))
-                wait_for_enter()
-        elif choice == 'p':
-            if page > 0:
-                page -= 1
-            else:
-                print(_("first_page", "已经是第一页"))
-                wait_for_enter()
-        elif choice == '0':
-            break
-        elif choice.isdigit() and 1 <= int(choice) <= len(all_apps[start_idx:end_idx]):
-            idx = start_idx + int(choice) - 1
-            app = all_apps[idx]
-            if app.get("isInstalled", False):
-                if app not in selected_apps:
-                    selected_apps.append(app)
-                    print(_("app_selected", "已选择应用: {0}").format(app.get('displayName')))
+        # 获取单个字符输入
+        choice = getch()
+        
+        if choice in ['n', 'p', '0']:
+            print(choice)  # 打印当前字符提供反馈
+            
+            if choice == 'n':
+                if page < total_pages - 1:
+                    page += 1
                 else:
-                    selected_apps.remove(app)
-                    print(_("app_deselected", "已取消选择: {0}").format(app.get('displayName')))
-            else:
-                print(_("app_not_installed", "该应用未安装，无法选择：{0}").format(app.get('displayName')))
-            wait_for_enter()
+                    print(_("last_page", "已经是最后一页"))
+                    wait_for_enter()
+            elif choice == 'p':
+                if page > 0:
+                    page -= 1
+                else:
+                    print(_("first_page", "已经是第一页"))
+                    wait_for_enter()
+            elif choice == '0':
+                break
+        elif choice.isdigit():
+            # 对于数字选择，需要读取完整的数字
+            full_choice = choice
+            print(choice, end='', flush=True)  # 打印第一个数字
+            
+            # 继续读取数字直到遇到非数字字符或Enter
+            while True:
+                ch = getch()
+                if ch.isdigit():
+                    full_choice += ch
+                    print(ch, end='', flush=True)
+                elif ch == '\r' or ch == '\n':  # Enter键
+                    print()  # 换行
+                    break
+                else:
+                    print()  # 换行
+                    break
+            
+            try:
+                app_idx = int(full_choice)
+                if 1 <= app_idx <= len(all_apps[start_idx:end_idx]):
+                    idx = start_idx + app_idx - 1
+                    app = all_apps[idx]
+                    if app.get("isInstalled", False):
+                        if app not in selected_apps:
+                            selected_apps.append(app)
+                            print(_("app_selected", "已选择应用: {0}").format(app.get('displayName')))
+                        else:
+                            selected_apps.remove(app)
+                            print(_("app_deselected", "已取消选择: {0}").format(app.get('displayName')))
+                    else:
+                        print(_("app_not_installed", "该应用未安装，无法选择：{0}").format(app.get('displayName')))
+                    wait_for_enter()
+                else:
+                    print(_("invalid_app_number", "无效的应用编号"))
+                    wait_for_enter()
+            except ValueError:
+                print(_("invalid_input", "无效的输入"))
+                wait_for_enter()
         else:
+            print(choice)  # 打印无效字符
             print(_("invalid_choice", "无效的选择，请重新选择"))
             wait_for_enter()
     
