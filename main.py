@@ -8,6 +8,8 @@ from src.app.app_manager import AppManager
 from src.ui.menu_manager import MenuManager
 from src.utils.i18n import I18n, _
 from src.ui.language_selector import change_language_with_menu, auto_set_language
+from src.ui.sakura_animation import SakuraAnimation
+from src.ui.panda_animation import PandaAnimation
 
 
 def main():
@@ -27,6 +29,16 @@ def main():
         
         # 使用自动语言检测设置语言
         auto_set_language(config)
+        
+        # 根据语言显示不同的欢迎动画
+        if I18n._current_language == I18n.JAPANESE:
+            # 日语：显示樱花花瓣雨动画
+            sakura_animation = SakuraAnimation(duration=5, num_petals=150, static_petals=500)
+            sakura_animation.play()
+        elif I18n._current_language == I18n.CHINESE:
+            # 中文：显示熊猫动画
+            panda_animation = PandaAnimation(duration=5)
+            panda_animation.play()
         
         # 扫描安装的应用（不再显示重复的扫描提示）
         installed_apps = scan_apps()
@@ -81,7 +93,20 @@ def main():
                     
                 elif choice == '4':
                     # 使用新的语言选择菜单
+                    previous_language = config.get("Language", "en_US")
                     change_language_with_menu(config)
+                    
+                    # 根据新选择的语言显示不同的欢迎动画
+                    current_language = config.get("Language", "en_US")
+                    if current_language != previous_language:
+                        if current_language == I18n.JAPANESE:
+                            # 日语：显示樱花花瓣雨动画
+                            sakura_animation = SakuraAnimation(duration=5, num_petals=150, static_petals=500)
+                            sakura_animation.play()
+                        elif current_language == I18n.CHINESE:
+                            # 中文：显示熊猫动画
+                            panda_animation = PandaAnimation(duration=5)
+                            panda_animation.play()
                     
                 elif choice == '5':
                     # 退出程序
