@@ -644,7 +644,7 @@
             "extraShell": "signLrc.sh"
         },
         {
-            "packageName": "com.adobe.Photoshop",
+            "packageName": "com.adobe.Photoshop (Beta)",
             "appBaseLocate": "/Applications/Adobe Photoshop (Beta)/Adobe Photoshop (Beta).app",
             "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
             "deepSignApp": true,
