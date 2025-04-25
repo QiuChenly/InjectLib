@@ -14,39 +14,39 @@ from src.utils.color import Color
 # 获取工具真实路径的辅助函数
 def get_tool_path(tool_name):
     """获取工具的真实路径
-    
+
     Args:
         tool_name: 工具名称
-        
+
     Returns:
         str: 工具的绝对路径
     """
     # 获取项目根目录
     root_dir = Path(__file__).resolve().parent.parent.parent
     tool_path = os.path.join(root_dir, "tool", tool_name)
-    
+
     # 检查工具是否存在
     if not os.path.exists(tool_path):
         print(Color.red(f"[错误] 工具 {tool_name} 不存在于路径: {tool_path}"))
-    
+
     return tool_path
 
 
 # 执行命令并检查结果的辅助函数
 def run_command(command, shell=True, check_error=True):
     """运行命令并检查结果，如果出错则显示红色警告
-    
+
     Args:
         command: 要执行的命令
         shell: 是否使用shell执行
         check_error: 是否检查错误
-        
+
     Returns:
         bool: 命令执行成功返回True，否则返回False
     """
     try:
         result = subprocess.run(command, shell=shell, capture_output=True, text=True)
-        
+
         # 检查命令是否执行成功
         if check_error and result.returncode != 0:
             error_msg = result.stderr.strip() or f"命令执行失败: {command}"
@@ -64,7 +64,7 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
     """处理单个应用的注入逻辑"""
     # 获取项目根目录
     root_dir = Path(__file__).resolve().parent.parent.parent
-    
+
     package_name = app.get("packageName")
     app_base_locate = app.get("appBaseLocate")
     bridge_file = app.get("bridgeFile")
@@ -87,10 +87,10 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
     SMExtra = app.get("SMExtra")
     keygen = app.get("keygen")
     useOptool = app.get("useOptool")
-    helperNoInject = app.get("helperNoInject") 
+    helperNoInject = app.get("helperNoInject")
     forceSignMainExecute = app.get("forceSignMainExecute")
     dylibSelect = app.get("dylibSelect") # 选择注入的库
-    
+
     if dylibSelect is None:
         dylibSelect = "91QiuChenly.dylib"
 
@@ -99,11 +99,18 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
     optool_path = get_tool_path("optool")
     dylib_path = get_tool_path(dylibSelect)
 
-    local_app = [
-        local_app
-        for local_app in install_apps
-        if local_app["CFBundleIdentifier"] == package_name
-    ]
+    # 查找匹配的应用，同时考虑包名和路径
+    local_app = []
+    for app_info in install_apps:
+        # 检查包名是否匹配
+        if app_info["CFBundleIdentifier"] == package_name:
+            # 如果配置中指定了路径，则检查路径是否匹配
+            if app_base_locate:
+                if app_info["appBaseLocate"] == app_base_locate:
+                    local_app.append(app_info)
+            else:
+                # 如果配置中没有指定路径，则只匹配包名
+                local_app.append(app_info)
 
     if not local_app and (
         app_base_locate is None or not os.path.isdir(app_base_locate)
@@ -153,7 +160,7 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
     success = True
     success &= run_command(["sudo", "chmod", "-R", "777", app_base_locate], shell=False)
     success &= run_command(["sudo", "xattr", "-cr", app_base_locate], shell=False)
-    
+
     # 尝试终止进程，但忽略可能的错误
     run_command(["sudo", "pkill", "-f", getAppMainExecutable(app_base_locate)], shell=False, check_error=False)
 
@@ -174,11 +181,11 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
             return False
 
     isDevHome = False # os.getenv("InjectLibDev")
-    
+
     # 设置工具权限
     if not run_command(f"chmod +x '{insert_dylib_path}'"):
         print(Color.red(f"[错误] 无法设置 insert_dylib 为可执行文件，请检查文件是否存在: {insert_dylib_path}"))
-    
+
     if not run_command(f"chmod +x '{optool_path}'"):
         print(Color.red(f"[错误] 无法设置 optool 为可执行文件，请检查文件是否存在: {optool_path}"))
 
@@ -187,7 +194,7 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
         command = f"sudo '{optool_path}' install -p '{dylib_path}' -t '{dest}'"
     else:
         command = f"sudo '{insert_dylib_path}' '{dylib_path}' '{backup}' '{dest}'"
-    
+
     # 执行注入命令
     if not run_command(command):
         print(Color.red(f"[错误] 执行注入命令失败: {command}"))
@@ -201,7 +208,7 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
         if not run_command(f"{command} {source_dylib} {destination_dylib}"):
             print(Color.red(f"[错误] 复制动态库失败: {source_dylib} -> {destination_dylib}"))
             return False
-        
+
         # codesign
         if not run_command(f"codesign -fs - --timestamp=none --all-architectures {destination_dylib}"):
             print(Color.yellow(f"[警告] 签名动态库失败: {destination_dylib}"))
@@ -227,7 +234,7 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
             if not run_command(command):
                 print(Color.red(f"[错误] 执行注入命令失败: {command}"))
                 success = False
-    
+
     sign_prefix = (
         "/usr/bin/codesign -f -s - --timestamp=none --all-architectures"
     )
@@ -245,7 +252,7 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
         print("开始签名...")
         if not run_command(f"{sign_prefix} '{dest}'"):
             print(Color.yellow(f"[警告] 签名失败: {dest}"))
-        
+
         if not run_command(f"{sign_prefix} '{app_base_locate}'"):
             print(Color.yellow(f"[警告] 签名失败: {app_base_locate}"))
 
@@ -314,5 +321,5 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
         print(Color.green("App处理完成。"))
     else:
         print(Color.yellow("App处理完成，但存在一些警告或错误。"))
-    
-    return success 
+
+    return success
