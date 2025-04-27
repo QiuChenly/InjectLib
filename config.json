@@ -885,7 +885,8 @@
             "injectFile": "SenPlayer",
             "dylibSelect": "CoreInject.dylib",
             "supportVersion": [
-                "5.2.2"
+                "5.2.2",
+                "5.5.0"
             ]
         },
         {
