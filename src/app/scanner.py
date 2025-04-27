@@ -41,10 +41,22 @@ def find_applications():
         "/Applications/Adobe Illustrator 2025"
     ]
 
+    autodesk_dirs = [
+        "/Applications/Autodesk",
+        "/Applications/Autodesk/Autodesk Desktop App",
+        "/Applications/Autodesk/Autodesk Fusion 360",
+        "/Applications/Autodesk/AutoCAD 2025",
+        "/Applications/Autodesk/Maya 2025"
+    ]
+
     # 添加存在的Adobe目录
     for adobe_dir in adobe_dirs:
         if os.path.exists(adobe_dir):
             base_dirs.append(adobe_dir)
+
+    for autodesk_dirs in autodesk_dirs:
+        if os.path.exists(autodesk_dirs):
+            base_dirs.append(autodesk_dirs)
     
     # 去重
     return list(set(base_dirs))
