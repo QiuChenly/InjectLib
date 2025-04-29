@@ -10,6 +10,8 @@ from src.utils.i18n import I18n, _
 from src.ui.language_selector import change_language_with_menu, auto_set_language
 from src.ui.sakura_animation import SakuraAnimation
 from src.ui.panda_animation import PandaAnimation
+from src.utils.color import Color
+from src.inject.helper import handle_helper  # 引入helper处理逻辑
 
 
 def main():
@@ -57,21 +59,18 @@ def main():
             # 显示主菜单
             choice = menu_manager.show_main_menu()
             
-            # 处理特殊命令：直接选择应用
-            if choice and choice.startswith("SELECT:"):
+            # 处理特殊命令：直接选择应用∂
+            if isinstance(choice, int):
                 try:
-                    # 获取应用索引
-                    app_idx = int(choice.split(":")[-1])
-                    # 应用索引的检查已经在handle_app_selection中处理
-                    app_manager.handle_app_selection(app_idx)
+                    app_manager.handle_app_selection(int(choice))
                 except (ValueError, IndexError) as e:
-                    print(_("invalid_app_selection", "无效的应用选择"))
+                    print(Color.red(_("invalid_app_selection", "无效的应用选择")))
                     print(f"错误详情: {str(e)}")
                     wait_for_enter()
                     continue
             # 处理标准菜单选项
-            elif choice in ['1', '2', '3', '4', '5']:
-                if choice == '1':
+            else:
+                if choice == 's':
                     # 按关键字搜索应用
                     apps = menu_manager.handle_app_search()
                     if apps:
@@ -79,19 +78,11 @@ def main():
                         print(_("apps_added_message").format(len(apps), app_manager.get_selected_count()))
                     wait_for_enter()
                     
-                elif choice == '2':
-                    # 浏览所有支持的应用
-                    apps = menu_manager.handle_browse_all_apps()
-                    if apps:
-                        app_manager.add_selected_apps(apps)
-                        print(_("apps_added_message").format(len(apps), app_manager.get_selected_count()))
-                    wait_for_enter()
-                    
-                elif choice == '3':
+                elif choice == 'i':
                     # 处理已选择的应用
                     menu_manager.handle_process_apps()
                     
-                elif choice == '4':
+                elif choice == 'l':
                     # 使用新的语言选择菜单
                     previous_language = config.get("Language", "en_US")
                     change_language_with_menu(config)
@@ -108,13 +99,10 @@ def main():
                             panda_animation = PandaAnimation(duration=5)
                             panda_animation.play()
                     
-                elif choice == '5':
+                elif choice == 'q':
                     # 退出程序
                     print("\n" + _("thank_you_message", "感谢使用，再见!"))
                     break
-            else:
-                print(_("invalid_choice", "无效的选择，请重新选择"))
-                wait_for_enter()
 
     except KeyboardInterrupt:
         print("\n" + _("user_interrupted", "用户手动退出程序,祝你使用愉快,再见."))

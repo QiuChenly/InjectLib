@@ -3,27 +3,27 @@
     "Author": "QiuChenly",
     "Version": 3.0,
     "Description": {
-        "desc": "\u8fd9\u662f\u4e00\u4e2a\u7528\u4e8e\u89e3\u91ca\u8bf4\u660ejson\u5bf9\u8c61\u7528\u9014\u7684\u8bf4\u660e\u6587\u6863\u3002basePublicConfig\u91cc\u9762\u7684\u540c\u540d\u914d\u7f6e\u5982\u679c\u5728AppList\u91cc\u9762\u914d\u7f6e\u4e86\u76f8\u540c\u7684Key\uff0c\u5219\u4f18\u5148\u4f7f\u7528AppList\u91cc\u9762\u7684\u503c\u3002",
-        "bridgeFile": "app\u8def\u5f84\u548c\u6ce8\u5165\u6587\u4ef6\u8def\u5f84\u4e4b\u95f4\u7684\u4e2d\u95f4\u8def\u5f84\uff0c\u6709\u4e9bapp\u53ea\u80fd\u6ce8\u5165\u5230/Contents\uff0c\u6240\u4ee5\u52a0\u4e86\u8fd9\u4e2a\u3002",
-        "packageName": "app\u5305\u540d\uff0c\u7528\u6765\u786e\u8ba4App\u662f\u5426\u5b58\u5728\u3002",
-        "injectFile": "\u6ce8\u5165\u6587\u4ef6\u7684\u76f8\u5bf9app\u8def\u5f84\u7684\u8def\u5f84",
-        "supportVersion": "\u652f\u6301\u7684\u7248\u672c\u53f7\uff0c\u7528\u4e8e\u5927\u7248\u672c\u53f7 \u5982\u679c\u4e0d\u63d0\u4f9b\u4efb\u610f\u7248\u672c\u53f7\u5219\u76f4\u63a5\u65e0\u6761\u4ef6\u6ce8\u5165",
-        "supportSubVersion": "\u66f4\u7cbe\u786e\u7684\u5b50\u7248\u672c\u53f7\uff0c\u7528\u4e8e\u67d0\u4e9bapp\u5927\u7248\u672c\u53f7\u4e0d\u53d8\u4f46\u662f\u7ecf\u5e38\u53d8\u5c0f\u7248\u672c\u53f7\u7684\u964b\u4e60",
-        "extraShell": "\u989d\u5916\u7684\u6267\u884cshell\uff0c\u6bd4\u5982PD18\u9700\u8981\u6267\u884c\u4e00\u4e9b\u989d\u5916\u7684shell\uff0c\u652f\u6301\u81ea\u5b9a\u4e49\u3002",
-        "needCopyToAppDir": "\u6709\u4e9bapp\u9700\u8981\u590d\u5236\u5230app\u76ee\u5f55\u4e2d\u624d\u80fd\u5728SIP\u6253\u5f00\u7684\u65f6\u5019\u8fd0\u884c \u8fd9\u4e2a\u5c5e\u6027\u53ef\u4ee5\u63a7\u5236\u5e93\u6587\u4ef6\u88ab\u590d\u5236\u5230Framework",
-        "deepSignApp": "\u81ea\u52a8\u7b7e\u540d\u6574\u4e2aApp",
-        "disableLibraryValidate": "\u5173\u95ed\u5e93\u9a8c\u8bc1 \u6682\u65f6\u53ea\u4e3apd\u542f\u7528",
-        "entitlements": "\u7528\u4e8e\u8df3\u8fc7\u90e8\u5206\u6743\u9650 \u5728\u542f\u7528SIP\u7684macOS\u4e0a \u5982ARM64",
-        "noSignTarget": "\u9ed8\u8ba4\u6ce8\u5165\u540e\u4f1a\u5bf9\u76ee\u6807\u6587\u4ef6\u8fdb\u884c\u7b7e\u540d,\u6211\u4eec\u6709\u65f6\u5019\u4e0d\u9700\u8981\u8fd9\u4e2a\u884c\u4e3a\u3002",
-        "noDeep": "--deep \u63a7\u5236",
-        "tccutil": "\u81ea\u52a8\u6267\u884ctccutil reset xxx CFBundleIdentifier\uff0ctrue\u4e3aAll\uff0c\u8be6\u7ec6\u53ef\u7528\u6570\u7ec4\u3002\u76ee\u524d\u4f1a\u5c06\u6240\u6709\u7684\u503c\u5728componentApp\u64cd\u4f5c\u4e00\u904d\u9ed8\u8ba4\u884c\u4e3a\u3002",
-        "autoHandleSetapp": "\u81ea\u52a8\u6839\u636e CFBundleIdentifier \u627e\u51faApp\u7684appBaseLocate\uff0c\u5e76\u62fc\u63a5/Contents/MacOS/\u4e3abridgeFile\uff0c\u4e14\u9ed8\u8ba4\u627e\u51fabridgeFile\u4e0b\u7684\u5bf9\u5e94\u4e8c\u8fdb\u5236\u7a0b\u5e8f\uff0c\u4e0d\u592a\u5b8c\u5584\uff0c\u4ec5setapp\u6d4b\u8bd5\u901a\u8fc7",
-        "autoHandleHelper": "\u662f\u5426\u81ea\u52a8\u5904\u7406helper\u6587\u4ef6",
-        "helperFile": "helper\u6587\u4ef6\u7684\u8def\u5f84\uff0c\u4f8b\u5982/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper\uff0c\u53ef\u4ee5\u4f20\u6570\u7ec4",
-        "componentApp": "\u7ec4\u5408app,\u6709\u4e9b\u5927\u578bapp\u662f\u7531\u5f88\u591a\u5b50app\u7ec4\u6210\u7684,\u5355\u72ec\u5904\u7406\u610f\u4e49\u4e5f\u4e0d\u5927,\u5c31\u8fd9\u6837\u5427.",
-        "forQiuChenly": "\u4e13\u95e8\u4e3aQiuChenly\u7279\u4f9b\u7684App\uff0c\u770b\u5230\u8fd9\u6761\u7684\u4f60\u786c\u6539\u4e5f\u6ca1\u7528\u3002",
-        "keygen": "\u4e0d\u6ce8\u5165app\uff0c\u751f\u6210key\u7834\u89e3\uff0c\u9002\u7528\u4e8e\u91cd\u7b7e\u540d\u540e\u4e22\u5931\u67d0\u7279\u6027\u7684app\uff0c\u4e3atrue\u65f6\uff0c\u5176\u4ed6\u914d\u7f6e\u9ed8\u8ba4\u5931\u6548",
-        "dylibSelect": "\u9009\u62e9\u54ea\u4e00\u4e2a\u6ce8\u5165\u5e93, \u5982\u679c\u662fCoreInject\u5219\u8868\u793a\u8fd9\u662f\u65b0\u7248\u91cd\u6784\u4ee3\u7801\u540e\u7684\u6ce8\u5165\u5e93,\u6ca1\u6709\u5c31\u9ed8\u8ba491."
+        "desc": "这是一个用于解释说明json对象用途的说明文档。basePublicConfig里面的同名配置如果在AppList里面配置了相同的Key，则优先使用AppList里面的值。",
+        "bridgeFile": "app路径和注入文件路径之间的中间路径，有些app只能注入到/Contents，所以加了这个。",
+        "packageName": "app包名，用来确认App是否存在。",
+        "injectFile": "注入文件的相对app路径的路径",
+        "supportVersion": "支持的版本号，用于大版本号 如果不提供任意版本号则直接无条件注入",
+        "supportSubVersion": "更精确的子版本号，用于某些app大版本号不变但是经常变小版本号的陋习",
+        "extraShell": "额外的执行shell，比如PD18需要执行一些额外的shell，支持自定义。",
+        "needCopyToAppDir": "有些app需要复制到app目录中才能在SIP打开的时候运行 这个属性可以控制库文件被复制到Framework",
+        "deepSignApp": "自动签名整个App",
+        "disableLibraryValidate": "关闭库验证 暂时只为pd启用",
+        "entitlements": "用于跳过部分权限 在启用SIP的macOS上 如ARM64",
+        "noSignTarget": "默认注入后会对目标文件进行签名,我们有时候不需要这个行为。",
+        "noDeep": "--deep 控制",
+        "tccutil": "自动执行tccutil reset xxx CFBundleIdentifier，true为All，详细可用数组。目前会将所有的值在componentApp操作一遍默认行为。",
+        "autoHandleSetapp": "自动根据 CFBundleIdentifier 找出App的appBaseLocate，并拼接/Contents/MacOS/为bridgeFile，且默认找出bridgeFile下的对应二进制程序，不太完善，仅setapp测试通过",
+        "autoHandleHelper": "是否自动处理helper文件",
+        "helperFile": "helper文件的路径，例如/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper，可以传数组",
+        "componentApp": "组合app,有些大型app是由很多子app组成的,单独处理意义也不大,就这样吧.",
+        "forQiuChenly": "专门为QiuChenly特供的App，看到这条的你硬改也没用。",
+        "keygen": "不注入app，生成key破解，适用于重签名后丢失某特性的app，为true时，其他配置默认失效",
+        "dylibSelect": "选择哪一个注入库, 如果是CoreInject则表示这是新版重构代码后的注入库,没有就默认91."
     },
     "basePublicConfig": {
         "bridgeFile": "/Contents/Frameworks/"
@@ -52,6 +52,18 @@
             "tccutil": [
                 "All"
             ]
+        },
+        {
+            "packageName": "com.cryptic-apps.hopper-web-4",
+            "bridgeFile": "/Contents/MacOS/",
+            "injectFile": "Hopper Disassembler v4",
+            "dylibSelect": "CoreInject.dylib",
+            "needCopyToAppDir": true,
+            "supportVersion": [
+                "5.16.0",
+                "5.17.0"
+            ],
+            "forQiuChenly": true
         },
         {
             "packageName": "codes.rambo.AirBuddy",
@@ -517,11 +529,6 @@
         },
         {
             "packageName": "com.navicat.NavicatPremium",
-            "appBaseLocate": "/Applications/Navicat Premium.app",
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "Navicat Premium",
-            "needCopyToAppDir": true,
-            "dylibSelect": "CoreInject.dylib",
             "supportVersion": [
                 "17.2.4",
                 "17.2.5"
@@ -974,20 +981,9 @@
         },
         {
             "packageName": "app.mp3tag.Mp3tag",
-            "needCopyToAppDir": true,
-            "deepSignApp": true,
-            "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-            "dylibSelect": "CoreInject.dylib",
             "supportVersion": [
                 "1.9.2"
             ]
-        },
-        {
-            "packageName": "tech.baye.servercat",
-            "needCopyToAppDir": true,
-            "bridgeFile": "/Contents/MacOS/",
-            "deepSignApp": true,
-            "injectFile": "ServerCat"
         },
         {
             "packageName": "com.ningle.shellbean",
@@ -1001,13 +997,6 @@
             "needCopyToAppDir": true,
             "deepSignApp": true,
             "injectFile": "Sparkle.framework/Versions/A/Sparkle"
-        },
-        {
-            "packageName": "com.poke.SwiftUI-For-Designers",
-            "needCopyToAppDir": true,
-            "deepSignApp": true,
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "\u505a\u4e2a\u5e94\u7528"
         },
         {
             "packageName": "com.villow.wgt",
@@ -1070,19 +1059,6 @@
             "needCopyToAppDir": true,
             "deepSignApp": true,
             "noDeep": true
-        },
-        {
-            "packageName": "com.crossutility.quantumult-x",
-            "injectFile": "Quantumult X",
-            "bridgeFile": "/Contents/MacOS/",
-            "needCopyToAppDir": true,
-            "deepSignApp": true
-        },
-        {
-            "packageName": "com.corecode.MacUpdater",
-            "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-            "needCopyToAppDir": true,
-            "deepSignApp": true
         },
         {
             "packageName": "com.veertu.anka",
@@ -1154,37 +1130,34 @@
         {
             "packageName": "com.setapp.DesktopClient",
             "injectFile": "Sparkle.framework/Versions/B/Sparkle",
-            "needCopyToAppDir": true,
-            "deepSignApp": true,
-            "extraShell": "Setapps/setapp.sh",
-            "dylibSelect": "CoreInject.dylib"
+            "cleanEnv": [
+                "'/Users/{USER}/Library/Application Support/Setapp'*"
+            ],
+            "childApp": [
+                {
+                    "packageName": "com.setapp.DesktopClient.SetappAgent",
+                    "appBaseLocate": "/Contents/Library/LaunchServices/Setapp.app"
+                }
+            ]
         },
         {
             "packageName": "com.bjango.istatmenus-setapp",
-            "autoHandleHelper": true,
-            "helperFile": "/Contents/Library/LaunchServices/com.bjango.istatmenus.installer",
-            "needCopyToAppDir": true,
-            "tccutil": true,
-            "autoHandleSetapp": true,
-            "deepSignApp": true,
-            "dylibSelect": "CoreInject.dylib",
-            "extraShell": "rmiStat.sh"
-        },
-        {
-            "packageName": "com.bjango.istatmenus-setapp.status",
-            "appBaseLocate": "/Applications/Setapp/iStat Menus.app/Contents/Resources/Components.bundle/Contents/Resources/iStat Menus Menubar.app",
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "iStat Menus Menubar",
-            "needCopyToAppDir": true,
-            "dylibSelect": "CoreInject.dylib"
-        },
-        {
-            "packageName": "com.bjango.istatmenus-setapp.agent",
-            "appBaseLocate": "/Applications/Setapp/iStat Menus.app/Contents/Resources/Components.bundle/Contents/Resources/iStat Menus Helper.app",
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "iStat Menus Helper",
-            "needCopyToAppDir": true,
-            "dylibSelect": "CoreInject.dylib"
+            "helperFile": [
+                "/Contents/Library/LaunchServices/com.bjango.istatmenus.installer"
+            ],
+            "cleanEnv": [
+                "'/Users/{USER}/Library/Application Support/iStat Menus'*"
+            ],
+            "childApp": [
+                {
+                    "packageName": "com.bjango.istatmenus-setapp.status",
+                    "appBaseLocate": "/Contents/Resources/Components.bundle/Contents/Resources/iStat Menus Menubar.app"
+                },
+                {
+                    "packageName": "com.bjango.istatmenus-setapp.agent",
+                    "appBaseLocate": "/Contents/Resources/Components.bundle/Contents/Resources/iStat Menus Helper.app"
+                }
+            ]
         },
         {
             "packageName": [
@@ -1212,7 +1185,6 @@
                 "net.shinyfrog.image2icon-setapp",
                 "com.globaldelight.Capto-setapp",
                 "com.globaldelight.Boom3D-setapp",
-                "info.eurocomp.Timing-setapp",
                 "com.dejal.simon-setapp",
                 "com.dejal.timeout-setapp",
                 "com.realmacsoftware.squash-setapp",
@@ -1420,25 +1392,16 @@
                 "com.lowtechguys.Clop-setapp",
                 "com.dreamer.habits-setapp",
                 "com.smallwhite-media.SwiftyLaunch-setapp"
-            ],
-            "needCopyToAppDir": true,
-            "tccutil": [
-                "All"
-            ],
-            "autoHandleSetapp": true,
-            "deepSignApp": true,
-            "dylibSelect": "CoreInject.dylib"
+            ]
         },
         {
-            "packageName": "info.eurocomp.Timing-setapp.TimingHelper",
-            "appBaseLocate": "/Applications/Setapp/Timing.app/Contents/Library/LoginItems/TimingHelper.app",
-            "needCopyToAppDir": true,
-            "tccutil": [
-                "All"
-            ],
-            "autoHandleSetapp": true,
-            "deepSignApp": true,
-            "dylibSelect": "CoreInject.dylib"
+            "packageName": "info.eurocomp.Timing-setapp",
+            "childApp": [
+                {
+                    "packageName": "info.eurocomp.Timing-setapp.TimingHelper",
+                    "appBaseLocate": "/Contents/Library/LoginItems/TimingHelper.app"
+                }
+            ]
         },
         {
             "packageName": "io.fadel.Batteries-setapp",
@@ -1453,34 +1416,14 @@
         {
             "packageName": "codes.rambo.AirBuddy-setapp",
             "appBaseLocate": "/Applications/Setapp/AirBuddy.app",
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "AirBuddy",
-            "needCopyToAppDir": true,
-            "tccutil": [
-                "All"
+            "helperFile": [
+                "/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer"
             ],
-            "noSignTarget": true,
-            "autoHandleHelper": true,
-            "helperFile": "/Contents/Library/LaunchServices/codes.rambo.AirBuddy.Installer"
-        },
-        {
-            "packageName": "codes.rambo.AirBuddy-setapp.AirBuddyHelper",
-            "appBaseLocate": "/Applications/Setapp/AirBuddy.app/Contents/Library/LoginItems/AirBuddyHelper.app",
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "AirBuddyHelper",
-            "needCopyToAppDir": true,
-            "tccutil": [
-                "All"
-            ]
-        },
-        {
-            "packageName": "codes.rambo.AirBuddyHelper",
-            "appBaseLocate": "/Applications/AirBuddy.app/Contents/Library/LoginItems/AirBuddyHelper.app",
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "AirBuddyHelper",
-            "needCopyToAppDir": true,
-            "tccutil": [
-                "All"
+            "childApp": [
+                {
+                    "packageName": "codes.rambo.AirBuddy-setapp.AirBuddyHelper",
+                    "appBaseLocate": "/Contents/Library/LoginItems/AirBuddyHelper.app"
+                }
             ]
         },
         {

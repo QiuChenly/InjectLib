@@ -152,60 +152,13 @@ class MenuManager:
             self._display_navigation_options()
             
             # 显示输入提示但不换行，使用flush确保立即显示
-            print("\n" + _("select_operation", "请选择操作: "), end='', flush=True)
+            print("\n" + _("select_operation", "请选择操作,按回车键确认"), end='', flush=True)
             
-            # 获取单个字符输入
-            choice = getch()
-            
-            # 处理页面导航和特殊命令
-            if choice in ['n', 'p', 's', 'l', 'q', 'i']:
-                print(choice)  # 打印当前字符提供反馈
-                
-                if choice == 'n':
-                    if self.current_page < total_pages - 1:
-                        self.current_page += 1
-                    else:
-                        print(_("last_page", "已经是最后一页"))
-                        wait_for_enter()
-                elif choice == 'p':
-                    if self.current_page > 0:
-                        self.current_page -= 1
-                    else:
-                        print(_("first_page", "已经是第一页"))
-                        wait_for_enter()
-                elif choice == 's':
-                    return '1'  # 进入搜索功能
-                elif choice == 'l':
-                    return '4'  # 切换语言
-                elif choice == 'q':
-                    return '5'  # 退出程序
-                elif choice == 'i':
-                    # 检查是否有已选择的应用
-                    if self.app_manager.get_selected_count() > 0:
-                        return '3'  # 进入处理应用功能
-                    else:
-                        print(_("no_apps_selected", "未选择任何应用，请先选择应用"))
-                        wait_for_enter()
-            elif choice.isdigit():
-                # 对于数字选择，需要读取完整的数字
-                full_choice = choice
-                print(choice, end='', flush=True)  # 打印第一个数字
-                
-                # 继续读取数字直到遇到非数字字符或Enter
-                while True:
-                    ch = getch()
-                    if ch.isdigit():
-                        full_choice += ch
-                        print(ch, end='', flush=True)
-                    elif ch == '\r' or ch == '\n':  # Enter键
-                        print()  # 换行
-                        break
-                    else:
-                        print()  # 换行
-                        break
-                
+            # 获取用户输入并按回车键确认
+            choice = read_input("").strip()
+            if choice.isdigit():
                 try:
-                    app_idx = int(full_choice)
+                    app_idx = int(choice)
                     
                     # 检查是否是有效的应用索引（可能跨页）
                     total_apps = len(self.app_manager.get_installed_supported_apps())
@@ -246,7 +199,7 @@ class MenuManager:
                                     
                             # 如果找到了匹配的应用
                             if global_idx >= 0:
-                                return f"SELECT:{global_idx}"
+                                return global_idx
                             else:
                                 print(_("invalid_app_selection", "无效的应用选择"))
                                 wait_for_enter()
@@ -260,9 +213,31 @@ class MenuManager:
                     print(_("invalid_input", "无效的输入，请重新选择。"))
                     wait_for_enter()
             else:
-                print(choice)  # 打印无效字符
-                print(_("invalid_choice", "无效的选择，请重新选择"))
-                wait_for_enter()
+                if choice == 'n':
+                    if self.current_page < total_pages - 1:
+                        self.current_page += 1
+                    else:
+                        print(_("last_page", "已经是最后一页"))
+                        wait_for_enter()
+                elif choice == 'p':
+                    if self.current_page > 0:
+                        self.current_page -= 1
+                    else:
+                        print(_("first_page", "已经是第一页"))
+                        wait_for_enter()
+                elif choice == 's' or choice == 'l' or choice == 'q':
+                    return choice
+                elif choice == 'i':
+                    # 检查是否有已选择的应用
+                    if self.app_manager.get_selected_count() > 0:
+                        return choice
+                    else:
+                        print(_("no_apps_selected", "未选择任何应用，请先选择应用"))
+                        wait_for_enter()
+                else:
+                    print(choice)  # 打印无效字符
+                    print(_("invalid_choice", "无效的选择，请重新选择"))
+                    wait_for_enter()
     
     def _display_navigation_options(self):
         """显示导航选项"""
