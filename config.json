@@ -33,6 +33,12 @@
             "packageName": "com.nssurge.surge-mac",
             "helperFile": [
                 "/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper"
+            ],
+            "childApp":[
+                {
+                    "packageName": "com.nssurge.surge-dashboard",
+                    "appBaseLocate": "/Contents/Applications/Surge Dashboard.app"
+                }
             ]
         },
         {
