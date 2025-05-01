@@ -31,17 +31,9 @@
     "AppList": [
         {
             "packageName": "com.nssurge.surge-mac",
-            "appBaseLocate": "/Applications/Surge.app",
-            "bridgeFile": "/Contents/Frameworks/",
-            "injectFile": "Bugsnag.framework/Versions/A/Bugsnag",
-            "needCopyToAppDir": true,
-            "noSignTarget": true,
-            "autoHandleHelper": true,
-            "helperFile": "/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper",
-            "tccutil": [
-                "All"
-            ],
-            "forQiuChenly": false
+            "helperFile": [
+                "/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper"
+            ]
         },
         {
             "packageName": "com.gokoding.ScreenSage-Pro",
@@ -61,7 +53,8 @@
             "needCopyToAppDir": true,
             "supportVersion": [
                 "5.16.0",
-                "5.17.0"
+                "5.17.0",
+                "5.18.1"
             ],
             "forQiuChenly": true
         },
