@@ -227,10 +227,12 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
 
     # 选择注入方式
     if useOptool:
-        command = f"sudo '{optool_path}' install -p '{dylib_path}' -t '{dest}'"
+        rel_path = f"@executable_path/{dylibSelect}"  
+        command = f"sudo '{optool_path}' install -p '{rel_path}' -t '{dest}'"  
     else:
-        command = f"sudo '{insert_dylib_path}' '{dylib_path}' '{backup}' '{dest}'"
-
+        rel_path = f"@executable_path/{dylibSelect}"  
+        command = f"sudo '{insert_dylib_path}' '{rel_path}' '{backup}' '{dest}'"
+        
     # 执行注入命令
     if not run_command(command):
         print(Color.red(f"[错误] 执行注入命令失败: {command}"))
@@ -257,12 +259,14 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
                     for i in componentApp
                 ]
             )
-    for it in desireApp:
-            if useOptool:
-                bsh = rf"sudo '{optool_path}' install -p {destination_dylib} -t '{it}'"
-            else:
-                bsh = rf"sudo '{insert_dylib_path}' {destination_dylib} '{backup}' '{it}'"
-            sh.append(bsh)
+    for it in desireApp:  
+        if useOptool:  
+            rel_path = f"@executable_path/{dylibSelect}"  
+            bsh = rf"sudo '{optool_path}' install -p {rel_path} -t '{it}'"  
+        else:  
+            rel_path = f"@executable_path/{dylibSelect}"  
+            bsh = rf"sudo '{insert_dylib_path}' {rel_path} '{backup}' '{it}'"  
+        sh.append(bsh)
 
         # 执行注入命令
     for command in sh:
