@@ -299,14 +299,8 @@
         },
         {
             "packageName": "com.surteesstudios.Bartender",
-            "needCopyToAppDir": true,
-            "deepSignApp": true,
-            "injectFile": "Sparkle.framework/Versions/A/Sparkle",
-            "tccutil": [
-                "All",
-                "Camera",
-                "Microphone",
-                "ScreenCapture"
+            "supportVersion":[
+                "5.3.6"
             ]
         },
         {
@@ -631,23 +625,17 @@
         },
         {
             "packageName": "com.adobe.lightroomCC",
-            "appBaseLocate": "/Applications/Adobe Lightroom CC/Adobe Lightroom.app",
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "Adobe Lightroom",
-            "entitlements": "signkeep.xml",
-            "dylibSelect": "CoreInject.dylib",
-            "needCopyToAppDir": true,
-            "noDeep": true
+            "supportVersion":[
+                "8.3.1"
+            ]
         },
         {
             "packageName": "com.adobe.LightroomClassicCC7",
-            "appBaseLocate": "/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app",
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "Adobe Lightroom Classic",
-            "dylibSelect": "CoreInject.dylib",
-            "needCopyToAppDir": true,
-            "noSignTarget": true,
-            "extraShell": "signLrc.sh"
+            "entitlements":"signkeep.xml",
+            "extraShell":"signLrc.sh",
+            "supportVersion": [
+                "14.3.1"
+            ]
         },
         {
             "packageName": "com.adobe.Photoshop",
@@ -742,20 +730,18 @@
         },
         {
             "packageName": "com.adobe.Acrobat.Pro",
-            "appBaseLocate": "/Applications/Adobe Acrobat DC/Adobe Acrobat.app",
-            "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-            "needCopyToAppDir": true,
-            "noDeep": true,
-            "dylibSelect": "CoreInject.dylib",
-            "extraShell": "codesign_acrobat.sh"
+            "bridgeFile":"/Contents/Frameworks/",
+            "injectFile": "Acrobat.framework/Versions/A/Acrobat",
+            "supportVersion":[
+                "25.001.20467"
+            ]
         },
         {
             "packageName": "com.adobe.distiller",
-            "appBaseLocate": "/Applications/Adobe Acrobat DC/Acrobat Distiller.app",
             "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-            "needCopyToAppDir": true,
-            "noDeep": true,
-            "dylibSelect": "CoreInject.dylib"
+            "supportVersion":[
+                "25.001.20467"
+            ]
         },
         {
             "packageName": "com.adobe.InCopy",
