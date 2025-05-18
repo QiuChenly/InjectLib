@@ -524,7 +524,13 @@
             "packageName": "com.navicat.NavicatPremium",
             "supportVersion": [
                 "17.2.4",
-                "17.2.5"
+                "17.2.5",
+                "17.2.6"
+            ]
+        },{
+            "packageName": "com.navicat.NavicatDataModeler",
+            "supportVersion": [
+                "4.2.6"
             ]
         },
         {
@@ -871,11 +877,6 @@
         },
         {
             "packageName": "com.wuziqi.SenPlayer",
-            "needCopyToAppDir": true,
-            "deepSignApp": true,
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "SenPlayer",
-            "dylibSelect": "CoreInject.dylib",
             "supportVersion": [
                 "5.2.2",
                 "5.5.0"
