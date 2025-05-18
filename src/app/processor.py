@@ -10,7 +10,7 @@ from src.app.scanner import check_compatible
 from src.inject.helper import handle_helper
 from src.inject.keygen import handle_keygen
 from src.utils.color import Color
-
+from src.inject.helper import run_command
 
 # 获取工具真实路径的辅助函数
 def get_tool_path(tool_name):
@@ -31,34 +31,6 @@ def get_tool_path(tool_name):
         print(Color.red(f"[错误] 工具 {tool_name} 不存在于路径: {tool_path}"))
 
     return tool_path
-
-
-# 执行命令并检查结果的辅助函数
-def run_command(command, shell=True):
-    """运行命令并检查结果，如果出错则显示红色警告
-
-    Args:
-        command: 要执行的命令
-        shell: 是否使用shell执行
-        check_error: 是否检查错误
-
-    Returns:
-        bool: 命令执行成功返回True，否则返回False
-    """
-    try:
-        result = subprocess.run(command, shell=shell, capture_output=True, text=True)
-
-        # 检查命令是否执行成功
-        if result.returncode != 0:
-            error_msg = result.stderr.strip() or f"命令执行失败: {command}"
-            if "No such file or directory" in error_msg or "command not found" in error_msg:
-                print(Color.red(f"[错误] {error_msg}"))
-            return False
-        return True
-    except Exception as e:
-        print(Color.red(f"[错误] 执行命令时发生异常: {e}"))
-        return False
-
 
 def process_app(app, base_public_config, install_apps, current_dir=None, skip_confirmation=False):
     """处理单个应用的注入逻辑"""

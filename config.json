@@ -1077,6 +1077,16 @@
             "injectFile": "Sparkle.framework/Versions/A/Sparkle"
         },
         {
+            "info":"这个App不是很难，但我没搞懂这个怎么用，没法找人测试。",
+            "packageName":"com.renewedvision.pvp3",
+            "helperFile":"/Contents/Library/LaunchServices/com.renewedvision.HelperV2",
+            "SMExtra":"com.renewedvision.Helper",
+            "supportVersion":[
+                "3.8"
+            ],
+            "forQiuChenly":true
+        },
+        {
             "packageName": "com.culturedcode.ThingsMac",
             "needCopyToAppDir": true,
             "deepSignApp": true,

@@ -81,12 +81,14 @@ def handle_helper(app_base, target_helper, component_apps, SMExtra, bridge_path,
     run_command(f"sudo xattr -c '{app_base}'")
 
     src_info = [f"{app_base}/Contents/Info.plist"]
+    
     if isinstance(component_apps, list):
         src_info.extend([f"{app_base}{i}/Contents/Info.plist" for i in component_apps])
 
     for i in src_info:
-        command = ["/usr/libexec/PlistBuddy", "-c", f"Set :SMPrivilegedExecutables:{helper_name} 'identifier \\\"{helper_name}\\\"'", i]
-        run_command(command, shell=False)
+        helper_name = SMExtra if SMExtra != None else helper_name
+        command = [f"/usr/libexec/PlistBuddy -c \"Set :SMPrivilegedExecutables:{helper_name} identifier {helper_name}\" '{i}'"]
+        run_command(command)
     
     run_command(f'/usr/bin/codesign -f -s - --all-architectures --deep "{target_helper}"')
     run_command(f'/usr/bin/codesign -f -s - --all-architectures --deep "{app_base}"') 
