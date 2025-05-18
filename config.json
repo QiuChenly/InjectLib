@@ -34,7 +34,7 @@
             "helperFile": [
                 "/Contents/Library/LaunchServices/com.nssurge.surge-mac.helper"
             ],
-            "childApp":[
+            "childApp": [
                 {
                     "packageName": "com.nssurge.surge-dashboard",
                     "appBaseLocate": "/Contents/Applications/Surge Dashboard.app"
@@ -299,7 +299,7 @@
         },
         {
             "packageName": "com.surteesstudios.Bartender",
-            "supportVersion":[
+            "supportVersion": [
                 "5.3.6"
             ]
         },
@@ -527,7 +527,8 @@
                 "17.2.5",
                 "17.2.6"
             ]
-        },{
+        },
+        {
             "packageName": "com.navicat.NavicatDataModeler",
             "supportVersion": [
                 "4.2.6"
@@ -631,14 +632,14 @@
         },
         {
             "packageName": "com.adobe.lightroomCC",
-            "supportVersion":[
+            "supportVersion": [
                 "8.3.1"
             ]
         },
         {
             "packageName": "com.adobe.LightroomClassicCC7",
-            "entitlements":"signkeep.xml",
-            "extraShell":"signLrc.sh",
+            "entitlements": "signkeep.xml",
+            "extraShell": "signLrc.sh",
             "supportVersion": [
                 "14.3.1"
             ]
@@ -736,16 +737,16 @@
         },
         {
             "packageName": "com.adobe.Acrobat.Pro",
-            "bridgeFile":"/Contents/Frameworks/",
+            "bridgeFile": "/Contents/Frameworks/",
             "injectFile": "Acrobat.framework/Versions/A/Acrobat",
-            "supportVersion":[
+            "supportVersion": [
                 "25.001.20467"
             ]
         },
         {
             "packageName": "com.adobe.distiller",
             "injectFile": "AdobeAGM.framework/Versions/A/AdobeAGM",
-            "supportVersion":[
+            "supportVersion": [
                 "25.001.20467"
             ]
         },
@@ -1094,14 +1095,16 @@
             "injectFile": "Sparkle.framework/Versions/B/Sparkle"
         },
         {
-            "packageName": [
-                "QReader.MarginStudyMac",
-                "QReader.MarginStudy.easy"
-            ],
-            "needCopyToAppDir": true,
-            "deepSignApp": true,
-            "noDeep": true,
-            "injectFile": "Alamofire.framework/Versions/A/Alamofire"
+            "packageName": "QReader.MarginStudyMac",
+            "supportVersion": [
+                "3.7.29"
+            ]
+        },
+        {
+            "packageName": "QReader.MarginStudy.easy",
+            "supportVersion": [
+                "4.1.17"
+            ]
         },
         {
             "packageName": "cc.ffitch.shottr",
