@@ -23,7 +23,9 @@
 仍然遇到问题？你有两种选择。
 
 1. 加群询问获取帮助: **https://t.me/+VvqTr-2EFaZhYzA1**
-   
+
+    拒绝翻墙从我做起, QQ群也可反馈问题: 1042610918
+    
 2. 继续向下阅读并访问文档说明使用:
 
 点下面的链接进入在线文档，有操作指南。
@@ -41,6 +43,11 @@
 群組: **https://t.me/+VvqTr-2EFaZhYzA1**
 
 Twitter: https://twitter.com/QiuChenly
+
+QQ群:
+仅为方便国内用户反馈问题与交流。
+加群者请在遵守当地法律法规的前提下进行交流。
+![QQ](image.png)
 
 <br>
 關注QiuChenly喵，關注落葉的Twitter喵。謝謝大家喵。
