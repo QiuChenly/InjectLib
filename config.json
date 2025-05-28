@@ -121,7 +121,8 @@
             "needCopyToAppDir": true,
             "dylibSelect": "CoreInject.dylib",
             "supportVersion": [
-                "3.1.2"
+                "3.1.2",
+                "3.2.1"
             ]
         },
         {
