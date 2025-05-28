@@ -812,7 +812,9 @@
             "deepSignApp": true,
             "entitlements": "signkeep.xml",
             "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "sublime_merge"
+            "injectFile": "sublime_merge",
+            "extraShell": "sublime_merge.sh",
+            "onlysh": true
         },
         {
             "packageName": "whbalzac.Huajian",
