@@ -152,7 +152,8 @@
             "needCopyToAppDir": true,
             "dylibSelect": "CoreInject.dylib",
             "supportVersion": [
-                "5.5.12"
+                "5.5.12",
+                "5.5.15"
             ]
         },
         {
@@ -865,8 +866,7 @@
         {
             "packageName": "com.wuziqi.SenPlayer",
             "supportVersion": [
-                "5.2.2",
-                "5.5.0"
+                "5.6.0"
             ]
         },
         {
