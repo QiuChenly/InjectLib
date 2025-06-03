@@ -86,9 +86,8 @@ def handle_helper(app_base, target_helper, component_apps, SMExtra, bridge_path,
         src_info.extend([f"{app_base}{i}/Contents/Info.plist" for i in component_apps])
 
     for i in src_info:
-        helper_name = SMExtra if SMExtra != None else helper_name
-        command = [f"/usr/libexec/PlistBuddy -c \"Set :SMPrivilegedExecutables:{helper_name} identifier {helper_name}\" '{i}'"]
-        run_command(command)
+        command = ["/usr/libexec/PlistBuddy", "-c", f"Set :SMPrivilegedExecutables:{helper_name} 'identifier \\\"{helper_name}\\\"'", i]
+        run_command(command, shell=False)
     
     run_command(f'/usr/bin/codesign -f -s - --all-architectures --deep "{target_helper}"')
     run_command(f'/usr/bin/codesign -f -s - --all-architectures --deep "{app_base}"') 
