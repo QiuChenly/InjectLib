@@ -866,7 +866,8 @@
         {
             "packageName": "com.wuziqi.SenPlayer",
             "supportVersion": [
-                "5.6.0"
+                "5.6.0",
+                "5.6.1"
             ]
         },
         {
@@ -1094,6 +1095,12 @@
             "packageName": "QReader.MarginStudyMac",
             "supportVersion": [
                 "3.7.29"
+            ]
+        },
+        {
+            "packageName":"com.xunyong.1capture",
+            "supportVersion": [
+                            "1.2.0"
             ]
         },
         {
