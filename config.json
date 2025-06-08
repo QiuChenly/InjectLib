@@ -1099,8 +1099,9 @@
         },
         {
             "packageName":"com.xunyong.1capture",
-            "supportVersion": [
-                            "1.2.0"
+            "supportVersionZ": [
+                "1.2.0",
+                "此App目前算法激活, 通杀"
             ]
         },
         {
