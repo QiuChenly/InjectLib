@@ -508,9 +508,7 @@
         {
             "packageName": "com.navicat.NavicatPremium",
             "supportVersion": [
-                "17.2.4",
-                "17.2.5",
-                "17.2.6"
+                "17.2.8"
             ]
         },
         {
@@ -1098,10 +1096,18 @@
             ]
         },
         {
-            "packageName":"com.xunyong.1capture",
+            "packageName":["com.xunyong.1capture","com.xunyong.hapigo"],
             "supportVersionZ": [
                 "1.2.0",
                 "此App目前算法激活, 通杀"
+            ]
+        },
+        {
+            "packageName":"pro.docklock.lite",
+            "extraShell": "docklock.sh",
+            "onlysh": true,
+            "supportVersion": [
+                "1.3.2"
             ]
         },
         {
