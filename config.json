@@ -345,12 +345,7 @@
             ]
         },
         {
-            "packageName": "com.firecore.infuse",
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "Infuse",
-            "needCopyToAppDir": true,
-            "entitlements": "signkeep.xml",
-            "deepSignApp": true
+            "packageName": "com.firecore.infuse"
         },
         {
             "packageName": "com.coderforart.MWeb3",
@@ -978,15 +973,8 @@
         },
         {
             "packageName": "com.wiheads.paste",
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "Paste",
-            "needCopyToAppDir": true,
-            "deepSignApp": true,
-            "tccutil": [
-                "All",
-                "Camera",
-                "Microphone",
-                "ScreenCapture"
+            "supportVersion":[
+                "5.0.6"
             ]
         },
         {
