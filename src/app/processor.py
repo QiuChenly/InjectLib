@@ -234,13 +234,12 @@ def process_app(app, base_public_config, install_apps, current_dir=None, skip_co
                 bsh = rf"sudo '{optool_path}' install -p {destination_dylib} -t '{it}'"
             else:
                 bsh = rf"sudo '{insert_dylib_path}' {destination_dylib} '{backup}' '{it}'"
-            sh.append(bsh)
-
-        # 执行注入命令
-    for command in sh:
-            if not run_command(command):
+            if not run_command(bsh):
                 print(Color.red(f"[错误] 执行注入命令失败: {command}"))
                 success = False
+            else:
+                run_command(f"sudo rm -rf {backup}")
+                
 
     sign_prefix = (
         "/usr/bin/codesign -f -s - --timestamp=none --all-architectures"
