@@ -851,10 +851,9 @@
         },
         {
             "packageName": "com.bandisoft.mac.bandizip365",
-            "needCopyToAppDir": true,
-            "deepSignApp": true,
-            "bridgeFile": "/Contents/MacOS/",
-            "injectFile": "Bandizip365"
+            "supportVersion":[
+                "7.34"
+            ]
         },
         {
             "packageName": "com.wuziqi.SenPlayer",
